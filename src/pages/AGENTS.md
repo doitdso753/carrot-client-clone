@@ -4,3 +4,4 @@
 
 ## 코드 컨벤션
 - root AGENTS.md 참고
+- *-page.tsx
