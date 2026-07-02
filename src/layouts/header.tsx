@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { LogoIcon } from '@/assets/icons';
 
-function Header(): ReactNode {
+export default function Header(): ReactNode {
   return (
     <header className="flex items-center justify-between">
       <a className="flex items-center gap-3" href="/" aria-label="당근 홈">
@@ -10,5 +10,3 @@ function Header(): ReactNode {
     </header>
   );
 }
-
-export default Header;

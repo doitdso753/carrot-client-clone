@@ -4,6 +4,7 @@
 
 ## 코드 컨벤션
 - 함수형 컴포넌트만 사용한다.
+- export default function ComponentName()
 - JSX가 복잡하거나 동일 UI가 반복되면 컴포넌트로 분리한다.
 - Props 타입은 컴포넌트 가까이에 선언한다.
 - 파생 상태는 `useState`로 저장하지 않는다.
