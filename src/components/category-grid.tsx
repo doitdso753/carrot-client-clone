@@ -1,32 +1,14 @@
 import type { ReactNode } from 'react';
-import {
-  CarIcon,
-  DocumentIcon,
-  GroupIcon,
-  HomeIcon,
-  MugIcon,
-  SearchUserIcon,
-  ShoppingBagIcon,
-  StoreIcon,
-} from '@/assets/icons';
 import type { CategoryItem } from '@/types/types';
+import CategoryIcon from './category-icon';
 
 type CategoryGridProps = {
   categories: readonly CategoryItem[];
 };
 
-const CATEGORY_ICONS: Record<CategoryItem['iconName'], ReactNode> = {
-  shoppingBag: <ShoppingBagIcon />,
-  searchUser: <SearchUserIcon />,
-  home: <HomeIcon />,
-  car: <CarIcon />,
-  store: <StoreIcon />,
-  document: <DocumentIcon />,
-  group: <GroupIcon />,
-  mug: <MugIcon />,
-};
-
-export default function CategoryGrid({ categories }: CategoryGridProps): ReactNode {
+export default function CategoryGrid({
+  categories,
+}: CategoryGridProps): ReactNode {
   return (
     <section className="mt-16 grid w-full grid-cols-2 gap-6 md:grid-cols-4">
       {categories.map((category) => (
@@ -36,7 +18,7 @@ export default function CategoryGrid({ categories }: CategoryGridProps): ReactNo
           key={category.label}
         >
           <span className="[&>svg]:h-[2.4rem] [&>svg]:w-[2.4rem]">
-            {CATEGORY_ICONS[category.iconName]}
+            <CategoryIcon iconName={category.iconName} />
           </span>
           <span className="font-extrabold text-(--color-palette-gray-1000)">
             {category.label}
