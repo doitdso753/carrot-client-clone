@@ -280,3 +280,82 @@ video {
 [hidden] {
   display: none;
 }
+
+.dashboard-wrapper {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.list-blur-effect {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 4rem;
+  pointer-events: none;
+  background: linear-gradient(
+          to right,
+          transparent 0%,
+          var(--color-palette-gray-00) 75%
+  );
+}
+
+@media screen and (min-width: 768px) {
+  .hero-search-wrapper {
+    max-width:608px
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .hero-search-wrapper {
+    max-width:726px
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .hero-search-wrapper {
+    max-width:754px
+  }
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes hero-keyword-diagonal-enter {
+  0% {
+    opacity: 0;
+    transform: translate(1.2rem, 1.2rem);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translate(-0.1rem, -0.1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes hero-keyword-diagonal-reverse-enter {
+  0% {
+    opacity: 0;
+    transform: translate(-1.2rem, 1.2rem);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translate(0.1rem, -0.1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}

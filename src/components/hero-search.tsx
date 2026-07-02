@@ -1,0 +1,76 @@
+import { useEffect, useState, type ReactNode } from 'react';
+import { LocationIcon } from '@/assets/icons';
+import type { CategoryItem } from '@/types/types';
+import HeroSearchForm from './hero-search-form';
+import PopularKeywordList from './popular-keyword-list';
+
+const HERO_KEYWORD_CHANGE_INTERVAL = 3000;
+
+type HeroSearchProps = {
+  categories: readonly CategoryItem[];
+  heroKeywords: readonly string[];
+  popularKeywords: readonly string[];
+};
+
+function getRandomKeyword(
+  keywords: readonly string[],
+  currentKeyword: string,
+): string {
+  const nextKeywords = keywords.filter((keyword) => keyword !== currentKeyword);
+  const selectableKeywords = nextKeywords.length > 0 ? nextKeywords : keywords;
+  const randomIndex = Math.floor(Math.random() * selectableKeywords.length);
+
+  return selectableKeywords[randomIndex] ?? currentKeyword;
+}
+
+export default function HeroSearch({
+  categories,
+  heroKeywords,
+  popularKeywords,
+}: HeroSearchProps): ReactNode {
+  const [heroKeyword, setHeroKeyword] = useState(heroKeywords[0] ?? '');
+  const [isReverseMotion, setIsReverseMotion] = useState(false);
+
+  useEffect(() => {
+    if (heroKeywords.length < 2) {
+      return;
+    }
+
+    const timerId = window.setInterval(() => {
+      setHeroKeyword((currentKeyword) =>
+        getRandomKeyword(heroKeywords, currentKeyword),
+      );
+      setIsReverseMotion((currentValue) => !currentValue);
+    }, HERO_KEYWORD_CHANGE_INTERVAL);
+
+    return () => {
+      window.clearInterval(timerId);
+    };
+  }, [heroKeywords]);
+
+  return (
+    <div className="flex w-full flex-col items-center">
+      <h1 className="flex flex-wrap items-center justify-center gap-3 text-center leading-tight tracking-normal text-(--color-palette-gray-1000)">
+        <LocationIcon className="h-16 w-16 shrink-0 sm:h-20 sm:w-20" />
+        <span className="text-4xl font-extrabold md:text-5xl">
+          당근에서{' '}
+          <span
+            className={`inline-block ${
+              isReverseMotion
+                ? 'animate-[hero-keyword-diagonal-reverse-enter_520ms_cubic-bezier(0.22,1,0.36,1)_both]'
+                : 'animate-[hero-keyword-diagonal-enter_520ms_cubic-bezier(0.22,1,0.36,1)_both]'
+            }`}
+            key={heroKeyword}
+          >
+            {heroKeyword}
+          </span>{' '}
+          찾고 계신가요?
+        </span>
+      </h1>
+      <div className="hero-search-wrapper">
+        <HeroSearchForm categories={categories} />
+        <PopularKeywordList popularKeywords={popularKeywords} />
+      </div>
+    </div>
+  );
+}
