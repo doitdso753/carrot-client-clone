@@ -1,8 +1,8 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { LocationIcon } from '@/assets/icons';
 import type { CategoryItem } from '@/types/types';
-import HeroSearchForm from './hero-search-form';
 import PopularKeywordList from './popular-keyword-list';
+import SearchForm from './search-form';
 
 const HERO_KEYWORD_CHANGE_INTERVAL = 3000;
 
@@ -30,6 +30,9 @@ export default function HeroSearch({
 }: HeroSearchProps): ReactNode {
   const [heroKeyword, setHeroKeyword] = useState(heroKeywords[0] ?? '');
   const [isReverseMotion, setIsReverseMotion] = useState(false);
+  const searchOptions = categories.map((category) => ({
+    label: category.label,
+  }));
 
   useEffect(() => {
     if (heroKeywords.length < 2) {
@@ -68,7 +71,7 @@ export default function HeroSearch({
         </span>
       </h1>
       <div className="hero-search-wrapper">
-        <HeroSearchForm categories={categories} />
+        <SearchForm options={searchOptions} />
         <PopularKeywordList popularKeywords={popularKeywords} />
       </div>
     </div>
