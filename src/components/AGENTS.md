@@ -6,6 +6,7 @@
 - 함수형 컴포넌트만 사용한다.
 - export default function ComponentName()
 - JSX가 복잡하거나 동일 UI가 반복되면 컴포넌트로 분리한다.
-- Props 타입은 컴포넌트 가까이에 선언한다.
+- Props 타입은 컴포넌트 위에 선언한다.
 - 파생 상태는 `useState`로 저장하지 않는다.
 - 불필요한 `useMemo`, `useCallback`은 사용하지 않는다.
+- 범용 컴포넌트는 ui 폴더 안에 위치한다
