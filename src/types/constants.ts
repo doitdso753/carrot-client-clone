@@ -36,34 +36,42 @@ export const CATEGORIES: CategoryItem[] = [
   {
     label: '중고거래',
     iconName: 'shoppingBag',
+    routing: '/buy-sell',
   },
   {
     label: '동네업체',
     iconName: 'store',
+    routing: '/local-profile',
   },
   {
     label: '알바/과외',
     iconName: 'searchUser',
+    routing: '/jobs',
   },
   {
     label: '중고차',
     iconName: 'car',
+    routing: '/cars',
   },
   {
     label: '동네생활',
     iconName: 'document',
+    routing: '/community',
   },
   {
     label: '모임',
     iconName: 'group',
+    routing: '/group',
   },
   {
     label: '부동산',
     iconName: 'home',
+    routing: '/realty',
   },
   {
     label: '카페',
     iconName: 'mug',
+    routing: '/cafe',
   },
 ] as const;
 

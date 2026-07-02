@@ -14,7 +14,7 @@ export default function CategoryGrid({
       {categories.map((category) => (
         <a
           className="flex aspect-video flex-col justify-between gap-8 rounded-xl bg-(--color-palette-gray-200) p-8 transition hover:bg-(--color-palette-gray-300)"
-          href="/"
+          href={category.routing}
           key={category.label}
         >
           <span className="[&>svg]:h-[2.4rem] [&>svg]:w-[2.4rem]">

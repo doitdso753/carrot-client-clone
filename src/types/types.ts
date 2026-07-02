@@ -11,4 +11,5 @@ export type CategoryIconName =
 export type CategoryItem = {
   label: string;
   iconName: CategoryIconName;
+  routing: string;
 };
