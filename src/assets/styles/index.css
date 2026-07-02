@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import "brand.css";
+@import 'brand.css';
 
 *,
 :before,
@@ -294,27 +294,27 @@ video {
   width: 4rem;
   pointer-events: none;
   background: linear-gradient(
-          to right,
-          transparent 0%,
-          var(--color-palette-gray-00) 75%
+    to right,
+    transparent 0%,
+    var(--color-palette-gray-00) 75%
   );
 }
 
 @media screen and (min-width: 768px) {
   .hero-search-wrapper {
-    max-width:608px
+    max-width: 608px;
   }
 }
 
 @media screen and (min-width: 992px) {
   .hero-search-wrapper {
-    max-width:726px
+    max-width: 726px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .hero-search-wrapper {
-    max-width:754px
+    max-width: 754px;
   }
 }
 
