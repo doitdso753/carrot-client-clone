@@ -12,7 +12,7 @@ import {
 
 export default function DashboardContent(): ReactNode {
   return (
-    <section className="dashboard-wrapper flex flex-1 flex-col items-center pt-32 sm:pt-40 lg:pt-52">
+    <main className="dashboard-wrapper flex flex-1 flex-col items-center pt-32 sm:pt-40 lg:pt-52">
       <HeroSearch
         categories={CATEGORIES}
         heroKeywords={HERO_SEARCH_KEYWORDS}
@@ -21,6 +21,6 @@ export default function DashboardContent(): ReactNode {
       <PromotionBanner />
       <CategoryGrid categories={CATEGORIES} />
       <NeighborhoodList neighborhoods={NEIGHBORHOODS} />
-    </section>
+    </main>
   );
 }
