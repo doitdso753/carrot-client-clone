@@ -6,8 +6,6 @@ export function ArrowRightIcon(): ReactNode {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      data-seed-icon="true"
-      data-seed-icon-version="0.0.23"
       width="24"
       height="24"
     >
