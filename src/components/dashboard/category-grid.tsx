@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
-import type { CategoryItem } from '@/types/types';
-import CategoryIcon from './category-icon';
+import type { CategoryItem } from '@/types/types.ts';
+import CategoryIcon from '@/components/ui/category-icon.tsx';
 
 type CategoryGridProps = {
   categories: readonly CategoryItem[];

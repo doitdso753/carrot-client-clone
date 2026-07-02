@@ -1,8 +1,8 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { LocationIcon } from '@/assets/icons';
-import type { CategoryItem } from '@/types/types';
-import PopularKeywordList from './popular-keyword-list';
-import SearchForm from './search-form';
+import type { CategoryItem } from '@/types/types.ts';
+import PopularKeywordList from './popular-keyword-list.tsx';
+import SearchForm from '@/components/ui/search-form.tsx';
 
 const HERO_KEYWORD_CHANGE_INTERVAL = 3000;
 

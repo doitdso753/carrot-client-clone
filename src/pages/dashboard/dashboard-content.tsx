@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
-import CategoryGrid from '@/components/category-grid';
-import HeroSearch from '@/components/hero-search';
-import NeighborhoodList from '@/components/neighborhood-list';
-import PromotionBanner from '@/components/promotion-banner';
+import CategoryGrid from '@/components/dashboard/category-grid.tsx';
+import HeroSearch from '@/components/dashboard/hero-search.tsx';
+import NeighborhoodList from '@/components/dashboard/neighborhood-list.tsx';
+import PromotionBanner from '@/components/dashboard/promotion-banner.tsx';
 import {
   CATEGORIES,
   HERO_SEARCH_KEYWORDS,
