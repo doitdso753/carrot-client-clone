@@ -1,14 +1,12 @@
 import type { ReactNode } from 'react';
-import Header from '@/layouts/header';
 import RootLayout from '@/layouts/root-layout';
-import DashboardContent from './dashboard-content';
+import HeaderWithSearch from '@/layouts/header-with-search.tsx';
 
-export default function DashboardPage(): ReactNode {
+export default function BuySellPage(): ReactNode {
   return (
     <RootLayout>
       <div className="flex min-h-screen flex-col">
-        <Header />
-        <DashboardContent />
+        <HeaderWithSearch />
       </div>
     </RootLayout>
   );
