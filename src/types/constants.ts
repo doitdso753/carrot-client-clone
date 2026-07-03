@@ -1,5 +1,17 @@
 import type { CategoryItem } from '@/types/types.ts';
 
+export const HERO_SEARCH_KEYWORDS = [
+  '맛집',
+  '자전거',
+  '카페',
+  '아이폰',
+  '알바',
+  '중고차',
+  '원룸',
+  '러닝모임',
+  '동네친구',
+] as const;
+
 export const POPULAR_KEYWORDS = [
   '에어컨',
   '에어컨청소',
@@ -20,16 +32,41 @@ export const POPULAR_KEYWORDS = [
   '전세 매물',
 ] as const;
 
-export const HERO_SEARCH_KEYWORDS = [
-  '맛집',
+export const RECOMMEND_KEYWORDS = [
+  '픽시',
   '자전거',
-  '카페',
   '아이폰',
-  '알바',
-  '중고차',
-  '원룸',
-  '러닝모임',
-  '동네친구',
+  '컴퓨터',
+  '냉장고',
+  '포켓몬카드',
+  '노트북',
+  '갤럭시',
+  '아이패드',
+  '모니터',
+  '로드자전거',
+  '에어컨',
+  '의자',
+  '전기자전거',
+  '닌텐도',
+  '오토바이',
+  '에어팟',
+  '골프채',
+  '엔진11',
+  '쓰나미',
+  '로드',
+  '책상',
+  '포켓몬 카드',
+  '핸드폰',
+  '맥북',
+  '세탁기',
+  '포켓몬',
+  '언노운',
+  '콘스탄틴',
+  '애플워치',
+  '제습기',
+  '선풍기',
+  '로드 자전거',
+  '테이블',
 ] as const;
 
 export const CATEGORIES: CategoryItem[] = [
