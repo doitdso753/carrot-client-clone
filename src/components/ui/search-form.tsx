@@ -4,7 +4,7 @@ import {
   type KeyboardEvent,
   type ReactNode,
 } from 'react';
-import { ArrowRightIcon, ChevronDownIcon } from '@/assets/icons';
+import { ArrowRightIcon, ChevronDownFillIcon } from '@/assets/icons';
 
 type SearchFormOption = {
   label: string;
@@ -53,7 +53,7 @@ export default function SearchForm({ options }: SearchFormProps): ReactNode {
           )}
           <span>{selectedOption?.label ?? '카테고리'}</span>
           <span className="form-select-chevron" aria-hidden="true">
-            <ChevronDownIcon />
+            <ChevronDownFillIcon />
           </span>
         </button>
         <input

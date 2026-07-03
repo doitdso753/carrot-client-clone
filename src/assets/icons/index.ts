@@ -1,6 +1,10 @@
 export { ArrowRightIcon } from './arrow-icons/arrow-right-icon.tsx';
 export { CarIcon } from './category-icons/car-icon.tsx';
 export { LogoIcon } from './logo-icon.tsx';
+export { MenuIcon } from './menu-icon.tsx';
+export { SearchIcon } from './search-icon.tsx';
+export { ExternalLinkIcon } from './external-link-icon.tsx';
+export { ChevronDownFillIcon } from './arrow-icons/chevron-down-fill-icon.tsx';
 export { ChevronDownIcon } from './arrow-icons/chevron-down-icon.tsx';
 export { DocumentIcon } from './category-icons/document-icon.tsx';
 export { GroupIcon } from './category-icons/group-icon.tsx';
