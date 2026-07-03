@@ -1,8 +1,8 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { LocationIcon } from '@/assets/icons';
-import type { CategoryItem } from '@/types/types.ts';
-import PopularKeywordList from './popular-keyword-list.tsx';
+import KeywordLinkList from '@/components/ui/keyword-link-list';
 import SearchForm from '@/components/ui/search-form.tsx';
+import type { CategoryItem } from '@/types/types.ts';
 
 const HERO_KEYWORD_CHANGE_INTERVAL = 3000;
 
@@ -72,7 +72,7 @@ export default function HeroSearch({
       </h1>
       <div className="hero-search-wrapper">
         <SearchForm options={searchOptions} />
-        <PopularKeywordList popularKeywords={popularKeywords} />
+        <KeywordLinkList title="인기 검색어" keywords={popularKeywords} />
       </div>
     </div>
   );
