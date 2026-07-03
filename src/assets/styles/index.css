@@ -440,19 +440,51 @@ video {
   color: var(--color-palette-gray-700);
 }
 
+.header-wrapper {
+  padding-block: 1.2rem;
+}
+
+.buy-sell-wrapper {
+  padding-top: 4rem;
+}
+
+.header-wrapper,
+.buy-sell-wrapper {
+  padding-inline: 1.6rem;
+}
+
 @media screen and (min-width: 768px) {
+  .header-wrapper,
+  .buy-sell-wrapper {
+    padding-inline: 4rem;
+  }
+
+  .buy-sell-wrapper {
+    padding-top: 11rem;
+  }
+
   .hero-search-wrapper {
     max-width: 608px;
   }
 }
 
 @media screen and (min-width: 992px) {
+  .header-wrapper,
+  .buy-sell-wrapper {
+    padding-inline: 6.4rem;
+  }
+
   .hero-search-wrapper {
     max-width: 726px;
   }
 }
 
 @media screen and (min-width: 1200px) {
+  .header-wrapper,
+  .buy-sell-wrapper {
+    padding-inline: 8rem;
+  }
+
   .hero-search-wrapper {
     max-width: 754px;
   }
