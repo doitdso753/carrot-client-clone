@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export function MugIcon(): ReactNode {
+export function CafeIcon(): ReactNode {
   return (
     <svg
       viewBox="0 0 24 24"

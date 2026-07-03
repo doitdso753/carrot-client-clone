@@ -6,7 +6,7 @@ export type CategoryIconName =
   | 'store'
   | 'document'
   | 'group'
-  | 'mug';
+  | 'cafe';
 
 export type CategoryItem = {
   label: string;

@@ -70,7 +70,7 @@ export const CATEGORIES: CategoryItem[] = [
   },
   {
     label: '카페',
-    iconName: 'mug',
+    iconName: 'cafe',
     routing: '/cafe',
   },
 ] as const;

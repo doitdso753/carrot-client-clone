@@ -6,7 +6,7 @@ export { DocumentIcon } from './category-icons/document-icon.tsx';
 export { GroupIcon } from './category-icons/group-icon.tsx';
 export { HomeIcon } from './category-icons/home-icon.tsx';
 export { LocationIcon } from './location-icon';
-export { MugIcon } from './category-icons/mug-icon.tsx';
+export { CafeIcon } from './category-icons/cafe-icon.tsx';
 export { SearchUserIcon } from './category-icons/search-user-icon.tsx';
 export { ShoppingBagIcon } from './category-icons/shopping-bag-icon.tsx';
 export { StoreIcon } from './category-icons/store-icon.tsx';

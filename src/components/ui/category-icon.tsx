@@ -4,7 +4,7 @@ import {
   DocumentIcon,
   GroupIcon,
   HomeIcon,
-  MugIcon,
+  CafeIcon,
   SearchUserIcon,
   ShoppingBagIcon,
   StoreIcon,
@@ -23,7 +23,7 @@ const CATEGORY_ICONS: Record<CategoryItem['iconName'], ReactNode> = {
   store: <StoreIcon />,
   document: <DocumentIcon />,
   group: <GroupIcon />,
-  mug: <MugIcon />,
+  cafe: <CafeIcon />,
 };
 
 export default function CategoryIcon({
