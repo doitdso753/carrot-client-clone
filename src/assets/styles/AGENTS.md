@@ -9,4 +9,5 @@ css 파일 모음
 - 레이아웃은 **Flex**를 기본으로 사용한다.
 - 간격은 `margin`보다 `gap`을 우선한다.
 - 2차원 레이아웃만 **Grid**를 사용한다.
-- 고정 Width/Height 사용을 지양한다.
+- 고정 Width/Height 사용 지양
+- !important 사용 지양
