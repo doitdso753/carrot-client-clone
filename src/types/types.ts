@@ -8,7 +8,18 @@ export type CategoryIconName =
   | 'group'
   | 'cafe';
 
+export type CategoryCode =
+  | 'buySell'
+  | 'localProfile'
+  | 'jobs'
+  | 'cars'
+  | 'community'
+  | 'group'
+  | 'realty'
+  | 'cafe';
+
 export type CategoryItem = {
+  code: CategoryCode;
   label: string;
   iconName: CategoryIconName;
   routing: string;
