@@ -4,22 +4,38 @@ import {
   type KeyboardEvent,
   type ReactNode,
 } from 'react';
-import { ArrowRightIcon, ChevronDownFillIcon } from '@/assets/icons';
+import {
+  ArrowRightIcon,
+  ChevronDownFillIcon,
+  SearchIcon,
+} from '@/assets/icons';
 
 type SearchFormOption = {
   label: string;
   icon?: ReactNode;
 };
 
+type SearchFormSubmitIconType = 'arrow' | 'search';
+
 type SearchFormProps = {
   options: readonly SearchFormOption[];
+  submitIconType?: SearchFormSubmitIconType;
 };
 
-export default function SearchForm({ options }: SearchFormProps): ReactNode {
+const SUBMIT_ICONS: Record<SearchFormSubmitIconType, ReactNode> = {
+  arrow: <ArrowRightIcon />,
+  search: <SearchIcon />,
+};
+
+export default function SearchForm({
+  options,
+  submitIconType = 'arrow',
+}: SearchFormProps): ReactNode {
   const [selectedLabel, setSelectedLabel] = useState(options[0]?.label ?? '');
   const [isOpen, setIsOpen] = useState(false);
   const selectedOption =
     options.find((option) => option.label === selectedLabel) ?? null;
+  const submitIcon = SUBMIT_ICONS[submitIconType];
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>): void => {
     if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -40,7 +56,11 @@ export default function SearchForm({ options }: SearchFormProps): ReactNode {
 
   return (
     <form className="mt-14 flex w-full items-center rounded-full border border-(--color-palette-gray-300) bg-(--color-palette-gray-00) shadow-sm">
-      <div className="form-select" onBlur={handleBlur} onKeyDown={handleKeyDown}>
+      <div
+        className="form-select"
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+      >
         <button
           className="form-select-trigger"
           type="button"
@@ -102,13 +122,15 @@ export default function SearchForm({ options }: SearchFormProps): ReactNode {
         placeholder="검색어를 입력해주세요"
         type="search"
       />
-      <div className="flex h-11 w-11 mx-7 items-center justify-center rounded-full bg-(--color-palette-static-black) text-(--color-palette-static-white) transition">
+      <div
+        className={`search-form-submit-wrapper search-form-submit-wrapper--${submitIconType}`}
+      >
         <button
           className="flex items-center justify-center w-7 h-7"
           type="submit"
           aria-label="검색"
         >
-          <ArrowRightIcon />
+          {submitIcon}
         </button>
       </div>
     </form>

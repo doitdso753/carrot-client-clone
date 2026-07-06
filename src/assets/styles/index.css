@@ -334,6 +334,11 @@ video {
     0 0.2rem 0.6rem rgb(0 0 0 / 6%);
 }
 
+.form-select-menu svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
 .form-select-option {
   display: flex;
   width: 100%;
@@ -370,6 +375,26 @@ video {
 
 .form-select-option.is-selected .form-select-check {
   display: block;
+}
+
+.search-form-submit-wrapper {
+  display: flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  transition: all 150ms ease;
+}
+
+.search-form-submit-wrapper--arrow {
+  margin-inline: 1.75rem;
+  border-radius: 999rem;
+  background-color: var(--color-palette-static-black);
+  color: var(--color-palette-static-white);
+}
+
+.search-form-submit-wrapper--search {
+  margin-inline: 1rem;
 }
 
 .form-select-check::before {
