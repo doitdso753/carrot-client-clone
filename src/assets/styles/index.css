@@ -744,22 +744,11 @@ video {
   border-radius: 999rem;
   background-color: var(--color-palette-gray-00);
   box-shadow: 0 0.1rem 0.2rem rgb(0 0 0 / 4%);
-  font-size: var(--text-lg);
-  font-weight: 700;
   transition: all 150ms ease;
-}
-
-.header-category-more-button.is-active {
-  color: var(--color-palette-gray-900);
-}
-
-.header-category-more-button.is-active:hover {
-  background-color: var(--color-palette-gray-100);
 }
 
 .header-category-more-button.is-disabled {
   pointer-events: none;
-  color: var(--color-palette-gray-600);
   opacity: 0.4;
 }
 

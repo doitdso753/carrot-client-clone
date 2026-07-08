@@ -1,6 +1,7 @@
 export { ArrowRightIcon } from './arrow-icons/arrow-right-icon.tsx';
 export { CarIcon } from './category-icons/car-icon.tsx';
 export { CloseIcon } from './close-icon.tsx';
+export { EllipsisIcon } from './ellipsis-icon.tsx';
 export { LogoIcon } from './logo-icon.tsx';
 export { MenuIcon } from './menu-icon.tsx';
 export { SearchIcon } from './search-icon.tsx';
