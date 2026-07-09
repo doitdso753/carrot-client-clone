@@ -1,0 +1,30 @@
+export function getElapsedTimeText(date: Date | string | number): string {
+  const targetDate = new Date(date);
+  const now = new Date();
+  const diffMilliseconds = Math.max(0, now.getTime() - targetDate.getTime());
+  const diffMinutes = Math.floor(diffMilliseconds / (1000 * 60));
+
+  if (diffMinutes < 60) {
+    return `${Math.max(1, diffMinutes)}분전`;
+  }
+
+  const diffHours = Math.floor(diffMinutes / 60);
+
+  if (diffHours < 24) {
+    return `${diffHours}시간전`;
+  }
+
+  const diffDays = Math.floor(diffHours / 24);
+
+  if (diffDays < 30) {
+    return `${diffDays}일전`;
+  }
+
+  const diffMonths = Math.floor(diffDays / 30);
+
+  if (diffMonths < 12) {
+    return `${diffMonths}개월전`;
+  }
+
+  return `${Math.floor(diffMonths / 12)}년전`;
+}

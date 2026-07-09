@@ -32,6 +32,7 @@ export type BuySellItem = {
   location: string;
   createdAt: string;
   imageUrl: string;
+  isReserved?: boolean;
 };
 
 export type UsePopupReturn = {
