@@ -26,13 +26,13 @@
     -moz-tab-size: 4;
     tab-size: 4;
     font-family:
-            ui-sans-serif,
-            system-ui,
-            sans-serif,
-            'Apple Color Emoji',
-            'Segoe UI Emoji',
-            Segoe UI Symbol,
-            'Noto Color Emoji';
+      ui-sans-serif,
+      system-ui,
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      Segoe UI Symbol,
+      'Noto Color Emoji';
     font-feature-settings: normal;
     font-variation-settings: normal;
     -webkit-tap-highlight-color: transparent;
@@ -42,19 +42,19 @@
     margin: 0;
     font-size: var(--text-base);
     font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            Pretendard Variable,
-            Segoe UI,
-            Roboto,
-            Helvetica Neue,
-            Arial,
-            Noto Sans,
-            sans-serif,
-            'Apple Color Emoji',
-            'Segoe UI Emoji',
-            Segoe UI Symbol,
-            'Noto Color Emoji';
+      -apple-system,
+      BlinkMacSystemFont,
+      Pretendard Variable,
+      Segoe UI,
+      Roboto,
+      Helvetica Neue,
+      Arial,
+      Noto Sans,
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      Segoe UI Symbol,
+      'Noto Color Emoji';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
@@ -101,14 +101,14 @@
   samp,
   pre {
     font-family:
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            Monaco,
-            Consolas,
-            Liberation Mono,
-            Courier New,
-            monospace;
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      Liberation Mono,
+      Courier New,
+      monospace;
     font-feature-settings: normal;
     font-variation-settings: normal;
     font-size: 1em;
