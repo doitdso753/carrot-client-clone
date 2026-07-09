@@ -25,6 +25,15 @@ export type CategoryItem = {
   routing: string;
 };
 
+export type BuySellItem = {
+  id: number;
+  title: string;
+  price: number;
+  location: string;
+  createdAt: string;
+  imageUrl: string;
+};
+
 export type UsePopupReturn = {
   isOpen: boolean;
   openPopup: () => void;

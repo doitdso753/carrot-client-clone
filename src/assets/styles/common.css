@@ -13,7 +13,7 @@
   gap: 0.6rem;
   border-radius: 999rem;
   color: var(--color-palette-gray-800);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   white-space: nowrap;
 }
 
@@ -62,7 +62,7 @@
   font-size: var(--text-sm);
   text-align: left;
   white-space: nowrap;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 
 .form-select-option:hover,
@@ -165,7 +165,7 @@
 
 .keyword-link-list--header .keyword-link-list-title {
   color: var(--color-palette-gray-900);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 
 .keyword-link-list--header .keyword-link-list-items {
