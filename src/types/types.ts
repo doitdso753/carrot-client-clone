@@ -24,3 +24,10 @@ export type CategoryItem = {
   iconName: CategoryIconName;
   routing: string;
 };
+
+export type UsePopupReturn = {
+  isOpen: boolean;
+  openPopup: () => void;
+  closePopup: () => void;
+  togglePopup: () => void;
+};
