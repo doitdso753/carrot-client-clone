@@ -15,7 +15,7 @@ const SEARCH_OPTIONS = CATEGORIES.map((category) => ({
 // 검색 폼과 카테고리 메뉴를 포함한 상단 헤더 컴포넌트
 export function HeaderWithSearch(): ReactNode {
   return (
-    <header className="header-wrapper header-with-search-wrapper border-b border-(--color-palette-gray-300) bg-(--color-palette-gray-00)">
+    <header className="header-wrapper header-with-search-wrapper bg-(--color-palette-gray-00)">
       <div className="header-with-search-inner mx-auto flex flex-col">
         <div className="header-with-search-row flex items-center gap-4">
           <Link
