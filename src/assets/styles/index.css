@@ -2,6 +2,7 @@
 @import 'brand.css';
 @import 'common.css';
 @import 'card-list.css';
+@import 'search-filter.css';
 @import 'header.css';
 
 @layer base {
@@ -305,67 +306,6 @@
   gap: 2.5rem;
 }
 
-.buy-sell-responsive-filter {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-}
-
-.buy-sell-responsive-location-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-}
-
-.buy-sell-responsive-location-actions .common-select-button {
-  width: auto;
-  margin-bottom: 0;
-}
-
-.buy-sell-responsive-filter-summary {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  gap: 1.6rem;
-  overflow-x: auto;
-  white-space: nowrap;
-  scrollbar-width: none;
-}
-
-.buy-sell-responsive-filter-summary::-webkit-scrollbar {
-  display: none;
-}
-
-.buy-sell-responsive-filter-divider {
-  width: 0.1rem;
-  height: 3.2rem;
-  flex-shrink: 0;
-  background-color: var(--color-palette-gray-300);
-}
-
-.buy-sell-responsive-filter-chip {
-  display: inline-flex;
-  min-height: 4rem;
-  flex-shrink: 0;
-  align-items: center;
-  gap: 0.8rem;
-  padding-inline: 1.6rem;
-  border-radius: 999rem;
-  background-color: var(--color-palette-gray-900);
-  color: var(--color-palette-static-white);
-  font-size: var(--text-sm);
-}
-
-.buy-sell-responsive-filter-chip svg {
-  width: 1.6rem;
-  height: 1.6rem;
-}
-
-.buy-sell-filter-aside {
-  display: none;
-  width: 100%;
-}
-
 @media screen and (min-width: 768px) {
   .buy-sell-wrapper {
     padding-inline: 4rem;
@@ -392,24 +332,6 @@
   .buy-sell-content-layout {
     flex-direction: row;
     gap: 2rem;
-  }
-
-  .buy-sell-responsive-filter {
-    display: none;
-  }
-
-  .buy-sell-filter-aside {
-    display: block;
-    width: 26rem;
-  }
-
-  .common-filter-category-list {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 1rem;
-  }
-
-  .common-filter-open-button {
-    display: none;
   }
 }
 

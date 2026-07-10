@@ -26,7 +26,7 @@ function FilterCategoryList({
   onCategoryChange,
 }: FilterCategoryListProps): ReactNode {
   return (
-    <ul className="common-filter-category-list">
+    <ul className="search-filter-category-list">
       {BUY_SELL_FILTER_CATEGORIES.map((category) => (
         <li key={category}>
           <label className="common-radio-option">
@@ -100,9 +100,9 @@ function FilterPopup({
       variant="bottom-sheet"
       onClose={onClose}
     >
-      <section className="common-filter-section">
+      <section className="search-filter-section">
         <h3>상태</h3>
-        <label className="common-filter-checkbox-option">
+        <label className="search-filter-checkbox-option">
           <span className="common-checkbox-wrapper">
             <input
               checked={isAvailableOnly}
@@ -118,7 +118,7 @@ function FilterPopup({
         </label>
       </section>
 
-      <section className="common-filter-section">
+      <section className="search-filter-section">
         <h3>카테고리</h3>
         <FilterCategoryList
           name="responsive-category"
@@ -127,13 +127,13 @@ function FilterPopup({
         />
       </section>
 
-      <section className="common-filter-section">
+      <section className="search-filter-section">
         <h3>가격</h3>
-        <div className="common-filter-price-options">
+        <div className="search-filter-price-options">
           {BUY_SELL_PRICE_OPTIONS.map((price) => (
             <button
               aria-pressed={selectedPrice === price}
-              className="common-filter-price-option"
+              className="search-filter-price-option"
               key={price}
               type="button"
               onClick={() => setSelectedPrice(price)}
@@ -142,9 +142,9 @@ function FilterPopup({
             </button>
           ))}
         </div>
-        <div className="common-filter-price-range">
+        <div className="search-filter-price-range">
           <input
-            className="common-number-input common-filter-price-input"
+            className="common-number-input search-filter-price-input"
             min="0"
             placeholder="0"
             type="number"
@@ -153,7 +153,7 @@ function FilterPopup({
           />
           <span>-</span>
           <input
-            className="common-number-input common-filter-price-input"
+            className="common-number-input search-filter-price-input"
             min="0"
             placeholder="최대"
             type="number"
@@ -166,7 +166,7 @@ function FilterPopup({
   );
 }
 
-export default function BuySellFilter(): ReactNode {
+export default function SearchFilter(): ReactNode {
   const [selectedCategory, setSelectedCategory] = useState('');
   const {
     isOpen: isLocationPopupOpen,
@@ -181,8 +181,8 @@ export default function BuySellFilter(): ReactNode {
 
   return (
     <>
-      <div className="buy-sell-responsive-filter">
-        <div className="buy-sell-responsive-location-actions">
+      <div className="search-filter-responsive">
+        <div className="search-filter-location-actions">
           <button
             className="common-primary-button"
             type="button"
@@ -200,9 +200,9 @@ export default function BuySellFilter(): ReactNode {
           </button>
         </div>
 
-        <div className="buy-sell-responsive-filter-summary">
+        <div className="search-filter-summary">
           <button
-            className="common-filter-open-button"
+            className="search-filter-open-button"
             type="button"
             onClick={openTabletFilter}
           >
@@ -211,12 +211,9 @@ export default function BuySellFilter(): ReactNode {
           </button>
           {selectedCategory && (
             <>
-              <span
-                className="buy-sell-responsive-filter-divider"
-                aria-hidden="true"
-              />
+              <span className="search-filter-divider" aria-hidden="true" />
               <button
-                className="buy-sell-responsive-filter-chip"
+                className="search-filter-chip"
                 type="button"
                 onClick={() => setSelectedCategory('')}
               >
@@ -228,7 +225,7 @@ export default function BuySellFilter(): ReactNode {
         </div>
       </div>
 
-      <aside className="buy-sell-filter-aside w-full shrink-0 text-(--color-palette-gray-1000)">
+      <aside className="search-filter-aside w-full shrink-0 text-(--color-palette-gray-1000)">
         <div className="mb-7 flex items-center justify-between">
           <h2 className="text-xl leading-none font-extrabold">필터</h2>
           <button
