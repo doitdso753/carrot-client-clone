@@ -10,9 +10,9 @@ import {
   BUY_SELL_FILTER_CATEGORIES,
   BUY_SELL_PRICE_OPTIONS,
 } from '@/types/buy-sell-constants.ts';
-import BuySellLocationPopup from '@/components/buy-sell/buy-sell-location-popup';
 import CommonPopup from '@/components/ui/common-popup';
 import usePopup from '@/hooks/use-popup';
+import RegionSettingPopup from './region-setting-popup';
 
 type FilterCategoryListProps = {
   name: string;
@@ -310,7 +310,7 @@ export default function BuySellFilter(): ReactNode {
           </button>
         </section>
       </aside>
-      <BuySellLocationPopup
+      <RegionSettingPopup
         isOpen={isLocationPopupOpen}
         onClose={closeLocationPopup}
       />

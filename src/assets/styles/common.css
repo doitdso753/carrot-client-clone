@@ -602,7 +602,7 @@
   }
 }
 
-.location-popup-search-form {
+.region-setting-popup-search-form {
   display: flex;
   height: 6rem;
   align-items: center;
@@ -612,7 +612,7 @@
   border-radius: 1.2rem;
 }
 
-.location-popup-search-input {
+.region-setting-popup-search-input {
   min-width: 0;
   flex: 1;
   color: var(--color-palette-gray-1000);
@@ -621,11 +621,11 @@
   outline: none;
 }
 
-.location-popup-search-input::placeholder {
+.region-setting-popup-search-input::placeholder {
   color: var(--color-palette-gray-600);
 }
 
-.location-popup-search-button {
+.region-setting-popup-search-button {
   display: inline-flex;
   width: 3.2rem;
   height: 3.2rem;
@@ -635,12 +635,12 @@
   color: var(--color-palette-gray-700);
 }
 
-.location-popup-search-button svg {
+.region-setting-popup-search-button svg {
   width: 2.4rem;
   height: 2.4rem;
 }
 
-.location-popup-current-button {
+.region-setting-popup-current-button {
   display: flex;
   width: 100%;
   height: 4.8rem;
@@ -655,24 +655,24 @@
   font-weight: var(--font-weight-extrabold);
 }
 
-.location-popup-current-icon {
+.region-setting-popup-current-icon {
   width: 1.8rem;
   height: 1.8rem;
 }
 
-.location-popup-recommend {
+.region-setting-popup-recommend {
   min-height: 0;
   margin-top: 4.8rem;
 }
 
-.location-popup-recommend-title {
+.region-setting-popup-recommend-title {
   margin-bottom: 1.2rem;
   color: var(--color-palette-gray-700);
   font-size: var(--text-sm);
   font-weight: var(--font-weight-extrabold);
 }
 
-.location-popup-recommend-list {
+.region-setting-popup-recommend-list {
   margin-inline: -2.4rem;
   overflow-y: auto;
   max-height: 24rem;
@@ -680,24 +680,24 @@
   scrollbar-color: var(--color-palette-gray-400) transparent;
 }
 
-.location-popup-recommend-list::-webkit-scrollbar {
+.region-setting-popup-recommend-list::-webkit-scrollbar {
   width: 0.6rem;
 }
 
-.location-popup-recommend-list::-webkit-scrollbar-thumb {
+.region-setting-popup-recommend-list::-webkit-scrollbar-thumb {
   border-radius: 999rem;
   background-color: var(--color-palette-gray-400);
 }
 
-.location-popup-recommend-list::-webkit-scrollbar-track {
+.region-setting-popup-recommend-list::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-.location-popup-recommend-item {
+.region-setting-popup-recommend-item {
   border-top: 0.1rem solid var(--color-palette-gray-200);
 }
 
-.location-popup-recommend-item button {
+.region-setting-popup-recommend-item button {
   display: flex;
   width: 100%;
   align-items: center;
@@ -709,7 +709,7 @@
   text-align: left;
 }
 
-.location-popup-recommend-item button:hover {
+.region-setting-popup-recommend-item button:hover {
   background-color: var(--color-palette-gray-100);
 }
 
