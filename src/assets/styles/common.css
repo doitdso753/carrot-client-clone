@@ -201,7 +201,7 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  padding: 1.0rem 1.6rem;
+  padding: 1rem 1.6rem;
   border-radius: 0.8rem;
   background-color: var(--color-palette-gray-900);
   color: var(--color-palette-static-white);
@@ -211,13 +211,6 @@
 
 .common-number-input {
   min-height: 4rem;
-}
-
-.common-card-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 1.5rem;
-  row-gap: 3.2rem;
 }
 
 .common-checkbox-wrapper {
@@ -719,28 +712,4 @@
 
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
-}
-
-@media screen and (min-width: 768px) {
-  .common-card-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: 2.2rem;
-    row-gap: 4rem;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .common-card-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 1.2rem;
-    row-gap: 4rem;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .common-card-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: 1.6rem;
-    row-gap: 4.8rem;
-  }
 }

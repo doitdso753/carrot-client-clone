@@ -1,0 +1,65 @@
+.card-list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.5rem;
+  row-gap: 3.2rem;
+}
+
+.card-item-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.card-item-image {
+  position: relative;
+}
+
+.card-item-badge {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  height: 2.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  background-color: var(--color-palette-green-500);
+  color: var(--color-palette-static-white);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.4;
+}
+
+.card-item-title {
+  margin-top: 0.8rem;
+}
+
+.card-item-price {
+  margin-top: 0.2rem;
+}
+
+.card-item-meta {
+  margin-top: 0.4rem;
+}
+
+@media screen and (min-width: 768px) {
+  .card-list-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 2.2rem;
+    row-gap: 4rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .card-list-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 1.2rem;
+    row-gap: 4rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .card-list-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 1.6rem;
+    row-gap: 4.8rem;
+  }
+}
