@@ -11,6 +11,10 @@
 }
 
 :root {
+  --color-preview-button: #cccccc;
+  --color-preview-button-disabled: #666666;
+  --color-preview-button-hover: #ffffff;
+
   --color-palette-gray-00: #ffffff;
   --color-palette-gray-100: #f7f8f9;
   --color-palette-gray-200: #f3f4f5;
