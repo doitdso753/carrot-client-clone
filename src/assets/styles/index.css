@@ -3,6 +3,7 @@
 @import 'common.css';
 @import 'card-list.css';
 @import 'search-filter.css';
+@import 'image.css';
 @import 'header.css';
 
 @layer base {
