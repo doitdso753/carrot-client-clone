@@ -1,12 +1,24 @@
 import type { ReactNode } from 'react';
 import { getElapsedTimeText } from '@/lib/utils.ts';
-import type { BuySellItem } from '@/types/types.ts';
+import { BUY_SELL_ITEM_STATUS_LABEL } from '@/types/buy-sell-constants.ts';
+import type { BuySellItem, BuySellItemStatusCode } from '@/types/types.ts';
 
 type CardItemProps = {
   item: BuySellItem;
 };
 
+const CARD_ITEM_BADGE_STATUS_LABEL: Partial<
+  Record<BuySellItemStatusCode, string>
+> = {
+  reserved: BUY_SELL_ITEM_STATUS_LABEL.reserved,
+  sold: BUY_SELL_ITEM_STATUS_LABEL.sold,
+};
+
 export default function CardItem({ item }: CardItemProps): ReactNode {
+  const badgeText = item.status
+    ? CARD_ITEM_BADGE_STATUS_LABEL[item.status]
+    : '';
+
   return (
     <article>
       <a className="group card-item-grid" href={`/buy-sell/${item.id}`}>
@@ -17,7 +29,11 @@ export default function CardItem({ item }: CardItemProps): ReactNode {
             alt={item.title}
             loading="lazy"
           />
-          {item.isReserved && <span className="card-item-badge">예약중</span>}
+          {badgeText && (
+            <span className={`card-item-badge card-item-badge--${item.status}`}>
+              {badgeText}
+            </span>
+          )}
         </div>
         <h2 className="card-item-title truncate text-base font-bold text-(--color-palette-gray-1000)">
           {item.title}

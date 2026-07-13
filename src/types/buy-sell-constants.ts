@@ -1,186 +1,217 @@
 import type { BuySellItem } from '@/types/types.ts';
 
+export const BUY_SELL_ITEM_STATUS = {
+  SELLING: 'selling',
+  RESERVED: 'reserved',
+  SOLD: 'sold',
+} as const;
+
+export const BUY_SELL_ITEM_STATUS_LABEL = {
+  [BUY_SELL_ITEM_STATUS.SELLING]: '판매중',
+  [BUY_SELL_ITEM_STATUS.RESERVED]: '예약중',
+  [BUY_SELL_ITEM_STATUS.SOLD]: '거래완료',
+} as const;
+
 export const BUY_SELL_ITEMS: BuySellItem[] = [
   {
-    id: 1,
+    id: 21,
+    title: '포트메리온 머그컵',
+    price: 35000,
+    location: '봉담읍',
+    createdAt: '2026-07-09T12:00:00+09:00',
+    imageUrl:
+      'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=600&q=80',
+    status: BUY_SELL_ITEM_STATUS.SELLING,
+    serviceCategoryCode: 'buySell',
+    serviceCategoryText: '중고거래',
+    categoryCode: 'lifeKitchen',
+    categoryText: '생활/주방',
+    description:
+      '새상품입니다.\n2번 사진에 약간의 뭉침이 있지만 눈에 크게 띄지 않습니다.\n\n▶️ 양면 동일한 패턴\n▶️ 위아래 동일한 사이즈\n▶️ 박스는 없으며 안전하게 포장해드립니다.\n▶️ 봉담읍 직거래 또는 택배 가능합니다.',
+    imageUrls: [
+      'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1577937927133-66ef06acdf18?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1572119865084-43c285814d63?auto=format&fit=crop&w=1200&q=85',
+    ],
+    seller: {
+      nickname: '또또',
+      location: '경기 화성시 효행구 봉담읍',
+      warmth: 57.2,
+    },
+    stats: {
+      chatCount: 1,
+      favoriteCount: 6,
+      viewCount: 193,
+    },
+  },
+  {
+    id: 22,
     title: '바이언스 구두',
     price: 21000,
     location: '신당동',
     createdAt: '2026-07-02T11:00:00+09:00',
     imageUrl:
       'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80',
-    isReserved: true,
+    status: BUY_SELL_ITEM_STATUS.RESERVED,
+    serviceCategoryCode: 'buySell',
+    serviceCategoryText: '중고거래',
+    categoryCode: 'womenAccessories',
+    categoryText: '여성잡화',
+    description:
+      '몇 번 착용하지 않아 상태 좋습니다.\n굽 마모 거의 없고 전체적으로 깨끗해요.\n\n▶️ 사이즈 240\n▶️ 박스 포함\n▶️ 직거래/택배 가능',
+    imageUrls: [
+      'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=1200&q=85',
+    ],
+    seller: {
+      nickname: '토리',
+      location: '서울 중구 신당동',
+      warmth: 41.8,
+    },
+    stats: {
+      chatCount: 4,
+      favoriteCount: 18,
+      viewCount: 264,
+    },
   },
   {
-    id: 2,
+    id: 23,
     title: '원티그리스 코코네스트 텐트(이너 포함)',
     price: 250000,
     location: '신당동',
     createdAt: '2026-07-02T10:10:00+09:00',
     imageUrl:
       'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=600&q=80',
+    status: BUY_SELL_ITEM_STATUS.SOLD,
+    serviceCategoryCode: 'buySell',
+    serviceCategoryText: '중고거래',
+    categoryCode: 'sportsLeisure',
+    categoryText: '스포츠/레저',
+    description:
+      '3회 사용한 텐트입니다.\n찢김이나 하자는 없으며 사용감만 조금 있습니다.\n\n▶️ 이너 포함\n▶️ 팩/가방 포함\n▶️ 직거래 우선',
+    imageUrls: [
+      'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1504851149312-7a075b496cc7?auto=format&fit=crop&w=1200&q=85',
+    ],
+    seller: {
+      nickname: '캠핑홀릭',
+      location: '서울 중구 신당동',
+      warmth: 48.3,
+    },
+    stats: {
+      chatCount: 12,
+      favoriteCount: 42,
+      viewCount: 521,
+    },
   },
   {
-    id: 3,
+    id: 24,
     title: 'X100VI BKK 카메라 가죽 케이스',
     price: 50000,
     location: '신당동',
     createdAt: '2026-07-02T10:30:00+09:00',
     imageUrl:
       'https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?auto=format&fit=crop&w=600&q=80',
+    status: BUY_SELL_ITEM_STATUS.SELLING,
+    serviceCategoryCode: 'buySell',
+    serviceCategoryText: '중고거래',
+    categoryCode: 'digitalDevices',
+    categoryText: '디지털기기',
+    description:
+      '구매 후 거의 사용하지 않았습니다.\n스크래치 없이 깨끗한 상태입니다.\n\n▶️ X100VI 전용\n▶️ 스트랩 포함',
+    imageUrls: [
+      'https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=85',
+    ],
+    seller: {
+      nickname: '필름감성',
+      location: '서울 중구 신당동',
+      warmth: 39.6,
+    },
+    stats: {
+      chatCount: 2,
+      favoriteCount: 15,
+      viewCount: 189,
+    },
   },
   {
-    id: 4,
+    id: 25,
     title: '포켓몬 인형',
     price: 3000,
     location: '신당동',
     createdAt: '2026-07-02T09:40:00+09:00',
     imageUrl:
       'https://images.unsplash.com/photo-1558060370-d644479cb6f7?auto=format&fit=crop&w=600&q=80',
+    status: BUY_SELL_ITEM_STATUS.SELLING,
+    serviceCategoryCode: 'buySell',
+    serviceCategoryText: '중고거래',
+    categoryCode: 'hobbyGameMusic',
+    categoryText: '취미/게임/음반',
+    description:
+      '장식만 해둔 인형입니다.\n오염 없이 깨끗한 상태예요.\n\n▶️ 높이 약 20cm\n▶️ 세탁 완료',
+    imageUrls: [
+      'https://images.unsplash.com/photo-1558060370-d644479cb6f7?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1525253086316-d0c936c814f8?auto=format&fit=crop&w=1200&q=85',
+    ],
+    seller: {
+      nickname: '피카덕후',
+      location: '서울 중구 신당동',
+      warmth: 62.1,
+    },
+    stats: {
+      chatCount: 3,
+      favoriteCount: 21,
+      viewCount: 308,
+    },
   },
   {
-    id: 5,
+    id: 26,
     title: '오메가 빈티지 태엽 탁상시계',
     price: 900000,
     location: '신당동',
     createdAt: '2026-07-02T09:20:00+09:00',
     imageUrl:
       'https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?auto=format&fit=crop&w=600&q=80',
+    status: BUY_SELL_ITEM_STATUS.SELLING,
+    serviceCategoryCode: 'buySell',
+    serviceCategoryText: '중고거래',
+    categoryCode: 'furnitureInterior',
+    categoryText: '가구/인테리어',
+    description:
+      '수집용으로 보관했던 빈티지 시계입니다.\n정상 작동하며 외관도 좋은 편입니다.\n\n▶️ 태엽 방식\n▶️ 빈티지 특성상 사용감 있습니다.',
+    imageUrls: [
+      'https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1200&q=85',
+    ],
+    seller: {
+      nickname: '빈티지샵',
+      location: '서울 중구 신당동',
+      warmth: 73.5,
+    },
+    stats: {
+      chatCount: 9,
+      favoriteCount: 55,
+      viewCount: 842,
+    },
   },
   {
-    id: 6,
+    id: 27,
     title: 'cgv 할인쿠폰(1+1), 콤보할인쿠폰',
     price: 5500,
     location: '신당동',
     createdAt: '2026-07-02T08:50:00+09:00',
     imageUrl:
       'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 7,
-    title: '스탠리 장꾸 미니 텀블러 뉴버전 키링',
-    price: 10000,
-    location: '신당동',
-    createdAt: '2026-07-02T08:20:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 8,
-    title: '모네마켓(현 리본캣) 멜로즈 스커트',
-    price: 25000,
-    location: '신당동',
-    createdAt: '2026-07-01T22:00:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 9,
-    title: '여성 오프숄더(블랙)',
-    price: 18000,
-    location: '신당동',
-    createdAt: '2026-07-01T20:40:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 10,
-    title: '메디안 칫솔',
-    price: 7000,
-    location: '신당동',
-    createdAt: '2026-07-01T18:20:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1559591932-c6b66c9f05b7?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 11,
-    title: '글라스락 유리 밀폐용기',
-    price: 20000,
-    location: '신당동',
-    createdAt: '2026-07-01T16:10:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 12,
-    title: '브이넥 레이스 리본탑(새상품)',
-    price: 37000,
-    location: '신당동',
-    createdAt: '2026-06-28T15:00:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 13,
-    title: '동원 튜나리챔 100호 선물세트',
-    price: 35000,
-    location: '신당동',
-    createdAt: '2026-06-24T11:00:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1584473457409-ae5c91d7d8df?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 14,
-    title: '24/7 원포켓 반팔티셔츠(M사이즈)',
-    price: 30000,
-    location: '신당동',
-    createdAt: '2026-06-20T14:30:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 15,
-    title: '여성 크롭탑(블랙)',
-    price: 25000,
-    location: '신당동',
-    createdAt: '2026-05-26T17:00:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 16,
-    title: '오버듀플레이-트윌 플리츠 팬츠',
-    price: 120000,
-    location: '신당동',
-    createdAt: '2025-12-02T17:00:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1551854838-212c50b4c184?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 17,
-    title: '샤오미 미에어 3H 공기청정기',
-    price: 30000,
-    location: '신당동',
-    createdAt: '2025-07-02T17:00:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 18,
-    title: '삼성 포터블 SSD T7 1TB 외장하드',
-    price: 240000,
-    location: '신당동',
-    createdAt: '2024-07-02T17:00:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 19,
-    title: '엑스퍼터 & MG 퍼터',
-    price: 20000,
-    location: '신당동',
-    createdAt: '2026-07-02T07:20:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 20,
-    title: '바이언스 구두 새상품',
-    price: 12000,
-    location: '신당동',
-    createdAt: '2026-07-02T06:50:00+09:00',
-    imageUrl:
-      'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80',
+    status: BUY_SELL_ITEM_STATUS.SELLING,
+    serviceCategoryCode: 'buySell',
+    serviceCategoryText: '중고거래',
+    categoryCode: 'ticketVoucher',
+    categoryText: '티켓/교환권',
   },
 ];
 

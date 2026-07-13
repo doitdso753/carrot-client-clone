@@ -25,6 +25,14 @@ export type CategoryItem = {
   routing: string;
 };
 
+export type UserProfile = {
+  nickname: string;
+  location: string;
+  warmth: number;
+};
+
+export type BuySellItemStatusCode = 'selling' | 'reserved' | 'sold';
+
 export type BuySellItem = {
   id: number;
   title: string;
@@ -32,7 +40,19 @@ export type BuySellItem = {
   location: string;
   createdAt: string;
   imageUrl: string;
-  isReserved?: boolean;
+  status?: BuySellItemStatusCode;
+  serviceCategoryCode?: string;
+  serviceCategoryText?: string;
+  categoryCode?: string;
+  categoryText?: string;
+  description?: string;
+  imageUrls?: string[];
+  seller?: UserProfile;
+  stats?: {
+    chatCount: number;
+    favoriteCount: number;
+    viewCount: number;
+  };
 };
 
 export type UsePopupReturn = {
