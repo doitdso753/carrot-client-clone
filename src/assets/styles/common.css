@@ -427,7 +427,7 @@
 
 .bubble-tooltip-trigger {
   color: inherit;
-  font: inherit;
+  font-size: var(--text-sm);
   text-decoration: underline;
   text-underline-offset: 0.2rem;
 }
@@ -525,6 +525,10 @@
 }
 
 @media screen and (min-width: 992px) {
+  .bubble-tooltip-trigger {
+    font-size: var(--text-base);
+  }
+
   .common-popup-backdrop--bottom-sheet {
     align-items: flex-start;
     justify-content: center;
