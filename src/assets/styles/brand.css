@@ -13,7 +13,14 @@
 :root {
   --color-preview-button: #cccccc;
   --color-preview-button-disabled: #666666;
-  --color-preview-button-hover: #ffffff;
+  --color-preview-button-hover: var(--color-palette-static-white);
+
+  --color-warmth-l1: #777f87;
+  --color-warmth-l2: #368fe2;
+  --color-warmth-l3: #16b6e9;
+  --color-warmth-l4: #30c795;
+  --color-warmth-l5: #ffa113;
+  --color-warmth-l6: #ff6f0f;
 
   --color-palette-gray-00: #ffffff;
   --color-palette-gray-100: #f7f8f9;

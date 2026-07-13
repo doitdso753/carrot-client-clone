@@ -28,6 +28,10 @@
   line-height: 1.4;
 }
 
+.card-item-badge--sold {
+  background-color: var(--color-palette-gray-700);
+}
+
 .card-item-title {
   margin-top: 0.8rem;
 }
