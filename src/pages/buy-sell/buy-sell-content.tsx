@@ -11,6 +11,8 @@ export default function BuySellContent(): ReactNode {
         <CardList
           items={BUY_SELL_ITEMS}
           title="서울특별시 중구 신당동 중고거래"
+    <main className="service-list-page min-h-screen pb-20">
+      <div className="service-list-layout">
         />
       </div>
     </main>

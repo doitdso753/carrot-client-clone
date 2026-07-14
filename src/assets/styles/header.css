@@ -1,6 +1,8 @@
 .header-wrapper {
   padding-block: 1.2rem;
   padding-inline: 1.6rem;
+  max-width: 1340px;
+  margin-inline: auto;
 }
 
 .header-with-search-wrapper {
@@ -344,10 +346,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .header-wrapper {
-    padding-inline: 4rem;
-  }
-
   .header-with-search-wrapper {
     position: fixed;
     top: 0;
@@ -385,13 +383,7 @@
 }
 
 @media screen and (min-width: 992px) {
-  .header-wrapper {
-    padding-inline: 6.4rem;
-  }
 }
 
 @media screen and (min-width: 1200px) {
-  .header-wrapper {
-    padding-inline: 8rem;
-  }
 }
