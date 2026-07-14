@@ -4,6 +4,7 @@ import DashboardPage from '@/pages/dashboard';
 import BuySellPage from '@/pages/buy-sell';
 import BuySellDetailPage from '@/pages/buy-sell/buy-sell-detail-page';
 import LocalProfilePage from '@/pages/local-profile';
+import LocalProfileDetailPage from '@/pages/local-profile/local-profile-detail-page.tsx';
 
 function AppRouter(): ReactNode {
   return (
@@ -12,6 +13,10 @@ function AppRouter(): ReactNode {
       <Route path="/buy-sell" element={<BuySellPage />} />
       <Route path="/buy-sell/:itemId" element={<BuySellDetailPage />} />
       <Route path="/local-profile" element={<LocalProfilePage />} />
+      <Route
+        path="/local-profile/:itemId"
+        element={<LocalProfileDetailPage />}
+      />
     </Routes>
   );
 }
