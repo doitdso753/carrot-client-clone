@@ -127,6 +127,10 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.common-popup--bottom-sheet .search-filter-option-list {
+  flex-flow: row wrap;
+}
+
 .search-filter-responsive {
   display: flex;
   flex-direction: column;
