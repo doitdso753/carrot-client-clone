@@ -527,9 +527,6 @@
     max-width: 726px;
   }
 
-  .buy-sell-content-layout {
-    flex-direction: row;
-    gap: 2rem;
   .service-list-layout {
     display: grid;
     grid-template-columns: 26rem minmax(0, 1fr);
