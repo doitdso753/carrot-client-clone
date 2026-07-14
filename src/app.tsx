@@ -2,6 +2,7 @@ import React, { type ReactNode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
 import '@/assets/styles/index.css';
+import RegionProvider from '@/provider/region-provider.tsx';
 import AppRouter from '@/routes/app-router';
 
 const root = ReactDOM.createRoot(
@@ -10,9 +11,11 @@ const root = ReactDOM.createRoot(
 
 function App(): ReactNode {
   return (
-    <BrowserRouter>
-      <AppRouter />
-    </BrowserRouter>
+    <RegionProvider>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
+    </RegionProvider>
   );
 }
 
