@@ -9,7 +9,7 @@ type CardListProps = {
 
 export default function CardList({ items, title }: CardListProps): ReactNode {
   return (
-    <section className="min-w-0 flex-1">
+    <section className="list-content min-w-0 flex-1">
       {title && (
         <h1 className="mb-14 text-2xl font-bold text-(--color-palette-gray-1000)">
           {title}

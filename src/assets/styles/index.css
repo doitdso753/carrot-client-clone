@@ -530,23 +530,30 @@
 
   .service-list-layout {
     display: grid;
+    grid-template-areas:
+      'filter-aside filter-chip'
+      'filter-aside list-content';
     grid-template-columns: 26rem minmax(0, 1fr);
+    grid-template-rows: 0 auto;
     gap: 0 2rem;
   }
 
-  .service-list-layout > .search-filter-aside {
-    grid-row: 1 / span 2;
-    grid-column: 1;
+  .service-list-layout:has(.search-filter-chip) {
+    grid-template-rows: 3.6rem auto;
+    row-gap: 2rem;
   }
 
-  .service-list-layout > .search-filter-responsive {
-    grid-row: 1;
-    grid-column: 2;
+  .service-list-layout > .filter-aside {
+    grid-area: filter-aside;
+    align-self: start;
   }
 
-  .service-list-layout > section {
-    grid-row: 2;
-    grid-column: 2;
+  .service-list-layout > .filter-chip {
+    grid-area: filter-chip;
+  }
+
+  .service-list-layout > .list-content {
+    grid-area: list-content;
   }
 
   .user-profile-avatar {

@@ -340,7 +340,7 @@ export default function SearchFilter({
 
   return (
     <>
-      <div className="search-filter-responsive">
+      <div className="filter-chip search-filter-responsive">
         <div className="search-filter-region-actions">
           <button
             className="common-primary-button"
@@ -385,7 +385,7 @@ export default function SearchFilter({
         </div>
       </div>
 
-      <aside className="search-filter-aside w-full shrink-0 text-(--color-palette-gray-1000)">
+      <aside className="filter-aside search-filter-aside w-full shrink-0 text-(--color-palette-gray-1000)">
         <div className="mb-7 flex items-center justify-between">
           <h2 className="text-xl leading-none font-extrabold">필터</h2>
           <button

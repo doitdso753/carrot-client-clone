@@ -193,8 +193,8 @@
     display: flex;
   }
 
-  .search-filter-responsive:has(.search-filter-chip) {
-    margin-bottom: 2rem;
+  .search-filter-responsive:not(:has(.search-filter-chip)) {
+    display: none;
   }
 
   .search-filter-region-actions,
