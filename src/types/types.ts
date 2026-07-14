@@ -33,6 +33,52 @@ export type UserProfile = {
 
 export type BuySellItemStatusCode = 'selling' | 'reserved' | 'sold';
 
+export type LocalProfileCategoryCode =
+  | 'food'
+  | 'cafeDessert'
+  | 'beauty'
+  | 'hobby'
+  | 'hospitalPharmacy'
+  | 'movingDelivery'
+  | 'life'
+  | 'education'
+  | 'repair'
+  | 'exercise'
+  | 'childcare'
+  | 'pet'
+  | 'hairSalon'
+  | 'cleaning'
+  | 'laundry'
+  | 'interiorConstruction'
+  | 'bungeoppang'
+  | 'pollingPlace';
+
+export type LocalProfileOptionCode =
+  'coupon' | 'instantBooking' | 'instantPayment';
+
+export type LocalProfileCategoryItem = {
+  code: LocalProfileCategoryCode;
+  label: string;
+};
+
+export type LocalProfileOptionItem = {
+  code: LocalProfileOptionCode;
+  label: string;
+};
+
+export type LocalProfileItem = {
+  id: number;
+  name: string;
+  category: string;
+  description: string;
+  rating: number;
+  reviewCount: number;
+  commentCount: number;
+  location: string;
+  coupon: boolean;
+  thumbnail: string;
+};
+
 export type BuySellItem = {
   id: number;
   title: string;

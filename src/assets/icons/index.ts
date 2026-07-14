@@ -20,6 +20,7 @@ export { MenuIcon } from './menu-icon.tsx';
 export { SearchIcon } from './search-icon.tsx';
 export { SearchUserIcon } from './category-icons/search-user-icon.tsx';
 export { ShoppingBagIcon } from './category-icons/shopping-bag-icon.tsx';
+export { StarIcon } from './star-icon.tsx';
 export { StoreIcon } from './category-icons/store-icon.tsx';
 export { ZoomInIcon } from './zoom-in-icon.tsx';
 export { ZoomOutIcon } from './zoom-out-icon.tsx';
