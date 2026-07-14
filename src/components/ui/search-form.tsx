@@ -19,6 +19,7 @@ type SearchFormSubmitIconType = 'arrow' | 'search';
 
 type SearchFormProps = {
   options: readonly SearchFormOption[];
+  initialOptionLabel?: string;
   submitIconType?: SearchFormSubmitIconType;
 };
 
@@ -29,9 +30,12 @@ const SUBMIT_ICONS: Record<SearchFormSubmitIconType, ReactNode> = {
 
 export default function SearchForm({
   options,
+  initialOptionLabel,
   submitIconType = 'arrow',
 }: SearchFormProps): ReactNode {
-  const [selectedLabel, setSelectedLabel] = useState(options[0]?.label ?? '');
+  const [selectedLabel, setSelectedLabel] = useState(
+    initialOptionLabel ?? options[0]?.label ?? '',
+  );
   const [isOpen, setIsOpen] = useState(false);
   const selectedOption =
     options.find((option) => option.label === selectedLabel) ?? null;
