@@ -15,6 +15,7 @@ export default function BuySellContent(): ReactNode {
       <div className="service-list-layout">
         <SearchFilter
           categories={BUY_SELL_FILTER_CATEGORIES}
+          filterStorageKey="search-filter:buy-sell"
           region={region}
         />
         <CardList items={BUY_SELL_ITEMS} title={`${region} 중고거래`} />
