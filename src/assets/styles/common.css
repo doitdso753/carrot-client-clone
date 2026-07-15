@@ -135,6 +135,40 @@
   );
 }
 
+.detail-breadcrumb {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  white-space: nowrap;
+}
+
+.detail-breadcrumb-item {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.detail-breadcrumb-item [aria-current='page'] {
+  overflow: hidden;
+  color: var(--color-palette-gray-1000);
+  font-weight: var(--font-weight-semibold);
+  text-overflow: ellipsis;
+}
+
+.detail-breadcrumb a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.detail-breadcrumb-separator {
+  flex-shrink: 0;
+  color: var(--color-palette-gray-700);
+}
+
 .keyword-link-list {
   display: flex;
   width: 100%;

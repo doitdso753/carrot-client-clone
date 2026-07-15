@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Link } from 'react-router';
+import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
 import ImageSlider from '@/components/ui/image-slider';
 import UserProfile from '@/components/ui/user-profile';
 import { getElapsedTimeText } from '@/lib/utils';
@@ -51,13 +51,16 @@ export default function BuySellDetail({ item }: BuySellDetailProps): ReactNode {
 
   return (
     <main className="buy-sell-detail-wrapper">
-      <nav className="buy-sell-detail-breadcrumb" aria-label="현재 위치">
-        <Link to="/">홈</Link>
-        <span aria-hidden="true">›</span>
-        <Link to="/buy-sell">{item.serviceCategoryText ?? '중고거래'}</Link>
-        <span aria-hidden="true">›</span>
-        <span aria-current="page">{item.title}</span>
-      </nav>
+      <DetailBreadcrumb
+        items={[
+          { label: '홈', to: '/' },
+          {
+            label: item.serviceCategoryText ?? '중고거래',
+            to: '/buy-sell',
+          },
+          { label: item.title },
+        ]}
+      />
 
       <div className="buy-sell-detail-layout">
         <section aria-label="상품 이미지와 판매자 정보">

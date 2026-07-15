@@ -319,24 +319,6 @@
   padding: 2.4rem 1.6rem 8rem;
 }
 
-.buy-sell-detail-breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: var(--color-palette-gray-800);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-normal);
-}
-
-.buy-sell-detail-breadcrumb [aria-current='page'] {
-  font-weight: var(--font-weight-semibold);
-}
-
-.buy-sell-detail-breadcrumb a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
-}
-
 .buy-sell-detail-layout {
   display: flex;
   flex-direction: column;
