@@ -1,4 +1,6 @@
-export function CheckedIcon() {
+import type { ReactNode } from 'react';
+
+export function CheckedIcon(): ReactNode {
   return (
     <svg
       viewBox="0 0 24 24"

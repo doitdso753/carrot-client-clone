@@ -1,4 +1,6 @@
-export function EllipsisIcon() {
+import type { ReactNode } from 'react';
+
+export function EllipsisIcon(): ReactNode {
   return (
     <svg
       viewBox="0 0 24 24"

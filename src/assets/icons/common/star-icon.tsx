@@ -1,4 +1,6 @@
-export function StarIcon() {
+import type { ReactNode } from 'react';
+
+export function StarIcon(): ReactNode {
   return (
     <svg
       viewBox="0 0 24 24"
