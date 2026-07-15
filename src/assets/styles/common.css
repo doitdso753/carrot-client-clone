@@ -136,7 +136,7 @@
 }
 
 .detail-breadcrumb {
-  display: flex;
+  display: none;
   align-items: center;
   overflow: hidden;
   color: var(--color-palette-gray-700);
@@ -167,6 +167,12 @@
 .detail-breadcrumb-separator {
   flex-shrink: 0;
   color: var(--color-palette-gray-700);
+}
+
+@media screen and (min-width: 992px) {
+  .detail-breadcrumb {
+    display: flex;
+  }
 }
 
 .keyword-link-list {
