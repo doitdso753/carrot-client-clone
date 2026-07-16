@@ -68,8 +68,6 @@
   main {
     padding-left: 1.6rem;
     padding-right: 1.6rem;
-    max-width: 1340px;
-    margin-inline: auto;
   }
 
   hr {
@@ -291,6 +289,10 @@
   }
 }
 
+.hero-search-wrapper {
+  width: 100%;
+}
+
 .dashboard-wrapper {
   max-width: 900px;
   margin-inline: auto;
@@ -489,6 +491,16 @@
 }
 
 @media screen and (min-width: 992px) {
+  main {
+    max-width: 1340px;
+    margin-inline: auto;
+  }
+
+  .dashboard-wrapper {
+    max-width: 900px;
+    margin-inline: auto;
+  }
+
   .service-list-title {
     font-size: 2.8rem;
     margin-bottom: 4.0rem;
@@ -516,10 +528,6 @@
   .buy-sell-detail-information {
     padding-top: 0.4rem;
     gap: 3.2rem;
-  }
-
-  .hero-search-wrapper {
-    max-width: 726px;
   }
 
   .service-list-layout {
@@ -591,10 +599,6 @@
 
   .buy-sell-detail-layout {
     gap: 4rem;
-  }
-
-  .hero-search-wrapper {
-    max-width: 754px;
   }
 }
 
