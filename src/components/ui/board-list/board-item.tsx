@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
-import { StarIcon } from '@/assets/icons/star-icon.tsx';
+import { StarIcon } from '@/assets/icons';
 import type { LocalProfileItem } from '@/types/types.ts';
 
 type BoardItemProps = {
