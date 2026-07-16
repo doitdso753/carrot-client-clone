@@ -53,21 +53,23 @@ export default function HeroSearch({
 
   return (
     <div className="flex w-full flex-col items-center">
-      <h1 className="flex flex-wrap items-center justify-center gap-3 text-center leading-tight tracking-normal text-(--color-palette-gray-1000)">
-        <LocationIcon className="h-16 w-16 shrink-0 sm:h-20 sm:w-20" />
-        <span className="text-4xl font-extrabold md:text-5xl">
-          당근에서{' '}
-          <span
-            className={`inline-block ${
-              isReverseMotion
-                ? 'animate-[hero-keyword-diagonal-reverse-enter_520ms_cubic-bezier(0.22,1,0.36,1)_both]'
-                : 'animate-[hero-keyword-diagonal-enter_520ms_cubic-bezier(0.22,1,0.36,1)_both]'
-            }`}
-            key={heroKeyword}
-          >
-            {heroKeyword}
-          </span>{' '}
-          찾고 계신가요?
+      <h1 className="flex w-full items-center justify-start gap-3 text-left leading-tight tracking-normal text-(--color-palette-gray-1000) lg:justify-center lg:text-center">
+        <LocationIcon className="hidden h-20 w-20 shrink-0 lg:block" />
+        <span className="text-4xl font-extrabold md:text-5xl lg:whitespace-nowrap">
+          <span className="block lg:inline">당근에서</span>{' '}
+          <span className="block lg:inline">
+            <span
+              className={`inline-block ${
+                isReverseMotion
+                  ? 'animate-[hero-keyword-diagonal-reverse-enter_520ms_cubic-bezier(0.22,1,0.36,1)_both]'
+                  : 'animate-[hero-keyword-diagonal-enter_520ms_cubic-bezier(0.22,1,0.36,1)_both]'
+              }`}
+              key={heroKeyword}
+            >
+              {heroKeyword}
+            </span>{' '}
+            찾고 계신가요?
+          </span>
         </span>
       </h1>
       <div className="hero-search-wrapper">
