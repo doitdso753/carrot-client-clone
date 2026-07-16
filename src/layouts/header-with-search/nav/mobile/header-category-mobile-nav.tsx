@@ -18,9 +18,15 @@ export default function HeaderCategoryMobileNav({
   const [openedCategoryCode, setOpenedCategoryCode] = useState<string | null>(
     null,
   );
+  const [isClosing, setIsClosing] = useState(false);
 
   const handleCloseNav = (): void => {
     setOpenedCategoryCode(null);
+    setIsClosing(true);
+  };
+
+  const handleCloseComplete = (): void => {
+    setIsClosing(false);
     onToggle();
   };
 
@@ -45,7 +51,9 @@ export default function HeaderCategoryMobileNav({
         <HeaderCategoryMobileNavPopover
           items={items}
           openedCategoryCode={openedCategoryCode}
+          isClosing={isClosing}
           onClose={handleCloseNav}
+          onCloseComplete={handleCloseComplete}
           onTogglePopoverItem={handleTogglePopoverItem}
         />
       )}

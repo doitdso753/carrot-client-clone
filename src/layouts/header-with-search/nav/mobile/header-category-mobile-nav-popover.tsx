@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { AnimationEvent, ReactNode } from 'react';
 import { Link } from 'react-router';
 import { ChevronDownIcon, CloseIcon, LogoIcon } from '@/assets/icons';
 import useElementHeightCssVariable from '@/hooks/use-element-height-css-variable.ts';
@@ -7,7 +7,9 @@ import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
 type HeaderCategoryMobileNavPopoverProps = {
   items: HeaderCategoryNavItemData[];
   openedCategoryCode: string | null;
+  isClosing: boolean;
   onClose: () => void;
+  onCloseComplete: () => void;
   onTogglePopoverItem: (categoryCode: string) => void;
 };
 
@@ -85,18 +87,28 @@ function HeaderCategoryMobileNavPopoverItem({
 export default function HeaderCategoryMobileNavPopover({
   items,
   openedCategoryCode,
+  isClosing,
   onClose,
+  onCloseComplete,
   onTogglePopoverItem,
 }: HeaderCategoryMobileNavPopoverProps): ReactNode {
   const headerRef = useElementHeightCssVariable<HTMLDivElement>(
     '--mobile-nav-popover-header-height',
   );
+  const handleAnimationEnd = (event: AnimationEvent<HTMLDivElement>): void => {
+    if (event.target === event.currentTarget && isClosing) {
+      onCloseComplete();
+    }
+  };
 
   return (
     <div
-      className="header-category-mobile-nav-popover"
+      className={`header-category-mobile-nav-popover ${
+        isClosing ? 'is-closing' : 'is-opening'
+      }`}
       role="navigation"
       aria-label="카테고리 내비게이션"
+      onAnimationEnd={handleAnimationEnd}
     >
       <div
         className="header-category-mobile-nav-popover-header header-wrapper"
