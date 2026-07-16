@@ -1,4 +1,10 @@
 .header-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 30;
+  width: 100%;
   padding-block: 1.2rem;
   padding-inline: 1.6rem;
   background-color: var(--color-palette-gray-00);
@@ -75,7 +81,7 @@
   inset: 0;
   z-index: 50;
   overflow-y: auto;
-  padding: 2rem 2.4rem 3.2rem;
+  padding: var(--mobile-nav-popover-header-height, 6.4rem) 1.6rem 4.8rem;
   background-color: var(--color-palette-gray-00);
 }
 

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { ChevronDownIcon, CloseIcon, LogoIcon } from '@/assets/icons';
+import useElementHeightCssVariable from '@/hooks/use-element-height-css-variable.ts';
 import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
 
 type HeaderCategoryMobileNavPopoverProps = {
@@ -87,13 +88,20 @@ export default function HeaderCategoryMobileNavPopover({
   onClose,
   onTogglePopoverItem,
 }: HeaderCategoryMobileNavPopoverProps): ReactNode {
+  const headerRef = useElementHeightCssVariable<HTMLDivElement>(
+    '--mobile-nav-popover-header-height',
+  );
+
   return (
     <div
       className="header-category-mobile-nav-popover"
       role="navigation"
       aria-label="카테고리 내비게이션"
     >
-      <div className="header-category-mobile-nav-popover-header">
+      <div
+        className="header-category-mobile-nav-popover-header header-wrapper"
+        ref={headerRef}
+      >
         <Link to="/" aria-label="당근 홈">
           <LogoIcon />
         </Link>

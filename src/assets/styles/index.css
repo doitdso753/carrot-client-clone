@@ -294,17 +294,16 @@
 }
 
 .dashboard-wrapper {
-  max-width: 900px;
-  margin-inline: auto;
+  padding-top: calc(var(--header-height, 6.4rem) + 1.6rem);
 }
 
 .service-list-page {
   width: 100%;
-  padding-top: 2.3rem;
+  padding-top: calc(var(--header-with-search-height, 14.7rem) + 2.3rem);
 }
 
 .service-list-title {
-  margin-bottom: 2.0rem;
+  margin-bottom: 2rem;
   color: var(--color-palette-gray-1000);
   font-size: 2.4rem;
   font-weight: var(--font-weight-bold);
@@ -318,7 +317,7 @@
 
 .buy-sell-detail-wrapper {
   width: 100%;
-  padding: 2.4rem 1.6rem 8rem;
+  padding: calc(var(--header-with-search-height, 14.7rem) + 2.4rem) 1.6rem 8rem;
 }
 
 .buy-sell-detail-layout {
@@ -477,16 +476,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .service-list-page {
-    padding-top: 13rem;
+  .dashboard-wrapper {
+    padding-top: calc(var(--header-height, 6.4rem) + 3.6rem);
   }
 
   .buy-sell-detail-wrapper {
-    padding: 13rem 4rem 8rem;
-  }
-
-  .hero-search-wrapper {
-    max-width: 608px;
+    padding-right: 4rem;
+    padding-left: 4rem;
   }
 }
 
@@ -503,7 +499,7 @@
 
   .service-list-title {
     font-size: 2.8rem;
-    margin-bottom: 4.0rem;
+    margin-bottom: 4rem;
   }
 
   .buy-sell-detail-wrapper {
@@ -591,6 +587,10 @@
 }
 
 @media screen and (min-width: 1200px) {
+  .dashboard-wrapper {
+    padding-top: calc(var(--header-height, 6.4rem) + 6.6rem);
+  }
+
   .buy-sell-detail-wrapper {
     max-width: 147rem;
     padding-right: 8rem;

@@ -4,6 +4,7 @@ import { LogoIcon } from '@/assets/icons';
 import CategoryIcon from '@/components/ui/category-icon.tsx';
 import KeywordLinkList from '@/components/ui/keyword-link-list.tsx';
 import SearchForm from '@/components/ui/search-form.tsx';
+import useElementHeightCssVariable from '@/hooks/use-element-height-css-variable.ts';
 import { CATEGORIES, RECOMMEND_KEYWORDS } from '@/types/constants.ts';
 import type { CategoryCode } from '@/types/types.ts';
 import HeaderCategoryNav from '@/layouts/header-with-search/nav/header-category-nav.tsx';
@@ -21,12 +22,18 @@ type HeaderWithSearchProps = {
 export function HeaderWithSearch({
   activeCategoryCode = 'buySell',
 }: HeaderWithSearchProps): ReactNode {
+  const headerRef = useElementHeightCssVariable<HTMLElement>(
+    '--header-with-search-height',
+  );
   const activeCategory = CATEGORIES.find(
     (category) => category.code === activeCategoryCode,
   );
 
   return (
-    <header className="header-wrapper header-with-search-wrapper bg-(--color-palette-gray-00)">
+    <header
+      className="header-wrapper header-with-search-wrapper"
+      ref={headerRef}
+    >
       <div className="header-with-search-inner mx-auto flex flex-col">
         <div className="header-with-search-row flex items-center gap-4">
           <Link
