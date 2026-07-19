@@ -249,6 +249,60 @@
   font-weight: var(--font-weight-bold);
 }
 
+.common-toast-wrapper {
+  position: fixed;
+  top: auto;
+  bottom: 0;
+  right: 0;
+  z-index: 60;
+  width: 100%;
+  max-width: 100%;
+  padding: 1.6rem;
+}
+
+.common-toast {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 1.2rem 1.6rem;
+  border-radius: 0.8rem;
+  background-color: var(--color-palette-gray-900);
+  color: var(--color-palette-gray-00);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: 0 0.4rem 1.6rem rgb(0 0 0 / 14%);
+}
+
+.common-toast-content,
+.common-toast-close {
+  display: inline-flex;
+  align-items: center;
+}
+
+.common-toast-content {
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.common-toast-content svg,
+.common-toast-close svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.common-toast-close {
+  flex-shrink: 0;
+  color: inherit;
+}
+
+@media screen and (min-width: 768px) {
+  .common-toast-wrapper {
+    width: 36rem;
+  }
+}
+
 .common-number-input {
   min-height: 4rem;
 }
