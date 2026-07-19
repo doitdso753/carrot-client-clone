@@ -26,6 +26,7 @@ export { SearchUserIcon } from './category-icons/search-user-icon.tsx';
 export { ShoppingBagIcon } from './category-icons/shopping-bag-icon.tsx';
 export { StarIcon } from './common/star-icon.tsx';
 export { StoreIcon } from './category-icons/store-icon.tsx';
+export { StoreIcon as StoreInfoIcon } from './store-icons/store-icon.tsx';
 export { TagIcon } from './store-icons/tag-icon.tsx';
 export { VerifiedDocumentIcon } from './store-icons/verified-document-icon.tsx';
 export { WebIcon } from './store-icons/web-icon.tsx';
