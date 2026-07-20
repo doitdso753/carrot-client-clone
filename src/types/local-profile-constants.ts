@@ -1,7 +1,9 @@
 import type {
   LocalProfileCategoryItem,
+  LocalProfileDocumentGroup,
   LocalProfileItem,
   LocalProfileOptionItem,
+  LocalProfileStoreInfo,
 } from '@/types/types.ts';
 
 export const LOCAL_PROFILE_CATEGORIES: LocalProfileCategoryItem[] = [
@@ -31,6 +33,144 @@ export const LOCAL_PROFILE_OPTIONS: LocalProfileOptionItem[] = [
   { code: 'instantPayment', label: '바로결제' },
 ];
 
+const LOCAL_PROFILE_DOCUMENT_GROUPS: LocalProfileDocumentGroup[] = [
+  {
+    title: '사업자등록증',
+    rows: [
+      { label: '사업자번호', value: '6072274800' },
+      { label: '상호명', value: '노마진폰마트' },
+      { label: '대표자명', value: '박종수' },
+      {
+        label: '소재지',
+        value: '경기도 수원시 영통구 대학로 109 (이의동) 104호',
+      },
+    ],
+  },
+  {
+    title: '통신서비스 인증',
+    rows: [
+      { label: '판매유형', value: '판매점' },
+      { label: '유선 사전승낙서 URL', value: '자세히 보기' },
+      { label: '무선 사전승낙서 URL', value: '자세히 보기' },
+    ],
+  },
+];
+
+const LOCAL_PROFILE_DOCUMENT = {
+  documentGroups: LOCAL_PROFILE_DOCUMENT_GROUPS,
+  documentLabel: '사업자등록증 및 기타 서류',
+};
+
+const LOCAL_PROFILE_BENEFIT = {
+  benefitTitle: '단골혜택',
+  benefitDescription:
+    '단골 등록 고객님은 출장비 20퍼센트 할인(시공자재,공임 제외) 두번째 주문 부터는 출장비 면제',
+};
+
+const LOCAL_PROFILE_NOTICE = {
+  notice:
+    '매장 상황에 따라 운영 시간이 변동될 수 있으니 방문 전 전화 문의를 부탁드립니다.',
+};
+
+const LOCAL_PROFILE_COUPONS = {
+  coupons: [
+    {
+      id: 1,
+      title: '단골 특가시세표 확인',
+      expiresAt: '2026-12-31',
+    },
+    {
+      id: 2,
+      title: 'S26시리즈 사전예약 할인',
+      expiresAt: '2026-10-31',
+    },
+  ],
+};
+
+const LOCAL_PROFILE_PRICES = {
+  prices: [
+    {
+      id: 1,
+      title: '기본 출장비용',
+      price: '20,000원~',
+      description: '상담 방문 점검 등 기본 지역 출장비용입니다',
+      isRepresentative: true,
+    },
+    {
+      id: 2,
+      title: '매입등,간접등 시공',
+      price: '20,000원~',
+      description:
+        '개당 설치 가격이며 (제품 포함) 전원선 입선 필요시나 스위치 추가시 별도 문의 주세요',
+      isRepresentative: true,
+    },
+    {
+      id: 3,
+      title: '누전 수리',
+      price: '80,000원~',
+      description: '전문 장비로 전기적 모든 문제를 해결 해 드립니다 이상 원인 진단수리',
+      isRepresentative: true,
+    },
+    {
+      id: 4,
+      title: '실링팬 보강설치',
+      price: '100,000원~',
+      description:
+        '보유하신 실링팬 보강 설치 (직구제품 포함, 에어라트론 추가비용 4만원)기본 비용입니다',
+      isRepresentative: true,
+    },
+    {
+      id: 5,
+      title: '콘센트 교체',
+      price: '30,000원~',
+      description: '노후 콘센트와 스위치 교체 기본 비용입니다',
+      isRepresentative: true,
+    },
+    {
+      id: 6,
+      title: '조명 교체',
+      price: '40,000원~',
+      description: '가정용 조명 교체 및 설치 기본 비용입니다',
+      isRepresentative: true,
+    },
+  ],
+};
+
+const LOCAL_PROFILE_STORE_INFO: { storeInfo: LocalProfileStoreInfo } = {
+  storeInfo: {
+    addressSummary: '경기도 수원시 영통구 영통동',
+    appLink: 'https://www.daangn.com',
+    businessHours: {
+      current: '10:00 - 22:00',
+      daily: [
+        '월 10:00 - 22:00',
+        '화 10:00 - 22:00',
+        '수 10:00 - 22:00',
+        '목 10:00 - 22:00',
+        '금 10:00 - 22:00',
+        '토 10:00 - 22:00',
+        '일 10:00 - 22:00',
+      ],
+      description: '매일',
+    },
+    contact: '0504-3043-6890',
+    facilities:
+      '1인실, 커플실, 샤워시설, 수원페이, 경기지역화폐, 예약, 지역화폐, 제로페이, 주차, 와이파이, 베리어프리',
+    mapImageUrl: 'https://picsum.photos/seed/store-map/720/360',
+    website: 'https://m.place.naver.com/place/123456789',
+    addresses: [
+      {
+        label: '도로명',
+        value: '경기도 수원시 영통구 영통로 132 상가211호',
+      },
+      {
+        label: '지번',
+        value: '경기도 수원시 영통구 영통동 1036-6 상가211호',
+      },
+    ],
+  },
+};
+
 export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
   {
     id: 1,
@@ -42,8 +182,23 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     reviewCount: 14,
     commentCount: 37,
     location: '영통동',
+    regionText: '경기 수원시 영통구 영통동',
     coupon: false,
     thumbnail: 'https://picsum.photos/seed/store1/240/240',
+    createdAt: '2025-10-01',
+    ...LOCAL_PROFILE_DOCUMENT,
+    ...LOCAL_PROFILE_BENEFIT,
+    ...LOCAL_PROFILE_NOTICE,
+    ...LOCAL_PROFILE_PRICES,
+    ...LOCAL_PROFILE_COUPONS,
+    ...LOCAL_PROFILE_STORE_INFO,
+    imageUrls: [
+      'https://picsum.photos/seed/store1/240/240',
+      'https://picsum.photos/seed/store1-detail1/240/240',
+      'https://picsum.photos/seed/store1-detail2/240/240',
+      'https://picsum.photos/seed/store1-detail3/240/240',
+      'https://picsum.photos/seed/store1-detail4/240/240',
+    ],
   },
   {
     id: 2,
@@ -55,8 +210,23 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     reviewCount: 4,
     commentCount: 22,
     location: '지동',
+    regionText: '경기 수원시 영통구 지동',
     coupon: true,
     thumbnail: 'https://picsum.photos/seed/store2/240/240',
+    createdAt: '2025-09-01',
+    ...LOCAL_PROFILE_DOCUMENT,
+    ...LOCAL_PROFILE_BENEFIT,
+    ...LOCAL_PROFILE_NOTICE,
+    ...LOCAL_PROFILE_PRICES,
+    ...LOCAL_PROFILE_COUPONS,
+    ...LOCAL_PROFILE_STORE_INFO,
+    imageUrls: [
+      'https://picsum.photos/seed/store2/240/240',
+      'https://picsum.photos/seed/store2-detail1/240/240',
+      'https://picsum.photos/seed/store2-detail2/240/240',
+      'https://picsum.photos/seed/store2-detail3/240/240',
+      'https://picsum.photos/seed/store2-detail4/240/240',
+    ],
   },
   {
     id: 3,
@@ -67,8 +237,23 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     reviewCount: 327,
     commentCount: 1533,
     location: '이의동',
+    regionText: '경기 수원시 영통구 이의동',
     coupon: true,
     thumbnail: 'https://picsum.photos/seed/store3/240/240',
+    createdAt: '2025-08-01',
+    ...LOCAL_PROFILE_DOCUMENT,
+    ...LOCAL_PROFILE_BENEFIT,
+    ...LOCAL_PROFILE_NOTICE,
+    ...LOCAL_PROFILE_PRICES,
+    ...LOCAL_PROFILE_COUPONS,
+    ...LOCAL_PROFILE_STORE_INFO,
+    imageUrls: [
+      'https://picsum.photos/seed/store3/240/240',
+      'https://picsum.photos/seed/store3-detail1/240/240',
+      'https://picsum.photos/seed/store3-detail2/240/240',
+      'https://picsum.photos/seed/store3-detail3/240/240',
+      'https://picsum.photos/seed/store3-detail4/240/240',
+    ],
   },
   {
     id: 4,
@@ -79,8 +264,23 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     reviewCount: 225,
     commentCount: 243,
     location: '반월동',
+    regionText: '경기 수원시 영통구 반월동',
     coupon: true,
     thumbnail: 'https://picsum.photos/seed/store4/240/240',
+    createdAt: '2025-07-01',
+    ...LOCAL_PROFILE_DOCUMENT,
+    ...LOCAL_PROFILE_BENEFIT,
+    ...LOCAL_PROFILE_NOTICE,
+    ...LOCAL_PROFILE_PRICES,
+    ...LOCAL_PROFILE_COUPONS,
+    ...LOCAL_PROFILE_STORE_INFO,
+    imageUrls: [
+      'https://picsum.photos/seed/store4/240/240',
+      'https://picsum.photos/seed/store4-detail1/240/240',
+      'https://picsum.photos/seed/store4-detail2/240/240',
+      'https://picsum.photos/seed/store4-detail3/240/240',
+      'https://picsum.photos/seed/store4-detail4/240/240',
+    ],
   },
   {
     id: 5,
@@ -91,8 +291,23 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     reviewCount: 150,
     commentCount: 135,
     location: '권선동',
+    regionText: '경기 수원시 영통구 권선동',
     coupon: true,
     thumbnail: 'https://picsum.photos/seed/store5/240/240',
+    createdAt: '2025-06-01',
+    ...LOCAL_PROFILE_DOCUMENT,
+    ...LOCAL_PROFILE_BENEFIT,
+    ...LOCAL_PROFILE_NOTICE,
+    ...LOCAL_PROFILE_PRICES,
+    ...LOCAL_PROFILE_COUPONS,
+    ...LOCAL_PROFILE_STORE_INFO,
+    imageUrls: [
+      'https://picsum.photos/seed/store5/240/240',
+      'https://picsum.photos/seed/store5-detail1/240/240',
+      'https://picsum.photos/seed/store5-detail2/240/240',
+      'https://picsum.photos/seed/store5-detail3/240/240',
+      'https://picsum.photos/seed/store5-detail4/240/240',
+    ],
   },
   {
     id: 6,
@@ -103,8 +318,23 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     reviewCount: 700,
     commentCount: 2224,
     location: '망포동',
+    regionText: '경기 수원시 영통구 망포동',
     coupon: true,
     thumbnail: 'https://picsum.photos/seed/store6/240/240',
+    createdAt: '2025-05-01',
+    ...LOCAL_PROFILE_DOCUMENT,
+    ...LOCAL_PROFILE_BENEFIT,
+    ...LOCAL_PROFILE_NOTICE,
+    ...LOCAL_PROFILE_PRICES,
+    ...LOCAL_PROFILE_COUPONS,
+    ...LOCAL_PROFILE_STORE_INFO,
+    imageUrls: [
+      'https://picsum.photos/seed/store6/240/240',
+      'https://picsum.photos/seed/store6-detail1/240/240',
+      'https://picsum.photos/seed/store6-detail2/240/240',
+      'https://picsum.photos/seed/store6-detail3/240/240',
+      'https://picsum.photos/seed/store6-detail4/240/240',
+    ],
   },
   {
     id: 7,
@@ -115,8 +345,23 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     reviewCount: 582,
     commentCount: 691,
     location: '영통동',
+    regionText: '경기 수원시 영통구 영통동',
     coupon: false,
     thumbnail: 'https://picsum.photos/seed/store7/240/240',
+    createdAt: '2025-04-01',
+    ...LOCAL_PROFILE_DOCUMENT,
+    ...LOCAL_PROFILE_BENEFIT,
+    ...LOCAL_PROFILE_NOTICE,
+    ...LOCAL_PROFILE_PRICES,
+    ...LOCAL_PROFILE_COUPONS,
+    ...LOCAL_PROFILE_STORE_INFO,
+    imageUrls: [
+      'https://picsum.photos/seed/store7/240/240',
+      'https://picsum.photos/seed/store7-detail1/240/240',
+      'https://picsum.photos/seed/store7-detail2/240/240',
+      'https://picsum.photos/seed/store7-detail3/240/240',
+      'https://picsum.photos/seed/store7-detail4/240/240',
+    ],
   },
   {
     id: 8,
@@ -127,8 +372,23 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     reviewCount: 92,
     commentCount: 220,
     location: '인계동',
+    regionText: '경기 수원시 영통구 인계동',
     coupon: true,
     thumbnail: 'https://picsum.photos/seed/store8/240/240',
+    createdAt: '2025-03-01',
+    ...LOCAL_PROFILE_DOCUMENT,
+    ...LOCAL_PROFILE_BENEFIT,
+    ...LOCAL_PROFILE_NOTICE,
+    ...LOCAL_PROFILE_PRICES,
+    ...LOCAL_PROFILE_COUPONS,
+    ...LOCAL_PROFILE_STORE_INFO,
+    imageUrls: [
+      'https://picsum.photos/seed/store8/240/240',
+      'https://picsum.photos/seed/store8-detail1/240/240',
+      'https://picsum.photos/seed/store8-detail2/240/240',
+      'https://picsum.photos/seed/store8-detail3/240/240',
+      'https://picsum.photos/seed/store8-detail4/240/240',
+    ],
   },
   {
     id: 9,
@@ -139,8 +399,23 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     reviewCount: 555,
     commentCount: 2164,
     location: '상현동',
+    regionText: '경기 수원시 영통구 상현동',
     coupon: true,
     thumbnail: 'https://picsum.photos/seed/store9/240/240',
+    createdAt: '2025-02-01',
+    ...LOCAL_PROFILE_DOCUMENT,
+    ...LOCAL_PROFILE_BENEFIT,
+    ...LOCAL_PROFILE_NOTICE,
+    ...LOCAL_PROFILE_PRICES,
+    ...LOCAL_PROFILE_COUPONS,
+    ...LOCAL_PROFILE_STORE_INFO,
+    imageUrls: [
+      'https://picsum.photos/seed/store9/240/240',
+      'https://picsum.photos/seed/store9-detail1/240/240',
+      'https://picsum.photos/seed/store9-detail2/240/240',
+      'https://picsum.photos/seed/store9-detail3/240/240',
+      'https://picsum.photos/seed/store9-detail4/240/240',
+    ],
   },
   {
     id: 10,
@@ -151,7 +426,22 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     reviewCount: 1066,
     commentCount: 1144,
     location: '광교2동',
+    regionText: '경기 수원시 영통구 광교2동',
     coupon: false,
     thumbnail: 'https://picsum.photos/seed/store10/240/240',
+    createdAt: '2025-01-01',
+    ...LOCAL_PROFILE_DOCUMENT,
+    ...LOCAL_PROFILE_BENEFIT,
+    ...LOCAL_PROFILE_NOTICE,
+    ...LOCAL_PROFILE_PRICES,
+    ...LOCAL_PROFILE_COUPONS,
+    ...LOCAL_PROFILE_STORE_INFO,
+    imageUrls: [
+      'https://picsum.photos/seed/store10/240/240',
+      'https://picsum.photos/seed/store10-detail1/240/240',
+      'https://picsum.photos/seed/store10-detail2/240/240',
+      'https://picsum.photos/seed/store10-detail3/240/240',
+      'https://picsum.photos/seed/store10-detail4/240/240',
+    ],
   },
 ];

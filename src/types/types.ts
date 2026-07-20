@@ -66,6 +66,50 @@ export type LocalProfileOptionItem = {
   label: string;
 };
 
+export type LocalProfileCoupon = {
+  id: number;
+  title: string;
+  expiresAt: string;
+};
+
+export type LocalProfilePrice = {
+  id: number;
+  title: string;
+  price: string;
+  description?: string;
+  isRepresentative?: boolean;
+};
+
+export type LocalProfileDocumentRow = {
+  label: string;
+  value: string;
+};
+
+export type LocalProfileDocumentGroup = {
+  title: string;
+  rows: LocalProfileDocumentRow[];
+};
+
+export type LocalProfileStoreAddress = {
+  label: '도로명' | '지번';
+  value: string;
+};
+
+export type LocalProfileStoreInfo = {
+  addressSummary: string;
+  appLink: string;
+  businessHours: {
+    current: string;
+    daily: string[];
+    description: string;
+  };
+  contact: string;
+  facilities: string;
+  mapImageUrl: string;
+  website: string;
+  addresses: LocalProfileStoreAddress[];
+};
+
 export type LocalProfileItem = {
   id: number;
   name: string;
@@ -75,8 +119,19 @@ export type LocalProfileItem = {
   reviewCount: number;
   commentCount: number;
   location: string;
+  regionText: string;
   coupon: boolean;
   thumbnail: string;
+  imageUrls?: string[];
+  createdAt?: string;
+  documentGroups?: LocalProfileDocumentGroup[];
+  documentLabel?: string;
+  benefitTitle?: string;
+  benefitDescription?: string;
+  notice?: string;
+  prices?: LocalProfilePrice[];
+  coupons?: LocalProfileCoupon[];
+  storeInfo?: LocalProfileStoreInfo;
 };
 
 export type BuySellItem = {
