@@ -3,6 +3,7 @@ import { StarIcon } from '@/assets/icons';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
 import ImageGridSlider from '@/components/ui/image-grid-slider.tsx';
 import {
+  LocalProfileBenefitSection,
   LocalProfileStoreInfoSection,
 } from '@/components/local-profile/sections';
 import type { LocalProfileItem } from '@/types/types.ts';
@@ -70,6 +71,12 @@ export default function LocalProfileDetail({
             </aside>
 
             <hr className="local-profile-detail-section-divider" />
+
+            <article className="local-profile-detail-article">
+              <LocalProfileBenefitSection
+                benefitDescription={item.benefitDescription}
+              />
+            </article>
           </div>
         </section>
       </div>
