@@ -2,6 +2,9 @@ import type { ReactNode } from 'react';
 import { StarIcon } from '@/assets/icons';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
 import ImageGridSlider from '@/components/ui/image-grid-slider.tsx';
+import {
+  LocalProfileStoreInfoSection,
+} from '@/components/local-profile/sections';
 import type { LocalProfileItem } from '@/types/types.ts';
 
 type LocalProfileDetailProps = {
@@ -62,6 +65,9 @@ export default function LocalProfileDetail({
           </div>
 
           <div className="local-profile-detail-content">
+            <aside className="local-profile-detail-store-info-aside">
+              <LocalProfileStoreInfoSection item={item} />
+            </aside>
           </div>
         </section>
       </div>

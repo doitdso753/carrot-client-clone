@@ -1,0 +1,1 @@
+export { default as LocalProfileStoreInfoSection } from './local-profile-store-info-section.tsx';
