@@ -1,0 +1,147 @@
+.local-profile-detail-wrapper {
+  width: 100%;
+  padding-top: calc(var(--header-with-search-height, 14.7rem) + 1.2rem);
+}
+
+.local-profile-detail-layout {
+  display: block;
+  margin-top: 1.2rem;
+}
+
+.local-profile-detail-article {
+  display: flex;
+  flex-direction: column;
+}
+
+.local-profile-detail-content {
+  display: grid;
+  order: 3;
+}
+
+.local-profile-detail-image-slider {
+  min-width: 0;
+  margin-top: 2rem;
+  order: 2;
+}
+
+.local-profile-detail-information {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-palette-gray-1000);
+}
+
+.local-profile-detail-heading {
+  display: grid;
+  order: 1;
+  row-gap: 0.4rem;
+}
+
+.local-profile-detail-heading h1 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.4;
+}
+
+.local-profile-detail-meta {
+  display: grid;
+  row-gap: 0.2rem;
+  color: var(--color-palette-gray-800);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.local-profile-detail-meta-row {
+  display: flex;
+  align-items: center;
+}
+
+.local-profile-detail-meta-item--divider::after {
+  margin-left: 0.4rem;
+  color: var(--color-palette-gray-800);
+  content: '·';
+}
+
+.local-profile-detail-meta-item:not(:last-child) {
+  margin-right: 0.6rem;
+}
+
+.local-profile-detail-meta-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--color-palette-gray-1000);
+  font-weight: var(--font-weight-bold);
+}
+
+.local-profile-detail-meta a {
+  color: inherit;
+}
+
+.local-profile-detail-meta a span {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.local-profile-detail-meta svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-palette-carrot-600);
+}
+
+@media screen and (min-width: 768px) {
+  .local-profile-detail-heading h1 {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .local-profile-detail-image-slider {
+    margin-top: 0;
+    order: 1;
+  }
+
+  .local-profile-detail-heading {
+    margin-top: 2.4rem;
+    order: 2;
+  }
+
+  .local-profile-detail-content {
+    grid-template-columns: minmax(0, 1fr) 27.2rem;
+    column-gap: 4rem;
+    align-items: start;
+    order: 3;
+  }
+
+  .local-profile-detail-store-info-aside {
+    position: sticky;
+    top: calc(var(--header-with-search-height, 14.7rem) + 2rem);
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .local-profile-detail-content > .local-profile-detail-section-divider {
+    display: none;
+  }
+
+  .local-profile-detail-meta {
+    display: flex;
+    align-items: center;
+    font-size: var(--text-base);
+  }
+
+  .local-profile-detail-meta-row {
+    display: contents;
+  }
+
+  .local-profile-detail-meta-item--desktop-divider::after {
+    margin-left: 0.6rem;
+    color: var(--color-palette-gray-800);
+    content: '·';
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .local-profile-detail-content {
+    grid-template-columns: minmax(0, 1fr) 33.1rem;
+  }
+}
