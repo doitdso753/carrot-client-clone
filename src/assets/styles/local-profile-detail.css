@@ -88,6 +88,10 @@
   color: var(--color-palette-carrot-600);
 }
 
+.local-profile-detail-section-divider {
+  border-top: 0.1rem solid var(--color-palette-gray-400);
+}
+
 .local-profile-store-info {
   display: grid;
   margin-top: 3.2rem;

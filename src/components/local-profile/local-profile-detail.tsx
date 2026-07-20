@@ -68,6 +68,8 @@ export default function LocalProfileDetail({
             <aside className="local-profile-detail-store-info-aside">
               <LocalProfileStoreInfoSection item={item} />
             </aside>
+
+            <hr className="local-profile-detail-section-divider" />
           </div>
         </section>
       </div>
