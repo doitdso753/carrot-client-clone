@@ -297,6 +297,32 @@
   color: inherit;
 }
 
+.common-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    grid-template-rows 0.5s ease,
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+  visibility: hidden;
+}
+
+.common-collapse--expanded {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.common-collapse-content {
+  display: grid;
+  overflow: hidden;
+  row-gap: 1rem;
+  min-height: 0;
+}
+
 @media screen and (min-width: 768px) {
   .common-toast-wrapper {
     width: 36rem;
