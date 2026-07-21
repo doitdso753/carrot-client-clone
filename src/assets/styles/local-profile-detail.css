@@ -381,21 +381,27 @@
 
 .local-profile-store-info-main {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   gap: 1.6rem;
+  text-align: left;
 }
 
 .local-profile-store-info-main svg {
   width: 1.4rem;
   height: 1.4rem;
   flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.local-profile-store-info-main[aria-expanded='true'] svg {
   transform: rotate(180deg);
 }
 
 .local-profile-store-info-hours {
   display: grid;
-  row-gap: 0.8rem;
+  row-gap: 0.4rem;
 }
 
 .local-profile-store-info-caption {
@@ -491,10 +497,6 @@
 @media screen and (min-width: 768px) {
   .local-profile-detail-heading h1 {
     font-size: var(--text-3xl);
-  }
-
-  .local-profile-store-info {
-    width: 27.7rem;
   }
 }
 
