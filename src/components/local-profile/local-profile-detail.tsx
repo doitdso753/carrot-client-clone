@@ -5,7 +5,10 @@ import ImageGridSlider from '@/components/ui/image-grid-slider.tsx';
 import {
   LocalProfileBenefitSection,
   LocalProfileIntroduction,
+  LocalProfileNewsSection,
   LocalProfileNoticeSection,
+  LocalProfilePriceSection,
+  LocalProfileReviewSection,
   LocalProfileStoreInfoSection,
 } from '@/components/local-profile/sections';
 import type { LocalProfileItem } from '@/types/types.ts';
@@ -82,6 +85,8 @@ export default function LocalProfileDetail({
               <LocalProfileNoticeSection notice={item.notice} />
               <hr className="local-profile-detail-section-divider" />
               <LocalProfileIntroduction item={item} />
+              <hr className="local-profile-detail-section-divider" />
+              <LocalProfilePriceSection prices={item.prices} />
               <hr className="local-profile-detail-section-divider" />
             </article>
           </div>
