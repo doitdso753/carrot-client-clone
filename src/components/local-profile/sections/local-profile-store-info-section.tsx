@@ -5,12 +5,12 @@ import {
   ClockIcon,
   CopyIcon,
   LocationIcon,
-  StarIcon,
   StoreInfoIcon,
   WebIcon,
 } from '@/assets/icons';
 import CommonToast from '@/components/ui/common-toast.tsx';
 import LocalProfileMeta from '@/components/local-profile/local-profile-meta.tsx';
+import useCollapse from '@/hooks/use-collapse.ts';
 import useToast from '@/hooks/use-toast.ts';
 import { copyTextToClipboard } from '@/lib/utils.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
@@ -24,6 +24,14 @@ export default function LocalProfileStoreInfoSection({
   item,
 }: LocalProfileStoreInfoSectionProps): ReactNode {
   const { storeInfo } = item;
+  const {
+    isExpanded: isAddressExpanded,
+    toggleCollapse: toggleAddressCollapse,
+  } = useCollapse(true);
+  const {
+    isExpanded: isBusinessHoursExpanded,
+    toggleCollapse: toggleBusinessHoursCollapse,
+  } = useCollapse(true);
   const {
     hideMessage: hideCopyMessage,
     isVisible: isCopyMessageVisible,
@@ -53,18 +61,34 @@ export default function LocalProfileStoreInfoSection({
         <div className="local-profile-store-info-row local-profile-store-info-row--hours">
           <ClockIcon />
           <div className="local-profile-store-info-content">
-            <div className="local-profile-store-info-main">
+            <button
+              className="local-profile-store-info-main"
+              type="button"
+              aria-expanded={isBusinessHoursExpanded}
+              onClick={toggleBusinessHoursCollapse}
+            >
               <span>{storeInfo.businessHours.current}</span>
               <ChevronDownIcon />
+            </button>
+            <div
+              className={`common-collapse${
+                isBusinessHoursExpanded
+                  ? ' common-collapse--expanded'
+                  : ''
+              }`}
+              aria-hidden={!isBusinessHoursExpanded}
+            >
+              <div className="common-collapse-content">
+                <ul className="local-profile-store-info-hours">
+                  {storeInfo.businessHours.daily.map((hour) => (
+                    <li key={hour}>{hour}</li>
+                  ))}
+                </ul>
+                <p className="local-profile-store-info-caption">
+                  {storeInfo.businessHours.description}
+                </p>
+              </div>
             </div>
-            <ul className="local-profile-store-info-hours">
-              {storeInfo.businessHours.daily.map((hour) => (
-                <li key={hour}>{hour}</li>
-              ))}
-            </ul>
-            <p className="local-profile-store-info-caption">
-              {storeInfo.businessHours.description}
-            </p>
           </div>
         </div>
 
@@ -104,32 +128,46 @@ export default function LocalProfileStoreInfoSection({
         <div className="local-profile-store-info-row local-profile-store-info-row--address">
           <LocationIcon />
           <div className="local-profile-store-info-content">
-            <div className="local-profile-store-info-main">
+            <button
+              className="local-profile-store-info-main"
+              type="button"
+              aria-expanded={isAddressExpanded}
+              onClick={toggleAddressCollapse}
+            >
               <span>{storeInfo.addressSummary}</span>
               <ChevronDownIcon />
-            </div>
+            </button>
 
-            <div className="local-profile-store-info-addresses">
-              {storeInfo.addresses.map((address) => (
-                <div
-                  className="local-profile-store-info-address"
-                  key={address.label}
-                >
-                  <span>{address.label}</span>
-                  <p>
-                    {address.value}
-                    <button
-                      type="button"
-                      onClick={() => {
-                        void handleCopyText(address.value);
-                      }}
-                    >
-                      <CopyIcon />
-                      복사
-                    </button>
-                  </p>
-                </div>
-              ))}
+            <div
+              className={`common-collapse${
+                isAddressExpanded
+                  ? ' common-collapse--expanded'
+                  : ''
+              }`}
+              aria-hidden={!isAddressExpanded}
+            >
+              <div className="common-collapse-content local-profile-store-info-addresses">
+                {storeInfo.addresses.map((address) => (
+                  <div
+                    className="local-profile-store-info-address"
+                    key={address.label}
+                  >
+                    <span>{address.label}</span>
+                    <p>
+                      {address.value}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          void handleCopyText(address.value);
+                        }}
+                      >
+                        <CopyIcon />
+                        복사
+                      </button>
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
