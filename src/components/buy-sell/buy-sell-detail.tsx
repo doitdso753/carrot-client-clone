@@ -50,7 +50,7 @@ export default function BuySellDetail({ item }: BuySellDetailProps): ReactNode {
       : [item.imageUrl];
 
   return (
-    <main className="buy-sell-detail-wrapper">
+    <main className="detail-page-wrapper">
       <DetailBreadcrumb
         items={[
           { label: '홈', to: '/' },
@@ -62,19 +62,19 @@ export default function BuySellDetail({ item }: BuySellDetailProps): ReactNode {
         ]}
       />
 
-      <div className="buy-sell-detail-layout">
+      <div className="detail-page-layout">
         <section aria-label="상품 이미지와 판매자 정보">
           <ImageSlider imageUrls={imageUrls} title={item.title} />
 
           <UserProfile user={seller} />
         </section>
 
-        <section className="buy-sell-detail-information">
-          <div className="buy-sell-detail-heading">
+        <section className="detail-page-information">
+          <div className="detail-page-heading">
             <h1>
               {headingStatusText && (
                 <span
-                  className={`buy-sell-detail-heading-status buy-sell-detail-heading-status--${item.status}`}
+                  className={`detail-page-heading-status detail-page-heading-status--${item.status}`}
                 >
                   {headingStatusText}
                 </span>
@@ -88,19 +88,19 @@ export default function BuySellDetail({ item }: BuySellDetailProps): ReactNode {
             <strong>{item.price.toLocaleString()}원</strong>
           </div>
 
-          <div className="buy-sell-detail-description">
+          <div className="detail-page-description">
             <p className="whitespace-pre-line">
               {item.description ??
                 '상품에 관심이 있으시면 당근 앱에서 판매자에게 문의해 주세요.'}
             </p>
-            <p className="buy-sell-detail-status">
+            <p className="detail-page-status">
               채팅 {stats.chatCount} · 관심 {stats.favoriteCount} · 조회{' '}
               {stats.viewCount}
             </p>
           </div>
 
           <a
-            className="buy-sell-detail-app-button"
+            className="detail-page-app-button"
             href="https://www.daangn.com/"
             target="_blank"
             rel="noreferrer"

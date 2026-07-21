@@ -16,7 +16,7 @@ export default function BuySellDetailPage(): ReactNode {
         {item ? (
           <BuySellDetail item={item} />
         ) : (
-          <main className="buy-sell-detail-wrapper flex flex-col items-center gap-6">
+          <main className="detail-page-wrapper flex flex-col items-center gap-6">
             <h1 className="text-2xl font-bold">상품을 찾을 수 없습니다.</h1>
             <Link
               className="text-base text-(--color-palette-gray-700) underline"

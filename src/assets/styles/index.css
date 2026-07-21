@@ -316,12 +316,12 @@
   gap: 2.5rem;
 }
 
-.buy-sell-detail-wrapper {
+.detail-page-wrapper {
   width: 100%;
   padding: calc(var(--header-with-search-height, 14.7rem) + 2.4rem) 1.6rem 8rem;
 }
 
-.buy-sell-detail-layout {
+.detail-page-layout {
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
@@ -398,19 +398,19 @@
   );
 }
 
-.buy-sell-detail-information {
+.detail-page-information {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   color: var(--color-palette-gray-1000);
 }
 
-.buy-sell-detail-heading {
+.detail-page-heading {
   display: grid;
   row-gap: 0.8rem;
 }
 
-.buy-sell-detail-heading h1 {
+.detail-page-heading h1 {
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -420,47 +420,47 @@
   line-height: 1.35;
 }
 
-.buy-sell-detail-heading p {
+.detail-page-heading p {
   color: var(--color-palette-gray-700);
   font-size: 1.6rem;
   font-weight: var(--font-weight-normal);
 }
 
-.buy-sell-detail-heading strong {
+.detail-page-heading strong {
   font-size: 2.4rem;
   font-weight: var(--font-weight-bold);
 }
 
-.buy-sell-detail-heading-status {
+.detail-page-heading-status {
   font-weight: var(--font-weight-bold);
 }
 
-.buy-sell-detail-heading-status--reserved {
+.detail-page-heading-status--reserved {
   color: var(--color-palette-green-500);
 }
 
-.buy-sell-detail-heading-status--sold {
+.detail-page-heading-status--sold {
   color: var(--color-palette-gray-700);
 }
 
-.buy-sell-detail-description {
+.detail-page-description {
   display: grid;
   row-gap: 2rem;
 }
 
-.buy-sell-detail-description > p:first-child {
+.detail-page-description > p:first-child {
   font-size: 1.8rem;
   font-weight: var(--font-weight-normal);
   line-height: 1.6;
 }
 
-.buy-sell-detail-description .buy-sell-detail-status {
+.detail-page-description .detail-page-status {
   color: var(--color-palette-gray-700);
   font-size: 1.4rem;
   font-weight: var(--font-weight-normal);
 }
 
-.buy-sell-detail-app-button {
+.detail-page-app-button {
   display: flex;
   min-height: 4.8rem;
   align-items: center;
@@ -472,7 +472,7 @@
   font-weight: var(--font-weight-bold);
 }
 
-.buy-sell-detail-app-button:hover {
+.detail-page-app-button:hover {
   background-color: var(--color-palette-carrot-700);
 }
 
@@ -481,7 +481,7 @@
     padding-top: calc(var(--header-height, 6.4rem) + 3.6rem);
   }
 
-  .buy-sell-detail-wrapper {
+  .detail-page-wrapper {
     padding-right: 4rem;
     padding-left: 4rem;
   }
@@ -503,26 +503,26 @@
     margin-bottom: 4rem;
   }
 
-  .buy-sell-detail-wrapper {
+  .detail-page-wrapper {
     padding-right: 6.4rem;
     padding-left: 6.4rem;
   }
 
-  .buy-sell-detail-layout {
+  .detail-page-layout {
     flex-direction: row;
     gap: 4rem;
   }
 
-  .buy-sell-detail-layout > section {
+  .detail-page-layout > section {
     min-width: 0;
     flex: 1 1 0;
   }
 
-  .buy-sell-detail-heading {
+  .detail-page-heading {
     row-gap: 1.2rem;
   }
 
-  .buy-sell-detail-information {
+  .detail-page-information {
     padding-top: 0.4rem;
     gap: 3.2rem;
   }
@@ -592,13 +592,13 @@
     padding-top: calc(var(--header-height, 6.4rem) + 6.6rem);
   }
 
-  .buy-sell-detail-wrapper {
+  .detail-page-wrapper {
     max-width: 147rem;
     padding-right: 8rem;
     padding-left: 8rem;
   }
 
-  .buy-sell-detail-layout {
+  .detail-page-layout {
     gap: 4rem;
   }
 }
