@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import { VerifiedDocumentIcon } from '@/assets/icons';
+import LocalProfileDocumentPopup from '@/components/local-profile/local-profile-document-popup.tsx';
+import usePopup from '@/hooks/use-popup.ts';
 import type { LocalProfileItem } from '@/types/types.ts';
 
 type LocalProfileIntroductionProps = {
@@ -15,6 +17,8 @@ const formatCreatedAt = (createdAt: string): string =>
 export default function LocalProfileIntroduction({
   item,
 }: LocalProfileIntroductionProps): ReactNode {
+  const { closePopup, isOpen, openPopup } = usePopup();
+
   return (
     <>
       <section className="local-profile-detail-section">
@@ -41,6 +45,7 @@ export default function LocalProfileIntroduction({
               <button
                 className="local-profile-detail-document"
                 type="button"
+                onClick={openPopup}
               >
                 <VerifiedDocumentIcon />
                 <span>{item.documentLabel}</span>
@@ -52,7 +57,14 @@ export default function LocalProfileIntroduction({
             </p>
           </div>
         </div>
+
       </section>
+
+      <LocalProfileDocumentPopup
+        documentGroups={item.documentGroups}
+        isOpen={isOpen}
+        onClose={closePopup}
+      />
     </>
   );
 }

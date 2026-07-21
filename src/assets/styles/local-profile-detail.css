@@ -176,6 +176,74 @@
   line-height: 1.6;
 }
 
+.local-profile-detail-document {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--color-palette-gray-1000);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.local-profile-detail-document svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  flex-shrink: 0;
+}
+
+.local-profile-document-popup {
+  display: grid;
+  row-gap: 2.4rem;
+}
+
+.local-profile-document-popup-group {
+  display: grid;
+  grid-template-columns: 1.8rem minmax(0, 1fr);
+  column-gap: 0.8rem;
+  row-gap: 1.6rem;
+}
+
+.local-profile-document-popup-group h3 {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 1.8rem minmax(0, 1fr);
+  column-gap: 0.8rem;
+  align-items: center;
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.4;
+}
+
+.local-profile-document-popup-group svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.local-profile-document-popup-list {
+  display: grid;
+  grid-column: 2;
+  row-gap: 1.6rem;
+}
+
+.local-profile-document-popup-item {
+  display: grid;
+  row-gap: 0.4rem;
+}
+
+.local-profile-document-popup-item dt,
+.local-profile-document-popup-item dd {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.4;
+}
+
+.local-profile-document-popup-item dd {
+  color: var(--color-palette-gray-700);
+}
+
 .local-profile-store-info {
   display: grid;
   margin-top: 3.2rem;
