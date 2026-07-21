@@ -244,6 +244,12 @@
   color: var(--color-palette-gray-700);
 }
 
+.local-profile-detail-notice {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;
+}
+
 .local-profile-store-info {
   display: grid;
   margin-top: 3.2rem;
