@@ -4,6 +4,7 @@ import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
 import ImageGridSlider from '@/components/ui/image-grid-slider.tsx';
 import {
   LocalProfileBenefitSection,
+  LocalProfileIntroduction,
   LocalProfileStoreInfoSection,
 } from '@/components/local-profile/sections';
 import type { LocalProfileItem } from '@/types/types.ts';
@@ -76,6 +77,9 @@ export default function LocalProfileDetail({
               <LocalProfileBenefitSection
                 benefitDescription={item.benefitDescription}
               />
+
+              <LocalProfileIntroduction item={item} />
+              <hr className="local-profile-detail-section-divider" />
             </article>
           </div>
         </section>

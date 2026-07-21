@@ -115,6 +115,61 @@
   font-size: var(--text-sm);
 }
 
+.local-profile-detail-section {
+  display: grid;
+  row-gap: 1.6rem;
+  padding-block: 2.4rem;
+}
+
+.local-profile-detail-section h2 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.4;
+}
+
+.local-profile-detail-section-caption {
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.local-profile-detail-section-heading {
+  display: grid;
+  row-gap: 0.6rem;
+}
+
+.local-profile-detail-introduction-content {
+  display: grid;
+  row-gap: 1.6rem;
+  min-width: 0;
+}
+
+.local-profile-detail-thumbnail {
+  width: 4.8rem;
+  height: 4.8rem;
+  flex-shrink: 0;
+  border-radius: 999rem;
+  object-fit: cover;
+}
+
+.local-profile-detail-section-heading--with-thumbnail {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.local-profile-detail-section-heading--with-thumbnail > div {
+  display: grid;
+  row-gap: 0.6rem;
+  min-width: 0;
+}
+
+.local-profile-detail-introduction-body {
+  display: grid;
+  row-gap: 1.6rem;
+}
+
 .local-profile-store-info {
   display: grid;
   margin-top: 3.2rem;
