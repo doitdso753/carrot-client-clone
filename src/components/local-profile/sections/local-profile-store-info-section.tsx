@@ -10,6 +10,7 @@ import {
   WebIcon,
 } from '@/assets/icons';
 import CommonToast from '@/components/ui/common-toast.tsx';
+import LocalProfileMeta from '@/components/local-profile/local-profile-meta.tsx';
 import useToast from '@/hooks/use-toast.ts';
 import { copyTextToClipboard } from '@/lib/utils.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
@@ -43,18 +44,7 @@ export default function LocalProfileStoreInfoSection({
       <div className="local-profile-store-info-summary">
         <h3>{item.name}</h3>
 
-        <div className="local-profile-store-info-meta">
-          <strong>
-            <StarIcon />
-            {item.rating.toFixed(1)}
-          </strong>
-          <a href="#reviews">후기 {item.reviewCount.toLocaleString()}</a>
-          <span>단골 {item.commentCount.toLocaleString()}</span>
-        </div>
-
-        <p>
-          {item.regionText} · {item.category}
-        </p>
+        <LocalProfileMeta {...item} variant="store-info" />
       </div>
 
       <hr className="local-profile-store-info-divider" />
