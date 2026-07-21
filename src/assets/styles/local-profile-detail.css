@@ -170,6 +170,12 @@
   row-gap: 1.6rem;
 }
 
+.local-profile-detail-description {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;
+}
+
 .local-profile-store-info {
   display: grid;
   margin-top: 3.2rem;
