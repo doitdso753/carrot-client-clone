@@ -344,6 +344,70 @@
   transform: rotate(180deg);
 }
 
+.local-profile-coupon-list {
+  display: grid;
+  row-gap: 1.6rem;
+}
+
+.local-profile-coupon-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  overflow: hidden;
+  border: 0.1rem solid var(--color-palette-carrot-700);
+  border-radius: 0.6rem;
+}
+
+.local-profile-coupon-content {
+  display: grid;
+  row-gap: 0.4rem;
+  min-width: 0;
+  padding: 1.6rem 2rem;
+}
+
+.local-profile-coupon-title {
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: start;
+  column-gap: 0.4rem;
+}
+
+.local-profile-coupon-title strong {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.local-profile-coupon-title svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--color-palette-gray-700);
+}
+
+.local-profile-coupon-content p {
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-xs);
+  line-height: var(--line-height-text-xs);
+  font-weight: var(--font-weight-normal);
+}
+
+.local-profile-coupon-download {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  row-gap: 0.4rem;
+  padding: 1.6rem 1.2rem;
+  background-color: var(--color-palette-carrot-100);
+  color: var(--color-palette-carrot-600);
+  font-size: var(--text-xs);
+  line-height: var(--line-height-text-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.local-profile-coupon-download svg {
+  width: 2rem;
+  height: 2rem;
+}
+
 .local-profile-store-info {
   display: grid;
   margin-top: 3.2rem;

@@ -4,6 +4,7 @@ import ImageGridSlider from '@/components/ui/image-grid-slider.tsx';
 import LocalProfileMeta from '@/components/local-profile/local-profile-meta.tsx';
 import {
   LocalProfileBenefitSection,
+  LocalProfileCouponSection,
   LocalProfileIntroduction,
   LocalProfileNewsSection,
   LocalProfileNoticeSection,
@@ -63,6 +64,8 @@ export default function LocalProfileDetail({
               <LocalProfileIntroduction item={item} />
               <hr className="local-profile-detail-section-divider" />
               <LocalProfilePriceSection prices={item.prices} />
+              <hr className="local-profile-detail-section-divider" />
+              <LocalProfileCouponSection coupons={item.coupons} />
               <hr className="local-profile-detail-section-divider" />
             </article>
           </div>
