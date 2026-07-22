@@ -306,8 +306,9 @@
 .service-list-title {
   margin-bottom: 2rem;
   color: var(--color-palette-gray-1000);
-  font-size: 2.4rem;
+  font-size: var(--text-2xl);
   font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-text-2xl);
 }
 
 .service-list-layout {
@@ -371,6 +372,7 @@
 .user-profile-location {
   color: var(--color-palette-gray-800);
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
 }
 
 .warmth {
@@ -380,6 +382,7 @@
   gap: 0.4rem;
   color: var(--color-palette-gray-700);
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
 }
 
 .warmth-value {
@@ -415,9 +418,9 @@
   align-items: center;
   gap: 0.8rem;
   flex-wrap: wrap;
-  font-size: 2.6rem;
+  font-size: var(--text-2-75xl);
   font-weight: var(--font-weight-bold);
-  line-height: 1.35;
+  line-height: var(--line-height-text-2-75xl);
 }
 
 .detail-page-heading p {
@@ -427,8 +430,9 @@
 }
 
 .detail-page-heading strong {
-  font-size: 2.4rem;
+  font-size: var(--text-2xl);
   font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-text-2xl);
 }
 
 .detail-page-heading-status {
@@ -456,8 +460,9 @@
 
 .detail-page-description .detail-page-status {
   color: var(--color-palette-gray-700);
-  font-size: 1.4rem;
+  font-size: var(--text-sm);
   font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-sm);
 }
 
 .detail-page-app-button {
@@ -499,7 +504,8 @@
   }
 
   .service-list-title {
-    font-size: 2.8rem;
+    font-size: var(--text-3xl);
+    line-height: var(--line-height-text-3xl);
     margin-bottom: 4rem;
   }
 
@@ -562,6 +568,7 @@
 
   .user-profile-nickname {
     font-size: var(--text-xl);
+    line-height: var(--line-height-text-xl);
   }
 
   .user-profile-location {
@@ -584,6 +591,7 @@
 
   .warmth-value {
     font-size: var(--text-xl);
+    line-height: var(--line-height-text-xl);
   }
 }
 

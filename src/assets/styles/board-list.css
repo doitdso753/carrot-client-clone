@@ -29,8 +29,9 @@
 
 .board-item-heading h2 {
   overflow: hidden;
-  font-size: 1.6rem;
+  font-size: var(--text-base);
   font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text-base);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -40,8 +41,9 @@
   flex-shrink: 0;
   margin-left: 0.6rem;
   color: var(--color-palette-gray-700);
-  font-size: 1.4rem;
+  font-size: var(--text-sm);
   font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-sm);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -49,9 +51,9 @@
 .board-item-description {
   display: -webkit-box;
   overflow: hidden;
-  font-size: 1.6rem;
+  font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
-  line-height: 1.5;
+  line-height: var(--line-height-text-base);
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
@@ -63,8 +65,9 @@
   gap: 0.4rem;
   overflow: hidden;
   color: var(--color-palette-gray-700);
-  font-size: 1.2rem;
+  font-size: var(--text-xs);
   font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-xs);
   white-space: nowrap;
 }
 
@@ -74,8 +77,9 @@
   align-items: center;
   gap: 0.2rem;
   color: var(--color-palette-gray-1000);
-  font-size: 1.2rem;
+  font-size: var(--text-xs);
   font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text-xs);
 }
 
 .board-item-rating svg {
@@ -94,9 +98,9 @@
   padding-inline: 0.6rem;
   background-color: var(--color-palette-gray-200);
   color: var(--color-palette-gray-800);
-  font-size: 1.2rem;
+  font-size: var(--text-xs);
   font-weight: var(--font-weight-normal);
-  line-height: 2.4rem;
+  line-height: var(--line-height-text-xs);
 }
 
 .board-item-image {
@@ -136,16 +140,18 @@
   }
 
   .board-item-heading h2 {
-    font-size: 2rem;
+    font-size: var(--text-xl);
+    line-height: var(--line-height-text-xl);
   }
 
   .board-item-heading span {
-    font-size: 1.6rem;
+    font-size: var(--text-base);
   }
 
   .board-item-meta,
   .board-item-rating {
-    font-size: 1.4rem;
+    font-size: var(--text-sm);
+    line-height: var(--line-height-text-sm);
   }
 
   .board-item-options span {

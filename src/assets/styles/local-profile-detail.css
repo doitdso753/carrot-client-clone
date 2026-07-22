@@ -39,7 +39,7 @@
 .local-profile-detail-heading h1 {
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-bold);
-  line-height: 1.4;
+  line-height: var(--line-height-text-2xl);
 }
 
 .local-profile-meta {
@@ -47,6 +47,7 @@
   row-gap: 0.2rem;
   color: var(--color-palette-gray-800);
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
   font-weight: var(--font-weight-normal);
 }
 
@@ -103,12 +104,14 @@
   color: var(--color-palette-carrot-600);
   font-weight: var(--font-weight-semibold);
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
 }
 
 .local-profile-detail-benefit p {
   color: var(--color-palette-gray-800);
   font-weight: var(--font-weight-normal);
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
 }
 
 .local-profile-detail-section {
@@ -119,13 +122,15 @@
 
 .local-profile-detail-section h2 {
   font-size: var(--text-xl);
+  line-height: var(--line-height-text-xl);
   font-weight: var(--font-weight-bold);
-  line-height: 1.4;
+}
 }
 
 .local-profile-detail-section-caption {
   color: var(--color-palette-gray-700);
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
   font-weight: var(--font-weight-normal);
 }
 
@@ -167,9 +172,9 @@
 }
 
 .local-profile-detail-description {
+  color: var(--color-palette-gray-1000);
   font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
-  line-height: 1.6;
 }
 
 .local-profile-detail-document {
@@ -210,7 +215,6 @@
   align-items: center;
   font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
-  line-height: 1.4;
 }
 
 .local-profile-document-popup-group svg {
@@ -232,8 +236,8 @@
 .local-profile-document-popup-item dt,
 .local-profile-document-popup-item dd {
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
   font-weight: var(--font-weight-normal);
-  line-height: 1.4;
 }
 
 .local-profile-document-popup-item dd {
@@ -243,7 +247,6 @@
 .local-profile-detail-notice {
   font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
-  line-height: 1.6;
 }
 
 .local-profile-price-list {
@@ -276,7 +279,6 @@
   color: var(--color-palette-gray-1000);
   font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
-  line-height: 1.4;
 }
 
 .local-profile-price-badge {
@@ -289,15 +291,15 @@
   background-color: var(--color-palette-carrot-100);
   color: var(--color-palette-carrot-600);
   font-size: var(--text-xs);
+  line-height: var(--line-height-text-xs);
   font-weight: var(--font-weight-normal);
-  line-height: 1;
 }
 
 .local-profile-price-description {
   color: var(--color-palette-gray-700);
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
   font-weight: var(--font-weight-normal);
-  line-height: 1.4;
 }
 
 .local-profile-price-dash {
@@ -311,7 +313,6 @@
   color: var(--color-palette-gray-1000);
   font-size: var(--text-base);
   font-weight: var(--font-weight-semibold);
-  line-height: 1.4;
   white-space: nowrap;
 }
 
@@ -323,8 +324,8 @@
   justify-self: center;
   color: var(--color-palette-gray-800);
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
   font-weight: var(--font-weight-normal);
-  line-height: 1.4;
 }
 
 .local-profile-price-more svg {
@@ -364,7 +365,6 @@
   color: var(--color-palette-gray-1000);
   font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
-  line-height: 1.5;
 }
 
 .local-profile-store-info-row > svg {
@@ -407,6 +407,7 @@
 .local-profile-store-info-caption {
   color: var(--color-palette-gray-700);
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
   font-weight: var(--font-weight-normal);
 }
 
@@ -423,8 +424,8 @@
   margin-left: 0.4rem;
   color: var(--color-palette-blue-600);
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
   font-weight: var(--font-weight-normal);
-  line-height: 1.4;
   vertical-align: text-bottom;
 }
 
@@ -462,13 +463,14 @@
   background-color: var(--color-palette-gray-200);
   color: var(--color-palette-gray-800);
   font-size: var(--text-xs);
+  line-height: var(--line-height-text-xs);
   font-weight: var(--font-weight-normal);
-  line-height: 1.4;
 }
 
 .local-profile-store-info-address p {
   min-width: 0;
   font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
 }
 
 .local-profile-store-info-map {
@@ -497,6 +499,7 @@
 @media screen and (min-width: 768px) {
   .local-profile-detail-heading h1 {
     font-size: var(--text-3xl);
+    line-height: var(--line-height-text-3xl);
   }
 }
 
@@ -578,8 +581,8 @@
     margin-bottom: 0.6rem;
     color: var(--color-palette-gray-1000);
     font-size: var(--text-xl);
+    line-height: var(--line-height-text-xl);
     font-weight: var(--font-weight-bold);
-    line-height: 1.4;
   }
 
   .local-profile-meta--store-info {
@@ -598,6 +601,7 @@
   .local-profile-meta--store-info .local-profile-meta-item {
     color: var(--color-palette-gray-700);
     font-size: var(--text-sm);
+    line-height: var(--line-height-text-sm);
     font-weight: var(--font-weight-normal);
   }
 
