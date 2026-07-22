@@ -125,6 +125,12 @@
   line-height: var(--line-height-text-xl);
   font-weight: var(--font-weight-bold);
 }
+
+.local-profile-detail-section-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
 }
 
 .local-profile-detail-section-caption {

@@ -35,7 +35,7 @@ export default function CardItem({ item }: CardItemProps): ReactNode {
             </span>
           )}
         </div>
-        <h2 className="card-item-title truncate text-base font-bold text-(--color-palette-gray-1000)">
+        <h2 className="card-item-title truncate text-base text-(--color-palette-gray-1000)">
           {item.title}
         </h2>
         <p className="card-item-price text-base font-bold text-(--color-palette-gray-1000)">
