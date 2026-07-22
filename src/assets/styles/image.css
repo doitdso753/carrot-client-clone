@@ -88,6 +88,8 @@
 }
 
 .image-grid-slider-wrapper {
+  --image-grid-slider-count: 0;
+
   position: relative;
   overflow: hidden;
 }
