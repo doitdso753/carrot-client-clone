@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { ChevronRightThinIcon } from '@/assets/icons';
 import usePopup from '@/hooks/use-popup.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
-import LocalProfileNewsPopup from '../popups/local-profile-news-popup.tsx';
+import LocalProfileNewsPopup from '@/components/local-profile/popups/local-profile-news-popup.tsx';
 import type { LocalProfileNews } from '@/types/types.ts';
 
 type LocalProfileNewsSectionProps = {
