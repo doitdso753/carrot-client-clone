@@ -20,7 +20,7 @@ export default function LocalProfileMeta({
   return (
     <div className={`local-profile-meta local-profile-meta--${variant}`}>
       <div className="local-profile-meta-row">
-        <strong className="local-profile-meta-item local-profile-meta-item--divider local-profile-meta-rating">
+        <strong className="local-profile-meta-item local-profile-meta-item--divider local-profile-rating">
           <StarIcon />
           {rating.toFixed(1)}
         </strong>

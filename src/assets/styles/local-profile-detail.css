@@ -56,13 +56,17 @@
   align-items: center;
 }
 
+.local-profile-meta-item {
+  color: inherit;
+}
+
 .local-profile-meta-item--divider::after {
   margin-inline: 0.4rem;
   color: var(--color-palette-gray-800);
   content: '·';
 }
 
-.local-profile-meta-rating {
+.local-profile-rating {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -675,7 +679,7 @@
     font-weight: var(--font-weight-normal);
   }
 
-  .local-profile-meta--store-info .local-profile-meta-rating {
+  .local-profile-meta--store-info .local-profile-rating {
     color: var(--color-palette-gray-1000);
     font-weight: var(--font-weight-semibold);
   }
