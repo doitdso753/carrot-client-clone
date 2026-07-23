@@ -136,6 +136,51 @@ const LOCAL_PROFILE_PRICES = {
   ],
 };
 
+const LOCAL_PROFILE_NEWS = {
+  news: [
+    {
+      id: 1,
+      title: '셀프인테리어 조명마감',
+      content:
+        '셀프 인테리어 현장의 조명 마감 작업을 진행했습니다. 기존 배선 상태를 점검하고 천장 마감재 손상 없이 깔끔하게 시공했습니다.',
+      createdAtText: '약 17시간',
+      favoriteCount: 0,
+      commentCount: 0,
+      imageUrl: 'https://picsum.photos/seed/store-news1/184/184',
+    },
+    {
+      id: 2,
+      title: '거실등 설치',
+      content:
+        '거실 메인 조명을 LED 등기구로 교체 설치했습니다. 밝기와 색온도를 공간에 맞춰 조정하고 안전하게 고정했습니다.',
+      createdAtText: '약 17시간',
+      favoriteCount: 1,
+      commentCount: 0,
+      imageUrl: 'https://picsum.photos/seed/store-news2/184/184',
+    },
+    {
+      id: 3,
+      title: '실링팬 보강설치',
+      content:
+        '실링팬 설치 전 천장 보강 작업을 진행했습니다. 제품 하중을 고려해 안전하게 보강하고 전원 연결까지 마무리했습니다.',
+      createdAtText: '약 17시간',
+      favoriteCount: 1,
+      commentCount: 0,
+      imageUrl: 'https://picsum.photos/seed/store-news3/184/184',
+    },
+    {
+      id: 4,
+      title: '콘센트 교체 작업',
+      content:
+        '노후 콘센트를 새 제품으로 교체했습니다. 접지 상태와 전원 공급 상태를 확인하고 사용 중 불편이 없도록 점검했습니다.',
+      createdAtText: '약 1일',
+      favoriteCount: 2,
+      commentCount: 1,
+      imageUrl: 'https://picsum.photos/seed/store-news4/184/184',
+    },
+  ],
+};
+
 const LOCAL_PROFILE_STORE_INFO: { storeInfo: LocalProfileStoreInfo } = {
   storeInfo: {
     addressSummary: '경기도 수원시 영통구 영통동',
@@ -192,6 +237,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_PRICES,
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
+    ...LOCAL_PROFILE_NEWS,
     imageUrls: [
       'https://picsum.photos/seed/store1/240/240',
       'https://picsum.photos/seed/store1-detail1/240/240',
@@ -220,6 +266,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_PRICES,
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
+    ...LOCAL_PROFILE_NEWS,
     imageUrls: [
       'https://picsum.photos/seed/store2/240/240',
       'https://picsum.photos/seed/store2-detail1/240/240',
@@ -247,6 +294,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_PRICES,
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
+    ...LOCAL_PROFILE_NEWS,
     imageUrls: [
       'https://picsum.photos/seed/store3/240/240',
       'https://picsum.photos/seed/store3-detail1/240/240',
@@ -274,6 +322,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_PRICES,
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
+    ...LOCAL_PROFILE_NEWS,
     imageUrls: [
       'https://picsum.photos/seed/store4/240/240',
       'https://picsum.photos/seed/store4-detail1/240/240',
@@ -301,6 +350,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_PRICES,
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
+    ...LOCAL_PROFILE_NEWS,
     imageUrls: [
       'https://picsum.photos/seed/store5/240/240',
       'https://picsum.photos/seed/store5-detail1/240/240',
@@ -328,6 +378,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_PRICES,
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
+    ...LOCAL_PROFILE_NEWS,
     imageUrls: [
       'https://picsum.photos/seed/store6/240/240',
       'https://picsum.photos/seed/store6-detail1/240/240',
@@ -355,6 +406,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_PRICES,
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
+    ...LOCAL_PROFILE_NEWS,
     imageUrls: [
       'https://picsum.photos/seed/store7/240/240',
       'https://picsum.photos/seed/store7-detail1/240/240',
@@ -382,6 +434,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_PRICES,
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
+    ...LOCAL_PROFILE_NEWS,
     imageUrls: [
       'https://picsum.photos/seed/store8/240/240',
       'https://picsum.photos/seed/store8-detail1/240/240',
@@ -409,6 +462,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_PRICES,
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
+    ...LOCAL_PROFILE_NEWS,
     imageUrls: [
       'https://picsum.photos/seed/store9/240/240',
       'https://picsum.photos/seed/store9-detail1/240/240',
@@ -436,6 +490,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_PRICES,
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
+    ...LOCAL_PROFILE_NEWS,
     imageUrls: [
       'https://picsum.photos/seed/store10/240/240',
       'https://picsum.photos/seed/store10-detail1/240/240',

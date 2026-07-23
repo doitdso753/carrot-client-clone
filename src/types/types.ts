@@ -80,6 +80,16 @@ export type LocalProfilePrice = {
   isRepresentative?: boolean;
 };
 
+export type LocalProfileNews = {
+  id: number;
+  title: string;
+  content: string;
+  createdAtText: string;
+  favoriteCount: number;
+  commentCount: number;
+  imageUrl: string;
+};
+
 export type LocalProfileDocumentRow = {
   label: string;
   value: string;
@@ -131,6 +141,7 @@ export type LocalProfileItem = {
   notice?: string;
   prices?: LocalProfilePrice[];
   coupons?: LocalProfileCoupon[];
+  news?: LocalProfileNews[];
   storeInfo?: LocalProfileStoreInfo;
 };
 
