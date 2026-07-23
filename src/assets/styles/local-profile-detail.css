@@ -255,6 +255,7 @@
 }
 
 .local-profile-detail-notice {
+  color: var(--color-palette-gray-1000);
   font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
 }
