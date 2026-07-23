@@ -1,7 +1,9 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { ChevronRightThinIcon } from '@/assets/icons';
+import usePopup from '@/hooks/use-popup.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
+import LocalProfileNewsPopup from '../popups/local-profile-news-popup.tsx';
 import type { LocalProfileNews } from '@/types/types.ts';
 
 type LocalProfileNewsSectionProps = {
@@ -50,6 +52,7 @@ export default function LocalProfileNewsSection({
   localProfileId,
   news = [],
 }: LocalProfileNewsSectionProps): ReactNode {
+  const { closePopup, isOpen, openPopup } = usePopup();
   const visibleNews = news.slice(0, VISIBLE_NEWS_COUNT);
   const hasMoreNews = news.length > VISIBLE_NEWS_COUNT;
 
@@ -61,6 +64,7 @@ export default function LocalProfileNewsSection({
             <button
               className="local-profile-more"
               type="button"
+              onClick={openPopup}
             >
               더보기
               <ChevronRightThinIcon />
@@ -74,6 +78,13 @@ export default function LocalProfileNewsSection({
           news={visibleNews}
         />
       </LocalProfileDetailSection>
+
+      <LocalProfileNewsPopup
+        isOpen={isOpen}
+        localProfileId={localProfileId}
+        news={news}
+        onClose={closePopup}
+      />
     </>
   );
 }

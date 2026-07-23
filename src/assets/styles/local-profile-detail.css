@@ -417,6 +417,63 @@
   object-fit: cover;
 }
 
+.local-profile-news-popup-list {
+  display: grid;
+  row-gap: 2rem;
+}
+
+.local-profile-news-popup-list-item {
+  display: grid;
+  row-gap: 2rem;
+}
+
+.local-profile-news-popup-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 8rem;
+  column-gap: 1.6rem;
+  align-items: start;
+}
+
+.local-profile-news-popup-content {
+  display: grid;
+  min-width: 0;
+  row-gap: 0.6rem;
+}
+
+.local-profile-news-popup-heading {
+  display: grid;
+}
+
+.local-profile-news-popup-content h3 {
+  color: var(--color-palette-gray-1000);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.local-profile-news-popup-heading p {
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.local-profile-news-popup-description {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--color-palette-gray-1000);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.local-profile-news-popup-link img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 0.6rem;
+  object-fit: cover;
+}
+
 .local-profile-coupon-list {
   display: grid;
   row-gap: 1.6rem;
