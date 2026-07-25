@@ -87,7 +87,28 @@ export type LocalProfileNews = {
   createdAtText: string;
   favoriteCount: number;
   commentCount: number;
+  inquiryCount: number;
   imageUrl: string;
+  viewCount: number;
+};
+
+export type LocalProfileReviewReply = {
+  content: string;
+  createdAtText: string;
+};
+
+export type LocalProfileReview = {
+  id: number;
+  authorName: string;
+  authorRegionText: string;
+  certifiedCount: number;
+  createdAtText: string;
+  profileImageUrl: string;
+  rating: number;
+  content: string;
+  helpfulCount: number;
+  imageUrls?: string[];
+  reply?: LocalProfileReviewReply;
 };
 
 export type LocalProfileDocumentRow = {
@@ -142,6 +163,7 @@ export type LocalProfileItem = {
   prices?: LocalProfilePrice[];
   coupons?: LocalProfileCoupon[];
   news?: LocalProfileNews[];
+  reviews?: LocalProfileReview[];
   storeInfo?: LocalProfileStoreInfo;
 };
 

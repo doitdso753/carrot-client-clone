@@ -146,7 +146,9 @@ const LOCAL_PROFILE_NEWS = {
       createdAtText: '약 17시간',
       favoriteCount: 0,
       commentCount: 0,
+      inquiryCount: 0,
       imageUrl: 'https://picsum.photos/seed/store-news1/184/184',
+      viewCount: 15,
     },
     {
       id: 2,
@@ -156,7 +158,9 @@ const LOCAL_PROFILE_NEWS = {
       createdAtText: '약 17시간',
       favoriteCount: 1,
       commentCount: 0,
+      inquiryCount: 0,
       imageUrl: 'https://picsum.photos/seed/store-news2/184/184',
+      viewCount: 12,
     },
     {
       id: 3,
@@ -166,7 +170,9 @@ const LOCAL_PROFILE_NEWS = {
       createdAtText: '약 17시간',
       favoriteCount: 1,
       commentCount: 0,
+      inquiryCount: 0,
       imageUrl: 'https://picsum.photos/seed/store-news3/184/184',
+      viewCount: 9,
     },
     {
       id: 4,
@@ -176,7 +182,68 @@ const LOCAL_PROFILE_NEWS = {
       createdAtText: '약 1일',
       favoriteCount: 2,
       commentCount: 1,
+      inquiryCount: 1,
       imageUrl: 'https://picsum.photos/seed/store-news4/184/184',
+      viewCount: 21,
+    },
+  ],
+};
+
+const LOCAL_PROFILE_REVIEWS = {
+  reviews: [
+    {
+      id: 1,
+      authorName: '코스모스',
+      authorRegionText: '충남 아산시 탕정면',
+      certifiedCount: 21,
+      createdAtText: '6일 전 작성',
+      profileImageUrl: 'https://picsum.photos/seed/review-profile1/96/96',
+      rating: 5.0,
+      content:
+        '예쁜 테디베어 해바라기 알게해주심도 감사한데요. 튼튼하게 잘 자란 모종 주셔서 감사해요. 게다가 꽃 잘 피우는 비료까지 주시구요. 크게 잘 자라겠 주시는데 가격도 아기모종값으로 엄청 착하게 주시니 황송합니다. 잘 키울게요. 고맙습니다.',
+      helpfulCount: 0,
+      imageUrls: [
+        'https://picsum.photos/seed/review1-image1/328/328',
+        'https://picsum.photos/seed/review1-image2/328/328',
+      ],
+      reply: {
+        createdAtText: '6일 전',
+        content: '친절한 후기 감사드립니다. 예쁘게 키우세요^^',
+      },
+    },
+    {
+      id: 2,
+      authorName: '초코맘',
+      authorRegionText: '경기 수원시 장안구 연무동',
+      certifiedCount: 28,
+      createdAtText: '22일 전 작성',
+      profileImageUrl: 'https://picsum.photos/seed/review-profile2/96/96',
+      rating: 3.0,
+      content:
+        '사장님께서직접배달까지해주셔서넘감사하고 넘싱싱하고 당도 도적당하고 넘맛있어요 제가차가없다하시니 제가있는곳까지와주셨습니다 너무나도 감사합니다',
+      helpfulCount: 1,
+      reply: {
+        createdAtText: '22일 전',
+        content:
+          '감사합니다 ~~맛있게 드셨다니 저도 기쁩니다. 친절한 후기 감사드립니다^^',
+      },
+    },
+    {
+      id: 3,
+      authorName: 'soo',
+      authorRegionText: '경기 수원시 권선구 권선1동',
+      certifiedCount: 26,
+      createdAtText: '약 1개월 전 작성',
+      profileImageUrl: 'https://picsum.photos/seed/review-profile3/96/96',
+      rating: 4.5,
+      content:
+        '테디베어해바라기 모종. 넘튼실하고 이뻐요 꽃피면. 사진ㅇㅎ 올려드릴게요',
+      helpfulCount: 0,
+      imageUrls: ['https://picsum.photos/seed/review3-image1/328/328'],
+      reply: {
+        createdAtText: '1개월 전',
+        content: '잘 키워서 풍성한 꽃 보시길 바랄게요. 후기 감사합니다^^',
+      },
     },
   ],
 };
@@ -238,6 +305,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
     ...LOCAL_PROFILE_NEWS,
+    ...LOCAL_PROFILE_REVIEWS,
     imageUrls: [
       'https://picsum.photos/seed/store1/240/240',
       'https://picsum.photos/seed/store1-detail1/240/240',
@@ -267,6 +335,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
     ...LOCAL_PROFILE_NEWS,
+    ...LOCAL_PROFILE_REVIEWS,
     imageUrls: [
       'https://picsum.photos/seed/store2/240/240',
       'https://picsum.photos/seed/store2-detail1/240/240',
@@ -295,6 +364,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
     ...LOCAL_PROFILE_NEWS,
+    ...LOCAL_PROFILE_REVIEWS,
     imageUrls: [
       'https://picsum.photos/seed/store3/240/240',
       'https://picsum.photos/seed/store3-detail1/240/240',
@@ -323,6 +393,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
     ...LOCAL_PROFILE_NEWS,
+    ...LOCAL_PROFILE_REVIEWS,
     imageUrls: [
       'https://picsum.photos/seed/store4/240/240',
       'https://picsum.photos/seed/store4-detail1/240/240',
@@ -351,6 +422,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
     ...LOCAL_PROFILE_NEWS,
+    ...LOCAL_PROFILE_REVIEWS,
     imageUrls: [
       'https://picsum.photos/seed/store5/240/240',
       'https://picsum.photos/seed/store5-detail1/240/240',
@@ -379,6 +451,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
     ...LOCAL_PROFILE_NEWS,
+    ...LOCAL_PROFILE_REVIEWS,
     imageUrls: [
       'https://picsum.photos/seed/store6/240/240',
       'https://picsum.photos/seed/store6-detail1/240/240',
@@ -407,6 +480,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
     ...LOCAL_PROFILE_NEWS,
+    ...LOCAL_PROFILE_REVIEWS,
     imageUrls: [
       'https://picsum.photos/seed/store7/240/240',
       'https://picsum.photos/seed/store7-detail1/240/240',
@@ -435,6 +509,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
     ...LOCAL_PROFILE_NEWS,
+    ...LOCAL_PROFILE_REVIEWS,
     imageUrls: [
       'https://picsum.photos/seed/store8/240/240',
       'https://picsum.photos/seed/store8-detail1/240/240',
@@ -463,6 +538,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
     ...LOCAL_PROFILE_NEWS,
+    ...LOCAL_PROFILE_REVIEWS,
     imageUrls: [
       'https://picsum.photos/seed/store9/240/240',
       'https://picsum.photos/seed/store9-detail1/240/240',
@@ -491,6 +567,7 @@ export const LOCAL_PROFILE_ITEMS: LocalProfileItem[] = [
     ...LOCAL_PROFILE_COUPONS,
     ...LOCAL_PROFILE_STORE_INFO,
     ...LOCAL_PROFILE_NEWS,
+    ...LOCAL_PROFILE_REVIEWS,
     imageUrls: [
       'https://picsum.photos/seed/store10/240/240',
       'https://picsum.photos/seed/store10-detail1/240/240',
