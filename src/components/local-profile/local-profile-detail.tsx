@@ -65,6 +65,11 @@ export default function LocalProfileDetail({
               <hr className="local-profile-detail-section-divider" />
               <LocalProfilePriceSection prices={item.prices} />
               <hr className="local-profile-detail-section-divider" />
+              <LocalProfileReviewSection
+                reviewCount={item.reviewCount}
+                reviews={item.reviews}
+              />
+              <hr className="local-profile-detail-section-divider" />
               <LocalProfileCouponSection coupons={item.coupons} />
               <hr className="local-profile-detail-section-divider" />
               <LocalProfileNewsSection
