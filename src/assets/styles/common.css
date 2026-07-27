@@ -238,8 +238,10 @@
 }
 
 .common-primary-button {
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.8rem;
   padding: 1rem 1.6rem;
   border-radius: 0.8rem;
@@ -248,6 +250,35 @@
   font-size: var(--text-sm);
   line-height: var(--line-height-text-sm);
   font-weight: var(--font-weight-bold);
+}
+
+.common-primary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.current-location-button-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.current-location-button-content.is-loading {
+  visibility: hidden;
+}
+
+.current-location-button-spinner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-location-button-spinner .spinner-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  animation: spinner-icon-rotate 800ms linear infinite;
 }
 
 .common-toast-wrapper {
@@ -746,6 +777,7 @@
 }
 
 .region-setting-popup-current-button {
+  position: relative;
   display: flex;
   width: 100%;
   align-items: center;
@@ -761,9 +793,36 @@
   font-weight: var(--font-weight-extrabold);
 }
 
+.region-setting-popup-current-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.spinner-icon-track {
+  opacity: 0.3;
+}
+
+.spinner-icon-range {
+  stroke-dasharray: 42 57;
+}
+
+@keyframes spinner-icon-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .region-setting-popup-current-icon {
   width: 1.8rem;
   height: 1.8rem;
+}
+
+.region-setting-popup-location-status {
+  margin-top: 0.8rem;
+  font-size: var(--text-xl);
+  line-height: var(--line-height-text-sm);
+  font-weight: var(--font-weight-bold);
+  margin-block: 2rem;
 }
 
 .region-setting-popup-recommend {

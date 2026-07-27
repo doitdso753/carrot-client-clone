@@ -1,13 +1,15 @@
-import { useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import {
   CheckboxCheckedIcon,
   ChevronDownFillIcon,
   CloseIcon,
   FilterIcon,
   LocationIcon,
+  SpinnerIcon,
 } from '@/assets/icons';
 import CommonPopup from '@/components/ui/common-popup.tsx';
 import RegionSettingPopup from '@/components/ui/region-setting-popup.tsx';
+import useCurrentLocationRequest from '@/hooks/use-current-location-request.ts';
 import usePageFilter from '@/hooks/use-page-filter.ts';
 import usePopup from '@/hooks/use-popup.ts';
 import { BUY_SELL_PRICE_OPTIONS } from '@/types/buy-sell-constants.ts';
@@ -298,6 +300,18 @@ export default function SearchFilter({
     openPopup: openTabletFilter,
     closePopup: closeTabletFilter,
   } = usePopup();
+  const {
+    locationErrorCode,
+    locationRequestStatus,
+    requestCurrentLocation,
+  } = useCurrentLocationRequest();
+  const isCurrentLocationLoading = locationRequestStatus === 'requesting';
+
+  useEffect(() => {
+    if (locationRequestStatus === 'error' && locationErrorCode) {
+      openRegionPopup();
+    }
+  }, [locationErrorCode, locationRequestStatus, openRegionPopup]);
 
   const selectedItems = [
     ...categoryItems.filter((category) =>
@@ -344,10 +358,22 @@ export default function SearchFilter({
         <div className="search-filter-region-actions">
           <button
             className="common-primary-button"
+            disabled={isCurrentLocationLoading}
             type="button"
-            onClick={openRegionPopup}
+            onClick={requestCurrentLocation}
           >
-            <LocationIcon className="h-5 w-5" />현 위치로 설정
+            <span
+              className={`current-location-button-content ${
+                isCurrentLocationLoading ? 'is-loading' : ''
+              }`}
+            >
+              <LocationIcon className="h-5 w-5" />현 위치로 설정
+            </span>
+            {isCurrentLocationLoading && (
+              <span className="current-location-button-spinner">
+                <SpinnerIcon />
+              </span>
+            )}
           </button>
           <button
             className="common-select-button"
@@ -409,10 +435,22 @@ export default function SearchFilter({
           </button>
           <button
             className="common-primary-button"
+            disabled={isCurrentLocationLoading}
             type="button"
-            onClick={openRegionPopup}
+            onClick={requestCurrentLocation}
           >
-            <LocationIcon className="h-5 w-5" />현 위치로 설정
+            <span
+              className={`current-location-button-content ${
+                isCurrentLocationLoading ? 'is-loading' : ''
+              }`}
+            >
+              <LocationIcon className="h-5 w-5" />현 위치로 설정
+            </span>
+            {isCurrentLocationLoading && (
+              <span className="current-location-button-spinner">
+                <SpinnerIcon />
+              </span>
+            )}
           </button>
         </section>
 
@@ -488,7 +526,9 @@ export default function SearchFilter({
         )}
       </aside>
       <RegionSettingPopup
+        initialLocationErrorCode={locationErrorCode}
         isOpen={isRegionPopupOpen}
+        key={`${locationRequestStatus}-${locationErrorCode ?? 'none'}`}
         onClose={closeRegionPopup}
       />
       <FilterPopup
