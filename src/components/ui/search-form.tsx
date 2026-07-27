@@ -9,6 +9,7 @@ import {
   ArrowRightIcon,
   CheckedIcon,
   ChevronDownFillIcon,
+  ChevronDownIcon,
   SearchIcon,
 } from '@/assets/icons';
 
@@ -19,9 +20,11 @@ type SearchFormOption = {
 };
 
 type SearchFormSubmitIconType = 'arrow' | 'search';
+type SearchFormChevronIconType = 'outline' | 'fill';
 
 type SearchFormProps = {
   options: readonly SearchFormOption[];
+  chevronIconType?: SearchFormChevronIconType;
   initialOptionLabel?: string;
   submitIconType?: SearchFormSubmitIconType;
 };
@@ -31,8 +34,14 @@ const SUBMIT_ICONS: Record<SearchFormSubmitIconType, ReactNode> = {
   search: <SearchIcon />,
 };
 
+const CHEVRON_ICONS: Record<SearchFormChevronIconType, ReactNode> = {
+  outline: <ChevronDownIcon />,
+  fill: <ChevronDownFillIcon />,
+};
+
 export default function SearchForm({
   options,
+  chevronIconType = 'fill',
   initialOptionLabel,
   submitIconType = 'arrow',
 }: SearchFormProps): ReactNode {
@@ -43,6 +52,7 @@ export default function SearchForm({
   const [isOpen, setIsOpen] = useState(false);
   const selectedOption =
     options.find((option) => option.label === selectedLabel) ?? null;
+  const chevronIcon = CHEVRON_ICONS[chevronIconType];
   const submitIcon = SUBMIT_ICONS[submitIconType];
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>): void => {
@@ -82,7 +92,7 @@ export default function SearchForm({
           )}
           <span>{selectedOption?.label ?? '카테고리'}</span>
           <span className="form-select-chevron" aria-hidden="true">
-            <ChevronDownFillIcon />
+            {chevronIcon}
           </span>
         </button>
         <input

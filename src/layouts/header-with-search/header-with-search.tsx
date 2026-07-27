@@ -50,6 +50,7 @@ export function HeaderWithSearch({
               initialOptionLabel={activeCategory?.label}
               options={SEARCH_OPTIONS}
               submitIconType="search"
+              chevronIconType="outline"
             />
           </div>
 

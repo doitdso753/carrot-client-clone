@@ -30,6 +30,10 @@
   color: var(--color-palette-gray-700);
 }
 
+.form-select-chevron svg {
+  width: 1rem;
+}
+
 .form-select-menu {
   position: absolute;
   z-index: 20;
