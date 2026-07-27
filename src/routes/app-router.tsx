@@ -5,6 +5,7 @@ import BuySellPage from '@/pages/buy-sell';
 import BuySellDetailPage from '@/pages/buy-sell/buy-sell-detail-page';
 import LocalProfilePage from '@/pages/local-profile';
 import LocalProfileDetailPage from '@/pages/local-profile/local-profile-detail-page.tsx';
+import LocalProfileNewsDetailPage from '@/pages/local-profile/local-profile-news-detail-page.tsx';
 
 function AppRouter(): ReactNode {
   return (
@@ -16,6 +17,10 @@ function AppRouter(): ReactNode {
       <Route
         path="/local-profile/:itemId"
         element={<LocalProfileDetailPage />}
+      />
+      <Route
+        path="/local-profile/:itemId/news/:newsId"
+        element={<LocalProfileNewsDetailPage />}
       />
     </Routes>
   );

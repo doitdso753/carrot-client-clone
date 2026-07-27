@@ -145,10 +145,26 @@ const LOCAL_PROFILE_NEWS = {
         '셀프 인테리어 현장의 조명 마감 작업을 진행했습니다. 기존 배선 상태를 점검하고 천장 마감재 손상 없이 깔끔하게 시공했습니다.',
       createdAtText: '약 17시간',
       favoriteCount: 0,
-      commentCount: 0,
+      commentCount: 2,
       inquiryCount: 0,
       imageUrl: 'https://picsum.photos/seed/store-news1/184/184',
       viewCount: 15,
+      comments: [
+        {
+          id: 1,
+          authorName: '전구요정',
+          content: '거실 조명도 같은 방식으로 교체 가능한가요?',
+          createdAt: '2026-07-26T08:30:00+09:00',
+          profileImageUrl: 'https://picsum.photos/seed/news-comment1/76/76',
+        },
+        {
+          id: 2,
+          authorName: '영통이웃',
+          content: '깔끔하게 시공된 것 같아요. 비용 문의드려요.',
+          createdAt: '2026-07-26T10:20:00+09:00',
+          profileImageUrl: 'https://picsum.photos/seed/news-comment2/76/76',
+        },
+      ],
     },
     {
       id: 2,

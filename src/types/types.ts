@@ -90,6 +90,15 @@ export type LocalProfileNews = {
   inquiryCount: number;
   imageUrl: string;
   viewCount: number;
+  comments?: LocalProfileNewsComment[];
+};
+
+export type LocalProfileNewsComment = {
+  id: number;
+  authorName: string;
+  content: string;
+  createdAt: string;
+  profileImageUrl: string;
 };
 
 export type LocalProfileReviewReply = {
