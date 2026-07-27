@@ -17,8 +17,7 @@
   white-space: nowrap;
 }
 
-.form-select-icon,
-.form-select-option-icon {
+.form-select-icon {
   display: flex;
   flex-shrink: 0;
   align-items: center;
@@ -46,11 +45,6 @@
     0 0.2rem 0.6rem rgb(0 0 0 / 6%);
 }
 
-.form-select-menu svg {
-  width: 1.6rem;
-  height: 2.4rem;
-}
-
 .form-select-option {
   display: flex;
   width: 100%;
@@ -66,6 +60,10 @@
   font-weight: var(--font-weight-bold);
 }
 
+.form-select-option svg {
+  width: 1.6rem;
+}
+
 .form-select-option:hover,
 .form-select-option:focus-visible {
   background-color: var(--color-palette-gray-100);
@@ -78,7 +76,6 @@
 }
 
 .form-select-check {
-  position: relative;
   display: none;
   flex-shrink: 0;
   width: 1.8rem;
@@ -87,19 +84,14 @@
 }
 
 .form-select-option.is-selected .form-select-check {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.form-select-check::before {
-  position: absolute;
-  top: 0.2rem;
-  left: 0.6rem;
-  width: 0.6rem;
-  height: 1rem;
-  border-right: 0.2rem solid var(--color-palette-gray-1000);
-  border-bottom: 0.2rem solid var(--color-palette-gray-1000);
-  content: '';
-  transform: rotate(45deg);
+.form-select-option.is-selected .form-select-check svg {
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 .search-form-submit-wrapper {

@@ -7,6 +7,7 @@ import {
 import { useNavigate } from 'react-router';
 import {
   ArrowRightIcon,
+  CheckedIcon,
   ChevronDownFillIcon,
   SearchIcon,
 } from '@/assets/icons';
@@ -105,13 +106,11 @@ export default function SearchForm({
                     aria-selected={isSelected}
                     onClick={() => handleSelectOption(option)}
                   >
-                    {option.icon && (
-                      <span className="form-select-option-icon">
-                        {option.icon}
-                      </span>
-                    )}
-                    <span>{option.label}</span>
-                    <span className="form-select-check" aria-hidden="true" />
+                    {option.icon && option.icon}
+                    {option.label}
+                    <span className="form-select-check" aria-hidden="true">
+                      <CheckedIcon />
+                    </span>
                   </button>
                 </li>
               );
