@@ -77,6 +77,8 @@
 }
 
 .header-category-mobile-nav-popover {
+  --mobile-nav-popover-header-height: 0;
+
   position: fixed;
   inset: 0;
   z-index: 50;
