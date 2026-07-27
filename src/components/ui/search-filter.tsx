@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from 'react';
 import {
-  CheckedIcon,
+  CheckboxCheckedIcon,
   ChevronDownFillIcon,
   CloseIcon,
   FilterIcon,
@@ -69,7 +69,7 @@ function FilterChoiceList({
                   onChange={() => handleChange(item.code)}
                 />
                 <span className="common-checkbox-icon" aria-hidden="true">
-                  <CheckedIcon />
+                  <CheckboxCheckedIcon />
                 </span>
               </span>
               {item.label}
@@ -204,7 +204,7 @@ function FilterPopup({
                 onChange={(event) => setIsAvailableOnly(event.target.checked)}
               />
               <span className="common-checkbox-icon" aria-hidden="true">
-                <CheckedIcon />
+                <CheckboxCheckedIcon />
               </span>
             </span>
             거래 가능한 보기
@@ -423,7 +423,7 @@ export default function SearchFilter({
               <span className="common-checkbox-wrapper">
                 <input className="common-checkbox-input" type="checkbox" />
                 <span className="common-checkbox-icon" aria-hidden="true">
-                  <CheckedIcon />
+                  <CheckboxCheckedIcon />
                 </span>
               </span>
               거래 가능한 보기
