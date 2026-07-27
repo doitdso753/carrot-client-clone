@@ -63,7 +63,7 @@ export default function SearchForm({
   };
 
   return (
-    <form className="mt-14 flex w-full items-center rounded-full border border-(--color-palette-gray-300) bg-(--color-palette-gray-00) shadow-sm">
+    <form className="mt-14 flex w-full items-center rounded-full border border-(--color-palette-gray-400) bg-(--color-palette-gray-00)">
       <div
         className="form-select"
         onBlur={handleBlur}
