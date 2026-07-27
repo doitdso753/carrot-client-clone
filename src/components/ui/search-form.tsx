@@ -4,6 +4,7 @@ import {
   type KeyboardEvent,
   type ReactNode,
 } from 'react';
+import { useNavigate } from 'react-router';
 import {
   ArrowRightIcon,
   ChevronDownFillIcon,
@@ -12,6 +13,7 @@ import {
 
 type SearchFormOption = {
   label: string;
+  routing: string;
   icon?: ReactNode;
 };
 
@@ -33,6 +35,7 @@ export default function SearchForm({
   initialOptionLabel,
   submitIconType = 'arrow',
 }: SearchFormProps): ReactNode {
+  const navigate = useNavigate();
   const [selectedLabel, setSelectedLabel] = useState(
     initialOptionLabel ?? options[0]?.label ?? '',
   );
@@ -56,6 +59,7 @@ export default function SearchForm({
   const handleSelectOption = (option: SearchFormOption): void => {
     setSelectedLabel(option.label);
     setIsOpen(false);
+    navigate(option.routing);
   };
 
   return (

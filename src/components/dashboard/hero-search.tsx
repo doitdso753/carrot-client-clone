@@ -32,6 +32,7 @@ export default function HeroSearch({
   const [isReverseMotion, setIsReverseMotion] = useState(false);
   const searchOptions = categories.map((category) => ({
     label: category.label,
+    routing: category.routing,
   }));
 
   useEffect(() => {

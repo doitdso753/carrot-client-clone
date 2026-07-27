@@ -11,6 +11,7 @@ import HeaderCategoryNav from '@/layouts/header-with-search/nav/header-category-
 
 const SEARCH_OPTIONS = CATEGORIES.map((category) => ({
   label: category.label,
+  routing: category.routing,
   icon: <CategoryIcon iconName={category.iconName} />,
 }));
 
