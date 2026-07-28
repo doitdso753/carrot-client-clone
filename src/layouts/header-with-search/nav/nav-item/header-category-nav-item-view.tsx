@@ -17,7 +17,7 @@ export default function HeaderCategoryNavItemView({
       <span className="header-category-icon shrink-0">
         <CategoryIcon iconName={item.iconName} />
       </span>
-      <span>{item.label}</span>
+      <span className="header-category-nav-item-label">{item.label}</span>
       {actionIcon && (
         <span className="header-category-action-icon shrink-0 text-(--color-palette-gray-700)">
           {actionIcon}

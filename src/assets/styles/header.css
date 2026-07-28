@@ -360,8 +360,7 @@
   flex: 0 0 auto;
   height: 4rem;
   align-items: center;
-  gap: 0.8rem;
-  padding-inline: 1.6rem;
+  padding-inline: 1rem;
   border: 0.1rem solid var(--color-palette-gray-300);
   border-radius: 999rem;
   background-color: var(--color-palette-gray-00);
@@ -374,6 +373,10 @@
   transition:
     background-color 150ms ease,
     border-color 150ms ease;
+}
+
+.header-category-nav-item-label {
+  margin-inline: 0.6rem;
 }
 
 .header-category-nav-item-trigger:hover,
