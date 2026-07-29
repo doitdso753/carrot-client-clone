@@ -29,6 +29,12 @@ export function getElapsedTimeText(date: Date | string | number): string {
   return `${Math.floor(diffMonths / 12)}년전`;
 }
 
+export function getLegalDong(region: string): string {
+  const regionParts = region.trim().split(/\s+/);
+
+  return regionParts[regionParts.length - 1] ?? region;
+}
+
 export async function copyTextToClipboard(text: string): Promise<void> {
   if (navigator.clipboard) {
     await navigator.clipboard.writeText(text);

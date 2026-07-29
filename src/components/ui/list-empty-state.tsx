@@ -1,14 +1,9 @@
 import type { ReactNode } from 'react';
+import { getLegalDong } from '@/lib/utils.ts';
 
 type ListEmptyStateProps = {
   region: string;
 };
-
-function getLegalDong(region: string): string {
-  const regionParts = region.trim().split(/\s+/);
-
-  return regionParts[regionParts.length - 1] ?? region;
-}
 
 export default function ListEmptyState({
   region,
