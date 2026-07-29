@@ -366,6 +366,30 @@
   min-height: 4rem;
 }
 
+.list-empty-state {
+  display: flex;
+  min-height: 24rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 1rem;
+  text-align: center;
+}
+
+.list-empty-state strong {
+  color: var(--color-palette-gray-1000);
+  font-size: 2rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text-xl);
+}
+
+.list-empty-state p {
+  color: #868b94;
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-base);
+}
+
 .common-checkbox-wrapper {
   position: relative;
   display: inline-flex;
