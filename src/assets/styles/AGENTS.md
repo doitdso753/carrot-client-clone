@@ -11,3 +11,4 @@ css 파일 모음
 - 2차원 레이아웃만 **Grid**를 사용한다.
 - 고정 Width/Height 사용 지양
 - !important 사용 지양
+- 설정 값은 brand.css, tailwindcss 토큰을 우선 사용한다.
