@@ -48,7 +48,7 @@ export default function HeaderCategoryPopoverNavItem({
   item,
 }: HeaderCategoryPopoverNavItemProps): ReactNode {
   const { anchorRef, isPopoverOpen, popoverStyle, openPopover, closePopover } =
-    useAnchorHoverPopover<HTMLButtonElement>();
+    useAnchorHoverPopover<HTMLAnchorElement>();
 
   return (
     <div
@@ -58,10 +58,10 @@ export default function HeaderCategoryPopoverNavItem({
       onFocus={openPopover}
       onBlur={closePopover}
     >
-      <button
+      <Link
         ref={anchorRef}
         className="header-category-nav-item-trigger"
-        type="button"
+        to={item.routing}
         aria-haspopup="menu"
         aria-expanded={isPopoverOpen}
       >
@@ -69,7 +69,7 @@ export default function HeaderCategoryPopoverNavItem({
           item={item}
           actionIcon={<ChevronDownIcon />}
         />
-      </button>
+      </Link>
       {isPopoverOpen && item.options && (
         <HeaderCategoryNavItemPopover
           options={item.options}
