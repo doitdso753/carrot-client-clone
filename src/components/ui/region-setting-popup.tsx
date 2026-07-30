@@ -1,14 +1,12 @@
-import type { ReactNode } from 'react';
-import {
-  CurrentLocationIcon,
-  SearchIcon,
-  SpinnerIcon,
-} from '@/assets/icons';
+import { useState, type ReactNode, type SubmitEvent } from 'react';
+import { CurrentLocationIcon, SearchIcon, SpinnerIcon } from '@/assets/icons';
 import { BUY_SELL_RECOMMENDED_LOCATIONS } from '@/types/buy-sell-constants.ts';
 import CommonPopup from '@/components/ui/common-popup';
 import useCurrentLocationRequest, {
   type CurrentLocationErrorCode,
 } from '@/hooks/use-current-location-request.ts';
+import useRegion from '@/hooks/use-region.ts';
+import { removeCommaFromString } from '@/lib/utils.ts';
 
 const LOCATION_ERROR_MESSAGES: Record<CurrentLocationErrorCode, string> = {
   GEOLOCATION_UNSUPPORTED: '이 브라우저에서는 위치 정보를 지원하지 않아요.',
@@ -29,11 +27,10 @@ export default function RegionSettingPopup({
   isOpen,
   onClose,
 }: RegionSettingPopupProps): ReactNode {
-  const {
-    locationErrorCode,
-    locationRequestStatus,
-    requestCurrentLocation,
-  } = useCurrentLocationRequest();
+  const { setRegion } = useRegion();
+  const [regionKeyword, setRegionKeyword] = useState('');
+  const { locationErrorCode, locationRequestStatus, requestCurrentLocation } =
+    useCurrentLocationRequest();
   const displayedLocationErrorCode =
     locationRequestStatus === 'idle'
       ? initialLocationErrorCode
@@ -41,14 +38,41 @@ export default function RegionSettingPopup({
         ? locationErrorCode
         : null;
 
+  const handleSubmit = (event: SubmitEvent): void => {
+    event.preventDefault();
+
+    const nextRegion = removeCommaFromString(regionKeyword).trim();
+
+    if (!nextRegion) {
+      return;
+    }
+
+    setRegion(nextRegion);
+    setRegionKeyword('');
+    onClose();
+  };
+
+  const handleSelectRegion = (region: string): void => {
+    setRegion(removeCommaFromString(region));
+    setRegionKeyword('');
+    onClose();
+  };
+
   return (
     <CommonPopup isOpen={isOpen} title="지역 변경" onClose={onClose}>
-      <form className="region-setting-popup-search-form">
+      <form
+        className="region-setting-popup-search-form"
+        onSubmit={handleSubmit}
+      >
         <input
           aria-label="지역 검색"
           className="region-setting-popup-search-input"
           placeholder="지역이나 동네로 검색하기"
           type="search"
+          value={regionKeyword}
+          onChange={(event) =>
+            setRegionKeyword(removeCommaFromString(event.target.value))
+          }
         />
         <button
           aria-label="지역 검색"
@@ -93,7 +117,12 @@ export default function RegionSettingPopup({
         <ul className="region-setting-popup-recommend-list">
           {BUY_SELL_RECOMMENDED_LOCATIONS.map((location) => (
             <li className="region-setting-popup-recommend-item" key={location}>
-              <button type="button">{location}</button>
+              <button
+                type="button"
+                onClick={() => handleSelectRegion(location)}
+              >
+                {location}
+              </button>
             </li>
           ))}
         </ul>

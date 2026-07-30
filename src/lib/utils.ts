@@ -35,6 +35,10 @@ export function getLegalDong(region: string): string {
   return regionParts[regionParts.length - 1] ?? region;
 }
 
+export function removeCommaFromString(value: string): string {
+  return value.replace(/,/g, '');
+}
+
 export async function copyTextToClipboard(text: string): Promise<void> {
   if (navigator.clipboard) {
     await navigator.clipboard.writeText(text);
