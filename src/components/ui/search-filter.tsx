@@ -1,310 +1,130 @@
-import { useEffect, useState, type ReactNode } from 'react';
-import {
-  CheckboxCheckedIcon,
-  ChevronDownFillIcon,
-  CloseIcon,
-  FilterIcon,
-  LocationIcon,
-  SpinnerIcon,
-} from '@/assets/icons';
+import { useEffect, type ReactNode } from 'react';
+import { FilterIcon } from '@/assets/icons';
 import CommonPopup from '@/components/ui/common-popup.tsx';
 import RegionSettingPopup from '@/components/ui/region-setting-popup.tsx';
+import {
+  SearchFilterProvider,
+  type SearchFilterContextValue,
+} from '@/components/ui/search-filter/search-filter-context.tsx';
+import SearchFilterFields from '@/components/ui/search-filter/search-filter-fields.tsx';
+import SearchFilterHeader from '@/components/ui/search-filter/search-filter-header.tsx';
+import SearchFilterRegion from '@/components/ui/search-filter/search-filter-region.tsx';
+import SelectedFilterSummary from '@/components/ui/search-filter/selected-filter-summary.tsx';
 import useCurrentLocationRequest from '@/hooks/use-current-location-request.ts';
 import usePageFilter from '@/hooks/use-page-filter.ts';
 import usePopup from '@/hooks/use-popup.ts';
-import { BUY_SELL_PRICE_OPTIONS } from '@/types/buy-sell-constants.ts';
-
-type SearchFilterItem = {
-  code: string;
-  label: string;
-};
+import {
+  SEARCH_FILTER_CONFIGS,
+  type SearchFilterConfig,
+  type SearchFilterFieldName,
+  type SearchFilterSectionKey,
+  type SearchFilterVariant,
+} from '@/types/search-filter-configs.ts';
+import {
+  getSelectedFilterBySectionKey,
+  getSelectedServiceItems,
+  hasAppliedRangeFilters,
+  hasSelectedSectionFilters,
+} from '@/lib/search-filter-summary-utils.ts';
 
 type SearchFilterProps = {
-  categories: readonly (SearchFilterItem | string)[];
-  filterStorageKey: string;
   region: string;
-  options?: readonly SearchFilterItem[];
-  popupTitle?: string;
+  variant: SearchFilterVariant;
 };
 
-type FilterChoiceListProps = {
-  items: readonly SearchFilterItem[];
-  isMultiple?: boolean;
-  name: string;
-  selectedCodes: string[];
-  onChange: (codes: string[]) => void;
+type ServiceSearchFilterProps = {
+  config: SearchFilterConfig;
+  region: string;
 };
 
-function FilterChoiceList({
-  items,
-  isMultiple = false,
-  name,
-  selectedCodes,
-  onChange,
-}: FilterChoiceListProps): ReactNode {
-  const handleChange = (code: string): void => {
-    if (!isMultiple) {
-      onChange([code]);
-      return;
-    }
+type SearchFilterPriceInputFieldCode = 'maximumPrice' | 'minimumPrice';
 
-    onChange(
-      selectedCodes.includes(code)
-        ? selectedCodes.filter((selectedCode) => selectedCode !== code)
-        : [...selectedCodes, code],
-    );
-  };
+type SearchFilterState = {
+  appliedPriceRange: {
+    maximumPrice: string;
+    minimumPrice: string;
+  } | null;
+  maximumPrice: string;
+  minimumPrice: string;
+  selectedCodesByKey: Partial<Record<SearchFilterSectionKey, string[]>>;
+  selectedPrice: string;
+};
 
+const INITIAL_SEARCH_FILTER_STATE: SearchFilterState = {
+  appliedPriceRange: null,
+  maximumPrice: '',
+  minimumPrice: '',
+  selectedCodesByKey: {},
+  selectedPrice: '',
+};
+
+function isSearchFilterPriceInputFieldCode(
+  field: SearchFilterFieldName,
+): field is SearchFilterPriceInputFieldCode {
+  return field === 'maximumPrice' || field === 'minimumPrice';
+}
+
+function isSearchFilterState(value: unknown): value is SearchFilterState {
   return (
-    <ul className="search-filter-category-list">
-      {items.map((item) => (
-        <li key={item.code}>
-          {isMultiple ? (
-            <label className="search-filter-checkbox-option search-filter-choice-option">
-              <span className="common-checkbox-wrapper">
-                <input
-                  checked={selectedCodes.includes(item.code)}
-                  className="common-checkbox-input"
-                  name={name}
-                  type="checkbox"
-                  value={item.code}
-                  onChange={() => handleChange(item.code)}
-                />
-                <span className="common-checkbox-icon" aria-hidden="true">
-                  <CheckboxCheckedIcon />
-                </span>
-              </span>
-              {item.label}
-            </label>
-          ) : (
-            <label className="common-radio-option">
-              <input
-                checked={selectedCodes.includes(item.code)}
-                className="common-radio-input"
-                name={name}
-                type="radio"
-                value={item.code}
-                onChange={() => handleChange(item.code)}
-              />
-              {item.label}
-            </label>
-          )}
-        </li>
-      ))}
-    </ul>
+    typeof value === 'object' &&
+    value !== null &&
+    'appliedPriceRange' in value &&
+    'maximumPrice' in value &&
+    'minimumPrice' in value &&
+    'selectedCodesByKey' in value &&
+    'selectedPrice' in value &&
+    (value.appliedPriceRange === null ||
+      (typeof value.appliedPriceRange === 'object' &&
+        'maximumPrice' in value.appliedPriceRange &&
+        'minimumPrice' in value.appliedPriceRange &&
+        typeof value.appliedPriceRange.maximumPrice === 'string' &&
+        typeof value.appliedPriceRange.minimumPrice === 'string')) &&
+    typeof value.maximumPrice === 'string' &&
+    typeof value.minimumPrice === 'string' &&
+    typeof value.selectedCodesByKey === 'object' &&
+    value.selectedCodesByKey !== null &&
+    Object.values(value.selectedCodesByKey).every(
+      (codes) =>
+        Array.isArray(codes) && codes.every((code) => typeof code === 'string'),
+    ) &&
+    typeof value.selectedPrice === 'string'
   );
 }
 
-type FilterOptionButtonListProps = {
-  items: readonly SearchFilterItem[];
-  selectedCodes: string[];
-  onChange: (codes: string[]) => void;
-};
-
-function FilterOptionButtonList({
-  items,
-  selectedCodes,
-  onChange,
-}: FilterOptionButtonListProps): ReactNode {
-  const handleToggle = (code: string): void => {
-    onChange(
-      selectedCodes.includes(code)
-        ? selectedCodes.filter((selectedCode) => selectedCode !== code)
-        : [...selectedCodes, code],
-    );
-  };
-
-  return (
-    <div className="search-filter-option-list">
-      {items.map((item) => (
-        <button
-          aria-pressed={selectedCodes.includes(item.code)}
-          className="search-filter-option-button"
-          key={item.code}
-          type="button"
-          onClick={() => handleToggle(item.code)}
-        >
-          {item.label}
-        </button>
-      ))}
-    </div>
-  );
+function toggleCode(codes: string[], code: string): string[] {
+  return codes.includes(code)
+    ? codes.filter((currentCode) => currentCode !== code)
+    : [...codes, code];
 }
 
-type FilterPopupProps = {
-  categories: readonly SearchFilterItem[];
-  isOpen: boolean;
-  options: readonly SearchFilterItem[];
-  popupTitle: string;
-  selectedCategoryCodes: string[];
-  selectedOptionCodes: string[];
-  onCategoryChange: (codes: string[]) => void;
-  onClose: () => void;
-  onOptionChange: (codes: string[]) => void;
-};
-
-function FilterPopup({
-  categories,
-  isOpen,
-  options,
-  popupTitle,
-  selectedCategoryCodes,
-  selectedOptionCodes,
-  onCategoryChange,
-  onClose,
-  onOptionChange,
-}: FilterPopupProps): ReactNode {
-  const isLocalProfileFilter = options.length > 0;
-  const [isAvailableOnly, setIsAvailableOnly] = useState(false);
-  const [selectedPrice, setSelectedPrice] = useState('');
-  const [minimumPrice, setMinimumPrice] = useState('');
-  const [maximumPrice, setMaximumPrice] = useState('');
-
-  const handleReset = (): void => {
-    setIsAvailableOnly(false);
-    onCategoryChange([]);
-    onOptionChange([]);
-    setSelectedPrice('');
-    setMinimumPrice('');
-    setMaximumPrice('');
-  };
-
-  const hasFilterValue =
-    isAvailableOnly ||
-    selectedCategoryCodes.length > 0 ||
-    selectedOptionCodes.length > 0 ||
-    Boolean(selectedPrice) ||
-    Boolean(minimumPrice) ||
-    Boolean(maximumPrice);
-
-  return (
-    <CommonPopup
-      footer={
-        <>
-          <button type="button" onClick={handleReset}>
-            전체 해제
-          </button>
-          <button disabled={!hasFilterValue} type="button" onClick={onClose}>
-            적용하기
-          </button>
-        </>
-      }
-      isOpen={isOpen}
-      title={popupTitle}
-      variant="bottom-sheet"
-      onClose={onClose}
-    >
-      {!isLocalProfileFilter && (
-        <section className="search-filter-section">
-          <h3>상태</h3>
-          <label className="search-filter-checkbox-option">
-            <span className="common-checkbox-wrapper">
-              <input
-                checked={isAvailableOnly}
-                className="common-checkbox-input"
-                type="checkbox"
-                onChange={(event) => setIsAvailableOnly(event.target.checked)}
-              />
-              <span className="common-checkbox-icon" aria-hidden="true">
-                <CheckboxCheckedIcon />
-              </span>
-            </span>
-            거래 가능한 보기
-          </label>
-        </section>
-      )}
-
-      <section className="search-filter-section">
-        <h3>카테고리</h3>
-        <FilterChoiceList
-          isMultiple={isLocalProfileFilter}
-          items={categories}
-          name="responsive-category"
-          selectedCodes={selectedCategoryCodes}
-          onChange={onCategoryChange}
-        />
-      </section>
-
-      {isLocalProfileFilter ? (
-        <section className="search-filter-section">
-          <h3>옵션</h3>
-          <FilterOptionButtonList
-            items={options}
-            selectedCodes={selectedOptionCodes}
-            onChange={onOptionChange}
-          />
-        </section>
-      ) : (
-        <section className="search-filter-section">
-          <h3>가격</h3>
-          <div className="search-filter-price-options">
-            {BUY_SELL_PRICE_OPTIONS.map((price) => (
-              <button
-                aria-pressed={selectedPrice === price}
-                className="search-filter-price-option"
-                key={price}
-                type="button"
-                onClick={() => setSelectedPrice(price)}
-              >
-                {price}
-              </button>
-            ))}
-          </div>
-          <div className="search-filter-price-range">
-            <input
-              className="common-number-input search-filter-price-input"
-              min="0"
-              placeholder="0"
-              type="number"
-              value={minimumPrice}
-              onChange={(event) => setMinimumPrice(event.target.value)}
-            />
-            <span>-</span>
-            <input
-              className="common-number-input search-filter-price-input"
-              min="0"
-              placeholder="최대"
-              type="number"
-              value={maximumPrice}
-              onChange={(event) => setMaximumPrice(event.target.value)}
-            />
-          </div>
-        </section>
-      )}
-    </CommonPopup>
-  );
-}
-
-export default function SearchFilter({
-  categories,
-  filterStorageKey,
+function ServiceSearchFilter({
+  config,
   region,
-  options = [],
-  popupTitle = '중고거래 검색 필터',
-}: SearchFilterProps): ReactNode {
-  const isLocalProfileFilter = options.length > 0;
-  const categoryItems = categories.map((category) =>
-    typeof category === 'string'
-      ? { code: category, label: category }
-      : category,
+}: ServiceSearchFilterProps): ReactNode {
+  const [filterState, setFilterState] = usePageFilter<SearchFilterState>(
+    config.filterStorageKey,
+    INITIAL_SEARCH_FILTER_STATE,
+    isSearchFilterState,
   );
-  const [filterState, setFilterState] = usePageFilter(filterStorageKey);
-  const { selectedCategoryCodes, selectedOptionCodes } = filterState;
+  const {
+    appliedPriceRange,
+    maximumPrice,
+    minimumPrice,
+    selectedCodesByKey,
+    selectedPrice,
+  } = filterState;
   const {
     isOpen: isRegionPopupOpen,
     openPopup: openRegionPopup,
     closePopup: closeRegionPopup,
   } = usePopup();
   const {
-    isOpen: isTabletFilterOpen,
-    openPopup: openTabletFilter,
-    closePopup: closeTabletFilter,
+    isOpen: isFilterPopupOpen,
+    openPopup: openFilterPopup,
+    closePopup: closeFilterPopup,
   } = usePopup();
-  const {
-    locationErrorCode,
-    locationRequestStatus,
-    requestCurrentLocation,
-  } = useCurrentLocationRequest();
+  const { locationErrorCode, locationRequestStatus, requestCurrentLocation } =
+    useCurrentLocationRequest();
   const isCurrentLocationLoading = locationRequestStatus === 'requesting';
 
   useEffect(() => {
@@ -313,235 +133,232 @@ export default function SearchFilter({
     }
   }, [locationErrorCode, locationRequestStatus, openRegionPopup]);
 
-  const selectedItems = [
-    ...categoryItems.filter((category) =>
-      selectedCategoryCodes.includes(category.code),
-    ),
-    ...options.filter((option) => selectedOptionCodes.includes(option.code)),
-  ];
+  // 카테고리, 옵션처럼 여러 값을 갖는 필터 선택값 변경
+  const handleCodesChange = (
+    key: SearchFilterSectionKey,
+    codes: string[],
+  ): void => {
+    setFilterState((currentState) => ({
+      ...currentState,
+      selectedCodesByKey: {
+        ...currentState.selectedCodesByKey,
+        [key]: codes,
+      },
+    }));
+  };
 
+  // section key와 item code를 기준으로 checkbox 선택값 토글
+  const handleSectionCodeToggle = (
+    key: SearchFilterSectionKey,
+    code: string,
+  ): void => {
+    handleCodesChange(key, toggleCode(selectedCodesByKey[key] ?? [], code));
+  };
+
+  // section key를 기준으로 radio 선택값 변경
+  const handleSectionValueChange = (
+    key: SearchFilterSectionKey,
+    value: string,
+  ): void => {
+    handleCodesChange(key, [value]);
+  };
+
+  // 가격 프리셋 선택 시 가격 범위 즉시 적용
+  const handleSelectedPriceChange = (value: string): void => {
+    const maximumPriceValue = value.replace(/\D/g, '');
+
+    setFilterState((currentState) => ({
+      ...currentState,
+      appliedPriceRange: maximumPriceValue
+        ? { maximumPrice: maximumPriceValue, minimumPrice: '0' }
+        : null,
+      selectedPrice: value,
+      maximumPrice: maximumPriceValue,
+      minimumPrice: maximumPriceValue ? '0' : '',
+    }));
+  };
+
+  // 가격 직접 입력값 변경
+  const handlePriceInputChange = (
+    code: SearchFilterPriceInputFieldCode,
+    value: string,
+  ): void => {
+    setFilterState((currentState) => ({
+      ...currentState,
+      [code]: value,
+      selectedPrice: '',
+    }));
+  };
+
+  // 전체 필터 상태 초기화
   const handleReset = (): void => {
-    setFilterState({
-      selectedCategoryCodes: [],
-      selectedOptionCodes: [],
-    });
+    setFilterState(INITIAL_SEARCH_FILTER_STATE);
   };
 
-  const handleCategoryChange = (codes: string[]): void => {
+  // 현재 가격 입력값을 적용 필터로 확정
+  const handleApplyPriceRange = (): void => {
+    if (!minimumPrice && !maximumPrice) {
+      return;
+    }
+
     setFilterState((currentState) => ({
       ...currentState,
-      selectedCategoryCodes: codes,
+      appliedPriceRange: { maximumPrice, minimumPrice },
     }));
+    closeFilterPopup();
   };
 
-  const handleOptionChange = (codes: string[]): void => {
+  // section key를 기준으로 적용 액션 실행
+  const handleSectionApply = (key: SearchFilterSectionKey): void => {
+    const applyHandlerByKey: Partial<
+      Record<SearchFilterSectionKey, () => void>
+    > = {
+      price: handleApplyPriceRange,
+    };
+
+    applyHandlerByKey[key]?.();
+  };
+
+  // section 내부 입력 필드 변경
+  const handleSectionFieldChange = (
+    _key: SearchFilterSectionKey,
+    field: SearchFilterFieldName,
+    value: string,
+  ): void => {
+    if (field === 'selectedPrice') {
+      handleSelectedPriceChange(value);
+      return;
+    }
+
+    if (isSearchFilterPriceInputFieldCode(field)) {
+      handlePriceInputChange(field, value);
+    }
+  };
+
+  // 적용된 가격 범위 필터 제거
+  const handleRemovePriceRange = (): void => {
     setFilterState((currentState) => ({
       ...currentState,
-      selectedOptionCodes: codes,
+      appliedPriceRange: null,
+      maximumPrice: '',
+      minimumPrice: '',
+      selectedPrice: '',
     }));
   };
 
-  const handleRemoveItem = (code: string): void => {
+  // section key와 code를 기준으로 선택한 필터 제거
+  const handleRemoveSelectedCode = (
+    key: SearchFilterSectionKey,
+    code: string,
+  ): void => {
     setFilterState((currentState) => ({
-      selectedCategoryCodes: currentState.selectedCategoryCodes.filter(
-        (currentCode) => currentCode !== code,
-      ),
-      selectedOptionCodes: currentState.selectedOptionCodes.filter(
-        (currentCode) => currentCode !== code,
-      ),
+      ...currentState,
+      selectedCodesByKey: {
+        ...currentState.selectedCodesByKey,
+        [key]: (currentState.selectedCodesByKey[key] ?? []).filter(
+          (currentCode) => currentCode !== code,
+        ),
+      },
     }));
   };
+
+  const selectedFilterBySectionKey = getSelectedFilterBySectionKey(
+    config.sections,
+    filterState,
+  );
+  const selectedServiceItems = getSelectedServiceItems({
+    config,
+    selectedFilterBySectionKey,
+  });
+  const hasSelectedFilter =
+    hasSelectedSectionFilters(selectedFilterBySectionKey) ||
+    hasAppliedRangeFilters({ appliedPriceRange });
+
+  const searchFilterContextValue: SearchFilterContextValue = {
+    config,
+    isCurrentLocationLoading,
+    maximumPrice,
+    minimumPrice,
+    region,
+    selectedFilterBySectionKey,
+    selectedPrice,
+    onCurrentLocationRequest: requestCurrentLocation,
+    onRegionOpen: openRegionPopup,
+    onSectionApply: handleSectionApply,
+    onSectionCodeToggle: handleSectionCodeToggle,
+    onSectionCodesChange: handleCodesChange,
+    onSectionFieldChange: handleSectionFieldChange,
+    onSectionValueChange: handleSectionValueChange,
+  };
+
+  const filterFields = (
+    <SearchFilterProvider value={searchFilterContextValue}>
+      <SearchFilterFields />
+    </SearchFilterProvider>
+  );
 
   return (
     <>
-      <div className="filter-chip search-filter-responsive">
-        <div className="search-filter-region-actions">
-          <button
-            className="common-primary-button"
-            disabled={isCurrentLocationLoading}
-            type="button"
-            onClick={requestCurrentLocation}
-          >
-            <span
-              className={`current-location-button-content ${
-                isCurrentLocationLoading ? 'is-loading' : ''
-              }`}
-            >
-              <LocationIcon className="h-5 w-5" />현 위치로 설정
-            </span>
-            {isCurrentLocationLoading && (
-              <span className="current-location-button-spinner">
-                <SpinnerIcon />
-              </span>
-            )}
-          </button>
-          <button
-            className="common-select-button"
-            type="button"
-            onClick={openRegionPopup}
-          >
-            <span className="truncate">{region}</span>
-            <ChevronDownFillIcon />
-          </button>
-        </div>
-
-        <div className="search-filter-summary">
-          <button
-            className="search-filter-open-button"
-            type="button"
-            onClick={openTabletFilter}
-          >
-            <FilterIcon />
-            필터 {selectedItems.length}
-          </button>
-          {selectedItems.length > 0 && (
-            <span className="search-filter-divider" aria-hidden="true" />
-          )}
-          {selectedItems.map((item) => (
-            <button
-              className="search-filter-chip"
-              key={item.code}
-              type="button"
-              onClick={() => handleRemoveItem(item.code)}
-            >
-              {item.label}
-              <CloseIcon />
-            </button>
-          ))}
-        </div>
+      <div
+        className={`filter-chip search-filter-responsive ${
+          hasSelectedFilter ? '' : 'is-summary-disabled'
+        }`}
+      >
+        <SearchFilterRegion
+          isCurrentLocationLoading={isCurrentLocationLoading}
+          region={region}
+          onCurrentLocationRequest={requestCurrentLocation}
+          onRegionOpen={openRegionPopup}
+        />
+        <button
+          className="search-filter-open-button"
+          type="button"
+          onClick={openFilterPopup}
+        >
+          <FilterIcon />
+          필터 {selectedServiceItems.length > 0 && selectedServiceItems.length}
+        </button>
+        {hasSelectedFilter && (
+          <SelectedFilterSummary
+            appliedPriceRange={appliedPriceRange}
+            selectedServiceItems={selectedServiceItems}
+            onRemovePriceRange={handleRemovePriceRange}
+            onRemoveSelectedCode={handleRemoveSelectedCode}
+          />
+        )}
       </div>
 
-      <aside className="filter-aside search-filter-aside w-full shrink-0 text-(--color-palette-gray-1000)">
-        <div className="mb-7 flex items-center justify-between">
-          <h2 className="text-xl leading-none font-extrabold">필터</h2>
-          <button
-            className="text-sm font-medium text-(--color-palette-gray-600) underline underline-offset-2"
-            type="button"
-            onClick={handleReset}
-          >
-            초기화
-          </button>
-        </div>
-
-        <section className="border-b border-(--color-palette-gray-300) pb-8">
-          <h3 className="mb-5 text-base font-extrabold">위치</h3>
-          <button
-            className="common-select-button"
-            type="button"
-            onClick={openRegionPopup}
-          >
-            <span className="truncate">{region}</span>
-            <ChevronDownFillIcon />
-          </button>
-          <button
-            className="common-primary-button"
-            disabled={isCurrentLocationLoading}
-            type="button"
-            onClick={requestCurrentLocation}
-          >
-            <span
-              className={`current-location-button-content ${
-                isCurrentLocationLoading ? 'is-loading' : ''
-              }`}
-            >
-              <LocationIcon className="h-5 w-5" />현 위치로 설정
-            </span>
-            {isCurrentLocationLoading && (
-              <span className="current-location-button-spinner">
-                <SpinnerIcon />
-              </span>
-            )}
-          </button>
-        </section>
-
-        {!isLocalProfileFilter && (
-          <section className="border-b border-(--color-palette-gray-300) py-8">
-            <h3 className="mb-5 text-base font-extrabold">상태</h3>
-            <label className="flex items-center gap-3 text-base text-(--color-palette-gray-1000)">
-              <span className="common-checkbox-wrapper">
-                <input className="common-checkbox-input" type="checkbox" />
-                <span className="common-checkbox-icon" aria-hidden="true">
-                  <CheckboxCheckedIcon />
-                </span>
-              </span>
-              거래 가능한 보기
-            </label>
-          </section>
-        )}
-
-        <section className="border-b border-(--color-palette-gray-300) py-8">
-          <h3 className="mb-5 text-base font-extrabold">카테고리</h3>
-          <FilterChoiceList
-            isMultiple={isLocalProfileFilter}
-            items={categoryItems}
-            name="category"
-            selectedCodes={selectedCategoryCodes}
-            onChange={handleCategoryChange}
-          />
-        </section>
-
-        {isLocalProfileFilter ? (
-          <section className="pt-8">
-            <h3 className="mb-5 text-base font-extrabold">옵션</h3>
-            <FilterOptionButtonList
-              items={options}
-              selectedCodes={selectedOptionCodes}
-              onChange={handleOptionChange}
-            />
-          </section>
-        ) : (
-          <section className="pt-8">
-            <h3 className="mb-5 text-base font-extrabold">가격</h3>
-            <div className="mb-5 flex flex-col items-start gap-3">
-              {BUY_SELL_PRICE_OPTIONS.map((price) => (
-                <button
-                  className="rounded-full border border-(--color-palette-gray-300) px-4 py-2 text-sm font-medium text-(--color-palette-gray-1000) hover:bg-(--color-palette-gray-100)"
-                  key={price}
-                  type="button"
-                >
-                  {price}
-                </button>
-              ))}
-            </div>
-            <div className="flex items-center gap-3">
-              <input
-                className="common-number-input min-w-0 flex-1 rounded-lg border border-(--color-palette-gray-300) px-4 text-sm outline-none placeholder:text-(--color-palette-gray-600) focus:border-(--color-palette-gray-600)"
-                placeholder="0"
-                type="text"
-              />
-              <span className="text-(--color-palette-gray-1000)">-</span>
-              <input
-                className="common-number-input min-w-0 flex-1 rounded-lg border border-(--color-palette-gray-300) px-4 text-sm outline-none placeholder:text-(--color-palette-gray-600) focus:border-(--color-palette-gray-600)"
-                placeholder="최대"
-                type="text"
-              />
-            </div>
-            <button
-              className="mt-3 text-sm font-medium text-(--color-palette-gray-1000) underline underline-offset-2"
-              type="button"
-            >
-              적용하기
-            </button>
-          </section>
-        )}
+      <aside className="filter-aside search-filter-aside">
+        <SearchFilterHeader onReset={handleReset} />
+        {filterFields}
       </aside>
+
+      <CommonPopup
+        footer={
+          <button type="button" onClick={handleReset}>
+            전체 해제
+          </button>
+        }
+        isOpen={isFilterPopupOpen}
+        title={config.popupTitle}
+        variant="bottom-sheet"
+        onClose={closeFilterPopup}
+      >
+        <div className="search-filter-popup-fields">{filterFields}</div>
+      </CommonPopup>
+
       <RegionSettingPopup
         initialLocationErrorCode={locationErrorCode}
         isOpen={isRegionPopupOpen}
         key={`${locationRequestStatus}-${locationErrorCode ?? 'none'}`}
         onClose={closeRegionPopup}
       />
-      <FilterPopup
-        categories={categoryItems}
-        isOpen={isTabletFilterOpen}
-        options={options}
-        popupTitle={popupTitle}
-        selectedCategoryCodes={selectedCategoryCodes}
-        selectedOptionCodes={selectedOptionCodes}
-        onCategoryChange={handleCategoryChange}
-        onClose={closeTabletFilter}
-        onOptionChange={handleOptionChange}
-      />
     </>
   );
+}
+
+export default function SearchFilter(props: SearchFilterProps): ReactNode {
+  const config = SEARCH_FILTER_CONFIGS[props.variant];
+
+  return <ServiceSearchFilter config={config} region={props.region} />;
 }

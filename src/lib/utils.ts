@@ -35,6 +35,16 @@ export function getLegalDong(region: string): string {
   return regionParts[regionParts.length - 1] ?? region;
 }
 
+export function formatPriceText(price: string): string {
+  const numericPrice = Number(price.replace(/\D/g, ''));
+
+  if (!numericPrice) {
+    return '0';
+  }
+
+  return numericPrice.toLocaleString();
+}
+
 export function removeCommaFromString(value: string): string {
   return value.replace(/,/g, '');
 }
