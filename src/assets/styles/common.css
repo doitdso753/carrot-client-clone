@@ -218,7 +218,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.8rem;
-  margin-bottom: 1.2rem;
   padding: 1rem 1.6rem;
   border: 0.1rem solid var(--color-palette-gray-300);
   border-radius: 0.8rem;
@@ -406,6 +405,11 @@
   border-radius: 0.4rem;
 }
 
+.common-checkbox-input:hover {
+  background-color: var(--color-palette-gray-100);
+  cursor: pointer;
+}
+
 .common-checkbox-input:checked {
   border-color: var(--color-palette-gray-800);
   background-color: var(--color-palette-gray-800);
@@ -451,6 +455,7 @@
 
 .common-radio-option:hover .common-radio-input {
   background-color: var(--color-palette-gray-100);
+  cursor: pointer;
 }
 
 .common-radio-input:checked {
