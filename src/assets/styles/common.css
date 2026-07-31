@@ -389,6 +389,10 @@
   line-height: var(--line-height-text-base);
 }
 
+.service-list-empty {
+  min-height: 24rem;
+}
+
 .common-checkbox-wrapper {
   position: relative;
   display: inline-flex;

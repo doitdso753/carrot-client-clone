@@ -202,10 +202,6 @@
   border-bottom: 0;
 }
 
-.jobs-list-empty {
-  min-height: 24rem;
-}
-
 @media screen and (min-width: 992px) {
   .search-filter-responsive {
     display: flex;
