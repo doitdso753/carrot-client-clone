@@ -66,6 +66,33 @@ export type LocalProfileOptionItem = {
   label: string;
 };
 
+export type JobsEmploymentTypeCode = 'longTerm' | 'shortTerm';
+
+export type JobsWorkCategoryCode =
+  | 'serving'
+  | 'kitchenAssistant'
+  | 'cook'
+  | 'storeManagement'
+  | 'beverageProduction'
+  | 'baking'
+  | 'convenienceStore'
+  | 'moving'
+  | 'businessCleaning'
+  | 'errand'
+  | 'flyerDistribution'
+  | 'academyLesson'
+  | 'schoolPickup'
+  | 'childcare'
+  | 'petCare'
+  | 'seniorCare'
+  | 'housekeeping'
+  | 'etc';
+
+export type SearchFilterTypedItem<TCode extends string> = {
+  code: TCode;
+  label: string;
+};
+
 export type LocalProfileCoupon = {
   id: number;
   title: string;
