@@ -6,20 +6,10 @@ import {
   type SetStateAction,
 } from 'react';
 
-export type PageFilterState = {
-  selectedCategoryCodes: string[];
-  selectedOptionCodes: string[];
-};
-
-type UsePageFilterReturn = [
-  PageFilterState,
-  Dispatch<SetStateAction<PageFilterState>>,
+type UsePageFilterReturn<TFilterState> = [
+  TFilterState,
+  Dispatch<SetStateAction<TFilterState>>,
 ];
-
-const EMPTY_FILTER_STATE: PageFilterState = {
-  selectedCategoryCodes: [],
-  selectedOptionCodes: [],
-};
 
 const INITIAL_PATHNAME = window.location.pathname;
 const NAVIGATION_ENTRY = performance.getEntriesByType('navigation')[0] as
@@ -27,43 +17,36 @@ const NAVIGATION_ENTRY = performance.getEntriesByType('navigation')[0] as
 
 let isInitialFilterHydrationAvailable = NAVIGATION_ENTRY?.type === 'reload';
 
-function getStoredFilterState(storageKey: string): PageFilterState {
+function getStoredFilterState<TFilterState>(
+  storageKey: string,
+  initialState: TFilterState,
+  isFilterState: (value: unknown) => value is TFilterState,
+): TFilterState {
   const storedValue = localStorage.getItem(storageKey);
 
   if (!storedValue) {
-    return EMPTY_FILTER_STATE;
+    return initialState;
   }
 
   try {
     const parsedValue: unknown = JSON.parse(storedValue);
 
-    if (
-      typeof parsedValue === 'object' &&
-      parsedValue !== null &&
-      'selectedCategoryCodes' in parsedValue &&
-      'selectedOptionCodes' in parsedValue &&
-      Array.isArray(parsedValue.selectedCategoryCodes) &&
-      parsedValue.selectedCategoryCodes.every(
-        (code) => typeof code === 'string',
-      ) &&
-      Array.isArray(parsedValue.selectedOptionCodes) &&
-      parsedValue.selectedOptionCodes.every((code) => typeof code === 'string')
-    ) {
-      return {
-        selectedCategoryCodes: parsedValue.selectedCategoryCodes,
-        selectedOptionCodes: parsedValue.selectedOptionCodes,
-      };
+    if (isFilterState(parsedValue)) {
+      return parsedValue;
     }
   } catch {
     localStorage.removeItem(storageKey);
   }
 
-  return EMPTY_FILTER_STATE;
+  return initialState;
 }
 
-export default function usePageFilter(storageKey: string): UsePageFilterReturn {
-  const [filterState, setFilterState] =
-    useState<PageFilterState>(EMPTY_FILTER_STATE);
+export default function usePageFilter<TFilterState>(
+  storageKey: string,
+  initialState: TFilterState,
+  isFilterState: (value: unknown) => value is TFilterState,
+): UsePageFilterReturn<TFilterState> {
+  const [filterState, setFilterState] = useState<TFilterState>(initialState);
   const [isHydrated, setIsHydrated] = useState(false);
   const hasInitialized = useRef(false);
 
@@ -80,13 +63,15 @@ export default function usePageFilter(storageKey: string): UsePageFilterReturn {
     isInitialFilterHydrationAvailable = false;
 
     if (canRestoreFilter) {
-      setFilterState(getStoredFilterState(storageKey));
+      setFilterState(
+        getStoredFilterState(storageKey, initialState, isFilterState),
+      );
     } else {
       localStorage.removeItem(storageKey);
     }
 
     setIsHydrated(true);
-  }, [storageKey]);
+  }, [initialState, isFilterState, storageKey]);
 
   useEffect(() => {
     if (!isHydrated) {
