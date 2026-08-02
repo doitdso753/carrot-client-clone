@@ -30,6 +30,10 @@
   padding-block: 2.4rem;
 }
 
+.search-filter-section:last-child {
+  border-bottom: 0;
+}
+
 .search-filter-section h3 {
   color: var(--color-palette-gray-1000);
   font-size: var(--text-base);
