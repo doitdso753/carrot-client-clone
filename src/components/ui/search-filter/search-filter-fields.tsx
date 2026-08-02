@@ -66,6 +66,7 @@ export default function SearchFilterFields({
         if (sectionType === 'radio') {
           return (
             <RadioFilterSection
+              isScrollable={section.isScrollable}
               items={items}
               key={section.key}
               name={getRadioName(section)}
