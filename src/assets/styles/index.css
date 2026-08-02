@@ -543,7 +543,9 @@
     gap: 0 2rem;
   }
 
-  .service-list-layout:has(.search-filter-chip) {
+  .service-list-layout:has(
+      .search-filter-responsive:not(.is-summary-disabled)
+    ) {
     grid-template-rows: 3.6rem auto;
     row-gap: 2rem;
   }

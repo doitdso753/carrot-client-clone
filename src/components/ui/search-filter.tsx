@@ -108,12 +108,17 @@ function ServiceSearchFilter({
     isSearchFilterState,
   );
   const {
-    appliedPriceRange,
-    maximumPrice,
-    minimumPrice,
-    selectedCodesByKey,
-    selectedPrice,
-  } = filterState;
+    actions,
+    filterState,
+    hasSelectedFilter,
+    selectedFilterBySectionKey,
+    selectedServiceItems,
+    applyFilterState,
+    applyPriceRange,
+    removePriceRange,
+    removeSelectedCode,
+    reset,
+  } = useSearchFilterState(config);
   const temp = useTempSearchFilter({
     config,
     filterState,
@@ -266,18 +271,30 @@ function ServiceSearchFilter({
     selectedPrice,
     onCurrentLocationRequest: requestCurrentLocation,
     onRegionOpen: openRegionPopup,
-    onSectionApply: handleSectionApply,
-    onSectionCodeToggle: handleSectionCodeToggle,
-    onSectionCodesChange: handleCodesChange,
-    onSectionFieldChange: handleSectionFieldChange,
-    onSectionValueChange: handleSectionValueChange,
-  };
+    onSectionApply,
+    ...contextActions,
+  });
 
+  const asideFilterFields = (
+    <SearchFilterProvider
+      value={createContextValue({
+        contextActions: actions,
+        contextFilterState: filterState,
+        contextSelectedFilterBySectionKey: selectedFilterBySectionKey,
+        onSectionApply: handleSectionApply,
+      })}
+    >
       <SearchFilterFields variant="aside" />
     </SearchFilterProvider>
   );
   const bottomSheetFilterFields = (
     <SearchFilterProvider
+      value={createContextValue({
+        contextActions: temp.actions,
+        contextFilterState: temp.filterState,
+        contextSelectedFilterBySectionKey: temp.selectedFilterBySectionKey,
+        onSectionApply: handleTempSectionApply,
+      })}
     >
       <SearchFilterFields variant="bottomSheet" />
     </SearchFilterProvider>
@@ -315,8 +332,7 @@ function ServiceSearchFilter({
       </div>
 
       <aside className="filter-aside search-filter-aside">
-        <SearchFilterHeader onReset={handleReset} />
-        {filterFields}
+        <SearchFilterHeader onReset={reset} />
         {asideFilterFields}
       </aside>
 
