@@ -21,7 +21,13 @@ function getRadioName(section: SearchFilterSection): string {
   return `search-filter-${section.key}`;
 }
 
-export default function SearchFilterFields(): ReactNode {
+type SearchFilterFieldsProps = {
+  variant?: 'aside' | 'bottomSheet';
+};
+
+export default function SearchFilterFields({
+  variant = 'aside',
+}: SearchFilterFieldsProps): ReactNode {
   const {
     config,
     isCurrentLocationLoading,
@@ -43,8 +49,12 @@ export default function SearchFilterFields(): ReactNode {
     <>
       {config.sections.map((section) => {
         const items = getSectionItems(section);
+        const sectionType =
+          variant === 'bottomSheet' && section.bottomSheetType
+            ? section.bottomSheetType
+            : section.type;
 
-        if (section.type === 'location') {
+        if (sectionType === 'location') {
           return (
             <section className="search-filter-section" key={section.key}>
               <h3>{section.label}</h3>
@@ -58,7 +68,7 @@ export default function SearchFilterFields(): ReactNode {
           );
         }
 
-        if (section.type === 'radio') {
+        if (sectionType === 'radio') {
           return (
             <RadioFilterSection
               items={items}
@@ -73,7 +83,7 @@ export default function SearchFilterFields(): ReactNode {
           );
         }
 
-        if (section.type === 'checkbox') {
+        if (sectionType === 'checkbox') {
           return (
             <CheckboxFilterSection
               items={items}
@@ -87,7 +97,7 @@ export default function SearchFilterFields(): ReactNode {
           );
         }
 
-        if (section.type === 'chip') {
+        if (sectionType === 'chip') {
           return (
             <ChipsFilterSection
               isMultiple
@@ -102,7 +112,7 @@ export default function SearchFilterFields(): ReactNode {
           );
         }
 
-        if (section.type === 'price') {
+        if (sectionType === 'price') {
           return (
             <PriceFilterSection
               key={section.key}

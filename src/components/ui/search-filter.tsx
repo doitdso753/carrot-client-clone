@@ -13,6 +13,7 @@ import SelectedFilterSummary from '@/components/ui/search-filter/selected-filter
 import useCurrentLocationRequest from '@/hooks/use-current-location-request.ts';
 import usePageFilter from '@/hooks/use-page-filter.ts';
 import usePopup from '@/hooks/use-popup.ts';
+import useTempSearchFilter from '@/hooks/use-temp-search-filter.ts';
 import {
   SEARCH_FILTER_CONFIGS,
   type SearchFilterConfig,
@@ -113,6 +114,11 @@ function ServiceSearchFilter({
     selectedCodesByKey,
     selectedPrice,
   } = filterState;
+  const temp = useTempSearchFilter({
+    config,
+    filterState,
+    onApply: applyFilterState,
+  });
   const {
     isOpen: isRegionPopupOpen,
     openPopup: openRegionPopup,
@@ -133,34 +139,10 @@ function ServiceSearchFilter({
     }
   }, [locationErrorCode, locationRequestStatus, openRegionPopup]);
 
-  // 카테고리, 옵션처럼 여러 값을 갖는 필터 선택값 변경
-  const handleCodesChange = (
-    key: SearchFilterSectionKey,
-    codes: string[],
-  ): void => {
-    setFilterState((currentState) => ({
-      ...currentState,
-      selectedCodesByKey: {
-        ...currentState.selectedCodesByKey,
-        [key]: codes,
-      },
-    }));
-  };
 
-  // section key와 item code를 기준으로 checkbox 선택값 토글
-  const handleSectionCodeToggle = (
-    key: SearchFilterSectionKey,
-    code: string,
-  ): void => {
-    handleCodesChange(key, toggleCode(selectedCodesByKey[key] ?? [], code));
-  };
-
-  // section key를 기준으로 radio 선택값 변경
-  const handleSectionValueChange = (
-    key: SearchFilterSectionKey,
-    value: string,
-  ): void => {
-    handleCodesChange(key, [value]);
+  const handleFilterPopupOpen = (): void => {
+    temp.open();
+    openFilterPopup();
   };
 
   // 가격 프리셋 선택 시 가격 범위 즉시 적용
@@ -291,9 +273,13 @@ function ServiceSearchFilter({
     onSectionValueChange: handleSectionValueChange,
   };
 
-  const filterFields = (
-    <SearchFilterProvider value={searchFilterContextValue}>
-      <SearchFilterFields />
+      <SearchFilterFields variant="aside" />
+    </SearchFilterProvider>
+  );
+  const bottomSheetFilterFields = (
+    <SearchFilterProvider
+    >
+      <SearchFilterFields variant="bottomSheet" />
     </SearchFilterProvider>
   );
 
@@ -313,7 +299,7 @@ function ServiceSearchFilter({
         <button
           className="search-filter-open-button"
           type="button"
-          onClick={openFilterPopup}
+          onClick={handleFilterPopupOpen}
         >
           <FilterIcon />
           필터 {selectedServiceItems.length > 0 && selectedServiceItems.length}
@@ -331,20 +317,34 @@ function ServiceSearchFilter({
       <aside className="filter-aside search-filter-aside">
         <SearchFilterHeader onReset={handleReset} />
         {filterFields}
+        {asideFilterFields}
       </aside>
 
       <CommonPopup
         footer={
-          <button type="button" onClick={handleReset}>
-            전체 해제
-          </button>
+          <>
+            <button type="button" onClick={temp.reset}>
+              전체 해제
+            </button>
+            <button
+              className={`search-filter-footer-apply-button ${
+                temp.hasSelectedFilter ? 'has-filter' : ''
+              }`}
+              type="button"
+              onClick={handleTempApply}
+            >
+              필터 적용
+            </button>
+          </>
         }
         isOpen={isFilterPopupOpen}
         title={config.popupTitle}
         variant="bottom-sheet"
         onClose={closeFilterPopup}
       >
-        <div className="search-filter-popup-fields">{filterFields}</div>
+        <div className="search-filter-popup-fields">
+          {bottomSheetFilterFields}
+        </div>
       </CommonPopup>
 
       <RegionSettingPopup

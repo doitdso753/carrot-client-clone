@@ -48,6 +48,7 @@ export type SearchFilterSectionType =
   'checkbox' | 'chip' | 'location' | 'price' | 'radio' | 'time' | 'weekday';
 
 export type SearchFilterSection = {
+  bottomSheetType?: 'chip';
   data?: readonly (SearchFilterItem | string)[];
   key: SearchFilterSectionKey;
   label: string;
