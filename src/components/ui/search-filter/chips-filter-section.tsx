@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { SearchFilterItem } from '@/types/search-filter-configs.ts';
 
 type ChipsFilterSectionProps = {
+  flexDirection?: 'column' | 'row';
   isMultiple: boolean;
   items: readonly SearchFilterItem[];
   selectedCodes: string[];
@@ -10,6 +11,7 @@ type ChipsFilterSectionProps = {
 };
 
 export default function ChipsFilterSection({
+  flexDirection = 'column',
   isMultiple,
   items,
   selectedCodes,
@@ -32,7 +34,9 @@ export default function ChipsFilterSection({
   return (
     <section className="search-filter-section">
       <h3>{title}</h3>
-      <div className="search-filter-option-list">
+      <div
+        className={`search-filter-option-list is-${flexDirection}`}
+      >
         {items.map((item) => (
           <button
             aria-pressed={selectedCodes.includes(item.code)}

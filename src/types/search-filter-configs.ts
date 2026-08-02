@@ -54,6 +54,7 @@ export type SearchFilterSectionType =
 export type SearchFilterSection = {
   bottomSheetType?: 'chip';
   data?: readonly (SearchFilterItem | string)[];
+  flexDirection?: 'column' | 'row';
   isScrollable?: boolean;
   key: SearchFilterSectionKey;
   label: string;

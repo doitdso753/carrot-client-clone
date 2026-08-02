@@ -96,6 +96,7 @@ export default function SearchFilterFields({
         if (sectionType === 'chip') {
           return (
             <ChipsFilterSection
+              flexDirection={section.flexDirection}
               isMultiple
               items={items}
               key={section.key}
