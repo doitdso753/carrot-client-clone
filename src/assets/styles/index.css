@@ -425,7 +425,7 @@
 
 .detail-page-heading p {
   color: var(--color-palette-gray-700);
-  font-size: 1.6rem;
+  font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
 }
 
@@ -453,9 +453,9 @@
 }
 
 .detail-page-description > p:first-child {
-  font-size: 1.8rem;
+  font-size: var(--text-lg);
   font-weight: var(--font-weight-normal);
-  line-height: 1.6;
+  line-height: var(--line-height-text-xl);
 }
 
 .detail-page-description .detail-page-status {

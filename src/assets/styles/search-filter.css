@@ -43,7 +43,7 @@
   gap: 0.8rem;
   color: var(--color-palette-gray-1000);
   font-size: var(--text-base);
-  font-weight: normal;
+  font-weight: var(--font-weight-normal);
 }
 
 .search-filter-choice-option {
