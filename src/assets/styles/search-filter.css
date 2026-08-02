@@ -206,10 +206,10 @@
   flex-flow: row wrap;
 }
 
-.search-filter-responsive {
+.search-filter-toolbar {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1rem;
 }
 
 .search-filter-region-actions {
@@ -283,11 +283,11 @@
 }
 
 @media screen and (min-width: 992px) {
-  .search-filter-responsive {
+  .search-filter-toolbar {
     display: flex;
   }
 
-  .search-filter-responsive.is-summary-disabled {
+  .search-filter-toolbar.is-summary-disabled {
     display: none;
   }
 

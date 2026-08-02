@@ -178,7 +178,7 @@ function ServiceSearchFilter({
   return (
     <>
       <div
-        className={`filter-chip search-filter-responsive ${
+        className={`filter-chip search-filter-toolbar ${
           hasSelectedFilter ? '' : 'is-summary-disabled'
         }`}
       >
