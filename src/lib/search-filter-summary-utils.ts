@@ -39,7 +39,8 @@ function getSectionSelection(
   if (
     section.type === 'checkbox' ||
     section.type === 'chip' ||
-    section.type === 'radio'
+    section.type === 'radio' ||
+    section.type === 'range'
   ) {
     const codes = state.selectedCodesByKey[section.key] ?? [];
 

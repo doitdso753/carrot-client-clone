@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { SearchFilterItem } from '@/types/search-filter-configs.ts';
 
 type RadioFilterSectionProps = {
+  icons?: Readonly<Record<string, string>>;
   isScrollable?: boolean;
   items: readonly SearchFilterItem[];
   name: string;
@@ -11,6 +12,7 @@ type RadioFilterSectionProps = {
 };
 
 export default function RadioFilterSection({
+  icons = {},
   isScrollable = false,
   items,
   name,
@@ -35,6 +37,13 @@ export default function RadioFilterSection({
               value={item.code}
               onChange={() => onChange(item.code)}
             />
+            {icons[item.code] && (
+              <img
+                alt=""
+                className="search-filter-radio-icon"
+                src={icons[item.code]}
+              />
+            )}
             {item.label}
           </label>
         </li>
