@@ -4,6 +4,7 @@ import {
   type SearchFilterSection,
   type SearchFilterSectionKey,
   type SearchFilterSectionSelection,
+  type SelectedFilterBySectionKey,
   type SelectedSearchFilterItem,
 } from '@/types/search-filter-configs.ts';
 
@@ -15,12 +16,10 @@ type SearchFilterAppliedRangeState = {
   appliedPriceRange: unknown | null;
 };
 
-type SelectedFilterBySectionKey = Partial<
-  Record<SearchFilterSectionKey, SearchFilterSectionSelection>
->;
-
 // section data를 summary 렌더링용 item 형태로 변환
-function getSectionItems(section?: SearchFilterSection): SearchFilterItem[] {
+export function getSectionItems(
+  section?: SearchFilterSection,
+): SearchFilterItem[] {
   return (section?.data ?? []).map((item) =>
     typeof item === 'string' ? { code: item, label: item } : item,
   );
@@ -99,9 +98,11 @@ export function getSelectedFilterBySectionKey(
 export function hasSelectedSectionFilters(
   selectedFilterBySectionKey: SelectedFilterBySectionKey,
 ): boolean {
-  return Object.values(selectedFilterBySectionKey).some(
-    hasSelectedSectionFilter,
-  );
+  const selections = Object.values<
+    SearchFilterSectionSelection | undefined
+  >(selectedFilterBySectionKey);
+
+  return selections.some((selection) => hasSelectedSectionFilter(selection));
 }
 
 // 가격, 시간처럼 적용 완료된 범위 필터 존재 여부 확인

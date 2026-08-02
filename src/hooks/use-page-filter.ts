@@ -1,14 +1,15 @@
 import {
   useEffect,
+  useReducer,
   useRef,
   useState,
   type Dispatch,
-  type SetStateAction,
+  type Reducer,
 } from 'react';
 
-type UsePageFilterReturn<TFilterState> = [
+type UsePageFilterReturn<TFilterState, TFilterAction> = [
   TFilterState,
-  Dispatch<SetStateAction<TFilterState>>,
+  Dispatch<TFilterAction>,
 ];
 
 const INITIAL_PATHNAME = window.location.pathname;
@@ -41,12 +42,14 @@ function getStoredFilterState<TFilterState>(
   return initialState;
 }
 
-export default function usePageFilter<TFilterState>(
+export default function usePageFilter<TFilterState, TFilterAction>(
   storageKey: string,
   initialState: TFilterState,
   isFilterState: (value: unknown) => value is TFilterState,
-): UsePageFilterReturn<TFilterState> {
-  const [filterState, setFilterState] = useState<TFilterState>(initialState);
+  reducer: Reducer<TFilterState, TFilterAction>,
+  createReplaceAction: (filterState: TFilterState) => TFilterAction,
+): UsePageFilterReturn<TFilterState, TFilterAction> {
+  const [filterState, dispatch] = useReducer(reducer, initialState);
   const [isHydrated, setIsHydrated] = useState(false);
   const hasInitialized = useRef(false);
 
@@ -63,15 +66,17 @@ export default function usePageFilter<TFilterState>(
     isInitialFilterHydrationAvailable = false;
 
     if (canRestoreFilter) {
-      setFilterState(
-        getStoredFilterState(storageKey, initialState, isFilterState),
+      dispatch(
+        createReplaceAction(
+          getStoredFilterState(storageKey, initialState, isFilterState),
+        ),
       );
     } else {
       localStorage.removeItem(storageKey);
     }
 
     setIsHydrated(true);
-  }, [initialState, isFilterState, storageKey]);
+  }, [createReplaceAction, initialState, isFilterState, storageKey]);
 
   useEffect(() => {
     if (!isHydrated) {
@@ -81,5 +86,5 @@ export default function usePageFilter<TFilterState>(
     localStorage.setItem(storageKey, JSON.stringify(filterState));
   }, [filterState, isHydrated, storageKey]);
 
-  return [filterState, setFilterState];
+  return [filterState, dispatch];
 }

@@ -44,6 +44,10 @@ export type SearchFilterSectionSelection = {
   value?: string | null;
 };
 
+export type SelectedFilterBySectionKey = Partial<
+  Record<SearchFilterSectionKey, SearchFilterSectionSelection>
+>;
+
 export type SearchFilterSectionType =
   'checkbox' | 'chip' | 'location' | 'price' | 'radio' | 'time' | 'weekday';
 

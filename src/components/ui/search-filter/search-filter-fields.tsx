@@ -4,46 +4,41 @@ import CheckboxFilterSection from '@/components/ui/search-filter/checkbox-filter
 import ChipsFilterSection from '@/components/ui/search-filter/chips-filter-section.tsx';
 import PriceFilterSection from '@/components/ui/search-filter/price-filter-section.tsx';
 import RadioFilterSection from '@/components/ui/search-filter/radio-filter-section.tsx';
-import { useSearchFilterContext } from '@/components/ui/search-filter/search-filter-context.tsx';
+import RangeSliderFilterSection from '@/components/ui/search-filter/range-slider-filter-section.tsx';
+import { getSectionItems } from '@/lib/search-filter-summary-utils.ts';
 import { BUY_SELL_PRICE_OPTIONS } from '@/types/buy-sell-constants.ts';
-import type {
-  SearchFilterItem,
-  SearchFilterSection,
-} from '@/types/search-filter-configs.ts';
-
-function getSectionItems(section: SearchFilterSection): SearchFilterItem[] {
-  return (section.data ?? []).map((item) =>
-    typeof item === 'string' ? { code: item, label: item } : item,
-  );
-}
+import type { SearchFilterSection } from '@/types/search-filter-configs.ts';
+import type { SearchFilterViewModel } from '@/types/search-filter-view-model.ts';
 
 function getRadioName(section: SearchFilterSection): string {
   return `search-filter-${section.key}`;
 }
 
 type SearchFilterFieldsProps = {
+  model: SearchFilterViewModel;
   variant?: 'aside' | 'bottomSheet';
 };
 
 export default function SearchFilterFields({
+  model,
   variant = 'aside',
 }: SearchFilterFieldsProps): ReactNode {
   const {
+    actions: {
+      onSectionCodeToggle,
+      onSectionCodesChange,
+      onSectionFieldChange,
+      onSectionValueChange,
+    },
     config,
+    filterState: { maximumPrice, minimumPrice, selectedPrice },
     isCurrentLocationLoading,
-    maximumPrice,
-    minimumPrice,
     selectedFilterBySectionKey,
     region,
-    selectedPrice,
     onCurrentLocationRequest,
     onRegionOpen,
-    onSectionCodeToggle,
     onSectionApply,
-    onSectionCodesChange,
-    onSectionFieldChange,
-    onSectionValueChange,
-  } = useSearchFilterContext();
+  } = model;
 
   return (
     <>

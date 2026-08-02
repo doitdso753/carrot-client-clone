@@ -1,18 +1,14 @@
-import { useCallback, useState } from 'react';
-import useSearchFilterActions, {
-  type SearchFilterChangeActions,
-} from '@/hooks/use-search-filter-actions.ts';
-import {
-  getSelectedFilterBySectionKey,
-  hasSelectedSectionFilters,
-} from '@/lib/search-filter-summary-utils.ts';
+import { useCallback, useReducer } from 'react';
+import useSearchFilterActions from '@/hooks/use-search-filter-actions.ts';
+import useSearchFilterSelection from '@/hooks/use-search-filter-selection.ts';
+import searchFilterReducer from '@/reducers/search-filter-reducer.ts';
 import type {
   SearchFilterConfig,
-  SearchFilterSectionKey,
-  SearchFilterSectionSelection,
+  SelectedFilterBySectionKey,
 } from '@/types/search-filter-configs.ts';
 import {
   INITIAL_SEARCH_FILTER_STATE,
+  type SearchFilterChangeActions,
   type SearchFilterState,
 } from '@/types/search-filter-state.ts';
 
@@ -26,9 +22,7 @@ type UseTempSearchFilterReturn = {
   actions: SearchFilterChangeActions;
   filterState: SearchFilterState;
   hasSelectedFilter: boolean;
-  selectedFilterBySectionKey: Partial<
-    Record<SearchFilterSectionKey, SearchFilterSectionSelection>
-  >;
+  selectedFilterBySectionKey: SelectedFilterBySectionKey;
   apply: () => void;
   applyPriceRange: () => void;
   open: () => void;
@@ -40,59 +34,40 @@ export default function useTempSearchFilter({
   filterState,
   onApply,
 }: UseTempSearchFilterOptions): UseTempSearchFilterReturn {
-  const [tempFilterState, setTempFilterState] = useState<SearchFilterState>(
+  const [tempFilterState, dispatch] = useReducer(
+    searchFilterReducer,
     INITIAL_SEARCH_FILTER_STATE,
   );
   const actions = useSearchFilterActions({
+    dispatch,
     isAppliedPriceRangeClearedOnInput: true,
-    setFilterState: setTempFilterState,
   });
-  const selectedFilterBySectionKey = getSelectedFilterBySectionKey(
-    config.sections,
-    tempFilterState,
-  );
+  const { hasSelectedSectionFilter, selectedFilterBySectionKey } =
+    useSearchFilterSelection(config, tempFilterState);
   const hasSelectedFilter =
-    hasSelectedSectionFilters(selectedFilterBySectionKey) ||
+    hasSelectedSectionFilter ||
     Boolean(tempFilterState.selectedPrice) ||
     Boolean(tempFilterState.minimumPrice) ||
     Boolean(tempFilterState.maximumPrice);
 
   const open = useCallback((): void => {
-    setTempFilterState(filterState);
-  }, [filterState]);
+    dispatch({ type: 'replace', filterState });
+  }, [dispatch, filterState]);
 
   const reset = useCallback((): void => {
-    setTempFilterState(INITIAL_SEARCH_FILTER_STATE);
-  }, []);
+    dispatch({ type: 'reset' });
+  }, [dispatch]);
 
   const applyPriceRange = useCallback((): void => {
-    setTempFilterState((currentState) => ({
-      ...currentState,
-      appliedPriceRange:
-        currentState.minimumPrice || currentState.maximumPrice
-          ? {
-              maximumPrice: currentState.maximumPrice,
-              minimumPrice: currentState.minimumPrice,
-            }
-          : null,
-    }));
-  }, []);
+    dispatch({ type: 'applyPriceRange' });
+  }, [dispatch]);
 
   const apply = useCallback((): void => {
-    const hasDirectPriceRange =
-      Boolean(tempFilterState.minimumPrice) ||
-      Boolean(tempFilterState.maximumPrice);
+    const nextFilterState = tempFilterState.appliedPriceRange
+      ? tempFilterState
+      : searchFilterReducer(tempFilterState, { type: 'applyPriceRange' });
 
-    onApply({
-      ...tempFilterState,
-      appliedPriceRange:
-        tempFilterState.appliedPriceRange || !hasDirectPriceRange
-          ? tempFilterState.appliedPriceRange
-          : {
-              maximumPrice: tempFilterState.maximumPrice,
-              minimumPrice: tempFilterState.minimumPrice,
-            },
-    });
+    onApply(nextFilterState);
   }, [onApply, tempFilterState]);
 
   return {

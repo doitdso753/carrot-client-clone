@@ -2,31 +2,21 @@ import { useEffect, type ReactNode } from 'react';
 import { FilterIcon } from '@/assets/icons';
 import CommonPopup from '@/components/ui/common-popup.tsx';
 import RegionSettingPopup from '@/components/ui/region-setting-popup.tsx';
-import {
-  SearchFilterProvider,
-  type SearchFilterContextValue,
-} from '@/components/ui/search-filter/search-filter-context.tsx';
 import SearchFilterFields from '@/components/ui/search-filter/search-filter-fields.tsx';
 import SearchFilterHeader from '@/components/ui/search-filter/search-filter-header.tsx';
 import SearchFilterRegion from '@/components/ui/search-filter/search-filter-region.tsx';
 import SelectedFilterSummary from '@/components/ui/search-filter/selected-filter-summary.tsx';
 import useCurrentLocationRequest from '@/hooks/use-current-location-request.ts';
-import usePageFilter from '@/hooks/use-page-filter.ts';
 import usePopup from '@/hooks/use-popup.ts';
+import useSearchFilterState from '@/hooks/use-search-filter-state.ts';
 import useTempSearchFilter from '@/hooks/use-temp-search-filter.ts';
 import {
   SEARCH_FILTER_CONFIGS,
   type SearchFilterConfig,
-  type SearchFilterFieldName,
   type SearchFilterSectionKey,
   type SearchFilterVariant,
 } from '@/types/search-filter-configs.ts';
-import {
-  getSelectedFilterBySectionKey,
-  getSelectedServiceItems,
-  hasAppliedRangeFilters,
-  hasSelectedSectionFilters,
-} from '@/lib/search-filter-summary-utils.ts';
+import type { SearchFilterViewModel } from '@/types/search-filter-view-model.ts';
 
 type SearchFilterProps = {
   region: string;
@@ -38,86 +28,59 @@ type ServiceSearchFilterProps = {
   region: string;
 };
 
-type SearchFilterPriceInputFieldCode = 'maximumPrice' | 'minimumPrice';
+type CommonSearchFilterViewModel = Pick<
+  SearchFilterViewModel,
+  | 'config'
+  | 'isCurrentLocationLoading'
+  | 'onCurrentLocationRequest'
+  | 'onRegionOpen'
+  | 'region'
+>;
 
-type SearchFilterState = {
-  appliedPriceRange: {
-    maximumPrice: string;
-    minimumPrice: string;
-  } | null;
-  maximumPrice: string;
-  minimumPrice: string;
-  selectedCodesByKey: Partial<Record<SearchFilterSectionKey, string[]>>;
-  selectedPrice: string;
+type CreateSearchFilterViewModelOptions = {
+  actions: SearchFilterViewModel['actions'];
+  filterState: SearchFilterViewModel['filterState'];
+  selectedFilterBySectionKey: SearchFilterViewModel['selectedFilterBySectionKey'];
+  onSectionApply: (key: SearchFilterSectionKey) => void;
 };
 
-const INITIAL_SEARCH_FILTER_STATE: SearchFilterState = {
-  appliedPriceRange: null,
-  maximumPrice: '',
-  minimumPrice: '',
-  selectedCodesByKey: {},
-  selectedPrice: '',
-};
-
-function isSearchFilterPriceInputFieldCode(
-  field: SearchFilterFieldName,
-): field is SearchFilterPriceInputFieldCode {
-  return field === 'maximumPrice' || field === 'minimumPrice';
-}
-
-function isSearchFilterState(value: unknown): value is SearchFilterState {
-  return (
-    typeof value === 'object' &&
-    value !== null &&
-    'appliedPriceRange' in value &&
-    'maximumPrice' in value &&
-    'minimumPrice' in value &&
-    'selectedCodesByKey' in value &&
-    'selectedPrice' in value &&
-    (value.appliedPriceRange === null ||
-      (typeof value.appliedPriceRange === 'object' &&
-        'maximumPrice' in value.appliedPriceRange &&
-        'minimumPrice' in value.appliedPriceRange &&
-        typeof value.appliedPriceRange.maximumPrice === 'string' &&
-        typeof value.appliedPriceRange.minimumPrice === 'string')) &&
-    typeof value.maximumPrice === 'string' &&
-    typeof value.minimumPrice === 'string' &&
-    typeof value.selectedCodesByKey === 'object' &&
-    value.selectedCodesByKey !== null &&
-    Object.values(value.selectedCodesByKey).every(
-      (codes) =>
-        Array.isArray(codes) && codes.every((code) => typeof code === 'string'),
-    ) &&
-    typeof value.selectedPrice === 'string'
-  );
-}
-
-function toggleCode(codes: string[], code: string): string[] {
-  return codes.includes(code)
-    ? codes.filter((currentCode) => currentCode !== code)
-    : [...codes, code];
+function createSearchFilterViewModel(
+  commonValue: CommonSearchFilterViewModel,
+  {
+    actions,
+    filterState,
+    selectedFilterBySectionKey,
+    onSectionApply,
+  }: CreateSearchFilterViewModelOptions,
+): SearchFilterViewModel {
+  return {
+    ...commonValue,
+    actions,
+    filterState,
+    selectedFilterBySectionKey,
+    onSectionApply,
+  };
 }
 
 function ServiceSearchFilter({
   config,
   region,
 }: ServiceSearchFilterProps): ReactNode {
-  const [filterState, setFilterState] = usePageFilter<SearchFilterState>(
-    config.filterStorageKey,
-    INITIAL_SEARCH_FILTER_STATE,
-    isSearchFilterState,
-  );
   const {
     actions,
-    filterState,
-    hasSelectedFilter,
-    selectedFilterBySectionKey,
-    selectedServiceItems,
-    applyFilterState,
-    applyPriceRange,
-    removePriceRange,
-    removeSelectedCode,
-    reset,
+    commands: {
+      applyFilterState,
+      applyPriceRange,
+      removePriceRange,
+      removeSelectedCode,
+      reset,
+    },
+    state: {
+      filterState,
+      hasSelectedFilter,
+      selectedFilterBySectionKey,
+      selectedServiceItems,
+    },
   } = useSearchFilterState(config);
   const temp = useTempSearchFilter({
     config,
@@ -144,160 +107,72 @@ function ServiceSearchFilter({
     }
   }, [locationErrorCode, locationRequestStatus, openRegionPopup]);
 
-
   const handleFilterPopupOpen = (): void => {
     temp.open();
     openFilterPopup();
   };
 
-  // 가격 프리셋 선택 시 가격 범위 즉시 적용
-  const handleSelectedPriceChange = (value: string): void => {
-    const maximumPriceValue = value.replace(/\D/g, '');
+  const handleSectionApply = (key: SearchFilterSectionKey): void => {
+    const section = config.sections.find(
+      (currentSection) => currentSection.key === key,
+    );
 
-    setFilterState((currentState) => ({
-      ...currentState,
-      appliedPriceRange: maximumPriceValue
-        ? { maximumPrice: maximumPriceValue, minimumPrice: '0' }
-        : null,
-      selectedPrice: value,
-      maximumPrice: maximumPriceValue,
-      minimumPrice: maximumPriceValue ? '0' : '',
-    }));
-  };
-
-  // 가격 직접 입력값 변경
-  const handlePriceInputChange = (
-    code: SearchFilterPriceInputFieldCode,
-    value: string,
-  ): void => {
-    setFilterState((currentState) => ({
-      ...currentState,
-      [code]: value,
-      selectedPrice: '',
-    }));
-  };
-
-  // 전체 필터 상태 초기화
-  const handleReset = (): void => {
-    setFilterState(INITIAL_SEARCH_FILTER_STATE);
-  };
-
-  // 현재 가격 입력값을 적용 필터로 확정
-  const handleApplyPriceRange = (): void => {
-    if (!minimumPrice && !maximumPrice) {
+    if (section?.type === 'range') {
+      closeFilterPopup();
       return;
     }
 
-    setFilterState((currentState) => ({
-      ...currentState,
-      appliedPriceRange: { maximumPrice, minimumPrice },
-    }));
+    if (key === 'price') {
+      applyPriceRange();
+      closeFilterPopup();
+    }
+  };
+
+  const handleTempSectionApply = (key: SearchFilterSectionKey): void => {
+    if (key === 'price') {
+      temp.applyPriceRange();
+    }
+  };
+
+  const handleTempApply = (): void => {
+    temp.apply();
     closeFilterPopup();
   };
 
-  // section key를 기준으로 적용 액션 실행
-  const handleSectionApply = (key: SearchFilterSectionKey): void => {
-    const applyHandlerByKey: Partial<
-      Record<SearchFilterSectionKey, () => void>
-    > = {
-      price: handleApplyPriceRange,
-    };
-
-    applyHandlerByKey[key]?.();
-  };
-
-  // section 내부 입력 필드 변경
-  const handleSectionFieldChange = (
-    _key: SearchFilterSectionKey,
-    field: SearchFilterFieldName,
-    value: string,
-  ): void => {
-    if (field === 'selectedPrice') {
-      handleSelectedPriceChange(value);
-      return;
-    }
-
-    if (isSearchFilterPriceInputFieldCode(field)) {
-      handlePriceInputChange(field, value);
-    }
-  };
-
-  // 적용된 가격 범위 필터 제거
-  const handleRemovePriceRange = (): void => {
-    setFilterState((currentState) => ({
-      ...currentState,
-      appliedPriceRange: null,
-      maximumPrice: '',
-      minimumPrice: '',
-      selectedPrice: '',
-    }));
-  };
-
-  // section key와 code를 기준으로 선택한 필터 제거
-  const handleRemoveSelectedCode = (
-    key: SearchFilterSectionKey,
-    code: string,
-  ): void => {
-    setFilterState((currentState) => ({
-      ...currentState,
-      selectedCodesByKey: {
-        ...currentState.selectedCodesByKey,
-        [key]: (currentState.selectedCodesByKey[key] ?? []).filter(
-          (currentCode) => currentCode !== code,
-        ),
-      },
-    }));
-  };
-
-  const selectedFilterBySectionKey = getSelectedFilterBySectionKey(
-    config.sections,
-    filterState,
-  );
-  const selectedServiceItems = getSelectedServiceItems({
-    config,
-    selectedFilterBySectionKey,
-  });
-  const hasSelectedFilter =
-    hasSelectedSectionFilters(selectedFilterBySectionKey) ||
-    hasAppliedRangeFilters({ appliedPriceRange });
-
-  const searchFilterContextValue: SearchFilterContextValue = {
+  const commonViewModel: CommonSearchFilterViewModel = {
     config,
     isCurrentLocationLoading,
-    maximumPrice,
-    minimumPrice,
     region,
-    selectedFilterBySectionKey,
-    selectedPrice,
     onCurrentLocationRequest: requestCurrentLocation,
     onRegionOpen: openRegionPopup,
-    onSectionApply,
-    ...contextActions,
-  });
+  };
+  const asideViewModel = createSearchFilterViewModel(
+    commonViewModel,
+    {
+      actions,
+      filterState,
+      selectedFilterBySectionKey,
+      onSectionApply: handleSectionApply,
+    },
+  );
+  const bottomSheetViewModel = createSearchFilterViewModel(
+    commonViewModel,
+    {
+      actions: temp.actions,
+      filterState: temp.filterState,
+      selectedFilterBySectionKey: temp.selectedFilterBySectionKey,
+      onSectionApply: handleTempSectionApply,
+    },
+  );
 
   const asideFilterFields = (
-    <SearchFilterProvider
-      value={createContextValue({
-        contextActions: actions,
-        contextFilterState: filterState,
-        contextSelectedFilterBySectionKey: selectedFilterBySectionKey,
-        onSectionApply: handleSectionApply,
-      })}
-    >
-      <SearchFilterFields variant="aside" />
-    </SearchFilterProvider>
+    <SearchFilterFields model={asideViewModel} variant="aside" />
   );
   const bottomSheetFilterFields = (
-    <SearchFilterProvider
-      value={createContextValue({
-        contextActions: temp.actions,
-        contextFilterState: temp.filterState,
-        contextSelectedFilterBySectionKey: temp.selectedFilterBySectionKey,
-        onSectionApply: handleTempSectionApply,
-      })}
-    >
-      <SearchFilterFields variant="bottomSheet" />
-    </SearchFilterProvider>
+    <SearchFilterFields
+      model={bottomSheetViewModel}
+      variant="bottomSheet"
+    />
   );
 
   return (
@@ -323,10 +198,10 @@ function ServiceSearchFilter({
         </button>
         {hasSelectedFilter && (
           <SelectedFilterSummary
-            appliedPriceRange={appliedPriceRange}
+            appliedPriceRange={filterState.appliedPriceRange}
             selectedServiceItems={selectedServiceItems}
-            onRemovePriceRange={handleRemovePriceRange}
-            onRemoveSelectedCode={handleRemoveSelectedCode}
+            onRemovePriceRange={removePriceRange}
+            onRemoveSelectedCode={removeSelectedCode}
           />
         )}
       </div>
