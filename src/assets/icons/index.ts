@@ -2,6 +2,7 @@ export { ArrowRightIcon } from './arrow-icons/arrow-right-icon.tsx';
 export { CafeIcon } from './category-icons/cafe-icon.tsx';
 export { CallIcon } from './store-icons/call-icon.tsx';
 export { CarIcon } from './category-icons/car-icon.tsx';
+export { CarDefaultIcon } from './car-brand-icons/car-default-icon.tsx';
 export { CheckboxCheckedIcon } from './common/checkbox-checked-icon.tsx';
 export { CheckedIcon } from './common/checked-icon.tsx';
 export { ChevronDownFillIcon } from './arrow-icons/chevron-down-fill-icon.tsx';
