@@ -15,7 +15,7 @@ import type {
 import {
   INITIAL_SEARCH_FILTER_STATE,
   isSearchFilterState,
-  type SearchFilterChangeActions,
+  type SearchFilterChangeHandlers,
   type SearchFilterState,
 } from '@/types/search-filter-state.ts';
 
@@ -26,7 +26,7 @@ function createReplaceAction(
 }
 
 type UseSearchFilterStateReturn = {
-  actions: SearchFilterChangeActions;
+  actions: SearchFilterChangeHandlers;
   commands: {
     applyFilterState: (filterState: SearchFilterState) => void;
     applyPriceRange: () => void;

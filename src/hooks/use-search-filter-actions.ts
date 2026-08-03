@@ -3,9 +3,7 @@ import type {
   SearchFilterFieldName,
   SearchFilterSectionKey,
 } from '@/types/search-filter-configs.ts';
-import type {
-  SearchFilterChangeActions,
-} from '@/types/search-filter-state.ts';
+import type { SearchFilterChangeHandlers } from '@/types/search-filter-state.ts';
 import {
   isPriceInputField,
   type SearchFilterAction,
@@ -19,29 +17,29 @@ type UseSearchFilterActionsOptions = {
 export default function useSearchFilterActions({
   isAppliedPriceRangeClearedOnInput,
   dispatch,
-}: UseSearchFilterActionsOptions): SearchFilterChangeActions {
-  const handleCodesChange = useCallback(
-    (key: SearchFilterSectionKey, codes: string[]): void => {
-      dispatch({ type: 'setCodes', key, codes });
+}: UseSearchFilterActionsOptions): SearchFilterChangeHandlers {
+  const handleSectionSelectionChange = useCallback(
+    (key: SearchFilterSectionKey, selectedCodes: string[]): void => {
+      dispatch({ type: 'setCodes', key, codes: selectedCodes });
     },
     [dispatch],
   );
 
-  const handleSectionCodeToggle = useCallback(
-    (key: SearchFilterSectionKey, code: string): void => {
-      dispatch({ type: 'toggleCode', key, code });
+  const handleSectionOptionToggle = useCallback(
+    (key: SearchFilterSectionKey, optionCode: string): void => {
+      dispatch({ type: 'toggleCode', key, code: optionCode });
     },
     [dispatch],
   );
 
-  const handleSectionValueChange = useCallback(
-    (key: SearchFilterSectionKey, value: string): void => {
-      handleCodesChange(key, [value]);
+  const handleSectionOptionSelect = useCallback(
+    (key: SearchFilterSectionKey, optionCode: string): void => {
+      handleSectionSelectionChange(key, [optionCode]);
     },
-    [handleCodesChange],
+    [handleSectionSelectionChange],
   );
 
-  const handleSectionFieldChange = useCallback(
+  const handleSectionInputChange = useCallback(
     (
       _key: SearchFilterSectionKey,
       field: SearchFilterFieldName,
@@ -68,16 +66,16 @@ export default function useSearchFilterActions({
 
   return useMemo(
     () => ({
-      onSectionCodesChange: handleCodesChange,
-      onSectionCodeToggle: handleSectionCodeToggle,
-      onSectionFieldChange: handleSectionFieldChange,
-      onSectionValueChange: handleSectionValueChange,
+      onSectionSelectionChange: handleSectionSelectionChange,
+      onSectionOptionToggle: handleSectionOptionToggle,
+      onSectionInputChange: handleSectionInputChange,
+      onSectionOptionSelect: handleSectionOptionSelect,
     }),
     [
-      handleCodesChange,
-      handleSectionCodeToggle,
-      handleSectionFieldChange,
-      handleSectionValueChange,
+      handleSectionSelectionChange,
+      handleSectionOptionToggle,
+      handleSectionInputChange,
+      handleSectionOptionSelect,
     ],
   );
 }

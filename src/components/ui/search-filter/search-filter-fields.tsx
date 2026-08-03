@@ -25,10 +25,10 @@ export default function SearchFilterFields({
 }: SearchFilterFieldsProps): ReactNode {
   const {
     actions: {
-      onSectionCodeToggle,
-      onSectionCodesChange,
-      onSectionFieldChange,
-      onSectionValueChange,
+      onSectionOptionToggle,
+      onSectionSelectionChange,
+      onSectionInputChange,
+      onSectionOptionSelect,
     },
     config,
     filterState: { maximumPrice, minimumPrice, selectedPrice },
@@ -75,7 +75,7 @@ export default function SearchFilterFields({
                 selectedFilterBySectionKey[section.key]?.value ?? null
               }
               title={section.label}
-              onChange={(code) => onSectionValueChange(section.key, code)}
+              onChange={(code) => onSectionOptionSelect(section.key, code)}
             />
           );
         }
@@ -89,7 +89,7 @@ export default function SearchFilterFields({
                 selectedFilterBySectionKey[section.key]?.codes ?? []
               }
               title={section.label}
-              onToggle={(code) => onSectionCodeToggle(section.key, code)}
+              onToggle={(code) => onSectionOptionToggle(section.key, code)}
             />
           );
         }
@@ -105,7 +105,7 @@ export default function SearchFilterFields({
                 selectedFilterBySectionKey[section.key]?.codes ?? []
               }
               title={section.label}
-              onChange={(codes) => onSectionCodesChange(section.key, codes)}
+              onChange={(codes) => onSectionSelectionChange(section.key, codes)}
             />
           );
         }
@@ -121,13 +121,13 @@ export default function SearchFilterFields({
               title={section.label}
               onApply={() => onSectionApply(section.key)}
               onMaximumPriceChange={(value) =>
-                onSectionFieldChange(section.key, 'maximumPrice', value)
+                onSectionInputChange(section.key, 'maximumPrice', value)
               }
               onMinimumPriceChange={(value) =>
-                onSectionFieldChange(section.key, 'minimumPrice', value)
+                onSectionInputChange(section.key, 'minimumPrice', value)
               }
               onSelectedPriceChange={(value) =>
-                onSectionFieldChange(section.key, 'selectedPrice', value)
+                onSectionInputChange(section.key, 'selectedPrice', value)
               }
             />
           );
@@ -159,7 +159,7 @@ export default function SearchFilterFields({
                   nextMinimum === range.minimum - range.step &&
                   nextMaximum === range.maximum + range.step;
 
-                onSectionCodesChange(
+                onSectionSelectionChange(
                   section.key,
                   isEntireRange
                     ? []

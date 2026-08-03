@@ -3,9 +3,7 @@ import type {
   SearchFilterSectionKey,
 } from '@/types/search-filter-configs.ts';
 
-export type SearchFilterPriceInputFieldCode =
-  | 'maximumPrice'
-  | 'minimumPrice';
+export type SearchFilterPriceInputFieldCode = 'maximumPrice' | 'minimumPrice';
 
 export type SearchFilterState = {
   appliedPriceRange: {
@@ -18,18 +16,28 @@ export type SearchFilterState = {
   selectedPrice: string;
 };
 
-export type SearchFilterChangeActions = {
-  onSectionCodesChange: (
+export type SearchFilterChangeHandlers = {
+  // 선택된 옵션 코드 목록 전체를 변경
+  onSectionSelectionChange: (
     key: SearchFilterSectionKey,
-    codes: string[],
+    selectedCodes: string[],
   ) => void;
-  onSectionCodeToggle: (key: SearchFilterSectionKey, code: string) => void;
-  onSectionFieldChange: (
+  // 특정 옵션 코드 선택/해제 (checkbox)
+  onSectionOptionToggle: (
+    key: SearchFilterSectionKey,
+    optionCode: string,
+  ) => void;
+  // 입력 필드의 값 변경
+  onSectionInputChange: (
     key: SearchFilterSectionKey,
     field: SearchFilterFieldName,
     value: string,
   ) => void;
-  onSectionValueChange: (key: SearchFilterSectionKey, value: string) => void;
+  // 특정 옵션 코드 하나를 단일 선택 (radio)
+  onSectionOptionSelect: (
+    key: SearchFilterSectionKey,
+    optionCode: string,
+  ) => void;
 };
 
 export const INITIAL_SEARCH_FILTER_STATE: SearchFilterState = {

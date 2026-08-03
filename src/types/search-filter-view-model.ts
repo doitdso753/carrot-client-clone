@@ -4,12 +4,12 @@ import type {
   SelectedFilterBySectionKey,
 } from '@/types/search-filter-configs.ts';
 import type {
-  SearchFilterChangeActions,
+  SearchFilterChangeHandlers,
   SearchFilterState,
 } from '@/types/search-filter-state.ts';
 
 export type SearchFilterViewModel = {
-  actions: SearchFilterChangeActions;
+  actions: SearchFilterChangeHandlers;
   config: SearchFilterConfig;
   filterState: SearchFilterState;
   isCurrentLocationLoading: boolean;

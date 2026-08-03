@@ -8,7 +8,7 @@ import type {
 } from '@/types/search-filter-configs.ts';
 import {
   INITIAL_SEARCH_FILTER_STATE,
-  type SearchFilterChangeActions,
+  type SearchFilterChangeHandlers,
   type SearchFilterState,
 } from '@/types/search-filter-state.ts';
 
@@ -19,7 +19,7 @@ type UseTempSearchFilterOptions = {
 };
 
 type UseTempSearchFilterReturn = {
-  actions: SearchFilterChangeActions;
+  actions: SearchFilterChangeHandlers;
   filterState: SearchFilterState;
   hasSelectedFilter: boolean;
   selectedFilterBySectionKey: SelectedFilterBySectionKey;
