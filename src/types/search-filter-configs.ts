@@ -1,10 +1,19 @@
 import { BUY_SELL_FILTER_CATEGORIES } from '@/types/buy-sell-constants.ts';
 import {
+  CAR_BRANDS,
+  CAR_BRAND_ICONS,
+  CAR_FUEL_TYPES,
+  CAR_SALE_TYPES,
+  CAR_TRANSMISSIONS,
+  CAR_TYPES,
+} from '@/types/car-filter-constants.ts';
+import {
   LOCAL_PROFILE_CATEGORIES,
   LOCAL_PROFILE_OPTIONS,
 } from '@/types/local-profile-constants.ts';
 
 export const SEARCH_FILTER_AVAILABLE_ONLY_CODE = 'availableOnly';
+const CURRENT_YEAR = new Date().getFullYear();
 
 export const WEEKDAY_ITEMS = [
   { code: 'monday', label: '월' },
@@ -16,7 +25,7 @@ export const WEEKDAY_ITEMS = [
   { code: 'sunday', label: '일' },
 ] as const;
 
-export type SearchFilterVariant = 'buySell' | 'localProfile';
+export type SearchFilterVariant = 'buySell' | 'cars' | 'localProfile';
 
 export type SearchFilterItem = {
   code: string;
@@ -27,7 +36,14 @@ export type SearchFilterSectionKey =
   | 'location'
   | 'availability'
   | 'category'
+  | 'brand'
+  | 'carType'
+  | 'fuel'
   | 'price'
+  | 'year'
+  | 'mileage'
+  | 'transmission'
+  | 'saleType'
   | 'options'
   | 'weekday'
   | 'time';
@@ -49,7 +65,21 @@ export type SelectedFilterBySectionKey = Partial<
 >;
 
 export type SearchFilterSectionType =
-  'checkbox' | 'chip' | 'location' | 'price' | 'radio' | 'time' | 'weekday';
+  | 'checkbox'
+  | 'chip'
+  | 'location'
+  | 'price'
+  | 'radio'
+  | 'range'
+  | 'time'
+  | 'weekday';
+
+export type SearchFilterRange = {
+  maximum: number;
+  minimum: number;
+  step: number;
+  suffix: string;
+};
 
 export type SearchFilterSection = {
   bottomSheetType?: 'chip';
@@ -59,6 +89,7 @@ export type SearchFilterSection = {
   isScrollable?: boolean;
   key: SearchFilterSectionKey;
   label: string;
+  range?: SearchFilterRange;
   type: SearchFilterSectionType;
 };
 
@@ -95,6 +126,78 @@ export const SEARCH_FILTER_CONFIGS: Record<
         type: 'radio',
       },
       { key: 'price', label: '가격', type: 'price' },
+    ],
+  },
+  cars: {
+    filterStorageKey: 'search-filter:cars',
+    popupTitle: '중고차 검색 필터',
+    sections: [
+      { key: 'location', label: '위치', type: 'location' },
+      {
+        data: [
+          {
+            code: SEARCH_FILTER_AVAILABLE_ONLY_CODE,
+            label: '거래 가능한 보기',
+          },
+        ],
+        key: 'availability',
+        label: '상태',
+        type: 'checkbox',
+      },
+      {
+        data: CAR_BRANDS,
+        icons: CAR_BRAND_ICONS,
+        isScrollable: true,
+        key: 'brand',
+        label: '브랜드',
+        type: 'radio',
+      },
+      {
+        bottomSheetType: 'chip',
+        data: CAR_TYPES,
+        key: 'carType',
+        label: '차종',
+        type: 'checkbox',
+      },
+      {
+        bottomSheetType: 'chip',
+        data: CAR_FUEL_TYPES,
+        key: 'fuel',
+        label: '연료',
+        type: 'checkbox',
+      },
+      {
+        key: 'price',
+        label: '가격',
+        range: { maximum: 10000, minimum: 100, step: 100, suffix: '만원' },
+        type: 'range',
+      },
+      {
+        key: 'year',
+        label: '연식',
+        range: { maximum: CURRENT_YEAR, minimum: 1994, step: 1, suffix: '년' },
+        type: 'range',
+      },
+      {
+        key: 'mileage',
+        label: '주행거리',
+        range: { maximum: 20, minimum: 2, step: 2, suffix: '만km' },
+        type: 'range',
+      },
+      {
+        data: CAR_TRANSMISSIONS,
+        flexDirection: 'row',
+        key: 'transmission',
+        label: '변속기',
+        type: 'chip',
+      },
+      {
+        data: CAR_SALE_TYPES,
+        flexDirection: 'row',
+        key: 'saleType',
+        label: '판매 방식',
+        type: 'chip',
+      },
     ],
   },
   localProfile: {

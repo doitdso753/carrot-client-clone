@@ -133,6 +133,43 @@ export default function SearchFilterFields({
           );
         }
 
+        if (sectionType === 'range' && section.range) {
+          const range = section.range;
+          const selectedRange = selectedFilterBySectionKey[section.key]?.codes;
+          const minimumValue = Number(
+            selectedRange?.[0] ?? range.minimum - range.step,
+          );
+          const maximumValue = Number(
+            selectedRange?.[1] ?? range.maximum + range.step,
+          );
+
+          return (
+            <RangeSliderFilterSection
+              key={section.key}
+              maximum={range.maximum}
+              maximumValue={maximumValue}
+              minimum={range.minimum}
+              minimumValue={minimumValue}
+              step={range.step}
+              suffix={range.suffix}
+              title={section.label}
+              onApply={() => onSectionApply(section.key)}
+              onChange={(nextMinimum, nextMaximum) => {
+                const isEntireRange =
+                  nextMinimum === range.minimum - range.step &&
+                  nextMaximum === range.maximum + range.step;
+
+                onSectionCodesChange(
+                  section.key,
+                  isEntireRange
+                    ? []
+                    : [String(nextMinimum), String(nextMaximum)],
+                );
+              }}
+            />
+          );
+        }
+
         return null;
       })}
     </>

@@ -11,6 +11,7 @@ export default function CarsContent(): ReactNode {
     <main className="service-list-page min-h-screen pb-20">
       <ServiceListTitle>{region} 중고차</ServiceListTitle>
       <div className="service-list-layout">
+        <SearchFilter region={region} variant="cars" />
         <section
           className="list-content service-list-empty"
           aria-label="중고차 목록"
