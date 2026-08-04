@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import CommonPopup from '@/components/ui/common-popup.tsx';
+import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import type { LocalProfileNews } from '@/types/types.ts';
 
 type LocalProfileNewsPopupProps = {
@@ -36,8 +37,8 @@ export default function LocalProfileNewsPopup({
                     <h3>{item.title}</h3>
                     <p>
                       {item.createdAtText} · 관심{' '}
-                      {item.favoriteCount.toLocaleString()} · 댓글{' '}
-                      {item.commentCount.toLocaleString()}
+                      {formatThousandsBySuffix(item.favoriteCount, '')} · 댓글{' '}
+                      {formatThousandsBySuffix(item.commentCount, '')}
                     </p>
                   </div>
                   <p className="local-profile-news-popup-description">

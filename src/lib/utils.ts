@@ -42,7 +42,7 @@ export function formatPriceText(price: string): string {
     return '0';
   }
 
-  return numericPrice.toLocaleString();
+  return formatThousandsBySuffix(numericPrice, '원');
 }
 
 export function formatThousandsBySuffix(value: number, suffix: string): string {

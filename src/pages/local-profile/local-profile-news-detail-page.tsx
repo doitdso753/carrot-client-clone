@@ -4,7 +4,7 @@ import DetailBreadcrumb from '@/components/ui/detail-breadcrumb.tsx';
 import ImageSlider from '@/components/ui/image-slider.tsx';
 import HeaderWithSearch from '@/layouts/header-with-search/header-with-search.tsx';
 import RootLayout from '@/layouts/root-layout.tsx';
-import { getElapsedTimeText } from '@/lib/utils.ts';
+import { formatThousandsBySuffix, getElapsedTimeText } from '@/lib/utils.ts';
 import { LOCAL_PROFILE_ITEMS } from '@/types/local-profile-constants.ts';
 
 type LocalProfileCommentSortType = 'registered' | 'latest';
@@ -89,9 +89,9 @@ export default function LocalProfileNewsDetailPage(): ReactNode {
                 <div className="local-profile-news-detail-description">
                   <p className="whitespace-pre-line">{news.content}</p>
                   <p className="local-profile-news-detail-status">
-                    문의 {news.inquiryCount.toLocaleString()} · 관심{' '}
-                    {news.favoriteCount.toLocaleString()} · 조회{' '}
-                    {news.viewCount.toLocaleString()}
+                    문의 {formatThousandsBySuffix(news.inquiryCount, '')} · 관심{' '}
+                    {formatThousandsBySuffix(news.favoriteCount, '')} · 조회{' '}
+                    {formatThousandsBySuffix(news.viewCount, '')}
                   </p>
                 </div>
 
@@ -138,7 +138,7 @@ export default function LocalProfileNewsDetailPage(): ReactNode {
 
             <section className="local-profile-comments">
               <div className="local-profile-comments-heading">
-                <h2>댓글 {commentCount.toLocaleString()}개</h2>
+                <h2>댓글 {formatThousandsBySuffix(commentCount, '개')}개</h2>
                 <div
                   className="local-profile-comment-sort local-profile-comment-sort--inline"
                   aria-label="댓글 정렬"

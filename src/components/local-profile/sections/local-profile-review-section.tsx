@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { ChevronRightThinIcon } from '@/assets/icons';
 import LocalProfileReviewPopup from '@/components/local-profile/popups/local-profile-review-popup.tsx';
 import usePopup from '@/hooks/use-popup.ts';
+import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
 import LocalProfileReviewItem from './local-profile-review-item.tsx';
 import type { LocalProfileReview } from '@/types/types.ts';
@@ -38,7 +39,7 @@ export default function LocalProfileReviewSection({
           )
         }
         id="reviews"
-        title={`후기 ${totalReviewCount.toLocaleString()}개`}
+        title={`후기 ${formatThousandsBySuffix(totalReviewCount, '개')}개`}
       >
         <div className="local-profile-review-list">
           {visibleReviews.map((review) => (

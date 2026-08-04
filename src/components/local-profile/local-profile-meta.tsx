@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { StarIcon } from '@/assets/icons';
+import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import type { LocalProfileItem } from '@/types/types.ts';
 
 type LocalProfileMetaProps = Pick<
@@ -28,10 +29,10 @@ export default function LocalProfileMeta({
           className="local-profile-meta-item local-profile-meta-item--divider"
           href="#reviews"
         >
-          <span>후기 {reviewCount.toLocaleString()}</span>
+          <span>후기 {formatThousandsBySuffix(reviewCount, '')}</span>
         </a>
         <span className="local-profile-meta-item local-profile-meta-item--desktop-divider">
-          단골 {commentCount.toLocaleString()}
+          단골 {formatThousandsBySuffix(commentCount, '')}
         </span>
       </div>
       <div className="local-profile-meta-row">

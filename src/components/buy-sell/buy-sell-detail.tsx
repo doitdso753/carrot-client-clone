@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
 import ImageSlider from '@/components/ui/image-slider';
 import UserProfile from '@/components/ui/user-profile';
-import { getElapsedTimeText } from '@/lib/utils';
+import { formatThousandsBySuffix, getElapsedTimeText } from '@/lib/utils';
 import {
   BUY_SELL_ITEM_STATUS,
   BUY_SELL_ITEM_STATUS_LABEL,
@@ -85,7 +85,7 @@ export default function BuySellDetail({ item }: BuySellDetailProps): ReactNode {
               {item.categoryText ?? '기타 중고물품'} ·{' '}
               {getElapsedTimeText(item.createdAt)}
             </p>
-            <strong>{item.price.toLocaleString()}원</strong>
+            <strong>{formatThousandsBySuffix(item.price, '원')}원</strong>
           </div>
 
           <div className="detail-page-description">

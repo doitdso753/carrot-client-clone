@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { StarIcon } from '@/assets/icons';
+import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import type { LocalProfileItem } from '@/types/types.ts';
 
 type BoardItemProps = {
@@ -24,9 +25,9 @@ export default function BoardItem({ item }: BoardItemProps): ReactNode {
                 {item.rating.toFixed(1)}
               </span>
               <span aria-hidden="true">·</span>
-              <span>후기 {item.reviewCount.toLocaleString()}</span>
+              <span>후기 {formatThousandsBySuffix(item.reviewCount, '')}</span>
               <span aria-hidden="true">·</span>
-              <span>단골 {item.commentCount.toLocaleString()}</span>
+              <span>단골 {formatThousandsBySuffix(item.commentCount, '')}</span>
               <span aria-hidden="true">·</span>
               <span>{item.location}</span>
             </div>

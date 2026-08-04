@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { ChevronRightThinIcon } from '@/assets/icons';
 import usePopup from '@/hooks/use-popup.ts';
+import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
 import LocalProfileNewsPopup from '@/components/local-profile/popups/local-profile-news-popup.tsx';
 import type { LocalProfileNews } from '@/types/types.ts';
@@ -34,8 +35,8 @@ function LocalProfileNewsList({
                   <h3>{item.title}</h3>
                   <p>
                     {item.createdAtText} · 관심{' '}
-                    {item.favoriteCount.toLocaleString()} · 댓글{' '}
-                    {item.commentCount.toLocaleString()}
+                    {formatThousandsBySuffix(item.favoriteCount, '')} · 댓글{' '}
+                    {formatThousandsBySuffix(item.commentCount, '')}
                   </p>
                 </div>
               </div>

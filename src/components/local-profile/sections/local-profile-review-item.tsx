@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { StarIcon, ThumbUpIcon } from '@/assets/icons';
 import ImagePreview from '@/components/ui/image-preview.tsx';
+import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import type { LocalProfileReview } from '@/types/types.ts';
 
 type LocalProfileReviewItemProps = {
@@ -43,7 +44,7 @@ export default function LocalProfileReviewItem({
             <p>
               <span className="local-profile-meta-item local-profile-meta-item--divider">
                 {review.authorRegionText} 인증{' '}
-                {review.certifiedCount.toLocaleString()}회
+                {formatThousandsBySuffix(review.certifiedCount, '회')}회
               </span>
               <span className="local-profile-meta-item">
                 {review.createdAtText}
@@ -75,7 +76,7 @@ export default function LocalProfileReviewItem({
         <button className="local-profile-review-helpful" type="button">
           <ThumbUpIcon />
           <span className="local-profile-meta-item">
-            도움돼요 {review.helpfulCount.toLocaleString()}
+            도움돼요 {formatThousandsBySuffix(review.helpfulCount, '')}
           </span>
         </button>
 

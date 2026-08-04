@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { getElapsedTimeText } from '@/lib/utils.ts';
+import { formatThousandsBySuffix, getElapsedTimeText } from '@/lib/utils.ts';
 import { BUY_SELL_ITEM_STATUS_LABEL } from '@/types/buy-sell-constants.ts';
 import type { BuySellItem, BuySellItemStatusCode } from '@/types/types.ts';
 
@@ -39,7 +39,7 @@ export default function CardItem({ item }: CardItemProps): ReactNode {
           {item.title}
         </h2>
         <p className="card-item-price text-base font-bold text-(--color-palette-gray-1000)">
-          {item.price.toLocaleString()}원
+          {formatThousandsBySuffix(item.price, '원')}원
         </p>
         <p className="card-item-meta text-xs text-(--color-palette-gray-700)">
           {item.location}&nbsp;·&nbsp;{getElapsedTimeText(item.createdAt)}
