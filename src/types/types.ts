@@ -225,6 +225,22 @@ export type BuySellItem = {
   };
 };
 
+export type CarListItemStatus = 'reserved' | 'sold';
+
+export type CarListItem = {
+  id: number;
+  title: string;
+  status?: CarListItemStatus;
+  priceText: string;
+  modelYearText: string;
+  mileageText: string;
+  location: string;
+  createdAt: string;
+  commentCount: number;
+  favoriteCount: number;
+  imageUrl: string;
+};
+
 export type UsePopupReturn = {
   isOpen: boolean;
   openPopup: () => void;

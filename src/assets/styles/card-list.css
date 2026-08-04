@@ -44,10 +44,112 @@
   margin-top: 0.4rem;
 }
 
+.car-card-list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.6rem;
+  row-gap: 3.2rem;
+}
+
+.car-card-item {
+  display: block;
+  min-width: 0;
+}
+
+.car-card-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 1.2rem;
+}
+
+.car-card-item-title {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--color-palette-gray-1000);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-base);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.car-card-item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.car-card-item-price,
+.car-card-item-spec,
+.car-card-item-meta,
+.car-card-item-meta > span {
+  display: flex;
+  align-items: center;
+}
+
+.car-card-item-price {
+  flex-wrap: wrap;
+  column-gap: 0.6rem;
+  color: var(--color-palette-gray-1000);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text-base);
+}
+
+.car-card-item-price strong {
+  font-weight: inherit;
+}
+
+.car-card-item-status {
+  color: var(--color-palette-gray-700);
+}
+
+.car-card-item-status--reserved {
+  color: var(--color-palette-green-700);
+}
+
+.car-card-item-spec {
+  gap: 0.4rem;
+  color: var(--color-palette-gray-1000);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-sm);
+}
+
+.car-card-item-meta-group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 0.8rem;
+}
+
+.car-card-item-meta {
+  gap: 0.4rem;
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-xs);
+}
+
+.car-card-item-meta > span {
+  gap: 0.2rem;
+}
+
+.car-card-item-meta svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-palette-gray-500);
+}
+
 @media screen and (min-width: 768px) {
   .card-list-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 2.2rem;
+    row-gap: 4rem;
+  }
+
+  .car-card-list-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 2rem;
     row-gap: 4rem;
   }
 }
@@ -58,6 +160,38 @@
     column-gap: 1.2rem;
     row-gap: 4rem;
   }
+
+  .car-card-list-grid {
+    column-gap: 2.4rem;
+  }
+
+  .car-card-item-content {
+    gap: 0.4rem;
+  }
+
+  .car-card-item-price {
+    font-size: var(--text-xl);
+    line-height: var(--line-height-text-xl);
+  }
+
+  .car-card-item-details {
+    gap: 0.4rem;
+  }
+
+  .car-card-item-spec {
+    font-size: var(--text-base);
+    line-height: var(--line-height-text-base);
+  }
+
+  .car-card-item-meta-group {
+    margin-top: 0;
+    row-gap: 0.2rem;
+  }
+
+  .car-card-item-meta {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-text-sm);
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -65,5 +199,9 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 1.6rem;
     row-gap: 4.8rem;
+  }
+
+  .car-card-list-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

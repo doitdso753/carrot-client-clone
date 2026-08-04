@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
-import ListEmptyState from '@/components/ui/list-empty-state.tsx';
+import CarCardList from '@/components/ui/card-list/car-card-list.tsx';
 import SearchFilter from '@/components/ui/search-filter.tsx';
 import ServiceListTitle from '@/components/ui/service-list-title.tsx';
 import useRegion from '@/hooks/use-region.ts';
+import { CAR_LIST_ITEMS } from '@/types/car-list-constants.ts';
 
 export default function CarsContent(): ReactNode {
   const { region } = useRegion();
@@ -12,12 +13,7 @@ export default function CarsContent(): ReactNode {
       <ServiceListTitle>{region} 중고차</ServiceListTitle>
       <div className="service-list-layout">
         <SearchFilter region={region} variant="cars" />
-        <section
-          className="list-content service-list-empty"
-          aria-label="중고차 목록"
-        >
-          <ListEmptyState region={region} />
-        </section>
+        <CarCardList items={CAR_LIST_ITEMS} region={region} />
       </div>
     </main>
   );

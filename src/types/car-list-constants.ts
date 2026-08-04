@@ -1,0 +1,141 @@
+import type { CarListItem } from '@/types/types.ts';
+
+export const CAR_LIST_ITEM_STATUS_LABEL = {
+  reserved: '예약중',
+  sold: '거래완료',
+} as const;
+
+export const CAR_LIST_ITEMS: CarListItem[] = [
+  {
+    id: 101,
+    title: '더 뉴 쏘렌토 하이브리드(MQ4) 1.6 HEV 2WD 노블레스',
+    priceText: '렌트 87만원/월',
+    modelYearText: '24년식',
+    mileageText: '4.9만km',
+    location: '원천동',
+    createdAt: '2026-08-03T12:00:00+09:00',
+    commentCount: 0,
+    favoriteCount: 1,
+    imageUrl:
+      'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=85',
+  },
+  {
+    id: 102,
+    title: '오딧세이(5세대) 3.5 V6',
+    priceText: '2,250만원',
+    modelYearText: '19년식',
+    mileageText: '5.6만km',
+    location: '원천동',
+    createdAt: '2026-08-02T10:30:00+09:00',
+    commentCount: 1,
+    favoriteCount: 21,
+    imageUrl:
+      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=85',
+  },
+  {
+    id: 103,
+    title: '5시리즈(6세대) 520d xDrive',
+    priceText: '1,300만원',
+    modelYearText: '14년식',
+    mileageText: '21만km',
+    location: '원천동',
+    createdAt: '2026-08-02T09:20:00+09:00',
+    commentCount: 0,
+    favoriteCount: 0,
+    imageUrl:
+      'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=900&q=85',
+  },
+  {
+    id: 104,
+    title: '디 올 뉴 싼타페 가솔린 2.5 2WD 익스클루시브',
+    priceText: '2,900만원',
+    modelYearText: '25년식',
+    mileageText: '7,540km',
+    location: '원천동',
+    createdAt: '2026-08-01T14:00:00+09:00',
+    commentCount: 0,
+    favoriteCount: 23,
+    imageUrl:
+      'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=85',
+  },
+  {
+    id: 105,
+    title: '뉴 GV80 2.5 가솔린 AWD 블랙',
+    priceText: '렌트 116만원/월',
+    modelYearText: '26년식',
+    mileageText: '2,880km',
+    location: '원천동',
+    createdAt: '2026-07-30T13:40:00+09:00',
+    commentCount: 1,
+    favoriteCount: 7,
+    imageUrl:
+      'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=85',
+  },
+  {
+    id: 106,
+    title: 'C클래스(4세대) C200 카브리올레',
+    priceText: '2,750만원',
+    modelYearText: '20년식',
+    mileageText: '12.3만km',
+    location: '원천동',
+    createdAt: '2026-07-29T11:15:00+09:00',
+    commentCount: 4,
+    favoriteCount: 21,
+    imageUrl:
+      'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=85',
+  },
+  {
+    id: 107,
+    title: '코란도 투리스모 2.0 2WD 9인승 LT',
+    priceText: '200만원',
+    modelYearText: '14년식',
+    mileageText: '23.8만km',
+    location: '원천동',
+    createdAt: '2026-07-28T16:30:00+09:00',
+    commentCount: 6,
+    favoriteCount: 29,
+    imageUrl:
+      'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=85',
+  },
+  {
+    id: 108,
+    title: '더 뉴 K5(DL3) 1.6 가솔린 터보 프레스티지',
+    status: 'sold',
+    priceText: '렌트 31만원/월',
+    modelYearText: '25년식',
+    mileageText: '1.5만km',
+    location: '원천동',
+    createdAt: '2026-07-27T15:10:00+09:00',
+    commentCount: 4,
+    favoriteCount: 11,
+    imageUrl:
+      'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=85',
+  },
+  {
+    id: 109,
+    title: '베리 뉴 티볼리 1.6 디젤 2WD V1',
+    status: 'reserved',
+    priceText: '510만원',
+    modelYearText: '20년식',
+    mileageText: '21만km',
+    location: '원천동',
+    createdAt: '2026-07-25T10:00:00+09:00',
+    commentCount: 5,
+    favoriteCount: 18,
+    imageUrl:
+      'https://images.unsplash.com/photo-1539788816080-8bdd722d8c22?auto=format&fit=crop&w=900&q=85',
+  },
+  {
+    id: 110,
+    title: 'AMG GT 63 S 4매틱+',
+    priceText: '리스 1만원/월',
+    modelYearText: '21년식',
+    mileageText: '2.8만km',
+    location: '원천동',
+    createdAt: '2026-07-24T09:30:00+09:00',
+    commentCount: 3,
+    favoriteCount: 12,
+    imageUrl:
+      'https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=900&q=85',
+  },
+];
