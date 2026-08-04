@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from 'react';
+import { formatThousandsBySuffix } from '@/lib/utils.ts';
 
 type UseRangeSliderOptions = {
   maximum: number;
@@ -32,12 +33,12 @@ export default function useRangeSlider({
   const controlMinimum = minimum - step;
   const controlMaximum = maximum + step;
   const rangeSize = controlMaximum - controlMinimum;
-  const minimumPosition =
-    ((minimumValue - controlMinimum) / rangeSize) * 100;
-  const maximumPosition =
-    ((maximumValue - controlMinimum) / rangeSize) * 100;
+  const minimumPosition = ((minimumValue - controlMinimum) / rangeSize) * 100;
+  const maximumPosition = ((maximumValue - controlMinimum) / rangeSize) * 100;
 
   const rangeLabel = useMemo((): string => {
+    const formattedMinimumValue = formatThousandsBySuffix(minimumValue, suffix);
+    const formattedMaximumValue = formatThousandsBySuffix(maximumValue, suffix);
     const isEntireRange =
       minimumValue === controlMinimum && maximumValue === controlMaximum;
 
@@ -46,21 +47,15 @@ export default function useRangeSlider({
     }
 
     if (minimumValue === controlMinimum) {
-      return `${maximumValue.toLocaleString()}${suffix} 이하`;
+      return `${formattedMaximumValue}${suffix} 이하`;
     }
 
     if (maximumValue === controlMaximum) {
-      return `${minimumValue.toLocaleString()}${suffix} 이상`;
+      return `${formattedMinimumValue}${suffix} 이상`;
     }
 
-    return `${minimumValue.toLocaleString()}${suffix} ~ ${maximumValue.toLocaleString()}${suffix}`;
-  }, [
-    controlMaximum,
-    controlMinimum,
-    maximumValue,
-    minimumValue,
-    suffix,
-  ]);
+    return `${formattedMinimumValue}${suffix} ~ ${formattedMaximumValue}${suffix}`;
+  }, [controlMaximum, controlMinimum, maximumValue, minimumValue, suffix]);
 
   const handleMinimumChange = useCallback(
     (value: number): void => {

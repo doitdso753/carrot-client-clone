@@ -45,6 +45,12 @@ export function formatPriceText(price: string): string {
   return numericPrice.toLocaleString();
 }
 
+export function formatThousandsBySuffix(value: number, suffix: string): string {
+  return value.toLocaleString('ko-KR', {
+    useGrouping: suffix !== '년',
+  });
+}
+
 export function removeCommaFromString(value: string): string {
   return value.replace(/,/g, '');
 }

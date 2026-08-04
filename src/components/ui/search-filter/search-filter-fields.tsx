@@ -142,9 +142,23 @@ export default function SearchFilterFields({
           const maximumValue = Number(
             selectedRange?.[1] ?? range.maximum + range.step,
           );
+          const handleRangeChange = (
+            nextMinimum: number,
+            nextMaximum: number,
+          ): void => {
+            const isEntireRange =
+              nextMinimum === range.minimum - range.step &&
+              nextMaximum === range.maximum + range.step;
+
+            onSectionSelectionChange(
+              section.key,
+              isEntireRange ? [] : [String(nextMinimum), String(nextMaximum)],
+            );
+          };
 
           return (
             <RangeSliderFilterSection
+              isApplyButtonDisabled={variant === 'bottomSheet'}
               key={section.key}
               maximum={range.maximum}
               maximumValue={maximumValue}
@@ -153,19 +167,13 @@ export default function SearchFilterFields({
               step={range.step}
               suffix={range.suffix}
               title={section.label}
-              onApply={() => onSectionApply(section.key)}
-              onChange={(nextMinimum, nextMaximum) => {
-                const isEntireRange =
-                  nextMinimum === range.minimum - range.step &&
-                  nextMaximum === range.maximum + range.step;
-
-                onSectionSelectionChange(
-                  section.key,
-                  isEntireRange
-                    ? []
-                    : [String(nextMinimum), String(nextMaximum)],
-                );
+              onApply={(nextMinimum, nextMaximum) => {
+                handleRangeChange(nextMinimum, nextMaximum);
+                onSectionApply(section.key);
               }}
+              onChange={
+                variant === 'bottomSheet' ? handleRangeChange : undefined
+              }
             />
           );
         }

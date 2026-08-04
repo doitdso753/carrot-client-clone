@@ -72,7 +72,7 @@ export default function SelectedFilterSummary({
       {selectedServiceItems.map((item) => (
         <SelectedFilterChip
           item={item}
-          key={item.code}
+          key={`${item.sectionKey}-${item.code}`}
           onRemove={onRemoveSelectedCode}
         />
       ))}

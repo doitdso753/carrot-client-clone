@@ -95,9 +95,18 @@ export default function useSearchFilterState(
 
   const removeSelectedCode = useCallback(
     (key: SearchFilterSectionKey, code: string): void => {
+      const section = config.sections.find(
+        (currentSection) => currentSection.key === key,
+      );
+
+      if (section?.type === 'range') {
+        dispatch({ type: 'setCodes', key, codes: [] });
+        return;
+      }
+
       dispatch({ type: 'removeSelectedCode', key, code });
     },
-    [dispatch],
+    [config.sections, dispatch],
   );
 
   return {

@@ -352,6 +352,11 @@
   font-size: var(--text-base);
 }
 
+.range-slider-filter-section .search-filter-apply-button:disabled {
+  color: var(--color-palette-gray-500);
+  cursor: not-allowed;
+}
+
 .search-filter-popup-fields > .search-filter-section:first-child {
   padding-top: 0;
 }

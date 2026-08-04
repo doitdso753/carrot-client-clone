@@ -7,6 +7,7 @@ import {
   type SelectedFilterBySectionKey,
   type SelectedSearchFilterItem,
 } from '@/types/search-filter-configs.ts';
+import { formatThousandsBySuffix } from '@/lib/utils.ts';
 
 type SearchFilterSelectionState = {
   selectedCodesByKey: Partial<Record<SearchFilterSectionKey, string[]>>;
@@ -74,6 +75,38 @@ function getSelectedItemsBySection(
     return [];
   }
 
+  if (section.type === 'range' && section.range && selectedCodes.length >= 2) {
+    const minimumValue = Number(selectedCodes[0]);
+    const maximumValue = Number(selectedCodes[1]);
+    const controlMinimum = section.range.minimum - section.range.step;
+    const controlMaximum = section.range.maximum + section.range.step;
+    const formattedMinimumValue = formatThousandsBySuffix(
+      minimumValue,
+      section.range.suffix,
+    );
+    const formattedMaximumValue = formatThousandsBySuffix(
+      maximumValue,
+      section.range.suffix,
+    );
+    let label: string;
+
+    if (minimumValue === controlMinimum) {
+      label = `${formattedMaximumValue}${section.range.suffix} 이하`;
+    } else if (maximumValue === controlMaximum) {
+      label = `${formattedMinimumValue}${section.range.suffix} 이상`;
+    } else {
+      label = `${formattedMinimumValue}${section.range.suffix} ~ ${formattedMaximumValue}${section.range.suffix}`;
+    }
+
+    return [
+      {
+        code: selectedCodes.join(':'),
+        label,
+        sectionKey: section.key,
+      },
+    ];
+  }
+
   return getSectionItems(section)
     .filter((item) => selectedCodes.includes(item.code))
     .map((item) => ({
@@ -99,9 +132,9 @@ export function getSelectedFilterBySectionKey(
 export function hasSelectedSectionFilters(
   selectedFilterBySectionKey: SelectedFilterBySectionKey,
 ): boolean {
-  const selections = Object.values<
-    SearchFilterSectionSelection | undefined
-  >(selectedFilterBySectionKey);
+  const selections = Object.values<SearchFilterSectionSelection | undefined>(
+    selectedFilterBySectionKey,
+  );
 
   return selections.some((selection) => hasSelectedSectionFilter(selection));
 }
@@ -142,11 +175,7 @@ export function getSelectedServiceItems({
   config: SearchFilterConfig;
   selectedFilterBySectionKey: SelectedFilterBySectionKey;
 }): SelectedSearchFilterItem[] {
-  return config.sections
-    .flatMap((section) =>
-      getSelectedItemsBySection(
-        section,
-        selectedFilterBySectionKey[section.key],
-      ),
-    );
+  return config.sections.flatMap((section) =>
+    getSelectedItemsBySection(section, selectedFilterBySectionKey[section.key]),
+  );
 }
