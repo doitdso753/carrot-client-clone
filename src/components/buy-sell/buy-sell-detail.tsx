@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
+import OpenAppCtaButton from '@/components/ui/open-app-cta-button';
 import ImageSlider from '@/components/ui/image-slider';
 import UserProfile from '@/components/ui/user-profile';
 import { formatThousandsBySuffix, getElapsedTimeText } from '@/lib/utils';
@@ -99,14 +100,7 @@ export default function BuySellDetail({ item }: BuySellDetailProps): ReactNode {
             </p>
           </div>
 
-          <a
-            className="detail-page-app-button"
-            href="https://www.daangn.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            당근 앱에서 보기
-          </a>
+          <OpenAppCtaButton />
         </section>
       </div>
     </main>

@@ -9,6 +9,7 @@ import {
   WebIcon,
 } from '@/assets/icons';
 import CommonToast from '@/components/ui/common-toast.tsx';
+import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
 import LocalProfileMeta from '@/components/local-profile/local-profile-meta.tsx';
 import useCollapse from '@/hooks/use-collapse.ts';
 import useToast from '@/hooks/use-toast.ts';
@@ -178,14 +179,7 @@ export default function LocalProfileStoreInfoSection({
           alt={`${item.name} 지도`}
         />
 
-        <a
-          className="local-profile-store-info-app-link"
-          href={storeInfo.appLink}
-          target="_blank"
-          rel="noreferrer"
-        >
-          당근 앱에서 보기
-        </a>
+        <OpenAppCtaButton />
       </div>
 
       {isCopyMessageVisible && (

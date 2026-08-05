@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
-  envPrefix: ['VITE_', 'KAKAO_'],
+  envPrefix: ['VITE_', 'KAKAO_', 'APP_'],
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

@@ -465,7 +465,7 @@
   line-height: var(--line-height-text-sm);
 }
 
-.detail-page-app-button {
+.open-app-cta-button {
   display: flex;
   min-height: 4.8rem;
   align-items: center;
@@ -477,7 +477,7 @@
   font-weight: var(--font-weight-bold);
 }
 
-.detail-page-app-button:hover {
+.open-app-cta-button:hover {
   background-color: var(--color-palette-carrot-700);
 }
 

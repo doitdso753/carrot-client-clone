@@ -1211,19 +1211,6 @@
   object-fit: cover;
 }
 
-.local-profile-store-info-app-link {
-  display: flex;
-  min-height: 5.6rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.8rem;
-  background-color: var(--color-palette-carrot-600);
-  color: var(--color-palette-gray-00);
-  font-size: var(--text-base);
-  line-height: var(--line-height-text-base);
-  font-weight: var(--font-weight-bold);
-}
-
 @media screen and (min-width: 768px) {
   .local-profile-detail-heading h1 {
     font-size: var(--text-3xl);

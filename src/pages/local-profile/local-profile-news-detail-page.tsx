@@ -1,6 +1,7 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import { Link, useParams } from 'react-router';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb.tsx';
+import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
 import ImageSlider from '@/components/ui/image-slider.tsx';
 import HeaderWithSearch from '@/layouts/header-with-search/header-with-search.tsx';
 import RootLayout from '@/layouts/root-layout.tsx';
@@ -125,14 +126,7 @@ export default function LocalProfileNewsDetailPage(): ReactNode {
                   </div>
                 )}
 
-                <a
-                  className="detail-page-app-button"
-                  href={item.storeInfo?.appLink ?? 'https://www.daangn.com/'}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  당근 앱에서 보기
-                </a>
+                <OpenAppCtaButton />
               </section>
             </div>
 
