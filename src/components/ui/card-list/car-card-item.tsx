@@ -15,7 +15,7 @@ export default function CarCardItem({ item }: CarCardItemProps): ReactNode {
         <div className="card-item-image aspect-square overflow-hidden rounded-lg bg-(--color-palette-gray-200)">
           <img
             className="h-full w-full object-cover transition duration-300 ease-out group-hover:scale-105"
-            src={item.imageUrl}
+            src={item.thumbnailImageUrl}
             alt={item.title}
             loading="lazy"
           />
