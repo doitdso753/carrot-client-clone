@@ -918,3 +918,37 @@
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
+
+.kakao-map-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 0.8rem;
+  background-color: var(--color-palette-gray-200);
+}
+
+.kakao-map {
+  width: 100%;
+  min-height: 20rem;
+}
+
+.kakao-map-marker,
+.kakao-map-marker svg {
+  display: block;
+  width: 3.6rem;
+  height: 3.6rem;
+}
+
+.kakao-map-error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.4rem;
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
+  font-weight: var(--font-weight-normal);
+  text-align: center;
+}

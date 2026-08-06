@@ -9,6 +9,7 @@ import {
   WebIcon,
 } from '@/assets/icons';
 import CommonToast from '@/components/ui/common-toast.tsx';
+import KakaoMap from '@/components/ui/kakao-map.tsx';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
 import LocalProfileMeta from '@/components/local-profile/local-profile-meta.tsx';
 import useCollapse from '@/hooks/use-collapse.ts';
@@ -178,10 +179,8 @@ export default function LocalProfileStoreInfoSection({
           </div>
         </div>
 
-        <img
-          className="local-profile-store-info-map"
-          src={storeInfo.mapImageUrl}
-          alt={`${item.name} 지도`}
+        <KakaoMap
+          address={storeInfo.addresses[0]?.address ?? storeInfo.addressSummary}
         />
 
         <OpenAppCtaButton />
