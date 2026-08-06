@@ -26,6 +26,7 @@ export { HomeIcon } from './category-icons/home-icon.tsx';
 export { LogoIcon } from './logo-icon.tsx';
 export { LocationIcon } from './store-icons/location-icon.tsx';
 export { MenuIcon } from './common/menu-icon.tsx';
+export { MapMarkerIcon } from './common/map-marker-icon.tsx';
 export { SearchIcon } from './magnifier-icons/search-icon.tsx';
 export { SearchUserIcon } from './category-icons/search-user-icon.tsx';
 export { ShoppingBagIcon } from './category-icons/shopping-bag-icon.tsx';
