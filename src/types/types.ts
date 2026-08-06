@@ -159,7 +159,8 @@ export type LocalProfileDocumentGroup = {
 
 export type LocalProfileStoreAddress = {
   label: '도로명' | '지번';
-  value: string;
+  address: string;
+  addressDetail: string;
 };
 
 export type LocalProfileStoreInfo = {

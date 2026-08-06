@@ -13,7 +13,7 @@ import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
 import LocalProfileMeta from '@/components/local-profile/local-profile-meta.tsx';
 import useCollapse from '@/hooks/use-collapse.ts';
 import useToast from '@/hooks/use-toast.ts';
-import { copyTextToClipboard } from '@/lib/utils.ts';
+import { copyTextToClipboard, getFullAddress } from '@/lib/utils.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
 import type { LocalProfileItem } from '@/types/types.ts';
 
@@ -155,11 +155,16 @@ export default function LocalProfileStoreInfoSection({
                   >
                     <span>{address.label}</span>
                     <p>
-                      {address.value}
+                      {getFullAddress(address.address, address.addressDetail)}
                       <button
                         type="button"
                         onClick={() => {
-                          void handleCopyText(address.value);
+                          void handleCopyText(
+                            getFullAddress(
+                              address.address,
+                              address.addressDetail,
+                            ),
+                          );
                         }}
                       >
                         <CopyIcon />

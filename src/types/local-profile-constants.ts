@@ -289,11 +289,13 @@ const LOCAL_PROFILE_STORE_INFO: { storeInfo: LocalProfileStoreInfo } = {
     addresses: [
       {
         label: '도로명',
-        value: '경기도 수원시 영통구 영통로 132 상가211호',
+        address: '경기도 수원시 영통구 영통로 135',
+        addressDetail: '상가211호',
       },
       {
         label: '지번',
-        value: '경기도 수원시 영통구 영통동 1036-6 상가211호',
+        address: '경기도 수원시 영통구 망포동 383-12',
+        addressDetail: '상가211호',
       },
     ],
   },
