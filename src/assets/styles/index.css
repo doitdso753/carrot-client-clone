@@ -291,6 +291,8 @@
 }
 
 .hero-search-wrapper {
+  --form-select-chevron-size: 1.4rem;
+
   width: 100%;
 }
 

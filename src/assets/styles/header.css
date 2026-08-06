@@ -23,11 +23,6 @@
   padding-left: 1.4rem;
 }
 
-.header-search-form svg {
-  width: 1.8rem;
-  height: 2.4rem;
-}
-
 .header-search-form .form-select-trigger {
   color: var(--color-palette-gray-1000);
   font-size: var(--text-sm);

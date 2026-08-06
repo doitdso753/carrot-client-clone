@@ -24,6 +24,11 @@
   justify-content: center;
 }
 
+.form-select-icon svg {
+  width: 1.8rem;
+  height: 2.4rem;
+}
+
 .form-select-chevron {
   display: flex;
   flex-shrink: 0;
@@ -31,7 +36,8 @@
 }
 
 .form-select-chevron svg {
-  width: 1rem;
+  width: var(--form-select-chevron-size, 1rem);
+  height: var(--form-select-chevron-size, 1rem);
 }
 
 .form-select-menu {
