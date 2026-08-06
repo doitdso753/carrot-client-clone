@@ -1,10 +1,12 @@
 import { useState, type ReactNode } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@/assets/icons';
+import GalleryImagePreview from '@/components/ui/gallery-image-preview';
 import ImagePreview from '@/components/ui/image-preview';
 
 type ImageSliderProps = {
   imageUrls: string[];
   title: string;
+  isShowImageGallery?: boolean;
 };
 
 type ImageSlideDirection = 'previous' | 'next';
@@ -12,12 +14,14 @@ type ImageSlideDirection = 'previous' | 'next';
 export default function ImageSlider({
   imageUrls,
   title,
+  isShowImageGallery = false,
 }: ImageSliderProps): ReactNode {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [previousImageIndex, setPreviousImageIndex] = useState<number | null>(
     null,
   );
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [slideDirection, setSlideDirection] =
     useState<ImageSlideDirection>('next');
   const hasPreviousImage = currentImageIndex > 0;
@@ -41,6 +45,14 @@ export default function ImageSlider({
 
   const closePreview = (): void => {
     setIsPreviewOpen(false);
+  };
+
+  const openGallery = (): void => {
+    setIsGalleryOpen(true);
+  };
+
+  const closeGallery = (): void => {
+    setIsGalleryOpen(false);
   };
 
   const handlePreviewImageChange = (imageIndex: number): void => {
@@ -102,17 +114,30 @@ export default function ImageSlider({
             <ChevronRightIcon />
           </button>
         )}
-        <div
-          className="image-slider-dots"
-          aria-label={`이미지 ${imageUrls.length}개 중 ${currentImageIndex + 1}번째`}
-        >
-          {imageUrls.map((imageUrl, index) => (
-            <span
-              className={index === currentImageIndex ? 'is-active' : ''}
-              key={imageUrl}
-            />
-          ))}
-        </div>
+        {!isShowImageGallery && (
+          <div
+            className="image-slider-dots"
+            aria-label={`이미지 ${imageUrls.length}개 중 ${currentImageIndex + 1}번째`}
+          >
+            {imageUrls.map((imageUrl, index) => (
+              <span
+                className={index === currentImageIndex ? 'is-active' : ''}
+                key={imageUrl}
+              />
+            ))}
+          </div>
+        )}
+        {isShowImageGallery && (
+          <button
+            className="image-slider-gallery-button"
+            type="button"
+            onClick={openGallery}
+          >
+            {currentImageIndex + 1}/{imageUrls.length}
+            <span className="image-slider-gallery-divider" aria-hidden="true" />
+            전체보기
+          </button>
+        )}
       </div>
       {isPreviewOpen && (
         <ImagePreview
@@ -121,6 +146,13 @@ export default function ImageSlider({
           title={title}
           onClose={closePreview}
           onImageChange={handlePreviewImageChange}
+        />
+      )}
+      {isGalleryOpen && (
+        <GalleryImagePreview
+          imageUrls={imageUrls}
+          title={title}
+          onClose={closeGallery}
         />
       )}
     </>
