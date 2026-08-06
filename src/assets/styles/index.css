@@ -475,6 +475,7 @@
   color: var(--color-palette-static-white);
   font-size: var(--text-base);
   font-weight: var(--font-weight-bold);
+  margin-top: 2.4rem
 }
 
 .open-app-cta-button:hover {
