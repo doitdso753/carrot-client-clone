@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
 import ImageSlider from '@/components/ui/image-slider';
 import UserProfile from '@/components/ui/user-profile';
+import { getElapsedTimeText } from '@/lib/utils';
 import { CAR_SELLER } from '@/types/car-list-constants';
 import type { CarListItem } from '@/types/types';
 
@@ -31,7 +32,10 @@ export default function CarDetail({ item }: CarDetailProps): ReactNode {
         </div>
 
         <article className="car-detail-content">
-
+          <header className="car-detail-heading">
+            <h1>{item.title}</h1>
+            <p>{getElapsedTimeText(item.createdAt)} 작성</p>
+          </header>
         </article>
       </div>
     </main>

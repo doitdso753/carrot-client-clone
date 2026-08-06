@@ -16,6 +16,24 @@
   color: var(--color-palette-gray-1000);
 }
 
+.car-detail-heading {
+  display: grid;
+  row-gap: 0.4rem;
+}
+
+.car-detail-heading h1 {
+  font-size: var(--text-2-75xl);
+  line-height: var(--line-height-text-2-75xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.car-detail-heading p {
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
 @media screen and (min-width: 992px) {
   .car-detail-layout {
     grid-template-columns: repeat(2, 1fr);
@@ -28,6 +46,11 @@
 
   .car-detail-content {
     padding-top: 0.4rem;
+  }
+
+  .car-detail-heading h1 {
+    font-size: var(--text-xl);
+    line-height: var(--line-height-text-xl);
   }
 }
 
