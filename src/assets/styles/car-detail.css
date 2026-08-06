@@ -5,10 +5,29 @@
   margin-top: 1rem;
 }
 
+.car-detail-media,
+.car-detail-content {
+  min-width: 0;
+}
+
+.car-detail-content {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-palette-gray-1000);
+}
+
 @media screen and (min-width: 992px) {
   .car-detail-layout {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 4rem;
+  }
+
+  .car-detail-media {
+    align-self: start;
+  }
+
+  .car-detail-content {
+    padding-top: 0.4rem;
   }
 }
 
