@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import {
+  CarDetailSaleSection,
   CarDetailSpecSection,
 } from '@/components/cars/sections';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
@@ -41,6 +42,8 @@ export default function CarDetail({ item }: CarDetailProps): ReactNode {
           </header>
 
           <CarDetailSpecSection item={item} />
+
+          <CarDetailSaleSection saleInfo={item.saleInfo} />
         </article>
       </div>
     </main>

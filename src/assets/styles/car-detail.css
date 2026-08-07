@@ -34,7 +34,6 @@
   font-weight: var(--font-weight-normal);
 }
 
-
 .car-detail-spec {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -72,6 +71,78 @@
   font-weight: var(--font-weight-semibold);
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.car-detail-section {
+  display: grid;
+  row-gap: 1.2rem;
+  margin-top: 3.2rem;
+}
+
+.car-detail-section h2 {
+  font-size: var(--text-xl);
+  line-height: var(--line-height-text-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.car-detail-info-list {
+  display: grid;
+  row-gap: 0.8rem;
+}
+
+.car-detail-info-row {
+  display: grid;
+  grid-template-columns: minmax(12rem, 32%) minmax(0, 1fr);
+  column-gap: 1.6rem;
+  font-size: var(--text-base);
+  line-height: var(--line-height-text-base);
+  font-weight: var(--font-weight-normal);
+}
+
+.car-detail-info-row dt {
+  color: var(--color-palette-gray-700);
+}
+
+.car-detail-info-value {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.car-detail-info-value .bubble-tooltip-trigger {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-palette-gray-800);
+  text-decoration: none;
+}
+
+.car-detail-info-value .bubble-tooltip-trigger svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.car-detail-saving {
+  color: var(--color-palette-green-700);
+  font-weight: var(--font-weight-normal);
+}
+
+.car-detail-text-link {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--color-palette-gray-800);
+  font-size: var(--text-base);
+  line-height: var(--line-height-text-base);
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.car-detail-text-link svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  flex-shrink: 0;
 }
 
 @media screen and (min-width: 992px) {
