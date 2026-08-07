@@ -278,6 +278,7 @@ type CarListItemBase = {
   modelYearText: string;
   mileageText: string;
   location: string;
+  address: string;
   createdAt: string;
   commentCount: number;
   favoriteCount: number;

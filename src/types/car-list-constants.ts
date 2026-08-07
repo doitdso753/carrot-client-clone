@@ -59,6 +59,8 @@ const CAR_SALE_INFO = {
   directTradeSavings: '약 650,000원',
 } as const;
 
+const CAR_DETAIL_ADDRESS = '경기도 수원시 영통구 원천동';
+
 export const CAR_LIST_ITEMS: CarListItem[] = [
   {
     id: 101,
@@ -68,6 +70,7 @@ export const CAR_LIST_ITEMS: CarListItem[] = [
     modelYearText: '24년식',
     mileageText: '4.9만km',
     location: '원천동',
+    address: CAR_DETAIL_ADDRESS,
     createdAt: '2026-08-03T12:00:00+09:00',
     commentCount: 0,
     favoriteCount: 1,
@@ -96,6 +99,7 @@ export const CAR_LIST_ITEMS: CarListItem[] = [
     modelYearText: '19년식',
     mileageText: '5.6만km',
     location: '원천동',
+    address: CAR_DETAIL_ADDRESS,
     createdAt: '2026-08-02T10:30:00+09:00',
     commentCount: 1,
     favoriteCount: 21,
@@ -117,6 +121,7 @@ export const CAR_LIST_ITEMS: CarListItem[] = [
     modelYearText: '14년식',
     mileageText: '21만km',
     location: '원천동',
+    address: CAR_DETAIL_ADDRESS,
     createdAt: '2026-08-02T09:20:00+09:00',
     commentCount: 0,
     favoriteCount: 0,
@@ -138,6 +143,7 @@ export const CAR_LIST_ITEMS: CarListItem[] = [
     modelYearText: '25년식',
     mileageText: '7,540km',
     location: '원천동',
+    address: CAR_DETAIL_ADDRESS,
     createdAt: '2026-08-01T14:00:00+09:00',
     commentCount: 0,
     favoriteCount: 23,
@@ -162,6 +168,7 @@ export const CAR_LIST_ITEMS: CarListItem[] = [
     modelYearText: '26년식',
     mileageText: '2,880km',
     location: '원천동',
+    address: CAR_DETAIL_ADDRESS,
     createdAt: '2026-07-30T13:40:00+09:00',
     commentCount: 1,
     favoriteCount: 7,
@@ -190,6 +197,7 @@ export const CAR_LIST_ITEMS: CarListItem[] = [
     modelYearText: '20년식',
     mileageText: '12.3만km',
     location: '원천동',
+    address: CAR_DETAIL_ADDRESS,
     createdAt: '2026-07-29T11:15:00+09:00',
     commentCount: 4,
     favoriteCount: 21,
@@ -214,6 +222,7 @@ export const CAR_LIST_ITEMS: CarListItem[] = [
     modelYearText: '14년식',
     mileageText: '23.8만km',
     location: '원천동',
+    address: CAR_DETAIL_ADDRESS,
     createdAt: '2026-07-28T16:30:00+09:00',
     commentCount: 6,
     favoriteCount: 29,
@@ -236,6 +245,7 @@ export const CAR_LIST_ITEMS: CarListItem[] = [
     modelYearText: '25년식',
     mileageText: '1.5만km',
     location: '원천동',
+    address: CAR_DETAIL_ADDRESS,
     createdAt: '2026-07-27T15:10:00+09:00',
     commentCount: 4,
     favoriteCount: 11,
@@ -265,6 +275,7 @@ export const CAR_LIST_ITEMS: CarListItem[] = [
     modelYearText: '20년식',
     mileageText: '21만km',
     location: '원천동',
+    address: CAR_DETAIL_ADDRESS,
     createdAt: '2026-07-25T10:00:00+09:00',
     commentCount: 5,
     favoriteCount: 18,
@@ -286,6 +297,7 @@ export const CAR_LIST_ITEMS: CarListItem[] = [
     modelYearText: '21년식',
     mileageText: '2.8만km',
     location: '원천동',
+    address: CAR_DETAIL_ADDRESS,
     createdAt: '2026-07-24T09:30:00+09:00',
     commentCount: 3,
     favoriteCount: 12,

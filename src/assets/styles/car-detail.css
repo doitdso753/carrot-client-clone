@@ -190,6 +190,42 @@
   font-weight: var(--font-weight-normal);
 }
 
+.car-detail-map-section {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.car-detail-map-address {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.car-detail-map-address p {
+  font-size: var(--text-base);
+  line-height: var(--line-height-text-base);
+  font-weight: var(--font-weight-normal);
+}
+
+.car-detail-map-address button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--color-palette-blue-500);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.car-detail-map-address svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
 @media screen and (min-width: 992px) {
   .car-detail-layout {
     grid-template-columns: repeat(2, 1fr);

@@ -8,6 +8,7 @@ import {
   CarDetailSpecSection,
   CarDetailSpecSummarySection,
 } from '@/components/cars/sections';
+import CarMap from '@/components/cars/car-map';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
 import ImageSlider from '@/components/ui/image-slider';
 import UserProfile from '@/components/ui/user-profile';
@@ -57,6 +58,8 @@ export default function CarDetail({ item }: CarDetailProps): ReactNode {
           <CarDetailInsuranceSection insuranceInfo={item.insuranceInfo} />
           <CarDetailOptionsSection options={item.detailOptions} />
           <CarDetailDescriptionSection item={item} />
+
+          <CarMap address={item.address} />
         </article>
       </div>
     </main>
