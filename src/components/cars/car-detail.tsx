@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import {
+  CarDetailDescriptionSection,
   CarDetailInsuranceSection,
   CarDetailLeaseSection,
   CarDetailOptionsSection,
@@ -55,6 +56,7 @@ export default function CarDetail({ item }: CarDetailProps): ReactNode {
           <CarDetailSpecSection item={item} />
           <CarDetailInsuranceSection insuranceInfo={item.insuranceInfo} />
           <CarDetailOptionsSection options={item.detailOptions} />
+          <CarDetailDescriptionSection item={item} />
         </article>
       </div>
     </main>

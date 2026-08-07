@@ -1,3 +1,4 @@
+export { default as CarDetailDescriptionSection } from './car-detail-description-section';
 export { default as CarDetailInsuranceSection } from './car-detail-insurance-section';
 export { default as CarDetailLeaseSection } from './car-detail-lease-section';
 export { default as CarDetailOptionsSection } from './car-detail-options-section';
