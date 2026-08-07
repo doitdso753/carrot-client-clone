@@ -104,11 +104,6 @@
   max-height: 25rem;
   overflow-y: auto;
   overscroll-behavior: contain;
-  scrollbar-width: none;
-}
-
-.search-filter-category-list.is-scrollable::-webkit-scrollbar {
-  display: none;
 }
 
 .search-filter-category-list.is-scrollable .common-radio-option {
