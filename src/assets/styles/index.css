@@ -404,7 +404,7 @@
   );
 }
 
-.detail-page-information {
+.detail-page-content {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -532,7 +532,7 @@
     row-gap: 1.2rem;
   }
 
-  .detail-page-information {
+  .detail-page-content {
     padding-top: 0.4rem;
     gap: 3.2rem;
   }

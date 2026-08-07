@@ -36,51 +36,49 @@ export default function LocalProfileDetail({
         ]}
       />
 
-      <div className="local-profile-detail-layout">
-        <section className="local-profile-detail-information">
-          <div className="local-profile-detail-heading">
-            <h1>{item.name}</h1>
-            <LocalProfileMeta {...item} variant="detail" />
-          </div>
+      <article className="local-profile-detail-layout">
+        <header className="local-profile-detail-heading">
+          <h1>{item.name}</h1>
+          <LocalProfileMeta {...item} variant="detail" />
+        </header>
 
-          <div className="local-profile-detail-image-slider">
-            <ImageGridSlider imageUrls={imageUrls} title={item.name} />
-          </div>
-
-          <div className="local-profile-detail-content">
-            <aside className="local-profile-detail-store-info-aside">
-              <LocalProfileStoreInfoSection item={item} />
-            </aside>
-
-            <hr className="local-profile-detail-section-divider" />
-
-            <article className="local-profile-detail-article">
-              <LocalProfileBenefitSection
-                benefitDescription={item.benefitDescription}
-              />
-
-              <LocalProfileNoticeSection notice={item.notice} />
-              <hr className="local-profile-detail-section-divider" />
-              <LocalProfileIntroduction item={item} />
-              <hr className="local-profile-detail-section-divider" />
-              <LocalProfilePriceSection prices={item.prices} />
-              <hr className="local-profile-detail-section-divider" />
-              <LocalProfileReviewSection
-                reviewCount={item.reviewCount}
-                reviews={item.reviews}
-              />
-              <hr className="local-profile-detail-section-divider" />
-              <LocalProfileCouponSection coupons={item.coupons} />
-              <hr className="local-profile-detail-section-divider" />
-              <LocalProfileNewsSection
-                localProfileId={item.id}
-                news={item.news}
-              />
-              <hr className="local-profile-detail-section-divider" />
-            </article>
-          </div>
+        <section className="local-profile-detail-image-slider">
+          <ImageGridSlider imageUrls={imageUrls} title={item.name} />
         </section>
-      </div>
+
+        <div className="local-profile-detail-content">
+          <aside className="local-profile-detail-store-info-aside">
+            <LocalProfileStoreInfoSection item={item} />
+          </aside>
+
+          <hr className="local-profile-detail-section-divider" />
+
+          <div className="local-profile-detail-main">
+            <LocalProfileBenefitSection
+              benefitDescription={item.benefitDescription}
+            />
+
+            <LocalProfileNoticeSection notice={item.notice} />
+            <hr className="local-profile-detail-section-divider" />
+            <LocalProfileIntroduction item={item} />
+            <hr className="local-profile-detail-section-divider" />
+            <LocalProfilePriceSection prices={item.prices} />
+            <hr className="local-profile-detail-section-divider" />
+            <LocalProfileReviewSection
+              reviewCount={item.reviewCount}
+              reviews={item.reviews}
+            />
+            <hr className="local-profile-detail-section-divider" />
+            <LocalProfileCouponSection coupons={item.coupons} />
+            <hr className="local-profile-detail-section-divider" />
+            <LocalProfileNewsSection
+              localProfileId={item.id}
+              news={item.news}
+            />
+            <hr className="local-profile-detail-section-divider" />
+          </div>
+        </div>
+      </article>
     </main>
   );
 }

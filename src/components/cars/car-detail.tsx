@@ -22,7 +22,7 @@ type CarDetailProps = {
 
 export default function CarDetail({ item }: CarDetailProps): ReactNode {
   return (
-    <main className="detail-page-wrapper car-detail-page">
+    <main className="detail-page-wrapper">
       <DetailBreadcrumb
         items={[
           { label: '홈', to: '/' },
@@ -31,17 +31,20 @@ export default function CarDetail({ item }: CarDetailProps): ReactNode {
         ]}
       />
 
-      <div className="car-detail-layout">
-        <div className="car-detail-media">
+      <article className="car-detail-layout">
+        <section
+          className="car-detail-image-slider"
+          aria-label="차량 이미지와 판매자 정보"
+        >
           <ImageSlider
             imageUrls={item.imageUrls}
             title={item.title}
             isShowImageGallery
           />
           <UserProfile user={CAR_SELLER} />
-        </div>
+        </section>
 
-        <article className="car-detail-content">
+        <div className="car-detail-content">
           <header className="car-detail-heading">
             <h1>{item.title}</h1>
             <p>{getElapsedTimeText(item.createdAt)} 작성</p>
@@ -60,8 +63,8 @@ export default function CarDetail({ item }: CarDetailProps): ReactNode {
           <CarDetailDescriptionSection item={item} />
 
           <CarMap address={item.address} />
-        </article>
-      </div>
+        </div>
+      </article>
     </main>
   );
 }

@@ -4,11 +4,12 @@
 }
 
 .local-profile-detail-layout {
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin-top: 1.2rem;
 }
 
-.local-profile-detail-article {
+.local-profile-detail-main {
   display: flex;
   flex-direction: column;
 }
@@ -22,12 +23,6 @@
   min-width: 0;
   margin-top: 2rem;
   order: 2;
-}
-
-.local-profile-detail-information {
-  display: flex;
-  flex-direction: column;
-  color: var(--color-palette-gray-1000);
 }
 
 .local-profile-detail-heading {
@@ -1243,7 +1238,7 @@
     display: none;
   }
 
-  .local-profile-detail-article {
+  .local-profile-detail-main {
     grid-column: 1;
     grid-row: 1;
   }
@@ -1368,7 +1363,8 @@
     align-items: center;
   }
 
-  .local-profile-meta--store-info .local-profile-meta-item--desktop-divider::after {
+  .local-profile-meta--store-info
+    .local-profile-meta-item--desktop-divider::after {
     content: none;
   }
 

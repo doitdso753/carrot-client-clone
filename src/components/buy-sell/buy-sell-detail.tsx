@@ -63,15 +63,15 @@ export default function BuySellDetail({ item }: BuySellDetailProps): ReactNode {
         ]}
       />
 
-      <div className="detail-page-layout">
+      <article className="detail-page-layout">
         <section aria-label="상품 이미지와 판매자 정보">
           <ImageSlider imageUrls={imageUrls} title={item.title} />
 
           <UserProfile user={seller} />
         </section>
 
-        <section className="detail-page-information">
-          <div className="detail-page-heading">
+        <section className="detail-page-content">
+          <header className="detail-page-heading">
             <h1>
               {headingStatusText && (
                 <span
@@ -87,9 +87,9 @@ export default function BuySellDetail({ item }: BuySellDetailProps): ReactNode {
               {getElapsedTimeText(item.createdAt)}
             </p>
             <strong>{formatThousandsBySuffix(item.price, '원')}원</strong>
-          </div>
+          </header>
 
-          <div className="detail-page-description">
+          <section className="detail-page-description" aria-label="상품 설명">
             <p className="whitespace-pre-line">
               {item.description ??
                 '상품에 관심이 있으시면 당근 앱에서 판매자에게 문의해 주세요.'}
@@ -98,11 +98,11 @@ export default function BuySellDetail({ item }: BuySellDetailProps): ReactNode {
               채팅 {stats.chatCount} · 관심 {stats.favoriteCount} · 조회{' '}
               {stats.viewCount}
             </p>
-          </div>
+          </section>
 
           <OpenAppCtaButton />
         </section>
-      </div>
+      </article>
     </main>
   );
 }
