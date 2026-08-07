@@ -145,6 +145,30 @@
   flex-shrink: 0;
 }
 
+.car-detail-option-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.car-detail-option {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  column-gap: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.8rem;
+  background-color: var(--color-palette-gray-200);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
+}
+
+.car-detail-option svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  flex-shrink: 0;
+}
+
 @media screen and (min-width: 992px) {
   .car-detail-layout {
     grid-template-columns: repeat(2, 1fr);
