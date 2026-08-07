@@ -1,0 +1,1 @@
+export { default as CarDetailSpecSection } from './car-detail-spec-section';
