@@ -34,7 +34,7 @@
   font-weight: var(--font-weight-normal);
 }
 
-.car-detail-spec {
+.car-detail-spec-summary {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   padding-block: 1.6rem;
@@ -43,7 +43,7 @@
   margin-top: 2.4rem;
 }
 
-.car-detail-spec > div {
+.car-detail-spec-summary > div {
   display: flex;
   min-width: 0;
   flex-direction: column;
@@ -53,17 +53,17 @@
   text-align: center;
 }
 
-.car-detail-spec > div + div {
+.car-detail-spec-summary > div + div {
   border-left: 0.1rem solid var(--color-palette-gray-300);
 }
 
-.car-detail-spec svg {
+.car-detail-spec-summary svg {
   width: 2.6rem;
   height: 2.6rem;
   flex-shrink: 0;
 }
 
-.car-detail-spec strong {
+.car-detail-spec-summary strong {
   overflow: hidden;
   max-width: 100%;
   font-size: var(--text-sm);
@@ -164,7 +164,7 @@
     line-height: var(--line-height-text-xl);
   }
 
-  .car-detail-spec {
+  .car-detail-spec-summary {
     padding-block: 1.6rem;
   }
 }

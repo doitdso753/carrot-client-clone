@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import {
   CarDetailLeaseSection,
   CarDetailSaleSection,
-  CarDetailSpecSection,
+  CarDetailSpecSummarySection,
 } from '@/components/cars/sections';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
 import ImageSlider from '@/components/ui/image-slider';
@@ -42,9 +42,8 @@ export default function CarDetail({ item }: CarDetailProps): ReactNode {
             <p>{getElapsedTimeText(item.createdAt)} 작성</p>
           </header>
 
-          <CarDetailSpecSection item={item} />
+          <CarDetailSpecSummarySection item={item} />
 
-          <CarDetailSaleSection saleInfo={item.saleInfo} />
           {item.transactionType === 'lease' ? (
             <CarDetailLeaseSection leaseInfo={item.leaseInfo} />
           ) : (
