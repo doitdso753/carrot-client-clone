@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import {
   CarDetailLeaseSection,
   CarDetailSaleSection,
+  CarDetailSpecSection,
   CarDetailSpecSummarySection,
 } from '@/components/cars/sections';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
@@ -49,6 +50,7 @@ export default function CarDetail({ item }: CarDetailProps): ReactNode {
           ) : (
             <CarDetailSaleSection saleInfo={item.saleInfo} />
           )}
+          <CarDetailSpecSection item={item} />
         </article>
       </div>
     </main>

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
-import { CalendarIcon, MileageIcon, WonSignIcon } from '@/assets/icons';
-import type { CarListItem } from '@/types/types';
+import CarDetailInfoTable from '@/components/cars/car-detail-info-table.tsx';
+import type { CarDetailInfoRow, CarListItem } from '@/types/types';
 
 type CarDetailSpecSectionProps = {
   item: CarListItem;
@@ -9,20 +9,17 @@ type CarDetailSpecSectionProps = {
 export default function CarDetailSpecSection({
   item,
 }: CarDetailSpecSectionProps): ReactNode {
-  return (
-    <section className="car-detail-spec" aria-label="차량 핵심 정보">
-      <div>
-        <WonSignIcon />
-        <strong>{item.priceText}</strong>
-      </div>
-      <div>
-        <CalendarIcon />
-        <strong>{item.modelYearText}</strong>
-      </div>
-      <div>
-        <MileageIcon />
-        <strong>{item.mileageText}</strong>
-      </div>
-    </section>
-  );
+  const rows: CarDetailInfoRow[] = [
+    { label: '차종', value: item.vehicleInfo.bodyType },
+    {
+      label: '연식 / 등록일',
+      value: `${item.modelYearText} / ${item.vehicleInfo.registrationDate}`,
+    },
+    { label: '주행거리', value: item.mileageText },
+    { label: '배기량', value: item.vehicleInfo.displacement },
+    { label: '연료', value: item.vehicleInfo.fuel },
+    { label: '변속기', value: item.vehicleInfo.transmission },
+  ];
+
+  return <CarDetailInfoTable title="상세 정보" rows={rows} />;
 }
