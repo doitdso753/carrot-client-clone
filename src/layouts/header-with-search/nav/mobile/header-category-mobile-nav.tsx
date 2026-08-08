@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { MenuIcon } from '@/assets/icons';
 import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
 import HeaderCategoryMobileNavPopover from './header-category-mobile-nav-popover.tsx';
@@ -47,16 +48,18 @@ export default function HeaderCategoryMobileNav({
       >
         <MenuIcon />
       </button>
-      {isOpen && (
-        <HeaderCategoryMobileNavPopover
-          items={items}
-          openedCategoryCode={openedCategoryCode}
-          isClosing={isClosing}
-          onClose={handleCloseNav}
-          onCloseComplete={handleCloseComplete}
-          onTogglePopoverItem={handleTogglePopoverItem}
-        />
-      )}
+      {isOpen &&
+        createPortal(
+          <HeaderCategoryMobileNavPopover
+            items={items}
+            openedCategoryCode={openedCategoryCode}
+            isClosing={isClosing}
+            onClose={handleCloseNav}
+            onCloseComplete={handleCloseComplete}
+            onTogglePopoverItem={handleTogglePopoverItem}
+          />,
+          document.body,
+        )}
     </>
   );
 }
