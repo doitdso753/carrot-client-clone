@@ -34,7 +34,7 @@ export default function HeaderCategoryHorizontalNav({
   return (
     <>
       <nav
-        className="header-category-nav scrollbar-hidden min-w-0 items-center gap-4 overflow-x-auto whitespace-nowrap"
+        className="header-category-nav scrollbar-hidden min-w-0 items-center overflow-x-auto whitespace-nowrap"
         aria-label="주요 메뉴"
         ref={navRef}
       >
