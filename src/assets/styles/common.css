@@ -263,6 +263,35 @@
   opacity: 0.6;
 }
 
+.common-item-trigger {
+  display: inline-flex;
+  height: 4rem;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0;
+  padding-inline: 1rem;
+  border: 0.1rem solid var(--color-palette-gray-300);
+  border-radius: 999rem;
+  background-color: var(--color-palette-gray-00);
+  box-shadow:
+    0 0 1px #0000000d,
+    var(--shadow-s1);
+  color: var(--color-palette-gray-1000);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-text-sm);
+  white-space: nowrap;
+  outline: 2px solid transparent;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.common-item-trigger:hover,
+.common-item-trigger:focus-visible {
+  background-color: var(--color-palette-gray-100);
+}
+
 .current-location-button-content {
   display: inline-flex;
   align-items: center;

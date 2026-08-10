@@ -60,7 +60,7 @@ export default function HeaderCategoryPopoverNavItem({
     >
       <Link
         ref={anchorRef}
-        className="header-category-nav-item-trigger"
+        className="common-item-trigger header-category-nav-item-trigger"
         to={item.routing}
         aria-haspopup="menu"
         aria-expanded={isPopoverOpen}

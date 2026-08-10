@@ -13,7 +13,10 @@ function HeaderCategoryDefaultNavItem({
   item,
 }: HeaderCategoryNavItemProps): ReactNode {
   return (
-    <Link className="header-category-nav-item-trigger" to={item.routing}>
+    <Link
+      className="common-item-trigger header-category-nav-item-trigger"
+      to={item.routing}
+    >
       <HeaderCategoryNavItemView item={item} />
     </Link>
   );
@@ -24,7 +27,7 @@ function HeaderCategoryExternalNavItem({
 }: HeaderCategoryNavItemProps): ReactNode {
   return (
     <Link
-      className="header-category-nav-item-trigger"
+      className="common-item-trigger header-category-nav-item-trigger"
       target="_blank"
       rel="noreferrer noopener"
       to={item.routing}
