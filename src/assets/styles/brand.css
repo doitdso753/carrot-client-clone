@@ -25,6 +25,10 @@
   --header-height: 0;
   --header-with-search-height: 0;
 
+  --shadow-s1: 0px 1px 4px 0px #00000014;
+  --shadow-s2: 0px 2px 10px 0px #0000001a;
+  --shadow-s3: 0px 4px 16px 0px #0000001f;
+
   --color-preview-button: #cccccc;
   --color-preview-button-disabled: #666666;
   --color-preview-button-hover: var(--color-palette-static-white);
