@@ -370,6 +370,14 @@
   color: var(--color-palette-gray-1000);
 }
 
+.header-category-popover-item.is-selected {
+  color: var(--color-palette-gray-1000);
+}
+
+.header-category-popover-item.is-selected .header-category-action-icon {
+  color: currentColor;
+}
+
 .header-category-popover-nested-item {
   display: block;
   padding: 0.8rem 0.6rem;

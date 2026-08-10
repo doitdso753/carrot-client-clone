@@ -1,17 +1,19 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
-import { ChevronDownIcon, ExternalLinkIcon } from '@/assets/icons';
+import { CheckedIcon, ChevronDownIcon, ExternalLinkIcon } from '@/assets/icons';
 import CategoryIcon from '@/components/ui/category-icon.tsx';
 import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
 
 type HeaderCategoryPopoverItemProps = {
   item: HeaderCategoryNavItemData;
   hasSeparator?: boolean;
+  isSelected?: boolean;
   popoverOptionPlacement?: 'inline' | 'left';
 };
 
 type HeaderCategoryPopoverItemViewProps = {
   item: HeaderCategoryNavItemData;
+  isSelected?: boolean;
 };
 
 type HeaderCategoryNestedPopoverItemProps = HeaderCategoryPopoverItemProps & {
@@ -22,13 +24,15 @@ type HeaderCategoryNestedPopoverItemProps = HeaderCategoryPopoverItemProps & {
 
 function HeaderCategoryPopoverItemView({
   item,
+  isSelected = false,
 }: HeaderCategoryPopoverItemViewProps): ReactNode {
-  const actionIcon =
-    item.type === 'external' ? (
-      <ExternalLinkIcon />
-    ) : item.type === 'popover' ? (
-      <ChevronDownIcon />
-    ) : null;
+  const actionIcon = isSelected ? (
+    <CheckedIcon />
+  ) : item.type === 'external' ? (
+    <ExternalLinkIcon />
+  ) : item.type === 'popover' ? (
+    <ChevronDownIcon />
+  ) : null;
 
   return (
     <>
@@ -48,6 +52,7 @@ function HeaderCategoryPopoverItemView({
 function HeaderCategoryNestedPopoverItem({
   item,
   hasSeparator = false,
+  isSelected = false,
   popoverOptionPlacement,
 }: HeaderCategoryNestedPopoverItemProps): ReactNode {
   return (
@@ -56,8 +61,14 @@ function HeaderCategoryNestedPopoverItem({
         hasSeparator ? 'has-separator' : ''
       }`}
     >
-      <Link className="header-category-popover-item" to={item.routing}>
-        <HeaderCategoryPopoverItemView item={item} />
+      <Link
+        aria-current={isSelected ? 'page' : undefined}
+        className={`header-category-popover-item ${
+          isSelected ? 'is-selected' : ''
+        }`}
+        to={item.routing}
+      >
+        <HeaderCategoryPopoverItemView isSelected={isSelected} item={item} />
       </Link>
       <div
         className={`header-category-popover-nested header-category-popover-nested--${popoverOptionPlacement}`}
@@ -79,17 +90,21 @@ function HeaderCategoryNestedPopoverItem({
 function HeaderCategoryLinkPopoverItem({
   item,
   hasSeparator = false,
+  isSelected = false,
 }: HeaderCategoryPopoverItemViewProps & {
   hasSeparator?: boolean;
 }): ReactNode {
   const linkElement = (
     <Link
-      className="header-category-popover-item"
+      aria-current={isSelected ? 'page' : undefined}
+      className={`header-category-popover-item ${
+        isSelected ? 'is-selected' : ''
+      }`}
       target={item.type === 'external' ? '_blank' : undefined}
       rel={item.type === 'external' ? 'noreferrer noopener' : undefined}
       to={item.routing}
     >
-      <HeaderCategoryPopoverItemView item={item} />
+      <HeaderCategoryPopoverItemView isSelected={isSelected} item={item} />
     </Link>
   );
 
@@ -108,6 +123,7 @@ function HeaderCategoryLinkPopoverItem({
 export default function HeaderCategoryPopoverItem({
   item,
   hasSeparator = false,
+  isSelected = false,
   popoverOptionPlacement = 'inline',
 }: HeaderCategoryPopoverItemProps): ReactNode {
   if (item.type === 'popover') {
@@ -115,12 +131,17 @@ export default function HeaderCategoryPopoverItem({
       <HeaderCategoryNestedPopoverItem
         item={item}
         hasSeparator={hasSeparator}
+        isSelected={isSelected}
         popoverOptionPlacement={popoverOptionPlacement}
       />
     );
   }
 
   return (
-    <HeaderCategoryLinkPopoverItem item={item} hasSeparator={hasSeparator} />
+    <HeaderCategoryLinkPopoverItem
+      item={item}
+      hasSeparator={hasSeparator}
+      isSelected={isSelected}
+    />
   );
 }

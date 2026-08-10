@@ -59,7 +59,8 @@ export default function HeaderCategoryMorePopover({
             <HeaderCategoryPopoverItem
               item={category}
               key={category.label}
-              hasSeparator={index === 0}
+              hasSeparator={index === 0 && category.routing === pathname}
+              isSelected={category.routing === pathname}
               popoverOptionPlacement="left"
             />
           ))}
