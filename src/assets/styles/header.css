@@ -87,8 +87,8 @@
 }
 
 .header-search-form input[name='searchInput'] {
-  font-size: var(--text-sm);
-  line-height: var(--line-height-text-sm);
+  font-size: var(--text-base);
+  line-height: var(--line-height-text-base);
 }
 
 .header-category-icon,
