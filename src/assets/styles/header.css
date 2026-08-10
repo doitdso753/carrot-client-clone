@@ -399,14 +399,13 @@
 }
 
 .header-category-more-button {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem;
+  height: 4rem;
   align-items: center;
   justify-content: center;
   border: 0.1rem solid var(--color-palette-gray-300);
   border-radius: 999rem;
   background-color: var(--color-palette-gray-00);
-  box-shadow: 0 0.1rem 0.2rem rgb(0 0 0 / 4%);
   transition: all 150ms ease;
 }
 
