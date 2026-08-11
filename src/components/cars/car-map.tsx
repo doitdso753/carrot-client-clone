@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { CopyIcon } from '@/assets/icons';
-import KakaoMap from '@/components/ui/kakao-map';
+import KakaoMap from '@/components/ui/map/kakao-map.tsx';
 import CommonToast from '@/components/ui/common-toast';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button';
 import useToast from '@/hooks/use-toast';

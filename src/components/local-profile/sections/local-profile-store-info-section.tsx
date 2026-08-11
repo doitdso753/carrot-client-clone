@@ -9,7 +9,7 @@ import {
   WebIcon,
 } from '@/assets/icons';
 import CommonToast from '@/components/ui/common-toast.tsx';
-import KakaoMap from '@/components/ui/kakao-map.tsx';
+import KakaoMap from '@/components/ui/map/kakao-map.tsx';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
 import LocalProfileMeta from '@/components/local-profile/local-profile-meta.tsx';
 import useCollapse from '@/hooks/use-collapse.ts';

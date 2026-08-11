@@ -1,6 +1,17 @@
-type KakaoLatLng = object;
+type KakaoLatLng = {
+  getLat: () => number;
+  getLng: () => number;
+};
 
-type KakaoMapInstance = object;
+type KakaoMapInstance = {
+  getBounds: () => KakaoLatLngBounds;
+  getCenter: () => KakaoLatLng;
+};
+
+type KakaoLatLngBounds = {
+  getNorthEast: () => KakaoLatLng;
+  getSouthWest: () => KakaoLatLng;
+};
 
 type KakaoCustomOverlayInstance = {
   setMap: (map: KakaoMapInstance | null) => void;
@@ -11,10 +22,25 @@ type KakaoAddressSearchResult = {
   y: string;
 };
 
+export type KakaoRegionCodeResult = {
+  address_name: string;
+  code: string;
+  region_1depth_name: string;
+  region_2depth_name: string;
+  region_3depth_name: string;
+  region_4depth_name: string;
+  region_type: 'B' | 'H';
+};
+
 type KakaoGeocoderInstance = {
   addressSearch: (
     address: string,
     callback: (result: KakaoAddressSearchResult[], status: string) => void,
+  ) => void;
+  coord2RegionCode: (
+    longitude: number,
+    latitude: number,
+    callback: (result: KakaoRegionCodeResult[], status: string) => void,
   ) => void;
 };
 
@@ -32,6 +58,18 @@ type KakaoMapsSdk = {
     xAnchor: number;
     yAnchor: number;
   }) => KakaoCustomOverlayInstance;
+  event: {
+    addListener: (
+      target: KakaoMapInstance,
+      type: 'dragend',
+      handler: () => void,
+    ) => void;
+    removeListener: (
+      target: KakaoMapInstance,
+      type: 'dragend',
+      handler: () => void,
+    ) => void;
+  };
   services: {
     Geocoder: new () => KakaoGeocoderInstance;
     Status: {
@@ -50,7 +88,9 @@ declare global {
 
 let kakaoMapSdkPromise: Promise<KakaoMapsSdk> | null = null;
 
+// SDK 스크립트를 한 번만 로드하고 이후 호출에는 같은 Promise 재사용
 export function loadKakaoMapSdk(appKey: string): Promise<KakaoMapsSdk> {
+  // 전역 SDK가 이미 존재하면 maps 모듈 초기화만 대기
   if (window.kakao?.maps) {
     return new Promise((resolve) => {
       window.kakao?.maps.load(() => resolve(window.kakao!.maps));
@@ -61,6 +101,7 @@ export function loadKakaoMapSdk(appKey: string): Promise<KakaoMapsSdk> {
     return kakaoMapSdkPromise;
   }
 
+  // 주소·좌표 변환을 위한 services 라이브러리와 SDK 스크립트 로드
   kakaoMapSdkPromise = new Promise((resolve, reject) => {
     const script = document.createElement('script');
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${encodeURIComponent(appKey)}&autoload=false&libraries=services`;
