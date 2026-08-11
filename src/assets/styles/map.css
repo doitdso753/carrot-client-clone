@@ -1,0 +1,27 @@
+.map-background,
+.map-bottom-toolbar {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .map-page {
+    --map-panel-width: clamp(44.8rem, 32.5vw, 66.4rem);
+
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--color-palette-gray-200);
+  }
+
+  .map-background {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+
+  .map-background .kakao-map-wrapper,
+  .map-background .kakao-map {
+    width: 100%;
+    height: 100%;
+  }
+}

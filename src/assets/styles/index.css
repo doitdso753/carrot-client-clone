@@ -7,6 +7,7 @@
 @import 'car-detail.css';
 @import 'search-filter.css';
 @import 'image.css';
+@import 'map.css';
 @import 'header.css';
 
 @layer base {
