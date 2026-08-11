@@ -9,6 +9,7 @@ type HeaderCategoryMorePopoverProps = {
   items: HeaderCategoryNavItemData[];
   isActive: boolean;
   isOpen: boolean;
+  triggerIcon?: ReactNode;
   onClose: () => void;
   onToggle: () => void;
 };
@@ -18,6 +19,7 @@ export default function HeaderCategoryMorePopover({
   items,
   isActive,
   isOpen,
+  triggerIcon,
   onClose,
   onToggle,
 }: HeaderCategoryMorePopoverProps): ReactNode {
@@ -51,7 +53,7 @@ export default function HeaderCategoryMorePopover({
         disabled={!isActive}
         onClick={onToggle}
       >
-        <EllipsisIcon />
+        {triggerIcon ?? <EllipsisIcon />}
       </button>
       {isActive && isOpen && (
         <div className="header-category-popover">

@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import MapMenu from '@/components/ui/map/map-menu.tsx';
 import RootLayout from '@/layouts/root-layout.tsx';
 import HeaderWithSearch from '@/layouts/header-with-search/header-with-search.tsx';
 import LocalProfileContent from '@/pages/local-profile/local-profile-content.tsx';
@@ -18,6 +19,7 @@ export default function LocalProfilePage(): ReactNode {
             level={4}
           />
         </div>
+        <MapMenu />
       </div>
     </RootLayout>
   );
