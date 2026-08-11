@@ -191,6 +191,8 @@ export type LocalProfileItem = {
   location: string;
   regionText: string;
   coupon: boolean;
+  latitude: number;
+  longitude: number;
   thumbnail: string;
   imageUrls?: string[];
   createdAt?: string;
