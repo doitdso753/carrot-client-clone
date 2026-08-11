@@ -5,6 +5,7 @@ import {
   type PointerEvent,
   type ReactNode,
 } from 'react';
+import { createPortal } from 'react-dom';
 import { CloseIcon } from '@/assets/icons';
 
 type CommonPopupProps = {
@@ -92,7 +93,7 @@ export default function CommonPopup({
 
   const isBottomSheet = variant === 'bottom-sheet';
 
-  return (
+  return createPortal(
     <div
       className={`common-popup-backdrop common-popup-backdrop--${variant}`}
       role="presentation"
@@ -133,6 +134,7 @@ export default function CommonPopup({
         <div className="common-popup-body">{children}</div>
         {footer && <footer className="common-popup-footer">{footer}</footer>}
       </section>
-    </div>
+    </div>,
+    document.body,
   );
 }
