@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { ChevronLeftIcon } from '@/assets/icons';
-import ImagePreview from '@/components/ui/image-preview';
+import ImagePreview from '@/components/ui/image/image-preview.tsx';
 
 type GalleryImagePreviewProps = {
   imageUrls: string[];

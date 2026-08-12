@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@/assets/icons';
-import GalleryImagePreview from '@/components/ui/gallery-image-preview';
-import ImagePreview from '@/components/ui/image-preview';
+import GalleryImagePreview from '@/components/ui/image/gallery-image-preview.tsx';
+import ImagePreview from '@/components/ui/image/image-preview.tsx';
 
 type ImageSliderProps = {
   imageUrls: string[];

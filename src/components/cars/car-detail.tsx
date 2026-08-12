@@ -10,7 +10,7 @@ import {
 } from '@/components/cars/sections';
 import CarMap from '@/components/cars/car-map';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
-import ImageSlider from '@/components/ui/image-slider';
+import ImageSlider from '@/components/ui/image/image-slider.tsx';
 import UserProfile from '@/components/ui/user-profile';
 import { getElapsedTimeText } from '@/lib/utils';
 import { CAR_SELLER } from '@/types/car-list-constants';

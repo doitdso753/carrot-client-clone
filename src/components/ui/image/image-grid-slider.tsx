@@ -7,7 +7,7 @@ import {
   type ReactNode,
 } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@/assets/icons';
-import ImagePreview from '@/components/ui/image-preview';
+import ImagePreview from '@/components/ui/image/image-preview.tsx';
 
 type ImageGridSliderProps = {
   imageUrls: string[];

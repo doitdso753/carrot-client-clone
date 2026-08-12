@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button';
-import ImageSlider from '@/components/ui/image-slider';
+import ImageSlider from '@/components/ui/image/image-slider.tsx';
 import UserProfile from '@/components/ui/user-profile';
 import { formatThousandsBySuffix, getElapsedTimeText } from '@/lib/utils';
 import {

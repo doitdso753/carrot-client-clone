@@ -1,7 +1,7 @@
 import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
 import { useNavigate } from 'react-router';
 import { CouponIcon, StarIcon } from '@/assets/icons';
-import SimpleImageGridSlider from '@/components/ui/simple-image-grid-slider.tsx';
+import SimpleImageGridSlider from '@/components/ui/image/simple-image-grid-slider.tsx';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import type { LocalProfileItem } from '@/types/types.ts';
 

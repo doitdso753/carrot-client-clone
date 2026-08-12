@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
-import ImageGridSlider from '@/components/ui/image-grid-slider.tsx';
+import ImageGridSlider from '@/components/ui/image/image-grid-slider.tsx';
 import LocalProfileMeta from '@/components/local-profile/local-profile-meta.tsx';
 import {
   LocalProfileBenefitSection,
