@@ -2,35 +2,18 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { MapMarkerIcon } from '@/assets/icons';
 import { loadKakaoMapSdk, type KakaoRegionCodeResult } from '@/lib/kakao-map';
-
-export type KakaoMapRegion = {
-  addressName: string;
-  code: string;
-  latitude: number;
-  longitude: number;
-  region1DepthName: string;
-  region2DepthName: string;
-  region3DepthName: string;
-  region4DepthName: string;
-};
-
-export type KakaoMapBounds = {
-  northEast: {
-    latitude: number;
-    longitude: number;
-  };
-  southWest: {
-    latitude: number;
-    longitude: number;
-  };
-};
+import type {
+  MapBoundsChangeEvent,
+  MapBoundsChangeSource,
+  MapRegion,
+} from '@/types/map.ts';
 
 type KakaoMapProps = {
   address: string;
   isMarkerVisible?: boolean;
   level?: number;
-  onBoundsChange?: (bounds: KakaoMapBounds) => void;
-  onRegionChange?: (region: KakaoMapRegion) => void;
+  onBoundsChange?: (event: MapBoundsChangeEvent) => void;
+  onRegionChange?: (region: MapRegion) => void;
 };
 
 export default function KakaoMap({
@@ -84,7 +67,7 @@ export default function KakaoMap({
           const map = new maps.Map(mapContainer, { center, level });
 
           // 현재 화면의 남서·북동 경계를 외부 목록 검색에 전달
-          const notifyBoundsChange = (): void => {
+          const notifyBoundsChange = (source: MapBoundsChangeSource): void => {
             if (!onBoundsChange) {
               return;
             }
@@ -94,20 +77,23 @@ export default function KakaoMap({
             const southWest = bounds.getSouthWest();
 
             onBoundsChange({
-              northEast: {
-                latitude: northEast.getLat(),
-                longitude: northEast.getLng(),
+              bounds: {
+                northEast: {
+                  latitude: northEast.getLat(),
+                  longitude: northEast.getLng(),
+                },
+                southWest: {
+                  latitude: southWest.getLat(),
+                  longitude: southWest.getLng(),
+                },
               },
-              southWest: {
-                latitude: southWest.getLat(),
-                longitude: southWest.getLng(),
-              },
+              source,
             });
           };
 
           // 드래그 종료 후 지도 범위와 중심 행정동 갱신
           const handleDragEnd = (): void => {
-            notifyBoundsChange();
+            notifyBoundsChange('drag');
 
             if (!onRegionChange) {
               return;
@@ -157,7 +143,7 @@ export default function KakaoMap({
           }
 
           if (onBoundsChange) {
-            notifyBoundsChange();
+            notifyBoundsChange('initial');
           }
 
           // 상세 지도 등 마커가 필요한 화면에서만 오버레이 생성
