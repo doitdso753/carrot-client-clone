@@ -2,13 +2,12 @@ import { useState, type ReactNode, type SubmitEvent } from 'react';
 import { CurrentLocationIcon, SearchIcon, SpinnerIcon } from '@/assets/icons';
 import { BUY_SELL_RECOMMENDED_LOCATIONS } from '@/types/buy-sell-constants.ts';
 import CommonPopup from '@/components/ui/common-popup';
-import useCurrentLocationRequest, {
-  type CurrentLocationErrorCode,
-} from '@/hooks/use-current-location-request.ts';
+import useGeolocation from '@/hooks/use-geolocation.ts';
 import useRegion from '@/hooks/use-region.ts';
 import { removeCommaFromString } from '@/lib/utils.ts';
+import type { GeolocationErrorCode } from '@/types/geolocation.ts';
 
-const LOCATION_ERROR_MESSAGES: Record<CurrentLocationErrorCode, string> = {
+const LOCATION_ERROR_MESSAGES: Record<GeolocationErrorCode, string> = {
   GEOLOCATION_UNSUPPORTED: '이 브라우저에서는 위치 정보를 지원하지 않아요.',
   PERMISSION_DENIED: '내 위치 확인을 위해 위치 정보 사용을 허용해 주세요.',
   POSITION_UNAVAILABLE: '현재 위치 정보를 확인할 수 없어요.',
@@ -17,7 +16,7 @@ const LOCATION_ERROR_MESSAGES: Record<CurrentLocationErrorCode, string> = {
 };
 
 type RegionSettingPopupProps = {
-  initialLocationErrorCode?: CurrentLocationErrorCode | null;
+  initialLocationErrorCode?: GeolocationErrorCode | null;
   isOpen: boolean;
   onClose: () => void;
 };
@@ -29,13 +28,12 @@ export default function RegionSettingPopup({
 }: RegionSettingPopupProps): ReactNode {
   const { setRegion } = useRegion();
   const [regionKeyword, setRegionKeyword] = useState('');
-  const { locationErrorCode, locationRequestStatus, requestCurrentLocation } =
-    useCurrentLocationRequest();
+  const geolocation = useGeolocation();
   const displayedLocationErrorCode =
-    locationRequestStatus === 'idle'
+    geolocation.status === 'idle'
       ? initialLocationErrorCode
-      : locationRequestStatus === 'error'
-        ? locationErrorCode
+      : geolocation.status === 'error'
+        ? geolocation.errorCode
         : null;
 
   const handleSubmit = (event: SubmitEvent): void => {
@@ -84,25 +82,25 @@ export default function RegionSettingPopup({
       </form>
       <button
         className="region-setting-popup-current-button"
-        disabled={locationRequestStatus === 'requesting'}
+        disabled={geolocation.isLoading}
         type="button"
-        onClick={requestCurrentLocation}
+        onClick={geolocation.request}
       >
         <span
           className={`current-location-button-content ${
-            locationRequestStatus === 'requesting' ? 'is-loading' : ''
+            geolocation.isLoading ? 'is-loading' : ''
           }`}
         >
           <CurrentLocationIcon className="region-setting-popup-current-icon" />
           현재 내 위치 사용하기
         </span>
-        {locationRequestStatus === 'requesting' && (
+        {geolocation.isLoading && (
           <span className="current-location-button-spinner">
             <SpinnerIcon />
           </span>
         )}
       </button>
-      {locationRequestStatus === 'granted' && (
+      {geolocation.status === 'granted' && (
         <p className="region-setting-popup-location-status" role="status">
           위치 설정이 켜졌습니다.
         </p>

@@ -6,7 +6,7 @@ import SearchFilterFields from '@/components/ui/search-filter/search-filter-fiel
 import SearchFilterHeader from '@/components/ui/search-filter/search-filter-header.tsx';
 import SearchFilterRegion from '@/components/ui/search-filter/search-filter-region.tsx';
 import SelectedFilterSummary from '@/components/ui/search-filter/selected-filter-summary.tsx';
-import useCurrentLocationRequest from '@/hooks/use-current-location-request.ts';
+import useGeolocation from '@/hooks/use-geolocation.ts';
 import usePopup from '@/hooks/use-popup.ts';
 import useSearchFilterState from '@/hooks/use-search-filter-state.ts';
 import useTempSearchFilter from '@/hooks/use-temp-search-filter.ts';
@@ -87,6 +87,7 @@ function ServiceSearchFilter({
     filterState,
     onApply: applyFilterState,
   });
+  const geolocation = useGeolocation();
   const {
     isOpen: isRegionPopupOpen,
     openPopup: openRegionPopup,
@@ -97,15 +98,6 @@ function ServiceSearchFilter({
     openPopup: openFilterPopup,
     closePopup: closeFilterPopup,
   } = usePopup();
-  const { locationErrorCode, locationRequestStatus, requestCurrentLocation } =
-    useCurrentLocationRequest();
-  const isCurrentLocationLoading = locationRequestStatus === 'requesting';
-
-  useEffect(() => {
-    if (locationRequestStatus === 'error' && locationErrorCode) {
-      openRegionPopup();
-    }
-  }, [locationErrorCode, locationRequestStatus, openRegionPopup]);
 
   const handleFilterPopupOpen = (): void => {
     temp.open();
@@ -141,9 +133,9 @@ function ServiceSearchFilter({
 
   const commonViewModel: CommonSearchFilterViewModel = {
     config,
-    isCurrentLocationLoading,
+    isCurrentLocationLoading: geolocation.isLoading,
     region,
-    onCurrentLocationRequest: requestCurrentLocation,
+    onCurrentLocationRequest: geolocation.request,
     onRegionOpen: openRegionPopup,
   };
   const asideViewModel = createSearchFilterViewModel(
@@ -183,9 +175,9 @@ function ServiceSearchFilter({
         }`}
       >
         <SearchFilterRegion
-          isCurrentLocationLoading={isCurrentLocationLoading}
+          isCurrentLocationLoading={geolocation.isLoading}
           region={region}
-          onCurrentLocationRequest={requestCurrentLocation}
+          onCurrentLocationRequest={geolocation.request}
           onRegionOpen={openRegionPopup}
         />
         <button
@@ -239,9 +231,9 @@ function ServiceSearchFilter({
       </CommonPopup>
 
       <RegionSettingPopup
-        initialLocationErrorCode={locationErrorCode}
+        initialLocationErrorCode={geolocation.errorCode}
         isOpen={isRegionPopupOpen}
-        key={`${locationRequestStatus}-${locationErrorCode ?? 'none'}`}
+        key={`${geolocation.status}-${geolocation.errorCode ?? 'none'}`}
         onClose={closeRegionPopup}
       />
     </>
