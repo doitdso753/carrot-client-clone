@@ -7,7 +7,7 @@ type SearchFilterToolbarItemProps = {
   label: string;
   leadingIcon?: ReactNode;
   trailingIcon?: ReactNode;
-  onToggle: () => void;
+  onToggle: (triggerElement: HTMLButtonElement) => void;
 };
 
 // 검색 필터 툴바의 칩 Trigger와 연결된 팝업 영역을 함께 구성합니다.
@@ -28,7 +28,7 @@ export default function SearchFilterToolbarItem({
           isSelected ? 'is-selected' : ''
         }`}
         type="button"
-        onClick={onToggle}
+        onClick={(event) => onToggle(event.currentTarget)}
       >
         {leadingIcon && (
           <span className="search-filter-toolbar-item-leading-icon">

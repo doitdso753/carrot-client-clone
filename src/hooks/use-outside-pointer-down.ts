@@ -1,13 +1,15 @@
 import { useEffect, useRef, type RefObject } from 'react';
 
 export default function useOutsidePointerDown<T extends HTMLElement>({
+  ignoredSelector,
   isEnabled,
   onOutsidePointerDown,
 }: {
+  ignoredSelector?: string;
   isEnabled: boolean;
   onOutsidePointerDown: () => void;
 }): RefObject<T | null> {
-  // 기준이 되는 영역입니다. 이 영역 밖을 누르면 닫기 동작을 실행합니다.
+  // 외부 클릭 판단 기준 영역
   const targetRef = useRef<T>(null);
 
   useEffect(() => {
@@ -17,20 +19,29 @@ export default function useOutsidePointerDown<T extends HTMLElement>({
 
     const handlePointerDown = (event: PointerEvent): void => {
       const targetElement = targetRef.current;
+      const eventTarget = event.target;
 
-      // 메뉴나 팝오버 안쪽을 누른 경우에는 그대로 두고, 바깥을 누른 경우에만 닫습니다.
-      if (targetElement && !targetElement.contains(event.target as Node)) {
+      if (
+        ignoredSelector &&
+        eventTarget instanceof Element &&
+        eventTarget.closest(ignoredSelector)
+      ) {
+        return;
+      }
+
+      // 기준 영역 외부 클릭 시 닫기
+      if (targetElement && !targetElement.contains(eventTarget as Node)) {
         onOutsidePointerDown();
       }
     };
 
-    // 화면 어디를 눌렀는지 문서 전체에서 감지합니다.
+    // 문서 전체 포인터 이벤트 감지
     document.addEventListener('pointerdown', handlePointerDown);
 
     return () => {
       document.removeEventListener('pointerdown', handlePointerDown);
     };
-  }, [isEnabled, onOutsidePointerDown]);
+  }, [ignoredSelector, isEnabled, onOutsidePointerDown]);
 
   return targetRef;
 }

@@ -27,9 +27,13 @@ type SearchFilterToolbarContextValue = {
   model: SearchFilterViewModel;
   onReset: () => void;
   openItemKey: SearchFilterToolbarItemConfig['key'] | null;
+  popoverAnchorRect: DOMRect | null;
   selectedServiceItems: SelectedSearchFilterItem[];
   onClose: () => void;
-  onToggle: (itemKey: SearchFilterToolbarItemConfig['key']) => void;
+  onToggle: (
+    itemKey: SearchFilterToolbarItemConfig['key'],
+    triggerElement: HTMLButtonElement,
+  ) => void;
 };
 
 type SearchFilterToolbarRootProps = PropsWithChildren<{
@@ -92,7 +96,11 @@ function SearchFilterToolbarRoot({
   const [openItemKey, setOpenItemKey] = useState<
     SearchFilterToolbarItemConfig['key'] | null
   >(null);
+  const [popoverAnchorRect, setPopoverAnchorRect] = useState<DOMRect | null>(
+    null,
+  );
   const rootRef = useOutsidePointerDown<HTMLDivElement>({
+    ignoredSelector: '.search-filter-toolbar-popover',
     isEnabled: openItemKey !== null,
     onOutsidePointerDown: () => setOpenItemKey(null),
   });
@@ -117,10 +125,19 @@ function SearchFilterToolbarRoot({
     model,
     onReset,
     openItemKey,
+    popoverAnchorRect,
     selectedServiceItems,
     onClose: () => setOpenItemKey(null),
-    onToggle: (itemKey) => {
-      setOpenItemKey((currentKey) => (currentKey === itemKey ? null : itemKey));
+    onToggle: (itemKey, triggerElement) => {
+      setOpenItemKey((currentKey) => {
+        if (currentKey === itemKey) {
+          setPopoverAnchorRect(null);
+          return null;
+        }
+
+        setPopoverAnchorRect(triggerElement.getBoundingClientRect());
+        return itemKey;
+      });
     },
   };
 
@@ -139,6 +156,7 @@ function SearchFilterToolbarList(): ReactNode {
     onReset,
     onToggle,
     openItemKey,
+    popoverAnchorRect,
     selectedServiceItems,
   } = useSearchFilterToolbar();
 
@@ -159,12 +177,14 @@ function SearchFilterToolbarList(): ReactNode {
             trailingIcon={
               item.key !== 'all' ? <ChevronDownThinIcon /> : undefined
             }
-            onToggle={() => onToggle(item.key)}
+            onToggle={(triggerElement) => onToggle(item.key, triggerElement)}
           >
             <SearchFilterToolbarPopover
               hasFooter={item.key === 'all'}
               model={model}
+              anchorRect={popoverAnchorRect}
               sectionKeys={item.sectionKeys}
+              width={item.key === 'options' ? 'max-content' : 240}
               onApply={onClose}
               onReset={onReset}
             />
