@@ -51,4 +51,117 @@
     top: calc(100% + 0.8rem);
     width: 18rem;
   }
+
+  .map-bottom-toolbar {
+    display: block;
+  }
+
+  .map-region-refresh-button,
+  .map-current-location-button {
+    position: fixed;
+    bottom: 2rem;
+    z-index: 20;
+    justify-content: center;
+  }
+
+  .map-region-refresh-button {
+    left: calc(var(--map-panel-width) + ((100vw - var(--map-panel-width)) / 2));
+    gap: 0.8rem;
+    max-width: calc(100vw - var(--map-panel-width) - 12rem);
+    padding-inline: 1.6rem;
+    border-radius: 999rem;
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-text-sm);
+    transform: translateX(-50%);
+  }
+
+  .map-region-refresh-button span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .map-current-location-button {
+    right: 2.8rem;
+    width: 4rem;
+    padding: 0;
+  }
+
+  .map-region-refresh-button svg,
+  .map-current-location-button svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    flex-shrink: 0;
+  }
+
+  .map-current-location-button .spinner-icon {
+    animation: spinner-icon-rotate 800ms linear infinite;
+  }
+
+  body:has(.map-page) > .common-popup-backdrop--bottom-sheet {
+    position: fixed;
+    inset: auto;
+    top: 0;
+    left: 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-width: max-content;
+    overflow: visible;
+    padding: 0;
+    background-color: transparent;
+    transform: translate(calc(var(--map-panel-width) + 2rem), 6.8rem);
+    transform-origin: 0 0;
+    will-change: transform;
+  }
+
+  body:has(.map-page) > .common-popup-backdrop .common-popup--bottom-sheet {
+    width: 32rem;
+    max-width: calc(100vw - var(--map-panel-width) - 2rem);
+    min-height: 0;
+    max-height: min(52rem, 43.3rem);
+    border: 0.1rem solid var(--color-palette-gray-300);
+    border-radius: 2.4rem;
+    box-shadow: 0 0.8rem 2.4rem rgb(0 0 0 / 14%);
+    animation: none;
+  }
+
+  body:has(.map-page) > .common-popup-backdrop .common-popup-drag-handle,
+  body:has(.map-page) > .common-popup-backdrop .common-popup-close-button {
+    display: none;
+  }
+
+  body:has(.map-page)
+    > .common-popup-backdrop
+    .common-popup--bottom-sheet
+    .common-popup-header {
+    display: none;
+  }
+
+  body:has(.map-page)
+    > .common-popup-backdrop
+    .common-popup--bottom-sheet
+    .common-popup-body {
+    max-height: none;
+    padding: 0 2rem 1.6rem;
+  }
+
+  body:has(.map-page)
+    > .common-popup-backdrop
+    .common-popup--bottom-sheet
+    .search-filter-section:first-child {
+    display: none;
+  }
+
+  body:has(.map-page)
+    > .common-popup-backdrop
+    .common-popup--bottom-sheet
+    .search-filter-section {
+    padding-block: 1.6rem;
+  }
+
+  body:has(.map-page) > .common-popup-backdrop .common-popup-footer {
+    grid-template-columns: 12.4rem minmax(0, 1fr);
+    gap: 1.6rem;
+  }
 }
