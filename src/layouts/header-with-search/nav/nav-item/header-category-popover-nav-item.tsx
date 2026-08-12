@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, ReactNode, RefObject } from 'react';
 import { Link } from 'react-router';
 import { ChevronDownIcon } from '@/assets/icons';
 import useAnchorHoverPopover from '@/hooks/interaction/use-anchor-hover-popover.ts';
@@ -11,6 +11,7 @@ type HeaderCategoryPopoverNavItemProps = {
 
 type HeaderCategoryNavItemPopoverProps = {
   options: NonNullable<HeaderCategoryNavItemData['options']>;
+  popoverRef: RefObject<HTMLDivElement | null>;
   popoverStyle: CSSProperties;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
@@ -18,6 +19,7 @@ type HeaderCategoryNavItemPopoverProps = {
 
 function HeaderCategoryNavItemPopover({
   options,
+  popoverRef,
   popoverStyle,
   onMouseEnter,
   onMouseLeave,
@@ -25,6 +27,7 @@ function HeaderCategoryNavItemPopover({
   return (
     <div
       className="header-category-nav-item-popover"
+      ref={popoverRef}
       role="menu"
       style={popoverStyle}
       onMouseEnter={onMouseEnter}
@@ -47,8 +50,14 @@ function HeaderCategoryNavItemPopover({
 export default function HeaderCategoryPopoverNavItem({
   item,
 }: HeaderCategoryPopoverNavItemProps): ReactNode {
-  const { anchorRef, isPopoverOpen, popoverStyle, openPopover, closePopover } =
-    useAnchorHoverPopover<HTMLAnchorElement>();
+  const {
+    anchorRef,
+    closePopover,
+    isPopoverOpen,
+    openPopover,
+    popoverRef,
+    popoverStyle,
+  } = useAnchorHoverPopover<HTMLAnchorElement>();
 
   return (
     <div
@@ -73,6 +82,7 @@ export default function HeaderCategoryPopoverNavItem({
       {isPopoverOpen && item.options && (
         <HeaderCategoryNavItemPopover
           options={item.options}
+          popoverRef={popoverRef}
           popoverStyle={popoverStyle}
           onMouseEnter={openPopover}
           onMouseLeave={closePopover}
