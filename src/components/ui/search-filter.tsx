@@ -7,7 +7,7 @@ import SearchFilterHeader from '@/components/ui/search-filter/search-filter-head
 import SearchFilterRegion from '@/components/ui/search-filter/search-filter-region.tsx';
 import SearchFilterToolbar from '@/components/ui/search-filter/search-filter-toolbar.tsx';
 import SelectedFilterSummary from '@/components/ui/search-filter/selected-filter-summary.tsx';
-import useGeolocation from '@/hooks/use-geolocation.ts';
+import useRegionLocator from '@/hooks/use-region-locator.ts';
 import usePopup from '@/hooks/use-popup.ts';
 import useSearchFilterState from '@/hooks/use-search-filter-state.ts';
 import useTempSearchFilter from '@/hooks/use-temp-search-filter.ts';
@@ -116,12 +116,7 @@ export default function SearchFilter({
     filterState,
     onApply: applyFilterState,
   });
-  const geolocation = useGeolocation();
-  const {
-    isOpen: isRegionPopupOpen,
-    openPopup: openRegionPopup,
-    closePopup: closeRegionPopup,
-  } = usePopup();
+  const { geolocation, regionPopup } = useRegionLocator();
   const {
     isOpen: isFilterPopupOpen,
     openPopup: openFilterPopup,
@@ -170,7 +165,7 @@ export default function SearchFilter({
     isCurrentLocationLoading: geolocation.isLoading,
     region,
     onCurrentLocationRequest: geolocation.request,
-    onRegionOpen: openRegionPopup,
+    onRegionOpen: regionPopup.open,
   };
   const asideViewModel = createSearchFilterViewModel(commonViewModel, {
     actions,
@@ -201,7 +196,7 @@ export default function SearchFilter({
           isCurrentLocationLoading={geolocation.isLoading}
           region={region}
           onCurrentLocationRequest={geolocation.request}
-          onRegionOpen={openRegionPopup}
+          onRegionOpen={regionPopup.open}
         />
         <button
           aria-expanded={isFilterPopupOpen}
@@ -256,9 +251,9 @@ export default function SearchFilter({
 
       <RegionSettingPopup
         initialLocationErrorCode={geolocation.errorCode}
-        isOpen={isRegionPopupOpen}
+        isOpen={regionPopup.isOpen}
         key={`${geolocation.status}-${geolocation.errorCode ?? 'none'}`}
-        onClose={closeRegionPopup}
+        onClose={regionPopup.close}
       />
     </>
   );
