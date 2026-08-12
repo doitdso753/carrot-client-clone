@@ -218,6 +218,7 @@ export const SEARCH_FILTER_CONFIGS: Record<
       },
       {
         data: LOCAL_PROFILE_OPTIONS,
+        flexDirection: 'row',
         key: 'options',
         label: '옵션',
         type: 'chip',
