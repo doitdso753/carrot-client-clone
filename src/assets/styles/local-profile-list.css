@@ -235,7 +235,7 @@
 
   .local-profile-list-panel .service-list-layout {
     display: flex;
-    gap: 3.2rem;
+    gap: 2rem;
   }
 
   .local-profile-list-panel .search-filter-toolbar,
