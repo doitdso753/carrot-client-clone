@@ -26,6 +26,7 @@ export const WEEKDAY_ITEMS = [
 ] as const;
 
 export type SearchFilterVariant = 'buySell' | 'cars' | 'localProfile';
+export type SearchFilterViewType = 'aside' | 'toolbar';
 
 export type SearchFilterItem = {
   code: string;
@@ -97,6 +98,7 @@ export type SearchFilterConfig = {
   filterStorageKey: string;
   popupTitle: string;
   sections: readonly SearchFilterSection[];
+  viewType: SearchFilterViewType;
 };
 
 export const SEARCH_FILTER_CONFIGS: Record<
@@ -106,6 +108,7 @@ export const SEARCH_FILTER_CONFIGS: Record<
   buySell: {
     filterStorageKey: 'search-filter:buy-sell',
     popupTitle: '중고거래 검색 필터',
+    viewType: 'aside',
     sections: [
       { key: 'location', label: '위치', type: 'location' },
       {
@@ -131,6 +134,7 @@ export const SEARCH_FILTER_CONFIGS: Record<
   cars: {
     filterStorageKey: 'search-filter:cars',
     popupTitle: '중고차 검색 필터',
+    viewType: 'aside',
     sections: [
       { key: 'location', label: '위치', type: 'location' },
       {
@@ -203,6 +207,7 @@ export const SEARCH_FILTER_CONFIGS: Record<
   localProfile: {
     filterStorageKey: 'search-filter:local-profile',
     popupTitle: '동네업체 검색 필터',
+    viewType: 'toolbar',
     sections: [
       { key: 'location', label: '위치', type: 'location' },
       {

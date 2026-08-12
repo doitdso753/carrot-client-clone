@@ -1,10 +1,11 @@
-import { useEffect, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { FilterIcon } from '@/assets/icons';
 import CommonPopup from '@/components/ui/common-popup.tsx';
 import RegionSettingPopup from '@/components/ui/region-setting-popup.tsx';
 import SearchFilterFields from '@/components/ui/search-filter/search-filter-fields.tsx';
 import SearchFilterHeader from '@/components/ui/search-filter/search-filter-header.tsx';
 import SearchFilterRegion from '@/components/ui/search-filter/search-filter-region.tsx';
+import SearchFilterToolbar from '@/components/ui/search-filter/search-filter-toolbar.tsx';
 import SelectedFilterSummary from '@/components/ui/search-filter/selected-filter-summary.tsx';
 import useGeolocation from '@/hooks/use-geolocation.ts';
 import usePopup from '@/hooks/use-popup.ts';
@@ -12,9 +13,10 @@ import useSearchFilterState from '@/hooks/use-search-filter-state.ts';
 import useTempSearchFilter from '@/hooks/use-temp-search-filter.ts';
 import {
   SEARCH_FILTER_CONFIGS,
-  type SearchFilterConfig,
   type SearchFilterSectionKey,
   type SearchFilterVariant,
+  type SearchFilterViewType,
+  type SelectedSearchFilterItem,
 } from '@/types/search-filter-configs.ts';
 import type { SearchFilterViewModel } from '@/types/search-filter-view-model.ts';
 
@@ -23,9 +25,35 @@ type SearchFilterProps = {
   variant: SearchFilterVariant;
 };
 
-type ServiceSearchFilterProps = {
-  config: SearchFilterConfig;
-  region: string;
+type SearchFilterViewProps = {
+  model: SearchFilterViewModel;
+  selectedServiceItems: SelectedSearchFilterItem[];
+  onReset: () => void;
+};
+
+type SearchFilterViewRenderer = (props: SearchFilterViewProps) => ReactNode;
+
+const SEARCH_FILTER_VIEW_RENDERERS: Record<
+  SearchFilterViewType,
+  SearchFilterViewRenderer
+> = {
+  aside: ({ model, onReset }) => (
+    <aside className="filter-aside search-filter-aside">
+      <SearchFilterHeader onReset={onReset} />
+      <SearchFilterFields model={model} variant="aside" />
+    </aside>
+  ),
+  toolbar: ({ model, selectedServiceItems, onReset }) => (
+    <div className="search-toolbar">
+      <SearchFilterToolbar.Root
+        model={model}
+        selectedServiceItems={selectedServiceItems}
+        onReset={onReset}
+      >
+        <SearchFilterToolbar.List />
+      </SearchFilterToolbar.Root>
+    </div>
+  ),
 };
 
 type CommonSearchFilterViewModel = Pick<
@@ -62,10 +90,11 @@ function createSearchFilterViewModel(
   };
 }
 
-function ServiceSearchFilter({
-  config,
+export default function SearchFilter({
   region,
-}: ServiceSearchFilterProps): ReactNode {
+  variant,
+}: SearchFilterProps): ReactNode {
+  const config = SEARCH_FILTER_CONFIGS[variant];
   const {
     actions,
     commands: {
@@ -99,7 +128,12 @@ function ServiceSearchFilter({
     closePopup: closeFilterPopup,
   } = usePopup();
 
-  const handleFilterPopupOpen = (): void => {
+  const handleFilterPopupToggle = (): void => {
+    if (isFilterPopupOpen) {
+      closeFilterPopup();
+      return;
+    }
+
     temp.open();
     openFilterPopup();
   };
@@ -138,34 +172,23 @@ function ServiceSearchFilter({
     onCurrentLocationRequest: geolocation.request,
     onRegionOpen: openRegionPopup,
   };
-  const asideViewModel = createSearchFilterViewModel(
-    commonViewModel,
-    {
-      actions,
-      filterState,
-      selectedFilterBySectionKey,
-      onSectionApply: handleSectionApply,
-    },
-  );
-  const bottomSheetViewModel = createSearchFilterViewModel(
-    commonViewModel,
-    {
-      actions: temp.actions,
-      filterState: temp.filterState,
-      selectedFilterBySectionKey: temp.selectedFilterBySectionKey,
-      onSectionApply: handleTempSectionApply,
-    },
-  );
-
-  const asideFilterFields = (
-    <SearchFilterFields model={asideViewModel} variant="aside" />
-  );
-  const bottomSheetFilterFields = (
-    <SearchFilterFields
-      model={bottomSheetViewModel}
-      variant="bottomSheet"
-    />
-  );
+  const asideViewModel = createSearchFilterViewModel(commonViewModel, {
+    actions,
+    filterState,
+    selectedFilterBySectionKey,
+    onSectionApply: handleSectionApply,
+  });
+  const bottomSheetViewModel = createSearchFilterViewModel(commonViewModel, {
+    actions: temp.actions,
+    filterState: temp.filterState,
+    selectedFilterBySectionKey: temp.selectedFilterBySectionKey,
+    onSectionApply: handleTempSectionApply,
+  });
+  const filterView = SEARCH_FILTER_VIEW_RENDERERS[config.viewType]({
+    model: asideViewModel,
+    selectedServiceItems,
+    onReset: reset,
+  });
 
   return (
     <>
@@ -181,9 +204,10 @@ function ServiceSearchFilter({
           onRegionOpen={openRegionPopup}
         />
         <button
+          aria-expanded={isFilterPopupOpen}
           className="search-filter-open-button"
           type="button"
-          onClick={handleFilterPopupOpen}
+          onClick={handleFilterPopupToggle}
         >
           <FilterIcon />
           필터 {selectedServiceItems.length > 0 && selectedServiceItems.length}
@@ -198,10 +222,7 @@ function ServiceSearchFilter({
         )}
       </div>
 
-      <aside className="filter-aside search-filter-aside">
-        <SearchFilterHeader onReset={reset} />
-        {asideFilterFields}
-      </aside>
+      {filterView}
 
       <CommonPopup
         footer={
@@ -226,7 +247,10 @@ function ServiceSearchFilter({
         onClose={closeFilterPopup}
       >
         <div className="search-filter-popup-fields">
-          {bottomSheetFilterFields}
+          <SearchFilterFields
+            model={bottomSheetViewModel}
+            variant="bottomSheet"
+          />
         </div>
       </CommonPopup>
 
@@ -238,10 +262,4 @@ function ServiceSearchFilter({
       />
     </>
   );
-}
-
-export default function SearchFilter(props: SearchFilterProps): ReactNode {
-  const config = SEARCH_FILTER_CONFIGS[props.variant];
-
-  return <ServiceSearchFilter config={config} region={props.region} />;
 }
