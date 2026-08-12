@@ -462,7 +462,7 @@
     top: 2rem;
     right: 2.8rem;
     left: calc(var(--map-panel-width) + 2rem);
-    z-index: 35;
+    z-index: var(--z-map-control);
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -480,7 +480,7 @@
     position: absolute;
     top: calc(100% + 0.8rem);
     left: 0;
-    z-index: 300;
+    z-index: var(--z-floating-popover);
     display: flex;
     width: 32rem;
     max-height: min(64rem, calc(100vh - 6.8rem));

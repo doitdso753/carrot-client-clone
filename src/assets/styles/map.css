@@ -30,7 +30,7 @@
     position: fixed;
     top: 2rem;
     right: 2.8rem;
-    z-index: 35;
+    z-index: var(--z-map-control);
     flex-shrink: 0;
     display: block;
   }
@@ -60,7 +60,7 @@
   .map-current-location-button {
     position: fixed;
     bottom: 2rem;
-    z-index: 20;
+    z-index: var(--z-map-action);
     justify-content: center;
   }
 

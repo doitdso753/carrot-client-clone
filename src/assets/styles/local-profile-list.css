@@ -184,7 +184,7 @@
     top: 0.6rem;
     bottom: 0.6rem;
     left: 0.6rem;
-    z-index: 10;
+    z-index: var(--z-map-panel);
     width: var(--map-panel-width);
     overflow-y: auto;
     border: 0.1rem solid var(--color-palette-gray-300);
@@ -216,7 +216,7 @@
   }
 
   .local-profile-list-panel .form-select-menu {
-    z-index: 300;
+    z-index: var(--z-floating-popover);
   }
 
   .local-profile-list-panel .service-list-page {
