@@ -9,7 +9,7 @@ import {
 import { ChevronDownThinIcon, FilterIcon } from '@/assets/icons';
 import SearchFilterToolbarItem from '@/components/ui/search-filter/search-filter-toolbar-item.tsx';
 import SearchFilterToolbarPopover from '@/components/ui/search-filter/search-filter-toolbar-popover.tsx';
-import useOutsidePointerDown from '@/hooks/use-outside-pointer-down.ts';
+import useOutsidePointerDown from '@/hooks/interaction/use-outside-pointer-down.ts';
 import type {
   SearchFilterSectionKey,
   SelectedSearchFilterItem,

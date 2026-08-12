@@ -7,10 +7,10 @@ import SearchFilterHeader from '@/components/ui/search-filter/search-filter-head
 import SearchFilterRegion from '@/components/ui/search-filter/search-filter-region.tsx';
 import SearchFilterToolbar from '@/components/ui/search-filter/search-filter-toolbar.tsx';
 import SelectedFilterSummary from '@/components/ui/search-filter/selected-filter-summary.tsx';
-import useRegionLocator from '@/hooks/use-region-locator.ts';
-import usePopup from '@/hooks/use-popup.ts';
-import useSearchFilterState from '@/hooks/use-search-filter-state.ts';
-import useTempSearchFilter from '@/hooks/use-temp-search-filter.ts';
+import useRegionLocator from '@/hooks/location/use-region-locator.ts';
+import usePopup from '@/hooks/ui/use-popup.ts';
+import useSearchFilterState from '@/hooks/search-filter/use-search-filter-state.ts';
+import useTempSearchFilter from '@/hooks/search-filter/use-temp-search-filter.ts';
 import {
   SEARCH_FILTER_CONFIGS,
   type SearchFilterSectionKey,

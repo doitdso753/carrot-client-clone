@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { useMemo } from 'react';
 import { ChevronDownIcon } from '@/assets/icons';
-import useCollapse from '@/hooks/use-collapse.ts';
+import useCollapse from '@/hooks/ui/use-collapse.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
 import type { LocalProfilePrice } from '@/types/types.ts';
 

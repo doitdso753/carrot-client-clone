@@ -1,6 +1,6 @@
 import { useCallback, useReducer } from 'react';
-import useSearchFilterActions from '@/hooks/use-search-filter-actions.ts';
-import useSearchFilterSelection from '@/hooks/use-search-filter-selection.ts';
+import useSearchFilterActions from '@/hooks/search-filter/use-search-filter-actions.ts';
+import useSearchFilterSelection from '@/hooks/search-filter/use-search-filter-selection.ts';
 import searchFilterReducer from '@/reducers/search-filter-reducer.ts';
 import type {
   SearchFilterConfig,

@@ -1,6 +1,6 @@
 import { useEffect, type RefObject } from 'react';
-import useOutsidePointerDown from './use-outside-pointer-down';
-import usePopup from './use-popup';
+import useOutsidePointerDown from '@/hooks/interaction/use-outside-pointer-down.ts';
+import usePopup from '@/hooks/ui/use-popup.ts';
 
 type UseTooltipReturn<T extends HTMLElement> = {
   isOpen: boolean;

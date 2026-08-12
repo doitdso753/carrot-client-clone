@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import usePageFilter from '@/hooks/use-page-filter.ts';
-import useSearchFilterActions from '@/hooks/use-search-filter-actions.ts';
-import useSearchFilterSelection from '@/hooks/use-search-filter-selection.ts';
+import usePageFilter from '@/hooks/search-filter/use-page-filter.ts';
+import useSearchFilterActions from '@/hooks/search-filter/use-search-filter-actions.ts';
+import useSearchFilterSelection from '@/hooks/search-filter/use-search-filter-selection.ts';
 import { hasAppliedRangeFilters } from '@/lib/search-filter-summary-utils.ts';
 import searchFilterReducer, {
   type SearchFilterAction,

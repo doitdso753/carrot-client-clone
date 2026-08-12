@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import useRegion from '@/hooks/use-region.ts';
+import useRegion from '@/hooks/location/use-region.ts';
 import type { MapRegion } from '@/types/map.ts';
 
 type UseMapRegionReturn = {

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { ChevronRightThinIcon } from '@/assets/icons';
 import LocalProfileReviewPopup from '@/components/local-profile/popups/local-profile-review-popup.tsx';
-import usePopup from '@/hooks/use-popup.ts';
+import usePopup from '@/hooks/ui/use-popup.ts';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
 import LocalProfileReviewItem from './local-profile-review-item.tsx';

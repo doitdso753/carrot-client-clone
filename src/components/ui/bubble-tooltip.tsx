@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import useTooltip from '@/hooks/use-tooltip';
+import useTooltip from '@/hooks/ui/use-tooltip.ts';
 
 export type TooltipPlacement = 'top' | 'bottom' | 'left' | 'right';
 

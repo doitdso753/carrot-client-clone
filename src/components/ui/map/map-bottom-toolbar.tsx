@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { CurrentLocationIcon, RefreshIcon, SpinnerIcon } from '@/assets/icons';
 import RegionSettingPopup from '@/components/ui/region-setting-popup.tsx';
-import useRegionLocator from '@/hooks/use-region-locator.ts';
+import useRegionLocator from '@/hooks/location/use-region-locator.ts';
 
 type MapBottomToolbarProps = {
   region: string;

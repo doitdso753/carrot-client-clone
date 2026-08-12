@@ -3,7 +3,7 @@ import { CopyIcon } from '@/assets/icons';
 import KakaoMap from '@/components/ui/map/kakao-map.tsx';
 import CommonToast from '@/components/ui/common-toast';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button';
-import useToast from '@/hooks/use-toast';
+import useToast from '@/hooks/ui/use-toast.ts';
 import { copyTextToClipboard } from '@/lib/utils';
 
 type CarMapProps = {

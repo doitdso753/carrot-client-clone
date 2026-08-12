@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import useGeolocation from '@/hooks/use-geolocation.ts';
-import usePopup from '@/hooks/use-popup.ts';
+import useGeolocation from '@/hooks/location/use-geolocation.ts';
+import usePopup from '@/hooks/ui/use-popup.ts';
 import type { GeolocationState } from '@/types/geolocation.ts';
 
 type UseRegionLocatorReturn = {

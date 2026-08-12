@@ -2,8 +2,8 @@ import { useState, type ReactNode, type SubmitEvent } from 'react';
 import { CurrentLocationIcon, SearchIcon, SpinnerIcon } from '@/assets/icons';
 import { BUY_SELL_RECOMMENDED_LOCATIONS } from '@/types/buy-sell-constants.ts';
 import CommonPopup from '@/components/ui/common-popup';
-import useGeolocation from '@/hooks/use-geolocation.ts';
-import useRegion from '@/hooks/use-region.ts';
+import useGeolocation from '@/hooks/location/use-geolocation.ts';
+import useRegion from '@/hooks/location/use-region.ts';
 import { removeCommaFromString } from '@/lib/utils.ts';
 import type { GeolocationErrorCode } from '@/types/geolocation.ts';
 

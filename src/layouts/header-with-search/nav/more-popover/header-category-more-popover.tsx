@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useLocation } from 'react-router';
-import useOutsidePointerDown from '@/hooks/use-outside-pointer-down.ts';
+import useOutsidePointerDown from '@/hooks/interaction/use-outside-pointer-down.ts';
 import HeaderCategoryPopoverItem from '@/layouts/header-with-search/nav/more-popover/header-category-popover-item.tsx';
 import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
 import { EllipsisIcon } from '@/assets/icons';

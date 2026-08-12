@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { VerifiedDocumentIcon } from '@/assets/icons';
 import LocalProfileDocumentPopup from '@/components/local-profile/popups/local-profile-document-popup.tsx';
-import usePopup from '@/hooks/use-popup.ts';
+import usePopup from '@/hooks/ui/use-popup.ts';
 import type { LocalProfileItem } from '@/types/types.ts';
 
 type LocalProfileIntroductionProps = {

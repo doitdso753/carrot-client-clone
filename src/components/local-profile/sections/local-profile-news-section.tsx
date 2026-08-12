@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { ChevronRightThinIcon } from '@/assets/icons';
-import usePopup from '@/hooks/use-popup.ts';
+import usePopup from '@/hooks/ui/use-popup.ts';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
 import LocalProfileNewsPopup from '@/components/local-profile/popups/local-profile-news-popup.tsx';

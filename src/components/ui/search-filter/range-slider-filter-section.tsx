@@ -5,7 +5,7 @@ import {
   type CSSProperties,
   type ReactNode,
 } from 'react';
-import useRangeSlider from '@/hooks/use-range-slider.ts';
+import useRangeSlider from '@/hooks/ui/use-range-slider.ts';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 
 type RangeSliderFilterSectionProps = {
