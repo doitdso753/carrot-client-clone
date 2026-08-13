@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
 import FindRegion from '@/components/ui/find-region.tsx';
-import CheckboxFilterSection from '@/components/ui/search-filter/checkbox-filter-section.tsx';
-import ChipsFilterSection from '@/components/ui/search-filter/chips-filter-section.tsx';
-import PriceFilterSection from '@/components/ui/search-filter/price-filter-section.tsx';
-import RadioFilterSection from '@/components/ui/search-filter/radio-filter-section.tsx';
-import RangeSliderFilterSection from '@/components/ui/search-filter/range-slider-filter-section.tsx';
+import CheckboxFilterSection from '@/components/ui/search-filter/sections/checkbox-filter-section.tsx';
+import ChipsFilterSection from '@/components/ui/search-filter/sections/chips-filter-section.tsx';
+import PriceFilterSection from '@/components/ui/search-filter/sections/price-filter-section.tsx';
+import RadioFilterSection from '@/components/ui/search-filter/sections/radio-filter-section.tsx';
+import RangeSliderFilterSection from '@/components/ui/search-filter/sections/range-slider-filter-section.tsx';
 import { getSectionItems } from '@/lib/search-filter-summary-utils.ts';
 import { BUY_SELL_PRICE_OPTIONS } from '@/types/buy-sell-constants.ts';
 import type { SearchFilterSection } from '@/types/search-filter-configs.ts';
