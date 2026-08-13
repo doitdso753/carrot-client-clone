@@ -403,8 +403,6 @@
   height: 4rem;
   align-items: center;
   justify-content: center;
-  border: 0.1rem solid var(--color-palette-gray-300);
-  border-radius: 999rem;
   background-color: var(--color-palette-gray-00);
   transition: all 150ms ease;
 }
@@ -416,6 +414,7 @@
 
 .header-category-nav-item-trigger {
   max-width: 100%;
+  border: 0.1rem solid #00000010;
 }
 
 .header-category-nav-item-label {

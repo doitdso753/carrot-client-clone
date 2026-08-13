@@ -270,12 +270,8 @@
   align-items: center;
   gap: 0;
   padding-inline: 1rem;
-  border: 0.1rem solid var(--color-palette-gray-300);
   border-radius: 999rem;
   background-color: var(--color-palette-gray-00);
-  box-shadow:
-    0 0 1px #0000000d,
-    var(--shadow-s1);
   color: var(--color-palette-gray-1000);
   font-size: var(--text-sm);
   font-weight: var(--font-weight-bold);
@@ -285,6 +281,11 @@
   transition:
     background-color 150ms ease,
     border-color 150ms ease;
+}
+
+.common-item-trigger-shadow {
+  border: 0.1rem solid var(--color-palette-gray-400);
+  box-shadow: var(--shadow-s1);
 }
 
 .common-item-trigger:hover,

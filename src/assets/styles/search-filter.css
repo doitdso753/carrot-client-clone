@@ -415,6 +415,7 @@
 
 .search-filter-toolbar-item-trigger {
   max-width: 100%;
+  box-shadow: 0 0 0 1px #0000000d, var(--shadow-s1);
 }
 
 .search-filter-toolbar-item-trigger.is-selected {

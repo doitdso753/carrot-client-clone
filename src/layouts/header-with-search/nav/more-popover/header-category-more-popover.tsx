@@ -43,7 +43,7 @@ export default function HeaderCategoryMorePopover({
   return (
     <div className="relative shrink-0" ref={wrapperRef}>
       <button
-        className={`common-item-trigger header-category-more-button ${
+        className={`common-item-trigger common-item-trigger-shadow header-category-more-button ${
           isActive ? 'is-active' : 'is-disabled'
         }`}
         type="button"
