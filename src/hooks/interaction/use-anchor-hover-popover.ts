@@ -57,8 +57,12 @@ export default function useAnchorHoverPopover<
 
     updatePosition();
     window.addEventListener('resize', updatePosition);
+    window.addEventListener('scroll', updatePosition, true);
 
-    return () => window.removeEventListener('resize', updatePosition);
+    return () => {
+      window.removeEventListener('resize', updatePosition);
+      window.removeEventListener('scroll', updatePosition, true);
+    };
   }, [isPopoverOpen]);
 
   const openPopover = (): void => {
@@ -68,10 +72,17 @@ export default function useAnchorHoverPopover<
       closeTimerRef.current = null;
     }
 
-    if (!anchorRef.current) {
+    const anchorRect = anchorRef.current?.getBoundingClientRect();
+
+    if (!anchorRect) {
       return;
     }
 
+    // 트리거 왼쪽 기준 초기 위치
+    setPopoverStyle({
+      left: anchorRect.left,
+      top: anchorRect.bottom + 8,
+    });
     setIsPopoverOpen(true);
   };
 

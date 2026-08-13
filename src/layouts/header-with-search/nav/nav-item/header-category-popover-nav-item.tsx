@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode, RefObject } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router';
 import { ChevronDownIcon } from '@/assets/icons';
 import useAnchorHoverPopover from '@/hooks/interaction/use-anchor-hover-popover.ts';
@@ -24,7 +25,7 @@ function HeaderCategoryNavItemPopover({
   onMouseEnter,
   onMouseLeave,
 }: HeaderCategoryNavItemPopoverProps): ReactNode {
-  return (
+  return createPortal(
     <div
       className="header-category-nav-item-popover"
       ref={popoverRef}
@@ -42,7 +43,8 @@ function HeaderCategoryNavItemPopover({
           {option.label}
         </Link>
       ))}
-    </div>
+    </div>,
+    document.body,
   );
 }
 
