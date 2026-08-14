@@ -1,6 +1,5 @@
 import { useState, type ReactNode, type SubmitEvent } from 'react';
 import { CurrentLocationIcon, SearchIcon, SpinnerIcon } from '@/assets/icons';
-import { BUY_SELL_RECOMMENDED_LOCATIONS } from '@/types/buy-sell-constants.ts';
 import CommonPopup from '@/components/ui/common-popup';
 import useGeolocation from '@/hooks/location/use-geolocation.ts';
 import useRegion from '@/hooks/location/use-region.ts';
@@ -15,6 +14,71 @@ const LOCATION_ERROR_MESSAGES: Record<GeolocationErrorCode, string> = {
   UNKNOWN_ERROR: '지역 정보를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.',
 };
 
+const NEARBY_REGIONS = [
+  '우정읍',
+  '남양읍',
+  '마도면',
+  '송산면',
+  '서신면',
+  '팔탄면',
+  '장안면',
+  '양감면',
+  '새솔동',
+] as const;
+
+const RECOMMENDED_REGIONS = [
+  '인천광역시 연수구 송도동',
+  '서울특별시 강남구 역삼동',
+  '경상남도 양산시 물금읍',
+  '경기도 화성시 효행구 봉담읍',
+  '충청남도 아산시 배방읍',
+  '서울특별시 서초구 서초동',
+  '경기도 양주시 옥정동',
+  '서울특별시 관악구 신림동',
+  '충청남도 천안시 서북구 불당동',
+  '경기도 화성시 만세구 향남읍',
+  '서울특별시 강남구 청담동',
+  '경기도 남양주시 다산동',
+  '경기도 남양주시 별내동',
+  '경기도 남양주시 화도읍',
+  '대구광역시 달성군 다사읍',
+  '서울특별시 강서구 마곡동',
+  '서울특별시 강남구 압구정동',
+  '경기도 시흥시 배곧동',
+] as const;
+
+const SEARCHABLE_REGIONS = [...NEARBY_REGIONS, ...RECOMMENDED_REGIONS];
+
+type RegionChipSectionProps = {
+  regions: readonly string[];
+  title: string;
+  onSelect: (region: string) => void;
+};
+
+function RegionChipSection({
+  regions,
+  title,
+  onSelect,
+}: RegionChipSectionProps): ReactNode {
+  return (
+    <section className="region-setting-popup-region-section">
+      <h3 className="region-setting-popup-region-title">{title}</h3>
+      <div className="region-setting-popup-region-chip-wrapper">
+        {regions.map((region) => (
+          <button
+            className="region-setting-popup-region-chip"
+            key={region}
+            type="button"
+            onClick={() => onSelect(region)}
+          >
+            {region}
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 type RegionSettingPopupProps = {
   initialLocationErrorCode?: GeolocationErrorCode | null;
   isOpen: boolean;
@@ -28,6 +92,8 @@ export default function RegionSettingPopup({
 }: RegionSettingPopupProps): ReactNode {
   const { setRegion } = useRegion();
   const [regionKeyword, setRegionKeyword] = useState('');
+  const [searchedKeyword, setSearchedKeyword] = useState('');
+  const [searchResults, setSearchResults] = useState<string[] | null>(null);
   const geolocation = useGeolocation();
   const displayedLocationErrorCode =
     geolocation.status === 'idle'
@@ -35,96 +101,153 @@ export default function RegionSettingPopup({
       : geolocation.status === 'error'
         ? geolocation.errorCode
         : null;
+  const hasNoSearchResults = searchResults?.length === 0;
 
   const handleSubmit = (event: SubmitEvent): void => {
     event.preventDefault();
 
-    const nextRegion = removeCommaFromString(regionKeyword).trim();
+    const keyword = removeCommaFromString(regionKeyword).trim();
 
-    if (!nextRegion) {
+    if (!keyword) {
+      setSearchedKeyword('');
+      setSearchResults(null);
       return;
     }
 
-    setRegion(nextRegion);
-    setRegionKeyword('');
-    onClose();
+    const normalizedKeyword = keyword.replace(/\s/g, '');
+    setSearchedKeyword(keyword);
+    setSearchResults(
+      SEARCHABLE_REGIONS.filter((region) =>
+        region.replace(/\s/g, '').includes(normalizedKeyword),
+      ),
+    );
   };
 
   const handleSelectRegion = (region: string): void => {
     setRegion(removeCommaFromString(region));
     setRegionKeyword('');
+    setSearchedKeyword('');
+    setSearchResults(null);
     onClose();
   };
 
   return (
     <CommonPopup isOpen={isOpen} title="지역 변경" onClose={onClose}>
-      <form
-        className="region-setting-popup-search-form"
-        onSubmit={handleSubmit}
-      >
-        <input
-          aria-label="지역 검색"
-          className="region-setting-popup-search-input"
-          placeholder="지역이나 동네로 검색하기"
-          type="search"
-          value={regionKeyword}
-          onChange={(event) =>
-            setRegionKeyword(removeCommaFromString(event.target.value))
-          }
-        />
-        <button
-          aria-label="지역 검색"
-          className="region-setting-popup-search-button"
-          type="submit"
-        >
-          <SearchIcon />
-        </button>
-      </form>
-      <button
-        className="region-setting-popup-current-button"
-        disabled={geolocation.isLoading}
-        type="button"
-        onClick={geolocation.request}
-      >
-        <span
-          className={`current-location-button-content ${
-            geolocation.isLoading ? 'is-loading' : ''
-          }`}
-        >
-          <CurrentLocationIcon className="region-setting-popup-current-icon" />
-          현재 내 위치 사용하기
-        </span>
-        {geolocation.isLoading && (
-          <span className="current-location-button-spinner">
-            <SpinnerIcon />
-          </span>
-        )}
-      </button>
-      {geolocation.status === 'granted' && (
-        <p className="region-setting-popup-location-status" role="status">
-          위치 설정이 켜졌습니다.
-        </p>
-      )}
-      {displayedLocationErrorCode && (
-        <p className="region-setting-popup-location-status" role="alert">
-          {LOCATION_ERROR_MESSAGES[displayedLocationErrorCode]}
-        </p>
-      )}
-      <section className="region-setting-popup-recommend">
-        <h3 className="region-setting-popup-recommend-title">추천</h3>
-        <ul className="region-setting-popup-recommend-list">
-          {BUY_SELL_RECOMMENDED_LOCATIONS.map((location) => (
-            <li className="region-setting-popup-recommend-item" key={location}>
+      <div className="region-setting-popup">
+        <div className="region-setting-popup-control-wrapper">
+          <div className="region-setting-popup-search">
+            <h3 className="region-setting-popup-search-title">지역 이름</h3>
+            <form
+              className="region-setting-popup-search-form"
+              onSubmit={handleSubmit}
+            >
+              <input
+                aria-label="지역 검색"
+                className="region-setting-popup-search-input"
+                placeholder="서울특별시, 서초구, 서초4동"
+                type="search"
+                value={regionKeyword}
+                onChange={(event) =>
+                  setRegionKeyword(removeCommaFromString(event.target.value))
+                }
+              />
               <button
-                type="button"
-                onClick={() => handleSelectRegion(location)}
+                aria-label="지역 검색"
+                className="region-setting-popup-search-button"
+                type="submit"
               >
-                {location}
+                <SearchIcon />
               </button>
-            </li>
-          ))}
-        </ul>
-      </section>
+            </form>
+          </div>
+          <button
+            className="region-setting-popup-current-button"
+            disabled={geolocation.isLoading}
+            type="button"
+            onClick={geolocation.request}
+          >
+            <span
+              className={`current-location-button-content ${
+                geolocation.isLoading ? 'is-loading' : ''
+              }`}
+            >
+              <CurrentLocationIcon className="region-setting-popup-current-icon" />
+              현재 내 위치 사용하기
+            </span>
+            {geolocation.isLoading && (
+              <span className="current-location-button-spinner">
+                <SpinnerIcon />
+              </span>
+            )}
+          </button>
+        </div>
+        <div className="region-setting-popup-scroll-area">
+          {!hasNoSearchResults && geolocation.status === 'granted' && (
+            <p className="region-setting-popup-location-status" role="status">
+              위치 설정이 켜졌습니다.
+            </p>
+          )}
+          {!hasNoSearchResults && displayedLocationErrorCode && (
+            <p className="region-setting-popup-location-status" role="alert">
+              {LOCATION_ERROR_MESSAGES[displayedLocationErrorCode]}
+            </p>
+          )}
+          {searchResults === null ? (
+            <div className="region-setting-popup-region-wrapper">
+              <RegionChipSection
+                regions={NEARBY_REGIONS}
+                title="주변 지역"
+                onSelect={handleSelectRegion}
+              />
+              <RegionChipSection
+                regions={RECOMMENDED_REGIONS}
+                title="추천 지역"
+                onSelect={handleSelectRegion}
+              />
+            </div>
+          ) : (
+          <section className="region-setting-popup-search-result-wrapper">
+              {searchResults.length > 0 ? (
+                <>
+                <h3 className="region-setting-popup-search-result-title">
+                    검색 결과
+                  </h3>
+                <ul className="region-setting-popup-search-result-list">
+                    {searchResults.map((region) => (
+                      <li
+                      className="region-setting-popup-search-result-item"
+                        key={region}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => handleSelectRegion(region)}
+                        >
+                          {region}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <div
+                  className="region-setting-popup-search-empty"
+                  role="status"
+                >
+                  <p className="region-setting-popup-search-empty-title">
+                    <strong>{searchedKeyword}</strong>에 대한 검색 결과가
+                    없어요.
+                  </p>
+                  <p className="region-setting-popup-search-empty-description">
+                    <strong>서울특별시, 서초구</strong>와 같이 더 넓은 범위의
+                    키워드로 검색하시거나, <strong>서초동</strong>과 같은 읍면동
+                    이름으로 검색해보세요.
+                  </p>
+                </div>
+              )}
+            </section>
+          )}
+        </div>
+      </div>
     </CommonPopup>
   );
 }
