@@ -15,15 +15,15 @@ const LOCATION_ERROR_MESSAGES: Record<GeolocationErrorCode, string> = {
 };
 
 const NEARBY_REGIONS = [
-  '우정읍',
-  '남양읍',
-  '마도면',
-  '송산면',
-  '서신면',
-  '팔탄면',
-  '장안면',
-  '양감면',
-  '새솔동',
+  '경기도 화성시 만세구 우정읍',
+  '경기도 화성시 만세구 남양읍',
+  '경기도 화성시 만세구 마도면',
+  '경기도 화성시 만세구 송산면',
+  '경기도 화성시 만세구 서신면',
+  '경기도 화성시 만세구 팔탄면',
+  '경기도 화성시 만세구 장안면',
+  '경기도 화성시 만세구 양감면',
+  '경기도 화성시 만세구 새솔동',
 ] as const;
 
 const RECOMMENDED_REGIONS = [
@@ -49,14 +49,19 @@ const RECOMMENDED_REGIONS = [
 
 const SEARCHABLE_REGIONS = [...NEARBY_REGIONS, ...RECOMMENDED_REGIONS];
 
+type RegionChipItem = {
+  label: string;
+  value: string;
+};
+
 type RegionChipSectionProps = {
-  regions: readonly string[];
+  items: readonly RegionChipItem[];
   title: string;
   onSelect: (region: string) => void;
 };
 
 function RegionChipSection({
-  regions,
+  items,
   title,
   onSelect,
 }: RegionChipSectionProps): ReactNode {
@@ -64,14 +69,14 @@ function RegionChipSection({
     <section className="region-setting-popup-region-section">
       <h3 className="region-setting-popup-region-title">{title}</h3>
       <div className="region-setting-popup-region-chip-wrapper">
-        {regions.map((region) => (
+        {items.map((item) => (
           <button
             className="region-setting-popup-region-chip"
-            key={region}
+            key={item.value}
             type="button"
-            onClick={() => onSelect(region)}
+            onClick={() => onSelect(item.value)}
           >
-            {region}
+            {item.label}
           </button>
         ))}
       </div>
@@ -94,6 +99,13 @@ export default function RegionSettingPopup({
   const [regionKeyword, setRegionKeyword] = useState('');
   const [searchedKeyword, setSearchedKeyword] = useState('');
   const [searchResults, setSearchResults] = useState<string[] | null>(null);
+  const nearbyRegionItems: RegionChipItem[] = NEARBY_REGIONS.map((region) => ({
+    label: region.split(' ').pop() ?? region,
+    value: region,
+  }));
+  const recommendedRegionItems: RegionChipItem[] = RECOMMENDED_REGIONS.map(
+    (region) => ({ label: region, value: region }),
+  );
   const geolocation = useGeolocation();
   const displayedLocationErrorCode =
     geolocation.status === 'idle'
@@ -195,27 +207,27 @@ export default function RegionSettingPopup({
           {searchResults === null ? (
             <div className="region-setting-popup-region-wrapper">
               <RegionChipSection
-                regions={NEARBY_REGIONS}
+                items={nearbyRegionItems}
                 title="주변 지역"
                 onSelect={handleSelectRegion}
               />
               <RegionChipSection
-                regions={RECOMMENDED_REGIONS}
+                items={recommendedRegionItems}
                 title="추천 지역"
                 onSelect={handleSelectRegion}
               />
             </div>
           ) : (
-          <section className="region-setting-popup-search-result-wrapper">
+            <section className="region-setting-popup-search-result-wrapper">
               {searchResults.length > 0 ? (
                 <>
-                <h3 className="region-setting-popup-search-result-title">
+                  <h3 className="region-setting-popup-search-result-title">
                     검색 결과
                   </h3>
-                <ul className="region-setting-popup-search-result-list">
+                  <ul className="region-setting-popup-search-result-list">
                     {searchResults.map((region) => (
                       <li
-                      className="region-setting-popup-search-result-item"
+                        className="region-setting-popup-search-result-item"
                         key={region}
                       >
                         <button
