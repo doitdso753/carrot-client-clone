@@ -299,8 +299,17 @@
   width: 100%;
 }
 
+.hero-search-wrapper > form {
+  margin-top: 4.8rem;
+}
+
+.hero-search-wrapper > form > span[aria-hidden='true'] {
+  margin-right: 1.2rem;
+  margin-left: 1rem;
+}
+
 .dashboard-wrapper {
-  padding-top: calc(var(--header-height, 6.4rem) + 1.6rem);
+  margin-top: 12.8rem;
 }
 
 .service-list-page {
@@ -487,10 +496,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .dashboard-wrapper {
-    padding-top: calc(var(--header-height, 6.4rem) + 3.6rem);
-  }
-
   .detail-page-wrapper {
     padding-right: 4rem;
     padding-left: 4rem;
@@ -601,10 +606,6 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .dashboard-wrapper {
-    padding-top: calc(var(--header-height, 6.4rem) + 6.6rem);
-  }
-
   .detail-page-wrapper {
     max-width: 147rem;
     padding-right: 8rem;

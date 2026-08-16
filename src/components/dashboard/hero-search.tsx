@@ -55,7 +55,7 @@ export default function HeroSearch({
   return (
     <div className="flex w-full flex-col items-center">
       <h1 className="flex w-full items-center justify-start gap-3 text-left leading-tight tracking-normal text-(--color-palette-gray-1000) lg:justify-center lg:text-center">
-        <LocationIcon className="hidden h-20 w-20 shrink-0 lg:block" />
+        <LocationIcon className="hidden size-[3.2rem] shrink-0 lg:block" />
         <span className="text-4xl font-extrabold md:text-5xl lg:whitespace-nowrap">
           <span className="block lg:inline">당근에서</span>{' '}
           <span className="block lg:inline">
