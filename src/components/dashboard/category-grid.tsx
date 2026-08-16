@@ -10,21 +10,22 @@ export default function CategoryGrid({
   categories,
 }: CategoryGridProps): ReactNode {
   return (
-    <section className="mt-16 grid w-full grid-cols-2 gap-6 md:grid-cols-4">
+    <ul className="mt-[3.2rem] mr-0 mb-0 ml-0 flex list-none items-center justify-evenly gap-[1.6rem] p-0">
       {categories.map((category) => (
-        <a
-          className="flex aspect-video flex-col justify-between gap-8 rounded-xl bg-(--color-palette-gray-200) p-8 transition hover:bg-(--color-palette-gray-300)"
-          href={category.routing}
-          key={category.label}
-        >
-          <span className="[&>svg]:h-[2.4rem] [&>svg]:w-[2.4rem]">
-            <CategoryIcon iconName={category.iconName} />
-          </span>
-          <span className="font-extrabold text-(--color-palette-gray-1000)">
-            {category.label}
-          </span>
-        </a>
+        <li className="w-[6.4rem]" key={category.label}>
+          <a
+            className="group flex flex-col items-center gap-[0.8rem]"
+            href={category.routing}
+          >
+            <span className="rounded-[1.6rem] bg-(--color-palette-gray-200) p-[1.2rem] transition group-hover:bg-(--color-palette-gray-300) [&>svg]:size-[2.4rem]">
+              <CategoryIcon iconName={category.iconName} />
+            </span>
+            <span className="text-[1.4rem] font-normal whitespace-nowrap text-(--color-palette-gray-1000)">
+              {category.label}
+            </span>
+          </a>
+        </li>
       ))}
-    </section>
+    </ul>
   );
 }
