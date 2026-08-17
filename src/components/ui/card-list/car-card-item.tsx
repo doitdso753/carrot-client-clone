@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { CommentIcon, HeartIcon } from '@/assets/icons/index.ts';
+import { CommentDotsIcon, HeartIcon } from '@/assets/icons/index.ts';
 import { getElapsedTimeText } from '@/lib/utils.ts';
 import { CAR_LIST_ITEM_STATUS_LABEL } from '@/types/car-list-constants.ts';
 import type { CarListItem } from '@/types/types.ts';
@@ -50,7 +50,7 @@ export default function CarCardItem({ item }: CarCardItemProps): ReactNode {
               </p>
               <p className="car-card-item-meta">
                 <span>
-                  <CommentIcon />
+                  <CommentDotsIcon />
                   <span className="sr-only">댓글</span>
                   {item.commentCount}
                 </span>

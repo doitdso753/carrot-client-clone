@@ -1,4 +1,4 @@
-export function CommentIcon() {
+export function CommentDotsIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
