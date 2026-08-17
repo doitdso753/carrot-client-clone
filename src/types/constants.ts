@@ -119,26 +119,3 @@ export const CATEGORIES: CategoryItem[] = [
     routing: '/cafe',
   },
 ] as const;
-
-export const NEIGHBORHOODS = [
-  '송도동',
-  '역삼동',
-  '물금읍',
-  '봉담읍',
-  '배방읍',
-  '서초동',
-  '옥정동',
-  '신림동',
-  '불당동',
-  '향남읍',
-  '청담동',
-  '다산동',
-  '별내동',
-  '화도읍',
-  '다사읍',
-  '마곡동',
-  '압구정동',
-  '배곧동',
-  '고덕동',
-  '오창읍',
-] as const;

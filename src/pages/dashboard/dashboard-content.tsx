@@ -1,12 +1,11 @@
 import type { ReactNode } from 'react';
 import CategoryGrid from '@/components/dashboard/category-grid.tsx';
 import HeroSearch from '@/components/dashboard/hero-search.tsx';
-import NeighborhoodList from '@/components/dashboard/neighborhood-list.tsx';
+import PopularCommunity from '@/components/dashboard/popular-community.tsx';
 import PromotionBanner from '@/components/dashboard/promotion-banner.tsx';
 import {
   CATEGORIES,
   HERO_SEARCH_KEYWORDS,
-  NEIGHBORHOODS,
   POPULAR_KEYWORDS,
 } from '@/types/constants.ts';
 
@@ -20,7 +19,7 @@ export default function DashboardContent(): ReactNode {
       />
       <PromotionBanner />
       <CategoryGrid categories={CATEGORIES} />
-      <NeighborhoodList neighborhoods={NEIGHBORHOODS} />
+      <PopularCommunity />
     </main>
   );
 }
