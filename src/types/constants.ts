@@ -83,12 +83,6 @@ export const CATEGORIES: CategoryItem[] = [
     routing: '/local-profile',
   },
   {
-    code: 'jobs',
-    label: '알바',
-    iconName: 'searchUser',
-    routing: '/jobs',
-  },
-  {
     code: 'cars',
     label: '중고차',
     iconName: 'car',
@@ -105,6 +99,12 @@ export const CATEGORIES: CategoryItem[] = [
     label: '모임',
     iconName: 'group',
     routing: '/group',
+  },
+  {
+    code: 'jobs',
+    label: '알바/과외',
+    iconName: 'searchUser',
+    routing: '/jobs',
   },
   {
     code: 'realty',
