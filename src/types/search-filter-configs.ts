@@ -69,6 +69,7 @@ export type SearchFilterSectionType =
   | 'checkbox'
   | 'chip'
   | 'location'
+  | 'link'
   | 'price'
   | 'radio'
   | 'range'

@@ -40,6 +40,7 @@ function getSectionSelection(
   if (
     section.type === 'checkbox' ||
     section.type === 'chip' ||
+    section.type === 'link' ||
     section.type === 'radio' ||
     section.type === 'range'
   ) {
@@ -47,7 +48,10 @@ function getSectionSelection(
 
     return {
       codes,
-      value: section.type === 'radio' ? (codes[0] ?? null) : undefined,
+      value:
+        section.type === 'radio' || section.type === 'link'
+          ? (codes[0] ?? null)
+          : undefined,
     };
   }
 

@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import FindRegion from '@/components/ui/find-region.tsx';
 import CheckboxFilterSection from '@/components/ui/search-filter/sections/checkbox-filter-section.tsx';
 import ChipsFilterSection from '@/components/ui/search-filter/sections/chips-filter-section.tsx';
+import LinkFilterSection from '@/components/ui/search-filter/sections/link-filter-section.tsx';
 import PriceFilterSection from '@/components/ui/search-filter/sections/price-filter-section.tsx';
 import RadioFilterSection from '@/components/ui/search-filter/sections/radio-filter-section.tsx';
 import RangeSliderFilterSection from '@/components/ui/search-filter/sections/range-slider-filter-section.tsx';
@@ -71,6 +72,20 @@ export default function SearchFilterFields({
               items={items}
               key={section.key}
               name={getRadioName(section)}
+              selectedCode={
+                selectedFilterBySectionKey[section.key]?.value ?? null
+              }
+              title={section.label}
+              onChange={(code) => onSectionOptionSelect(section.key, code)}
+            />
+          );
+        }
+
+        if (sectionType === 'link') {
+          return (
+            <LinkFilterSection
+              items={items}
+              key={section.key}
               selectedCode={
                 selectedFilterBySectionKey[section.key]?.value ?? null
               }

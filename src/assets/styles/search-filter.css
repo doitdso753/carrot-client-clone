@@ -45,6 +45,38 @@
   line-height: var(--line-height-text-base);
 }
 
+.search-filter-link-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.search-filter-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-palette-gray-1000);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  text-align: left;
+  text-underline-offset: 0.6rem;
+}
+
+.search-filter-link[aria-pressed='false']:hover {
+  text-decoration: underline;
+}
+
+.search-filter-link[aria-pressed='true'] {
+  font-weight: var(--font-weight-semibold);
+}
+
+.search-filter-link svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  flex-shrink: 0;
+}
+
 .search-filter-checkbox-option {
   display: flex;
   align-items: center;
