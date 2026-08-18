@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Link } from 'react-router';
 import CommunityBoardItem from '@/components/ui/board-list/community-board-item.tsx';
 import type { CommunityItem } from '@/types/types.ts';
 
@@ -12,7 +13,6 @@ export default function CommunityListItem({
   const boardItem = {
     commentCount: item.commentCount,
     description: item.content,
-    id: item.id,
     imageUrl: item.imageUrl,
     likeCount: item.likeCount,
     metadata: (
@@ -30,7 +30,12 @@ export default function CommunityListItem({
   return (
     <li>
       <article className="flex min-w-0 justify-between gap-[1.6rem]">
-        <CommunityBoardItem item={boardItem} variant="list" />
+        <Link
+          className="flex min-w-0 flex-1 cursor-pointer"
+          to={`/community/${item.id}`}
+        >
+          <CommunityBoardItem item={boardItem} variant="list" />
+        </Link>
       </article>
     </li>
   );
