@@ -84,6 +84,8 @@ export type SearchFilterRange = {
   suffix: string;
 };
 
+export type BottomSheetApplyMode = 'confirm' | 'instant';
+
 export type SearchFilterSection = {
   bottomSheetType?: 'chip';
   data?: readonly (SearchFilterItem | string)[];
@@ -98,6 +100,7 @@ export type SearchFilterSection = {
 };
 
 export type SearchFilterConfig = {
+  bottomSheetApplyMode?: BottomSheetApplyMode;
   filterStorageKey: string;
   popupTitle: string;
   sections: readonly SearchFilterSection[];

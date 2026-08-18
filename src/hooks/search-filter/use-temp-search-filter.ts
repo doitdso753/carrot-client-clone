@@ -50,18 +50,22 @@ export default function useTempSearchFilter({
     Boolean(tempFilterState.minimumPrice) ||
     Boolean(tempFilterState.maximumPrice);
 
+  // 팝업 진입 시 임시 필터 초기화
   const open = useCallback((): void => {
     dispatch({ type: 'replace', filterState });
   }, [dispatch, filterState]);
 
+  // 임시 필터 전체 초기화
   const reset = useCallback((): void => {
     dispatch({ type: 'reset' });
   }, [dispatch]);
 
+  // 임시 가격 범위 확정
   const applyPriceRange = useCallback((): void => {
     dispatch({ type: 'applyPriceRange' });
   }, [dispatch]);
 
+  // 임시 필터의 실제 상태 반영
   const apply = useCallback((): void => {
     const nextFilterState = tempFilterState.appliedPriceRange
       ? tempFilterState

@@ -3,6 +3,7 @@ import { FilterIcon } from '@/assets/icons';
 import CommonPopup from '@/components/ui/common-popup.tsx';
 import RegionSettingPopup from '@/components/ui/region-setting-popup.tsx';
 import SearchFilterFields from '@/components/ui/search-filter/search-filter-fields.tsx';
+import SearchFilterFooter from '@/components/ui/search-filter/search-filter-footer.tsx';
 import SearchFilterHeader from '@/components/ui/search-filter/search-filter-header.tsx';
 import SearchFilterRegion from '@/components/ui/search-filter/search-filter-region.tsx';
 import SearchFilterToolbar from '@/components/ui/search-filter/search-filter-toolbar.tsx';
@@ -95,6 +96,7 @@ export default function SearchFilter({
   variant,
 }: SearchFilterProps): ReactNode {
   const config = SEARCH_FILTER_CONFIGS[variant];
+  const isInstantApply = config.bottomSheetApplyMode === 'instant';
   const {
     actions,
     commands: {
@@ -123,16 +125,20 @@ export default function SearchFilter({
     closePopup: closeFilterPopup,
   } = usePopup();
 
+  // 필터 팝업 열림 상태 전환
   const handleFilterPopupToggle = (): void => {
     if (isFilterPopupOpen) {
       closeFilterPopup();
       return;
     }
 
-    temp.open();
+    if (!isInstantApply) {
+      temp.open();
+    }
     openFilterPopup();
   };
 
+  // 실제 필터 범위 적용
   const handleSectionApply = (key: SearchFilterSectionKey): void => {
     const section = config.sections.find(
       (currentSection) => currentSection.key === key,
@@ -149,12 +155,14 @@ export default function SearchFilter({
     }
   };
 
+  // 임시 가격 범위 적용
   const handleTempSectionApply = (key: SearchFilterSectionKey): void => {
     if (key === 'price') {
       temp.applyPriceRange();
     }
   };
 
+  // 임시 필터 전체 적용
   const handleTempApply = (): void => {
     temp.apply();
     closeFilterPopup();
@@ -173,17 +181,62 @@ export default function SearchFilter({
     selectedFilterBySectionKey,
     onSectionApply: handleSectionApply,
   });
-  const bottomSheetViewModel = createSearchFilterViewModel(commonViewModel, {
-    actions: temp.actions,
-    filterState: temp.filterState,
-    selectedFilterBySectionKey: temp.selectedFilterBySectionKey,
-    onSectionApply: handleTempSectionApply,
-  });
+  // 즉시 적용 후 팝업 종료
+  const instantApplyActions = {
+    ...actions,
+    onSectionOptionSelect: (
+      key: SearchFilterSectionKey,
+      code: string,
+    ): void => {
+      actions.onSectionOptionSelect(key, code);
+      closeFilterPopup();
+    },
+    onSectionOptionToggle: (
+      key: SearchFilterSectionKey,
+      code: string,
+    ): void => {
+      actions.onSectionOptionToggle(key, code);
+      closeFilterPopup();
+    },
+    onSectionSelectionChange: (
+      key: SearchFilterSectionKey,
+      codes: string[],
+    ): void => {
+      actions.onSectionSelectionChange(key, codes);
+      closeFilterPopup();
+    },
+  };
+  // 적용 방식별 bottom sheet 모델 구성
+  const bottomSheetModelOptions = isInstantApply
+    ? {
+        actions: instantApplyActions,
+        filterState,
+        selectedFilterBySectionKey,
+        onSectionApply: handleSectionApply,
+      }
+    : {
+        actions: temp.actions,
+        filterState: temp.filterState,
+        selectedFilterBySectionKey: temp.selectedFilterBySectionKey,
+        onSectionApply: handleTempSectionApply,
+      };
+  const bottomSheetViewModel = createSearchFilterViewModel(
+    commonViewModel,
+    bottomSheetModelOptions,
+  );
   const filterView = SEARCH_FILTER_VIEW_RENDERERS[config.viewType]({
     model: asideViewModel,
     selectedServiceItems,
     onReset: reset,
   });
+  // 확인형 bottom sheet 전용 footer
+  const bottomSheetFooter = isInstantApply ? undefined : (
+    <SearchFilterFooter
+      hasSelectedFilter={temp.hasSelectedFilter}
+      onApply={handleTempApply}
+      onReset={temp.reset}
+    />
+  );
 
   return (
     <>
@@ -220,22 +273,7 @@ export default function SearchFilter({
       {filterView}
 
       <CommonPopup
-        footer={
-          <>
-            <button type="button" onClick={temp.reset}>
-              전체 해제
-            </button>
-            <button
-              className={`search-filter-footer-apply-button ${
-                temp.hasSelectedFilter ? 'has-filter' : ''
-              }`}
-              type="button"
-              onClick={handleTempApply}
-            >
-              필터 적용
-            </button>
-          </>
-        }
+        footer={bottomSheetFooter}
         isOpen={isFilterPopupOpen}
         title={config.popupTitle}
         variant="bottom-sheet"
