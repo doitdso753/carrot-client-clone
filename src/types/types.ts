@@ -27,6 +27,18 @@ export type CategoryItem = {
   routing: string;
 };
 
+export type CommunityItem = {
+  id: number;
+  title: string;
+  content: string;
+  category: string;
+  location: string;
+  createdAtText: string;
+  likeCount: number;
+  commentCount: number;
+  imageUrl?: string;
+};
+
 export type UserProfile = {
   nickname: string;
   location: string;
