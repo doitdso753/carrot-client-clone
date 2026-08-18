@@ -1,3 +1,4 @@
+import type { ComponentType } from 'react';
 import { BUY_SELL_FILTER_CATEGORIES } from '@/types/buy-sell-constants.ts';
 import {
   CAR_BRANDS,
@@ -11,6 +12,7 @@ import {
   LOCAL_PROFILE_CATEGORIES,
   LOCAL_PROFILE_OPTIONS,
 } from '@/types/local-profile-constants.ts';
+import { COMMUNITY_CATEGORIES } from '@/types/community-constants.ts';
 
 export const SEARCH_FILTER_AVAILABLE_ONLY_CODE = 'availableOnly';
 const CURRENT_YEAR = new Date().getFullYear();
@@ -25,7 +27,8 @@ export const WEEKDAY_ITEMS = [
   { code: 'sunday', label: '일' },
 ] as const;
 
-export type SearchFilterVariant = 'buySell' | 'cars' | 'localProfile';
+export type SearchFilterVariant =
+  'buySell' | 'cars' | 'community' | 'localProfile';
 export type SearchFilterViewType = 'aside' | 'toolbar';
 
 export type SearchFilterItem = {
@@ -207,6 +210,23 @@ export const SEARCH_FILTER_CONFIGS: Record<
         key: 'saleType',
         label: '판매 방식',
         type: 'chip',
+      },
+    ],
+  },
+  community: {
+    bottomSheetApplyMode: 'instant',
+    filterStorageKey: 'search-filter:community',
+    popupTitle: '동네생활 카테고리',
+    viewType: 'aside',
+    sections: [
+      { key: 'location', label: '위치', type: 'location' },
+      {
+        bottomSheetType: 'chip',
+        data: COMMUNITY_CATEGORIES,
+        isMultiple: false,
+        key: 'category',
+        label: '카테고리',
+        type: 'link',
       },
     ],
   },
