@@ -5,6 +5,7 @@ import BuySellPage from '@/pages/buy-sell';
 import BuySellDetailPage from '@/pages/buy-sell/buy-sell-detail-page';
 import CarsPage from '@/pages/cars';
 import CarsDetailPage from '@/pages/cars/cars-detail-page';
+import CommunityPage from '@/pages/community';
 import LocalProfilePage from '@/pages/local-profile';
 import LocalProfileDetailPage from '@/pages/local-profile/local-profile-detail-page.tsx';
 import LocalProfileNewsDetailPage from '@/pages/local-profile/local-profile-news-detail-page.tsx';
@@ -17,6 +18,7 @@ function AppRouter(): ReactNode {
       <Route path="/buy-sell/:itemId" element={<BuySellDetailPage />} />
       <Route path="/cars" element={<CarsPage />} />
       <Route path="/cars/:itemId" element={<CarsDetailPage />} />
+      <Route path="/community" element={<CommunityPage />} />
       <Route path="/local-profile" element={<LocalProfilePage />} />
       <Route
         path="/local-profile/:itemId"
