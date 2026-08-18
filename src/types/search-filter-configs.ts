@@ -30,6 +30,7 @@ export type SearchFilterViewType = 'aside' | 'toolbar';
 
 export type SearchFilterItem = {
   code: string;
+  icon?: ComponentType;
   label: string;
 };
 
@@ -88,6 +89,7 @@ export type SearchFilterSection = {
   data?: readonly (SearchFilterItem | string)[];
   flexDirection?: 'column' | 'row';
   icons?: Readonly<Record<string, string>>;
+  isMultiple?: boolean;
   isScrollable?: boolean;
   key: SearchFilterSectionKey;
   label: string;

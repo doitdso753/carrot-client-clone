@@ -107,7 +107,7 @@
   height: 3.6rem;
   flex-shrink: 0;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.4rem;
   padding-inline: 1.6rem;
   border: 0.1rem solid var(--color-palette-gray-900);
   border-radius: 999rem;
@@ -127,6 +127,10 @@
 .search-filter-chip[aria-pressed='false']:hover {
   background-color: var(--color-palette-gray-100);
   cursor: pointer;
+}
+
+.search-filter-option-list.is-single .search-filter-chip[aria-pressed='true'] {
+  cursor: default;
 }
 
 .search-filter-category-list {

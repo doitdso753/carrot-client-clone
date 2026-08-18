@@ -113,7 +113,7 @@ export default function SearchFilterFields({
           return (
             <ChipsFilterSection
               flexDirection={section.flexDirection}
-              isMultiple
+              isMultiple={section.isMultiple ?? true}
               items={items}
               key={section.key}
               selectedCodes={
