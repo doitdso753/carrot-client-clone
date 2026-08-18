@@ -4,11 +4,13 @@ import { StarIcon } from '@/assets/icons';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import type { LocalProfileItem } from '@/types/types.ts';
 
-type BoardItemProps = {
+type StoreBoardItemProps = {
   item: LocalProfileItem;
 };
 
-export default function BoardItem({ item }: BoardItemProps): ReactNode {
+export default function StoreBoardItem({
+  item,
+}: StoreBoardItemProps): ReactNode {
   return (
     <li>
       <article>

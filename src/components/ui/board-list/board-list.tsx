@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import BoardItem from '@/components/ui/board-list/board-item.tsx';
+import StoreBoardItem from '@/components/ui/board-list/store-board-item.tsx';
 import ListEmptyState from '@/components/ui/list-empty-state.tsx';
 import type { LocalProfileItem } from '@/types/types.ts';
 
@@ -17,7 +17,7 @@ export default function BoardList({
       {items.length > 0 ? (
         <ul className="board-list">
           {items.map((item) => (
-            <BoardItem item={item} key={item.id} />
+            <StoreBoardItem item={item} key={item.id} />
           ))}
         </ul>
       ) : (
