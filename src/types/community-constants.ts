@@ -1,5 +1,5 @@
 import { HotIcon } from '@/assets/icons';
-import type { CommunityItem } from '@/types/types.ts';
+import type { CommunityItem, PopularCommunityItem } from '@/types/types.ts';
 
 export const COMMUNITY_CATEGORIES = [
   { code: 'popular', label: '인기글', icon: HotIcon },
@@ -90,5 +90,88 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     likeCount: 20,
     commentCount: 5,
     imageUrl: 'https://picsum.photos/seed/community-library/320/320',
+  },
+];
+
+export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
+  {
+    id: 101,
+    title: '동물',
+    metadata: '미추홀구 용현1,4동 · 취미 · 7일 전',
+    likeCount: 1,
+    commentCount: 17,
+    imageUrl: 'https://picsum.photos/seed/neighborhood-animal/240/240',
+  },
+  {
+    id: 102,
+    title: '**강아지 봉구 찾습니다**',
+    metadata: '고양시 일산동구 고봉동 · 분실/실종 · 5일 전',
+    likeCount: 48,
+    commentCount: 58,
+    imageUrl: 'https://picsum.photos/seed/neighborhood-dog/240/240',
+  },
+  {
+    id: 103,
+    title: '광안리에 한달 살기 왔어요~',
+    metadata: '수영구 광안제1동 · 동네풍경 · 6일 전',
+    likeCount: 3,
+    commentCount: 29,
+    imageUrl: 'https://picsum.photos/seed/neighborhood-beach/240/240',
+  },
+  {
+    id: 104,
+    title: '이게 뭐에쓰는 녀석일까요?',
+    metadata: '청주시 흥덕구 봉명1동 · 일반 · 7일 전',
+    likeCount: 0,
+    commentCount: 12,
+    imageUrl: 'https://picsum.photos/seed/neighborhood-question/240/240',
+  },
+  {
+    id: 105,
+    title: '안녕하세요 포항에 온지 얼마 안된 학생입니다',
+    metadata: '포항시 남구 지곡동 · 맛집 · 7일 전',
+    likeCount: 3,
+    commentCount: 31,
+    imageUrl: 'https://picsum.photos/seed/neighborhood-student/240/240',
+  },
+  {
+    id: 106,
+    title: '하늘이.. 반으로',
+    metadata: '안산시 상록구 이동 · 동네풍경 · 7일 전',
+    likeCount: 13,
+    commentCount: 20,
+    imageUrl: 'https://picsum.photos/seed/neighborhood-sky/240/240',
+  },
+  {
+    id: 107,
+    title: '이게 뭘까요? ㅠㅠㅠㅠ',
+    metadata: '미추홀구 도화동 · 고민/사연 · 8일 전',
+    likeCount: 2,
+    commentCount: 13,
+    imageUrl: 'https://picsum.photos/seed/neighborhood-mystery/240/240',
+  },
+  {
+    id: 108,
+    title: '이 친구 아시는 분 계신가요..',
+    metadata: '용인시 처인구 역북동 · 반려동물 · 8일 전',
+    likeCount: 1,
+    commentCount: 13,
+    imageUrl: 'https://picsum.photos/seed/neighborhood-friend/240/240',
+  },
+  {
+    id: 109,
+    title: '길 가다가 애견미용실 있길래 봤....',
+    metadata: '영등포구 당산제1동 · 동네풍경 · 8일 전',
+    likeCount: 5,
+    commentCount: 12,
+    imageUrl: 'https://picsum.photos/seed/neighborhood-shop/240/240',
+  },
+  {
+    id: 110,
+    title: '무슨 벌레인가요?...',
+    metadata: '중구 남산1동 · 생활/편의 · 5일 전',
+    likeCount: 0,
+    commentCount: 21,
+    imageUrl: 'https://picsum.photos/seed/neighborhood-bug/240/240',
   },
 ];

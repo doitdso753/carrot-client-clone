@@ -12,6 +12,7 @@ export default function CommunityListItem({
   const boardItem = {
     commentCount: item.commentCount,
     description: item.content,
+    id: item.id,
     imageUrl: item.imageUrl,
     likeCount: item.likeCount,
     metadata: (

@@ -39,6 +39,15 @@ export type CommunityItem = {
   imageUrl?: string;
 };
 
+export type PopularCommunityItem = {
+  commentCount: number;
+  id: number;
+  imageUrl: string;
+  likeCount: number;
+  metadata: string;
+  title: string;
+};
+
 export type UserProfile = {
   nickname: string;
   location: string;
