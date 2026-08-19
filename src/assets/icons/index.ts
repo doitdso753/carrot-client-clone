@@ -15,7 +15,7 @@ export { ChevronRightThinIcon } from './arrow-icons/chevron-right-thin-icon.tsx'
 export { ClockIcon } from './store-icons/clock-icon.tsx';
 export { CloseIcon } from './common/close-icon.tsx';
 export { CommentDotsIcon } from './social-icons/comment-dots-icon.tsx';
-export { CommentTextIcon } from './social-icons/comment-text-icon.tsx';
+export { CommentTextFillIcon } from './social-icons/comment-text-fill-icon.tsx';
 export { CopyIcon } from './common/copy-icon.tsx';
 export { CouponIcon } from './store-icons/coupon-icon.tsx';
 export { CurrentLocationIcon } from './location-icons/current-location-icon.tsx';

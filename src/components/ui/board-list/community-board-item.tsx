@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { CommentTextIcon, ThumbUpFillIcon } from '@/assets/icons';
+import { CommentTextFillIcon, ThumbUpFillIcon } from '@/assets/icons';
 
 const COMMUNITY_BOARD_ITEM_VARIANTS = {
   list: {
@@ -84,7 +84,7 @@ export default function CommunityBoardItem({
           />
           <CommunityBoardItemCount
             count={commentCount}
-            icon={<CommentTextIcon />}
+            icon={<CommentTextFillIcon />}
             label="댓글"
           />
         </div>
