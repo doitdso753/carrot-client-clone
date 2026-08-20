@@ -70,6 +70,22 @@
   );
 }
 
+.warmth-badge {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999rem;
+  height: 2rem;
+  background-color: var(--warmth-background-color);
+  color: var(--warmth-color);
+  font-size: var(--text-xs);
+  line-height: var(--line-height-text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+}
+
 @media screen and (min-width: 768px) {
   .user-profile-avatar {
     width: 6.4rem;
