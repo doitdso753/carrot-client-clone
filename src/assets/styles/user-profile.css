@@ -44,6 +44,51 @@
   line-height: var(--line-height-text-sm);
 }
 
+.user-profile-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.4rem;
+}
+
+.user-profile-summary-information {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.user-profile-summary-avatar {
+  width: 4.8rem;
+  height: 4.8rem;
+  flex-shrink: 0;
+  border-radius: 999rem;
+  object-fit: cover;
+}
+
+.user-profile-summary-information > div {
+  min-width: 0;
+}
+
+.user-profile-summary-name-row {
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
+}
+
+.user-profile-summary-name {
+  color: var(--color-palette-gray-1000);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-bold);
+}
+
+.user-profile-summary-description {
+  color: var(--color-palette-gray-800);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
 .warmth {
   display: flex;
   flex-direction: column;
