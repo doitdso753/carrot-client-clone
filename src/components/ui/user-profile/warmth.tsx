@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
-import BubbleTooltip from '@/components/ui/bubble-tooltip';
+import BubbleTooltip from '@/components/ui/bubble-tooltip.tsx';
 
 type WarmthProps = {
   value: number;

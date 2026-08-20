@@ -6,6 +6,7 @@
 @import 'local-profile-list.css';
 @import 'local-profile-detail.css';
 @import 'car-detail.css';
+@import 'user-profile.css';
 @import 'search-filter.css';
 @import 'image.css';
 @import 'map.css';
@@ -342,78 +343,6 @@
   gap: 3.2rem;
 }
 
-.user-profile {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2.4rem;
-  padding-top: 2.4rem;
-  padding-bottom: 2.4rem;
-}
-
-.user-profile::after {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 0.1rem;
-  background-color: var(--color-palette-gray-400);
-  content: '';
-}
-
-.user-profile-information {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.user-profile-avatar {
-  width: 4.8rem;
-  height: 4.8rem;
-  flex-shrink: 0;
-  border-radius: 999rem;
-  object-fit: cover;
-}
-
-.user-profile-nickname {
-  color: var(--color-palette-gray-1000);
-  font-size: var(--text-base);
-  font-weight: var(--font-weight-bold);
-}
-
-.user-profile-location {
-  color: var(--color-palette-gray-800);
-  font-size: var(--text-sm);
-  line-height: var(--line-height-text-sm);
-}
-
-.warmth {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.4rem;
-  color: var(--color-palette-gray-700);
-  font-size: var(--text-sm);
-  line-height: var(--line-height-text-sm);
-}
-
-.warmth-value {
-  color: var(--warmth-color);
-  font-size: var(--text-base);
-}
-
-.warmth-bar {
-  width: 8rem;
-  height: 0.4rem;
-  border-radius: 999rem;
-  background: linear-gradient(
-    to right,
-    var(--warmth-color) var(--warmth-progress),
-    var(--color-palette-gray-300) var(--warmth-progress)
-  );
-}
-
 .detail-page-content {
   display: flex;
   flex-direction: column;
@@ -569,39 +498,6 @@
 
   .service-list-layout > .list-content {
     grid-area: list-content;
-  }
-
-  .user-profile-avatar {
-    width: 6.4rem;
-    height: 6.4rem;
-  }
-
-  .user-profile-nickname {
-    font-size: var(--text-xl);
-    line-height: var(--line-height-text-xl);
-  }
-
-  .user-profile-location {
-    margin-top: 0.4rem;
-    font-size: var(--text-base);
-  }
-
-  .user-profile-information {
-    gap: 1.2rem;
-  }
-
-  .user-profile {
-    padding-top: 1.6rem;
-    padding-bottom: 1.6rem;
-  }
-
-  .user-profile::after {
-    display: none;
-  }
-
-  .warmth-value {
-    font-size: var(--text-xl);
-    line-height: var(--line-height-text-xl);
   }
 }
 

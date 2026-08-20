@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import defaultProfileImage from '@/assets/images/default-profile.png';
-import Warmth from '@/components/ui/warmth';
+import Warmth from '@/components/ui/user-profile/warmth.tsx';
 import type { UserProfile as UserProfileType } from '@/types/types';
 
 type UserProfileProps = {
