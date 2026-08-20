@@ -1,3 +1,34 @@
+.location-map-card {
+  overflow: hidden;
+  width: 100%;
+  max-width: 60rem;
+  border: 0.1rem solid var(--color-palette-gray-400);
+  border-radius: 0.8rem;
+}
+
+.location-map-card .kakao-map-wrapper {
+  border-radius: 0;
+}
+
+.location-map-card-address {
+  display: grid;
+  row-gap: 0.8rem;
+  padding: 1.6rem;
+}
+
+.location-map-card-address strong {
+  font-size: var(--text-base);
+  line-height: var(--line-height-text-base);
+  font-weight: var(--font-weight-normal);
+}
+
+.location-map-card-address p {
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
 .map-background,
 .map-menu,
 .map-bottom-toolbar {
