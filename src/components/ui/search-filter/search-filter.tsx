@@ -10,10 +10,12 @@ import SearchFilterToolbar from '@/components/ui/search-filter/search-filter-too
 import SelectedFilterSummary from '@/components/ui/search-filter/selected-filter-summary.tsx';
 import useRegionLocator from '@/hooks/location/use-region-locator.ts';
 import usePopup from '@/hooks/ui/use-popup.ts';
+import useInitialFilterSelection from '@/hooks/search-filter/use-initial-filter-selection.ts';
 import useSearchFilterState from '@/hooks/search-filter/use-search-filter-state.ts';
 import useTempSearchFilter from '@/hooks/search-filter/use-temp-search-filter.ts';
 import {
   SEARCH_FILTER_CONFIGS,
+  type InitialFilterCodeMap,
   type SearchFilterSectionKey,
   type SearchFilterVariant,
   type SearchFilterViewType,
@@ -23,6 +25,7 @@ import type { SearchFilterViewModel } from '@/types/search-filter-view-model.ts'
 
 type SearchFilterProps = {
   region: string;
+  initialFilterCodes?: InitialFilterCodeMap;
   variant: SearchFilterVariant;
 };
 
@@ -92,6 +95,7 @@ function createSearchFilterViewModel(
 }
 
 export default function SearchFilter({
+  initialFilterCodes,
   region,
   variant,
 }: SearchFilterProps): ReactNode {
@@ -113,6 +117,11 @@ export default function SearchFilter({
       selectedServiceItems,
     },
   } = useSearchFilterState(config);
+  useInitialFilterSelection({
+    actions,
+    initialFilterCodes,
+  });
+
   const temp = useTempSearchFilter({
     config,
     filterState,
@@ -181,6 +190,7 @@ export default function SearchFilter({
     selectedFilterBySectionKey,
     onSectionApply: handleSectionApply,
   });
+
   // 즉시 적용 후 팝업 종료
   const instantApplyActions = {
     ...actions,

@@ -69,6 +69,10 @@ export type SelectedFilterBySectionKey = Partial<
   Record<SearchFilterSectionKey, SearchFilterSectionSelection>
 >;
 
+export type InitialFilterCodeMap = Partial<
+  Record<SearchFilterSectionKey, string>
+>;
+
 export type SearchFilterSectionType =
   | 'checkbox'
   | 'chip'

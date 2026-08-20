@@ -34,6 +34,10 @@
   padding-block: 2.4rem;
 }
 
+.search-filter-section:first-child {
+  padding-top: 0;
+}
+
 .search-filter-section:last-child {
   border-bottom: 0;
 }
@@ -390,10 +394,6 @@
 .range-slider-filter-section .search-filter-apply-button:disabled {
   color: var(--color-palette-gray-500);
   cursor: not-allowed;
-}
-
-.search-filter-popup-fields > .search-filter-section:first-child {
-  padding-top: 0;
 }
 
 .common-popup-footer button.search-filter-footer-apply-button {
