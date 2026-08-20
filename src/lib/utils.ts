@@ -35,6 +35,30 @@ export function getLegalDong(region: string): string {
   return regionParts[regionParts.length - 1] ?? region;
 }
 
+export function getWarmthColor(value: number): string {
+  if (value < 36.5) {
+    return 'var(--color-warmth-l1)';
+  }
+
+  if (value < 37) {
+    return 'var(--color-warmth-l2)';
+  }
+
+  if (value < 38) {
+    return 'var(--color-warmth-l3)';
+  }
+
+  if (value < 41) {
+    return 'var(--color-warmth-l4)';
+  }
+
+  if (value < 52) {
+    return 'var(--color-warmth-l5)';
+  }
+
+  return 'var(--color-warmth-l6)';
+}
+
 export function formatPriceText(price: string): string {
   const numericPrice = Number(price.replace(/\D/g, ''));
 
