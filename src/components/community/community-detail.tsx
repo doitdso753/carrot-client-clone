@@ -14,6 +14,9 @@ type CommunityDetailProps = {
 export default function CommunityDetail({
   item,
 }: CommunityDetailProps): ReactNode {
+  const selectedCategoryCode = COMMUNITY_CATEGORIES.find(
+    ({ label }) => label === item.category,
+  )?.code;
   return (
     <main className="detail-page-wrapper">
       <DetailBreadcrumb
@@ -23,6 +26,23 @@ export default function CommunityDetail({
           { label: item.category },
         ]}
       />
+
+      <div className="community-detail-layout">
+        <SearchFilterSidebar
+          region={item.location}
+          sectionKeys={['category']}
+          initialFilterCodes={
+            selectedCategoryCode
+              ? { category: selectedCategoryCode }
+              : undefined
+          }
+          variant="community"
+        />
+
+        <div className="community-detail-main">
+          MAIN
+        </div>
+      </div>
     </main>
   );
 }
