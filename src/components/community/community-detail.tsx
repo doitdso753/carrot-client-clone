@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import {
   CommunityCommentSection,
+  CommunityPopularSection,
   CommunityPostSection,
 } from '@/components/community/sections';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb.tsx';
@@ -50,6 +51,11 @@ export default function CommunityDetail({
           />
 
           <CommunityCommentSection comments={COMMUNITY_COMMENTS} />
+
+          <CommunityPopularSection
+            currentItemId={item.id}
+            location={item.location}
+          />
         </div>
       </div>
     </main>
