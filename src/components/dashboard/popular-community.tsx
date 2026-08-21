@@ -23,7 +23,7 @@ export default function PopularCommunity(): ReactNode {
                 {index + 1}
               </span>
 
-              <CommunityBoardItem item={story} variant="popular" />
+              <CommunityBoardItem item={story} variant="dashboard" />
             </Link>
           </li>
         ))}

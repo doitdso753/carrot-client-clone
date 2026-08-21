@@ -3,18 +3,7 @@ import { CommentTextFillIcon, ThumbUpFillIcon } from '@/assets/icons';
 import { getElapsedTimeText } from '@/lib/utils.ts';
 import type { CommunityItem } from '@/types/types.ts';
 
-const COMMUNITY_BOARD_ITEM_VARIANTS = {
-  list: {
-    descriptionClassName: 'text-[1.6rem]',
-    titleClassName: 'text-[2rem]',
-  },
-  popular: {
-    descriptionClassName: 'text-[1.4rem]',
-    titleClassName: 'text-[1.6rem]',
-  },
-} as const;
-
-type CommunityBoardItemVariant = keyof typeof COMMUNITY_BOARD_ITEM_VARIANTS;
+type CommunityBoardItemVariant = 'default' | 'dashboard';
 
 type CommunityBoardItemProps = {
   item: CommunityItem;
@@ -33,7 +22,7 @@ function CommunityBoardItemCount({
   label,
 }: CommunityBoardItemCountProps): ReactNode {
   return (
-    <span className="flex items-center gap-1 text-[1.4rem] font-normal text-(--color-palette-gray-700) [&>svg]:size-[1.8rem] [&>svg]:text-(--color-palette-gray-500)">
+    <span className="community-board-item-count flex items-center gap-1 font-normal text-(--color-palette-gray-700) [&>svg]:size-[1.8rem] [&>svg]:text-(--color-palette-gray-500)">
       {icon}
       <span className="sr-only">{label}</span>
       {count}
@@ -54,26 +43,21 @@ export default function CommunityBoardItem({
   },
   variant,
 }: CommunityBoardItemProps): ReactNode {
-  const { descriptionClassName, titleClassName } =
-    COMMUNITY_BOARD_ITEM_VARIANTS[variant];
-
   return (
-    <div className="flex min-w-0 flex-1 justify-between gap-[0.8rem]">
+    <div
+      className={`community-board-item community-board-item--${variant} flex min-w-0 flex-1 justify-between gap-[0.8rem]`}
+    >
       <div className="flex min-w-0 flex-1 flex-col gap-[0.8rem]">
-        <div className="flex min-w-0 flex-col gap-[0.4rem]">
-          <h3
-            className={`truncate font-bold text-(--color-palette-gray-1000) ${titleClassName}`}
-          >
+        <div className="community-board-item-text flex min-w-0 flex-col">
+          <h3 className="community-board-item-title truncate font-bold text-(--color-palette-gray-1000)">
             {title}
           </h3>
           {content && (
-            <p
-              className={`line-clamp-2 font-normal text-(--color-palette-gray-700) ${descriptionClassName}`}
-            >
+            <p className="community-board-item-content line-clamp-2 font-normal text-(--color-palette-gray-700)">
               {content}
             </p>
           )}
-          <div className="flex flex-wrap items-center gap-[0.4rem] text-[1.4rem] font-normal text-(--color-palette-gray-700)">
+          <div className="community-board-item-metadata flex flex-wrap items-center gap-[0.4rem] font-normal text-(--color-palette-gray-700)">
             <span>{category}</span>
             <span aria-hidden="true">·</span>
             <span>{location}</span>

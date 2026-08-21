@@ -17,7 +17,7 @@ export default function CommunityListItem({
           className="flex min-w-0 flex-1 cursor-pointer"
           to={`/community/${item.id}`}
         >
-          <CommunityBoardItem item={item} variant="list" />
+          <CommunityBoardItem item={item} variant="default" />
         </Link>
       </article>
     </li>
