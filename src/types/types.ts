@@ -42,7 +42,7 @@ export type CommunityItem = {
   category: string;
   location: string;
   tags: string;
-  createdAtText: string;
+  createdAt: string;
   likeCount: number;
   commentCount: number;
   viewCount: number;
@@ -53,7 +53,7 @@ export type CommunityDetailData = CommunityItem;
 
 export type CommunityComment = {
   content: string;
-  createdAtText: string;
+  createdAt: string;
   id: number;
   likeCount: number;
   location: string;
