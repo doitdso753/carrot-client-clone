@@ -38,7 +38,7 @@ export type CommunityItem = {
   authorProfile: UserProfile;
   id: number;
   title: string;
-  content: string;
+  content?: string;
   category: string;
   location: string;
   tags: string;
@@ -49,16 +49,7 @@ export type CommunityItem = {
   imageUrl?: string;
 };
 
-export type PopularCommunityItem = {
-  commentCount: number;
-  id: number;
-  imageUrl: string;
-  likeCount: number;
-  metadata: string;
-  tags: string;
-  title: string;
-  viewCount: number;
-};
+export type CommunityDetailData = CommunityItem;
 
 export type CommunityComment = {
   content: string;

@@ -10,23 +10,6 @@ type CommunityListItemProps = {
 export default function CommunityListItem({
   item,
 }: CommunityListItemProps): ReactNode {
-  const boardItem = {
-    commentCount: item.commentCount,
-    description: item.content,
-    imageUrl: item.imageUrl,
-    likeCount: item.likeCount,
-    metadata: (
-      <>
-        <span>{item.category}</span>
-        <span aria-hidden="true">·</span>
-        <span>{item.location}</span>
-        <span aria-hidden="true">·</span>
-        <span>{item.createdAtText}</span>
-      </>
-    ),
-    title: item.title,
-  };
-
   return (
     <li>
       <article className="flex min-w-0 justify-between gap-[1.6rem]">
@@ -34,7 +17,7 @@ export default function CommunityListItem({
           className="flex min-w-0 flex-1 cursor-pointer"
           to={`/community/${item.id}`}
         >
-          <CommunityBoardItem item={boardItem} variant="list" />
+          <CommunityBoardItem item={item} variant="list" />
         </Link>
       </article>
     </li>

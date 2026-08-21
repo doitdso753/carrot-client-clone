@@ -1,14 +1,13 @@
 import type { ReactNode } from 'react';
 import { useParams } from 'react-router';
-import CommunityDetail, {
-  type CommunityDetailData,
-} from '@/components/community/community-detail.tsx';
+import CommunityDetail from '@/components/community/community-detail.tsx';
 import HeaderWithSearch from '@/layouts/header-with-search/header-with-search.tsx';
 import RootLayout from '@/layouts/root-layout.tsx';
 import {
   COMMUNITY_ITEMS,
   POPULAR_COMMUNITY_ITEMS,
 } from '@/types/community-constants.ts';
+import type { CommunityDetailData } from '@/types/types.ts';
 
 export default function CommunityDetailPage(): ReactNode {
   const { id } = useParams();
@@ -20,26 +19,7 @@ export default function CommunityDetailPage(): ReactNode {
     POPULAR_COMMUNITY_ITEMS.find(
       ({ id: popularCommunityItemId }) => popularCommunityItemId === itemId,
     );
-  let detailItem: CommunityDetailData | null = null;
-
-  if (item && 'content' in item) {
-    detailItem = item;
-  } else if (item) {
-    const [location = '동네', category = '동네생활', createdAtText = ''] =
-      item.metadata.split(' · ');
-
-    detailItem = {
-      category,
-      commentCount: item.commentCount,
-      createdAtText,
-      id: item.id,
-      likeCount: item.likeCount,
-      location,
-      tags: item.tags,
-      title: item.title,
-      viewCount: item.viewCount,
-    };
-  }
+  const detailItem: CommunityDetailData | null = item ?? null;
 
   return (
     <RootLayout>

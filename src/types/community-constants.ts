@@ -1,9 +1,5 @@
 import { HotIcon } from '@/assets/icons';
-import type {
-  CommunityComment,
-  CommunityItem,
-  PopularCommunityItem,
-} from '@/types/types.ts';
+import type { CommunityComment, CommunityItem } from '@/types/types.ts';
 
 export const COMMUNITY_CATEGORIES = [
   { code: 'popular', label: '인기글', icon: HotIcon },
@@ -28,7 +24,7 @@ export const COMMUNITY_CATEGORIES = [
   { code: 'general', label: '일반' },
 ] as const;
 
-export const COMMUNITY_ITEMS: CommunityItem[] = [
+export const COMMUNITY_ITEMS: readonly CommunityItem[] = [
   {
     authorProfile: {
       location: '서울특별시 강남구 역삼동',
@@ -193,7 +189,7 @@ export const COMMUNITY_COMMENTS: readonly CommunityComment[] = [
   },
 ];
 
-export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
+export const POPULAR_COMMUNITY_ITEMS: readonly CommunityItem[] = [
   {
     authorProfile: {
       location: '인천광역시 미추홀구 용현1,4동',
@@ -202,7 +198,9 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     },
     id: 101,
     title: '동물',
-    metadata: '미추홀구 용현1,4동 · 취미 · 7일 전',
+    category: '취미',
+    createdAtText: '3시간 전',
+    location: '미추홀구 용현1,4동',
     tags: '동물,취미,이웃이야기',
     likeCount: 6,
     commentCount: 5,
@@ -217,7 +215,9 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     },
     id: 102,
     title: '**강아지 봉구 찾습니다**',
-    metadata: '고양시 일산동구 고봉동 · 분실/실종 · 5일 전',
+    category: '분실/실종',
+    createdAtText: '3시간 전',
+    location: '고양시 일산동구 고봉동',
     tags: '강아지,실종동물,봉구',
     likeCount: 6,
     commentCount: 5,
@@ -232,7 +232,9 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     },
     id: 103,
     title: '광안리에 한달 살기 왔어요~',
-    metadata: '수영구 광안제1동 · 동네풍경 · 6일 전',
+    category: '동네풍경',
+    createdAtText: '3시간 전',
+    location: '수영구 광안제1동',
     tags: '광안리,한달살기,동네풍경',
     likeCount: 6,
     commentCount: 5,
@@ -247,7 +249,9 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     },
     id: 104,
     title: '이게 뭐에쓰는 녀석일까요?',
-    metadata: '청주시 흥덕구 봉명1동 · 일반 · 7일 전',
+    category: '일반',
+    createdAtText: '3시간 전',
+    location: '청주시 흥덕구 봉명1동',
     tags: '궁금해요,정보공유,동네질문',
     likeCount: 6,
     commentCount: 5,
@@ -262,7 +266,9 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     },
     id: 105,
     title: '안녕하세요 포항에 온지 얼마 안된 학생입니다',
-    metadata: '포항시 남구 지곡동 · 맛집 · 7일 전',
+    category: '맛집',
+    createdAtText: '3시간 전',
+    location: '포항시 남구 지곡동',
     tags: '포항,맛집추천,동네정보',
     likeCount: 6,
     commentCount: 5,
@@ -277,7 +283,9 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     },
     id: 106,
     title: '하늘이.. 반으로',
-    metadata: '안산시 상록구 이동 · 동네풍경 · 7일 전',
+    category: '동네풍경',
+    createdAtText: '3시간 전',
+    location: '안산시 상록구 이동',
     tags: '하늘,풍경,오늘의동네',
     likeCount: 6,
     commentCount: 5,
@@ -292,7 +300,9 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     },
     id: 107,
     title: '이게 뭘까요? ㅠㅠㅠㅠ',
-    metadata: '미추홀구 도화동 · 고민/사연 · 8일 전',
+    category: '고민/사연',
+    createdAtText: '3시간 전',
+    location: '미추홀구 도화동',
     tags: '고민,궁금해요,이웃도움',
     likeCount: 6,
     commentCount: 5,
@@ -307,7 +317,9 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     },
     id: 108,
     title: '이 친구 아시는 분 계신가요..',
-    metadata: '용인시 처인구 역북동 · 반려동물 · 8일 전',
+    category: '반려동물',
+    createdAtText: '3시간 전',
+    location: '용인시 처인구 역북동',
     tags: '반려동물,제보,이웃찾기',
     likeCount: 6,
     commentCount: 5,
@@ -322,7 +334,9 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     },
     id: 109,
     title: '길 가다가 애견미용실 있길래 봤....',
-    metadata: '영등포구 당산제1동 · 동네풍경 · 8일 전',
+    category: '동네풍경',
+    createdAtText: '3시간 전',
+    location: '영등포구 당산제1동',
     tags: '애견미용,강아지,동네풍경',
     likeCount: 6,
     commentCount: 5,
@@ -337,7 +351,9 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     },
     id: 110,
     title: '무슨 벌레인가요?...',
-    metadata: '중구 남산1동 · 생활/편의 · 5일 전',
+    category: '생활/편의',
+    createdAtText: '3시간 전',
+    location: '중구 남산1동',
     tags: '벌레,생활정보,궁금해요',
     likeCount: 6,
     commentCount: 5,

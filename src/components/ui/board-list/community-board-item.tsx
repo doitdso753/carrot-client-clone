@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import { CommentTextFillIcon, ThumbUpFillIcon } from '@/assets/icons';
+import { getElapsedTimeText } from '@/lib/utils.ts';
+import type { CommunityItem } from '@/types/types.ts';
 
 const COMMUNITY_BOARD_ITEM_VARIANTS = {
   list: {
@@ -14,17 +16,8 @@ const COMMUNITY_BOARD_ITEM_VARIANTS = {
 
 type CommunityBoardItemVariant = keyof typeof COMMUNITY_BOARD_ITEM_VARIANTS;
 
-type CommunityBoardItemData = {
-  commentCount: number;
-  description?: string;
-  imageUrl?: string;
-  likeCount: number;
-  metadata: ReactNode;
-  title: string;
-};
-
 type CommunityBoardItemProps = {
-  item: CommunityBoardItemData;
+  item: CommunityItem;
   variant: CommunityBoardItemVariant;
 };
 
@@ -49,7 +42,16 @@ function CommunityBoardItemCount({
 }
 
 export default function CommunityBoardItem({
-  item: { commentCount, description, imageUrl, likeCount, metadata, title },
+  item: {
+    category,
+    commentCount,
+    content,
+    createdAt,
+    imageUrl,
+    likeCount,
+    location,
+    title,
+  },
   variant,
 }: CommunityBoardItemProps): ReactNode {
   const { descriptionClassName, titleClassName } =
@@ -64,15 +66,19 @@ export default function CommunityBoardItem({
           >
             {title}
           </h3>
-          {description && (
+          {content && (
             <p
               className={`line-clamp-2 font-normal text-(--color-palette-gray-700) ${descriptionClassName}`}
             >
-              {description}
+              {content}
             </p>
           )}
           <div className="flex flex-wrap items-center gap-[0.4rem] text-[1.4rem] font-normal text-(--color-palette-gray-700)">
-            {metadata}
+            <span>{category}</span>
+            <span aria-hidden="true">·</span>
+            <span>{location}</span>
+            <span aria-hidden="true">·</span>
+            <span>{getElapsedTimeText(createdAt)}</span>
           </div>
         </div>
 

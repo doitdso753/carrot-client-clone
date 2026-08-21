@@ -1,18 +1,11 @@
 import type { ReactNode } from 'react';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb.tsx';
-
-export type CommunityDetailData = {
-  category: string;
-  commentCount: number;
-  content?: string;
-  createdAtText: string;
-  id: number;
-  likeCount: number;
-  location: string;
-  tags: string;
-  title: string;
-  viewCount: number;
-};
+import SearchFilterSidebar from '@/components/ui/search-filter/search-filter-sidebar.tsx';
+import {
+  COMMUNITY_CATEGORIES,
+  COMMUNITY_COMMENTS,
+} from '@/types/community-constants.ts';
+import type { CommunityDetailData } from '@/types/types.ts';
 
 type CommunityDetailProps = {
   item: CommunityDetailData;
