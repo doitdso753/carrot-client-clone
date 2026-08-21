@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import {
+  CommunityCommentSection,
   CommunityPostSection,
 } from '@/components/community/sections';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb.tsx';
@@ -43,11 +44,12 @@ export default function CommunityDetail({
         />
 
         <div className="community-detail-main">
-          MAIN
           <CommunityPostSection
             categoryCode={selectedCategoryCode}
             item={item}
           />
+
+          <CommunityCommentSection comments={COMMUNITY_COMMENTS} />
         </div>
       </div>
     </main>
