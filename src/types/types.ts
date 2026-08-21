@@ -27,7 +27,15 @@ export type CategoryItem = {
   routing: string;
 };
 
+export type UserProfile = {
+  location: string;
+  nickname: string;
+  profileImageUrl?: string;
+  warmth: number;
+};
+
 export type CommunityItem = {
+  authorProfile: UserProfile;
   id: number;
   title: string;
   content: string;
@@ -62,12 +70,6 @@ export type CommunityComment = {
   profileImageUrl?: string;
   replies?: CommunityComment[];
   replyCount: number;
-};
-
-export type UserProfile = {
-  nickname: string;
-  location: string;
-  warmth: number;
 };
 
 export type BuySellItemStatusCode = 'selling' | 'reserved' | 'sold';

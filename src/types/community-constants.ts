@@ -30,6 +30,11 @@ export const COMMUNITY_CATEGORIES = [
 
 export const COMMUNITY_ITEMS: CommunityItem[] = [
   {
+    authorProfile: {
+      location: '서울특별시 강남구 역삼동',
+      nickname: '산책하는토끼',
+      warmth: 38.2,
+    },
     id: 1,
     title: '우리 동네에 새로 생긴 산책로를 소개해요',
     content: '날씨 좋은 날 가볍게 걷기 좋고 저녁 풍경도 정말 예뻐요.',
@@ -43,6 +48,11 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/community-walk/320/320',
   },
   {
+    authorProfile: {
+      location: '서울특별시 서초구 서초동',
+      nickname: '서초마켓러버',
+      warmth: 40.1,
+    },
     id: 2,
     title: '주말에 열리는 동네 플리마켓 같이 가실 분',
     content: '이번 주 토요일 오전부터 공원 앞 광장에서 열린다고 합니다.',
@@ -56,6 +66,11 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/community-market/320/320',
   },
   {
+    authorProfile: {
+      location: '인천광역시 연수구 송도동',
+      nickname: '커피한잔',
+      warmth: 37.4,
+    },
     id: 3,
     title: '근처에서 발견한 분위기 좋은 카페',
     content: '조용해서 책 읽거나 작업하기 좋았어요. 디저트도 맛있습니다.',
@@ -69,6 +84,11 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/community-cafe/320/320',
   },
   {
+    authorProfile: {
+      location: '서울특별시 관악구 신림동',
+      nickname: '흰둥이를찾아요',
+      warmth: 45.6,
+    },
     id: 4,
     title: '잃어버린 강아지를 찾고 있습니다',
     content: '갈색 목줄을 하고 있는 흰색 소형견입니다. 제보 부탁드려요.',
@@ -82,6 +102,11 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/community-dog/320/320',
   },
   {
+    authorProfile: {
+      location: '서울특별시 강남구 청담동',
+      nickname: '저녁러너',
+      warmth: 39.3,
+    },
     id: 5,
     title: '퇴근 후 함께 러닝하실 동네 친구 구해요',
     content: '평일 저녁 8시쯤 천천히 5km 정도 달리는 모임입니다.',
@@ -95,6 +120,11 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/community-running/320/320',
   },
   {
+    authorProfile: {
+      location: '경기도 남양주시 다산동',
+      nickname: '책읽는가족',
+      warmth: 42.8,
+    },
     id: 6,
     title: '아이와 함께 가기 좋은 동네 도서관',
     content: '유아 열람실이 넓고 주말 프로그램도 다양하게 운영하네요.',
@@ -165,6 +195,11 @@ export const COMMUNITY_COMMENTS: readonly CommunityComment[] = [
 
 export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
   {
+    authorProfile: {
+      location: '인천광역시 미추홀구 용현1,4동',
+      nickname: '동물친구',
+      warmth: 41.7,
+    },
     id: 101,
     title: '동물',
     metadata: '미추홀구 용현1,4동 · 취미 · 7일 전',
@@ -175,6 +210,11 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/neighborhood-animal/240/240',
   },
   {
+    authorProfile: {
+      location: '경기도 고양시 일산동구 고봉동',
+      nickname: '봉구네',
+      warmth: 48.9,
+    },
     id: 102,
     title: '**강아지 봉구 찾습니다**',
     metadata: '고양시 일산동구 고봉동 · 분실/실종 · 5일 전',
@@ -185,6 +225,11 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/neighborhood-dog/240/240',
   },
   {
+    authorProfile: {
+      location: '부산광역시 수영구 광안제1동',
+      nickname: '광안리한달살이',
+      warmth: 36.8,
+    },
     id: 103,
     title: '광안리에 한달 살기 왔어요~',
     metadata: '수영구 광안제1동 · 동네풍경 · 6일 전',
@@ -195,6 +240,11 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/neighborhood-beach/240/240',
   },
   {
+    authorProfile: {
+      location: '충청북도 청주시 흥덕구 봉명1동',
+      nickname: '궁금한이웃',
+      warmth: 35.9,
+    },
     id: 104,
     title: '이게 뭐에쓰는 녀석일까요?',
     metadata: '청주시 흥덕구 봉명1동 · 일반 · 7일 전',
@@ -205,6 +255,11 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/neighborhood-question/240/240',
   },
   {
+    authorProfile: {
+      location: '경상북도 포항시 남구 지곡동',
+      nickname: '포항새내기',
+      warmth: 37.1,
+    },
     id: 105,
     title: '안녕하세요 포항에 온지 얼마 안된 학생입니다',
     metadata: '포항시 남구 지곡동 · 맛집 · 7일 전',
@@ -215,6 +270,11 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/neighborhood-student/240/240',
   },
   {
+    authorProfile: {
+      location: '경기도 안산시 상록구 이동',
+      nickname: '하늘수집가',
+      warmth: 43.5,
+    },
     id: 106,
     title: '하늘이.. 반으로',
     metadata: '안산시 상록구 이동 · 동네풍경 · 7일 전',
@@ -225,6 +285,11 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/neighborhood-sky/240/240',
   },
   {
+    authorProfile: {
+      location: '인천광역시 미추홀구 도화동',
+      nickname: '도화동고민상담소',
+      warmth: 39.8,
+    },
     id: 107,
     title: '이게 뭘까요? ㅠㅠㅠㅠ',
     metadata: '미추홀구 도화동 · 고민/사연 · 8일 전',
@@ -235,6 +300,11 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/neighborhood-mystery/240/240',
   },
   {
+    authorProfile: {
+      location: '경기도 용인시 처인구 역북동',
+      nickname: '역북동집사',
+      warmth: 46.2,
+    },
     id: 108,
     title: '이 친구 아시는 분 계신가요..',
     metadata: '용인시 처인구 역북동 · 반려동물 · 8일 전',
@@ -245,6 +315,11 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/neighborhood-friend/240/240',
   },
   {
+    authorProfile: {
+      location: '서울특별시 영등포구 당산제1동',
+      nickname: '당산산책러',
+      warmth: 40.6,
+    },
     id: 109,
     title: '길 가다가 애견미용실 있길래 봤....',
     metadata: '영등포구 당산제1동 · 동네풍경 · 8일 전',
@@ -255,6 +330,11 @@ export const POPULAR_COMMUNITY_ITEMS: readonly PopularCommunityItem[] = [
     imageUrl: 'https://picsum.photos/seed/neighborhood-shop/240/240',
   },
   {
+    authorProfile: {
+      location: '대구광역시 중구 남산1동',
+      nickname: '남산동박사',
+      warmth: 38.7,
+    },
     id: 110,
     title: '무슨 벌레인가요?...',
     metadata: '중구 남산1동 · 생활/편의 · 5일 전',

@@ -13,7 +13,7 @@ export default function UserProfile({ user }: UserProfileProps): ReactNode {
       <div className="user-profile-information">
         <img
           className="user-profile-avatar"
-          src={defaultProfileImage}
+          src={user.profileImageUrl ?? defaultProfileImage}
           alt=""
           aria-hidden="true"
         />

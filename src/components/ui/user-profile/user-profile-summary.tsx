@@ -1,22 +1,19 @@
 import type { ReactNode } from 'react';
 import defaultProfileImage from '@/assets/images/default-profile.png';
 import WarmthBadge from '@/components/ui/user-profile/warmth-badge.tsx';
-
-type UserProfileSummaryData = {
-  description: string;
-  name: string;
-  profileImageUrl?: string;
-  warmth?: number;
-};
+import type { UserProfile } from '@/types/types.ts';
 
 type UserProfileSummaryProps = {
-  user: UserProfileSummaryData;
+  createdAt?: string;
+  user: UserProfile;
 };
 
 export default function UserProfileSummary({
+  createdAt,
   user,
 }: UserProfileSummaryProps): ReactNode {
   const profileImageUrl = user.profileImageUrl ?? defaultProfileImage;
+  const description = [user.location, createdAt].filter(Boolean).join(' · ');
 
   return (
     <div className="user-profile-summary">
@@ -24,14 +21,14 @@ export default function UserProfileSummary({
         <img
           className="user-profile-summary-avatar"
           src={profileImageUrl}
-          alt={`${user.name} 프로필`}
+          alt={`${user.nickname} 프로필`}
         />
         <div>
           <div className="user-profile-summary-name-row">
-            <p className="user-profile-summary-name">{user.name}</p>
-            {user.warmth !== undefined && <WarmthBadge value={user.warmth} />}
+            <p className="user-profile-summary-name">{user.nickname}</p>
+            <WarmthBadge value={user.warmth} />
           </div>
-          <p className="user-profile-summary-description">{user.description}</p>
+          <p className="user-profile-summary-description">{description}</p>
         </div>
       </div>
     </div>
