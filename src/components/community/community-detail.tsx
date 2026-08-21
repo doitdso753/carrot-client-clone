@@ -1,4 +1,7 @@
 import type { ReactNode } from 'react';
+import {
+  CommunityPostSection,
+} from '@/components/community/sections';
 import DetailBreadcrumb from '@/components/ui/detail-breadcrumb.tsx';
 import SearchFilterSidebar from '@/components/ui/search-filter/search-filter-sidebar.tsx';
 import {
@@ -41,6 +44,10 @@ export default function CommunityDetail({
 
         <div className="community-detail-main">
           MAIN
+          <CommunityPostSection
+            categoryCode={selectedCategoryCode}
+            item={item}
+          />
         </div>
       </div>
     </main>

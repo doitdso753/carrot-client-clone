@@ -8,6 +8,95 @@
   min-width: 0;
 }
 
+.community-post {
+  display: grid;
+  row-gap: 1.6rem;
+}
+
+.community-post-category-badge {
+  display: inline-flex;
+  cursor: pointer;
+  width: fit-content;
+  height: 2.4rem;
+  align-items: center;
+  padding-inline: 0.8rem;
+  border-radius: 0.4rem;
+  background-color: var(--color-palette-gray-200);
+  color: var(--color-palette-gray-800);
+  font-size: var(--text-xs);
+  line-height: var(--line-height-text-xs);
+  font-weight: var(--font-weight-normal);
+}
+
+.community-post-content {
+  display: grid;
+  row-gap: 1.6rem;
+}
+
+.community-post-content h1 {
+  font-size: var(--text-2xl);
+  line-height: var(--line-height-text-2xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.community-post-content p {
+  font-size: var(--text-base);
+  line-height: var(--line-height-text-base);
+  font-weight: var(--font-weight-normal);
+  white-space: pre-line;
+}
+
+.community-post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.8rem;
+  row-gap: 0.4rem;
+  color: var(--color-palette-blue-700);
+  font-size: var(--text-base);
+  line-height: var(--line-height-text-base);
+  font-weight: var(--font-weight-normal);
+}
+
+.community-post-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2.4rem;
+  border-bottom: 0.1rem solid var(--color-palette-gray-400);
+}
+
+.community-post-reactions {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+  color: var(--color-palette-gray-1000);
+}
+
+.community-post-reactions button {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.4rem;
+  cursor: pointer;
+}
+
+.community-post-reactions button span {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.community-post-reactions svg {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.community-post-status > span {
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
 @media screen and (min-width: 992px) {
   .community-detail-layout {
     grid-template-columns: 26rem minmax(0, 1fr);
@@ -18,5 +107,9 @@
   .community-detail-main {
     width: 100%;
     max-width: 104rem;
+  }
+
+  .community-post {
+    margin-inline: 0;
   }
 }
