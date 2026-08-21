@@ -425,13 +425,6 @@
   background-color: var(--color-palette-carrot-700);
 }
 
-@media screen and (min-width: 768px) {
-  .detail-page-wrapper {
-    padding-right: 4rem;
-    padding-left: 4rem;
-  }
-}
-
 @media screen and (min-width: 992px) {
   main {
     max-width: 1340px;
@@ -447,11 +440,6 @@
     font-size: var(--text-3xl);
     line-height: var(--line-height-text-3xl);
     margin-bottom: 4rem;
-  }
-
-  .detail-page-wrapper {
-    padding-right: 6.4rem;
-    padding-left: 6.4rem;
   }
 
   .detail-page-layout {
@@ -503,12 +491,6 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .detail-page-wrapper {
-    max-width: 147rem;
-    padding-right: 8rem;
-    padding-left: 8rem;
-  }
-
   .detail-page-layout {
     gap: 4rem;
   }
