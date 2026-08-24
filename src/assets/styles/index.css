@@ -1,17 +1,17 @@
 @import 'tailwindcss';
 @import 'brand.css';
 @import 'common.css';
-@import 'card-list.css';
-@import 'board-list.css';
-@import 'local-profile-list.css';
-@import 'local-profile-detail.css';
 @import 'car-detail.css';
 @import 'community-detail.css';
-@import 'user-profile.css';
-@import 'search-filter.css';
-@import 'image.css';
-@import 'map.css';
 @import 'header.css';
+@import 'local-profile-list.css';
+@import 'local-profile-detail.css';
+@import 'ui/board-list.css';
+@import 'ui/card-list.css';
+@import 'ui/image.css';
+@import 'ui/map.css';
+@import 'ui/search-filter.css';
+@import 'ui/user-profile.css';
 
 @layer base {
   *,
