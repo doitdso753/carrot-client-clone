@@ -2,7 +2,7 @@ import type { AnimationEvent, ReactNode } from 'react';
 import { Link } from 'react-router';
 import { ChevronDownIcon, CloseIcon, LogoIcon } from '@/assets/icons';
 import useElementHeightCssVariable from '@/hooks/use-element-height-css-variable.ts';
-import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
+import type { HeaderCategoryNavItemData } from '@/types/header';
 
 type HeaderCategoryMobileNavPopoverProps = {
   items: HeaderCategoryNavItemData[];

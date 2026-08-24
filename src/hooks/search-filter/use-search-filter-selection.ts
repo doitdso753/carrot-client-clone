@@ -6,10 +6,10 @@ import {
 } from '@/lib/search-filter-summary-utils.ts';
 import type {
   SearchFilterConfig,
+  SearchFilterState,
   SelectedFilterBySectionKey,
   SelectedSearchFilterItem,
-} from '@/types/search-filter-configs.ts';
-import type { SearchFilterState } from '@/types/search-filter-state.ts';
+} from '@/types/search-filter';
 
 type UseSearchFilterSelectionReturn = {
   hasSelectedSectionFilter: boolean;

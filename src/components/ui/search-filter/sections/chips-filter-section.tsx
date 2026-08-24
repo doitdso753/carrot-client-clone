@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { SearchFilterItem } from '@/types/search-filter-configs.ts';
+import type { SearchFilterItem } from '@/types/search-filter';
 
 type ChipsFilterSectionProps = {
   flexDirection?: 'column' | 'row';

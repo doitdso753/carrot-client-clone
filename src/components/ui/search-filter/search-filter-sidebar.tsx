@@ -8,8 +8,8 @@ import {
   type InitialFilterCodeMap,
   type SearchFilterSectionKey,
   type SearchFilterVariant,
-} from '@/types/search-filter-configs.ts';
-import type { SearchFilterViewModel } from '@/types/search-filter-view-model.ts';
+  type SearchFilterViewModel,
+} from '@/types/search-filter';
 
 type SearchFilterSidebarProps = {
   initialFilterCodes?: InitialFilterCodeMap;

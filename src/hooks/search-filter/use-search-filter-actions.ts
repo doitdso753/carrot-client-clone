@@ -1,9 +1,9 @@
 import { useCallback, useMemo, type Dispatch } from 'react';
 import type {
   SearchFilterFieldName,
+  SearchFilterChangeHandlers,
   SearchFilterSectionKey,
-} from '@/types/search-filter-configs.ts';
-import type { SearchFilterChangeHandlers } from '@/types/search-filter-state.ts';
+} from '@/types/search-filter';
 import {
   isPriceInputField,
   type SearchFilterAction,

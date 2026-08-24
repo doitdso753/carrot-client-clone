@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 import type {
   InitialFilterCodeMap,
+  SearchFilterChangeHandlers,
   SearchFilterSectionKey,
-} from '@/types/search-filter-configs.ts';
-import type { SearchFilterChangeHandlers } from '@/types/search-filter-state.ts';
+} from '@/types/search-filter';
 
 type UseInitialFilterSelectionOptions = {
   actions: SearchFilterChangeHandlers;

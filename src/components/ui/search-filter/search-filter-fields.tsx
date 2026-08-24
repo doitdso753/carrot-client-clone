@@ -8,8 +8,10 @@ import RadioFilterSection from '@/components/ui/search-filter/sections/radio-fil
 import RangeSliderFilterSection from '@/components/ui/search-filter/sections/range-slider-filter-section.tsx';
 import { getSectionItems } from '@/lib/search-filter-summary-utils.ts';
 import { BUY_SELL_PRICE_OPTIONS } from '@/types/buy-sell-constants.ts';
-import type { SearchFilterSection } from '@/types/search-filter-configs.ts';
-import type { SearchFilterViewModel } from '@/types/search-filter-view-model.ts';
+import type {
+  SearchFilterSection,
+  SearchFilterViewModel,
+} from '@/types/search-filter';
 
 function getRadioName(section: SearchFilterSection): string {
   return `search-filter-${section.key}`;

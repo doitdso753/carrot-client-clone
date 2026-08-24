@@ -1,5 +1,5 @@
 import { CATEGORIES } from '@/types/constants.ts';
-import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
+import type { HeaderCategoryNavItemData } from './header-category.ts';
 import type { CategoryCode } from '@/types/types.ts';
 
 const HEADER_CATEGORY_CONFIGS: Partial<

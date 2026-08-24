@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { ChevronDownIcon } from '@/assets/icons';
 import useAnchorHoverPopover from '@/hooks/interaction/use-anchor-hover-popover.ts';
 import HeaderCategoryNavItemView from '@/layouts/header-with-search/nav/nav-item/header-category-nav-item-view.tsx';
-import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
+import type { HeaderCategoryNavItemData } from '@/types/header';
 
 type HeaderCategoryPopoverNavItemProps = {
   item: HeaderCategoryNavItemData;

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { ExternalLinkIcon } from '@/assets/icons';
 import HeaderCategoryNavItemView from '@/layouts/header-with-search/nav/nav-item/header-category-nav-item-view.tsx';
 import HeaderCategoryPopoverNavItem from '@/layouts/header-with-search/nav/nav-item/header-category-popover-nav-item.tsx';
-import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
+import type { HeaderCategoryNavItemData } from '@/types/header';
 
 type HeaderCategoryNavItemProps = {
   item: HeaderCategoryNavItemData;

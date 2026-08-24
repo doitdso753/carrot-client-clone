@@ -2,11 +2,11 @@ import type {
   SearchFilterConfig,
   SearchFilterSectionKey,
   SelectedFilterBySectionKey,
-} from '@/types/search-filter-configs.ts';
+} from './search-filter-configs.ts';
 import type {
   SearchFilterChangeHandlers,
   SearchFilterState,
-} from '@/types/search-filter-state.ts';
+} from './search-filter-state.ts';
 
 export type SearchFilterViewModel = {
   actions: SearchFilterChangeHandlers;

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { WEEKDAY_ITEMS } from '@/types/search-filter-configs.ts';
+import { WEEKDAY_ITEMS } from '@/types/search-filter';
 
 type WeekdayFilterSectionProps = {
   selectedCodes: string[];

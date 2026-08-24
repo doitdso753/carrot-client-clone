@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { CheckboxCheckedIcon } from '@/assets/icons';
-import type { SearchFilterItem } from '@/types/search-filter-configs.ts';
+import type { SearchFilterItem } from '@/types/search-filter';
 
 type CheckboxFilterSectionProps = {
   items: readonly SearchFilterItem[];

@@ -6,18 +6,16 @@ import { hasAppliedRangeFilters } from '@/lib/search-filter-summary-utils.ts';
 import searchFilterReducer, {
   type SearchFilterAction,
 } from '@/reducers/search-filter-reducer.ts';
-import type {
-  SearchFilterConfig,
-  SearchFilterSectionKey,
-  SelectedFilterBySectionKey,
-  SelectedSearchFilterItem,
-} from '@/types/search-filter-configs.ts';
 import {
   INITIAL_SEARCH_FILTER_STATE,
   isSearchFilterState,
   type SearchFilterChangeHandlers,
+  type SearchFilterConfig,
+  type SearchFilterSectionKey,
   type SearchFilterState,
-} from '@/types/search-filter-state.ts';
+  type SelectedFilterBySectionKey,
+  type SelectedSearchFilterItem,
+} from '@/types/search-filter';
 
 function createReplaceAction(
   filterState: SearchFilterState,

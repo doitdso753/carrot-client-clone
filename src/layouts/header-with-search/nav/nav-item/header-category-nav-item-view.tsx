@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import CategoryIcon from '@/components/ui/category-icon.tsx';
-import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
+import type { HeaderCategoryNavItemData } from '@/types/header';
 
 type HeaderCategoryNavItemViewProps = {
   item: HeaderCategoryNavItemData;

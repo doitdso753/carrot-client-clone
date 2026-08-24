@@ -12,9 +12,9 @@ import SearchFilterToolbarPopover from '@/components/ui/search-filter/search-fil
 import useOutsidePointerDown from '@/hooks/interaction/use-outside-pointer-down.ts';
 import type {
   SearchFilterSectionKey,
+  SearchFilterViewModel,
   SelectedSearchFilterItem,
-} from '@/types/search-filter-configs.ts';
-import type { SearchFilterViewModel } from '@/types/search-filter-view-model.ts';
+} from '@/types/search-filter';
 
 type SearchFilterToolbarItemConfig = {
   key: 'all' | SearchFilterSectionKey;

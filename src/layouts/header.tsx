@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { LogoIcon } from '@/assets/icons';
 import useElementHeightCssVariable from '@/hooks/use-element-height-css-variable.ts';
 import HeaderCategoryMobileNav from '@/layouts/header-with-search/nav/mobile/header-category-mobile-nav.tsx';
-import { HEADER_CATEGORY_ITEMS } from '@/types/header-category-items.ts';
+import { HEADER_CATEGORY_ITEMS } from '@/types/header';
 
 export default function Header(): ReactNode {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);

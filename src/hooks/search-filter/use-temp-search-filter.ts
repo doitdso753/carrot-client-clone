@@ -2,15 +2,13 @@ import { useCallback, useReducer } from 'react';
 import useSearchFilterActions from '@/hooks/search-filter/use-search-filter-actions.ts';
 import useSearchFilterSelection from '@/hooks/search-filter/use-search-filter-selection.ts';
 import searchFilterReducer from '@/reducers/search-filter-reducer.ts';
-import type {
-  SearchFilterConfig,
-  SelectedFilterBySectionKey,
-} from '@/types/search-filter-configs.ts';
 import {
   INITIAL_SEARCH_FILTER_STATE,
   type SearchFilterChangeHandlers,
+  type SearchFilterConfig,
   type SearchFilterState,
-} from '@/types/search-filter-state.ts';
+  type SelectedFilterBySectionKey,
+} from '@/types/search-filter';
 
 type UseTempSearchFilterOptions = {
   config: SearchFilterConfig;

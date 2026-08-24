@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { SearchIcon } from '@/assets/icons';
 import HeaderCategoryHorizontalNav from '@/layouts/header-with-search/nav/header-category-horizontal-nav.tsx';
 import HeaderCategoryMobileNav from '@/layouts/header-with-search/nav/mobile/header-category-mobile-nav.tsx';
-import { HEADER_CATEGORY_ITEMS } from '@/types/header-category-items.ts';
+import { HEADER_CATEGORY_ITEMS } from '@/types/header';
 
 // 모바일 메뉴와 데스크톱 카테고리 목록을 함께 배치하는 헤더 카테고리 컴포넌트
 type HeaderCategoryNavProps = {

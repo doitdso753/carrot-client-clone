@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { HeaderCategoryOverflowState } from '@/types/header-category.ts';
+import type { HeaderCategoryOverflowState } from '@/types/header';
 
 export default function useHeaderCategoryOverflow(): HeaderCategoryOverflowState {
   // 카테고리 목록 영역입니다. 실제 너비와 보이는 너비를 비교할 때 사용합니다.

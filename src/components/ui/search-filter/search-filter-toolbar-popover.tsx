@@ -10,8 +10,8 @@ import SearchFilterFields from '@/components/ui/search-filter/search-filter-fiel
 import type {
   SearchFilterConfig,
   SearchFilterSectionKey,
-} from '@/types/search-filter-configs.ts';
-import type { SearchFilterViewModel } from '@/types/search-filter-view-model.ts';
+  SearchFilterViewModel,
+} from '@/types/search-filter';
 
 type SearchFilterToolbarPopoverProps = {
   anchorRect: DOMRect | null;

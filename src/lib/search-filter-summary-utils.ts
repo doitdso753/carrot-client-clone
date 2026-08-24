@@ -6,7 +6,7 @@ import {
   type SearchFilterSectionSelection,
   type SelectedFilterBySectionKey,
   type SelectedSearchFilterItem,
-} from '@/types/search-filter-configs.ts';
+} from '@/types/search-filter';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 
 type SearchFilterSelectionState = {

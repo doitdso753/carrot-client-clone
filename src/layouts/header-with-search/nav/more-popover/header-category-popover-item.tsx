@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { CheckedIcon, ChevronDownIcon, ExternalLinkIcon } from '@/assets/icons';
 import CategoryIcon from '@/components/ui/category-icon.tsx';
-import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
+import type { HeaderCategoryNavItemData } from '@/types/header';
 
 type HeaderCategoryPopoverItemProps = {
   item: HeaderCategoryNavItemData;

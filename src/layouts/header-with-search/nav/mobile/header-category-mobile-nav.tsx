@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { MenuIcon } from '@/assets/icons';
-import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
+import type { HeaderCategoryNavItemData } from '@/types/header';
 import HeaderCategoryMobileNavPopover from './header-category-mobile-nav-popover.tsx';
 
 type HeaderCategoryMobileNavProps = {

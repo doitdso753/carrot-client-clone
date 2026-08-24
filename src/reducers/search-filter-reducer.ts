@@ -1,12 +1,10 @@
-import type {
-  SearchFilterFieldName,
-  SearchFilterSectionKey,
-} from '@/types/search-filter-configs.ts';
 import {
   INITIAL_SEARCH_FILTER_STATE,
+  type SearchFilterFieldName,
   type SearchFilterPriceInputFieldCode,
+  type SearchFilterSectionKey,
   type SearchFilterState,
-} from '@/types/search-filter-state.ts';
+} from '@/types/search-filter';
 
 export type SearchFilterAction =
   | {

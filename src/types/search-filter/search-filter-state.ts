@@ -1,7 +1,7 @@
 import type {
   SearchFilterFieldName,
   SearchFilterSectionKey,
-} from '@/types/search-filter-configs.ts';
+} from './search-filter-configs.ts';
 
 export type SearchFilterPriceInputFieldCode = 'maximumPrice' | 'minimumPrice';
 

@@ -18,10 +18,10 @@ import {
   type InitialFilterCodeMap,
   type SearchFilterSectionKey,
   type SearchFilterVariant,
+  type SearchFilterViewModel,
   type SearchFilterViewType,
   type SelectedSearchFilterItem,
-} from '@/types/search-filter-configs.ts';
-import type { SearchFilterViewModel } from '@/types/search-filter-view-model.ts';
+} from '@/types/search-filter';
 
 type SearchFilterProps = {
   region: string;

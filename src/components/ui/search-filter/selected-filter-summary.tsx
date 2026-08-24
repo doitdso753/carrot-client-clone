@@ -4,7 +4,7 @@ import { formatPriceText } from '@/lib/utils.ts';
 import type {
   SearchFilterSectionKey,
   SelectedSearchFilterItem,
-} from '@/types/search-filter-configs.ts';
+} from '@/types/search-filter';
 
 type PriceRange = {
   maximumPrice: string;

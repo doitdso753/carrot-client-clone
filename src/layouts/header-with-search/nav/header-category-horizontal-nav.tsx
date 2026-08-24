@@ -2,7 +2,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import useHeaderCategoryOverflow from '@/hooks/use-header-category-overflow.ts';
 import HeaderCategoryMorePopover from '@/layouts/header-with-search/nav/more-popover/header-category-more-popover.tsx';
 import HeaderCategoryNavItem from '@/layouts/header-with-search/nav/nav-item/header-category-nav-item.tsx';
-import type { HeaderCategoryNavItemData } from '@/types/header-category.ts';
+import type { HeaderCategoryNavItemData } from '@/types/header';
 
 type HeaderCategoryHorizontalNavProps = {
   items: HeaderCategoryNavItemData[];
