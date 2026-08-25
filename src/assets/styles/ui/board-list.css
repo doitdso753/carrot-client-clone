@@ -129,6 +129,23 @@
   line-height: var(--line-height-text-base);
 }
 
+.community-list-item-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.community-list-item-link.has-rank {
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  column-gap: 0.6rem;
+}
+
+.community-list-item-rank {
+  width: 2.6rem;
+  font-size: var(--text-base);
+  line-height: var(--line-height-text-base);
+  font-weight: var(--font-weight-medium);
+}
+
 .community-board-item-text {
   gap: 0.2rem;
 }
@@ -204,6 +221,15 @@
 }
 
 @media screen and (min-width: 992px) {
+  .community-list-item-link.has-rank {
+    column-gap: 1.6rem;
+  }
+
+  .community-list-item-rank {
+    font-size: var(--text-xl);
+    line-height: var(--line-height-text-xl);
+  }
+
   .community-board-item--default .community-board-item-title {
     font-size: var(--text-xl);
     line-height: var(--line-height-text-xl);
