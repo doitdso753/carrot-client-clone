@@ -96,6 +96,7 @@ export type BottomSheetApplyMode = 'confirm' | 'instant';
 export type SearchFilterSection = {
   bottomSheetType?: 'chip';
   data?: readonly (SearchFilterItem | string)[];
+  defaultCode?: string;
   flexDirection?: 'column' | 'row';
   icons?: Readonly<Record<string, string>>;
   isMultiple?: boolean;
@@ -227,6 +228,7 @@ export const SEARCH_FILTER_CONFIGS: Record<
       {
         bottomSheetType: 'chip',
         data: COMMUNITY_CATEGORIES,
+        defaultCode: 'all',
         isMultiple: false,
         key: 'category',
         label: '카테고리',

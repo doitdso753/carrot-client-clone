@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import {
   getSelectedFilterBySectionKey,
   getSelectedServiceItems,
-  hasSelectedSectionFilters,
 } from '@/lib/search-filter-summary-utils.ts';
 import type {
   SearchFilterConfig,
@@ -27,16 +26,15 @@ export default function useSearchFilterSelection(
       config.sections,
       filterState,
     );
+    const selectedServiceItems = getSelectedServiceItems({
+      config,
+      selectedFilterBySectionKey,
+    });
 
     return {
-      hasSelectedSectionFilter: hasSelectedSectionFilters(
-        selectedFilterBySectionKey,
-      ),
+      hasSelectedSectionFilter: selectedServiceItems.length > 0,
       selectedFilterBySectionKey,
-      selectedServiceItems: getSelectedServiceItems({
-        config,
-        selectedFilterBySectionKey,
-      }),
+      selectedServiceItems,
     };
   }, [config, filterState]);
 }

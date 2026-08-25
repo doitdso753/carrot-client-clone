@@ -50,7 +50,7 @@ function getSectionSelection(
       codes,
       value:
         section.type === 'radio' || section.type === 'link'
-          ? (codes[0] ?? null)
+          ? (codes[0] ?? section.defaultCode ?? null)
           : undefined,
     };
   }
@@ -112,7 +112,11 @@ function getSelectedItemsBySection(
   }
 
   return getSectionItems(section)
-    .filter((item) => selectedCodes.includes(item.code))
+    .filter(
+      (item) =>
+        selectedCodes.includes(item.code) &&
+        !(section.type === 'link' && item.code === 'all'),
+    )
     .map((item) => ({
       ...item,
       sectionKey: section.key,

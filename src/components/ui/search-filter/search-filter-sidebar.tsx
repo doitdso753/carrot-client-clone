@@ -7,6 +7,7 @@ import {
   SEARCH_FILTER_CONFIGS,
   type InitialFilterCodeMap,
   type SearchFilterSectionKey,
+  type SearchFilterChangeHandlers,
   type SearchFilterVariant,
   type SearchFilterViewModel,
 } from '@/types/search-filter';
@@ -16,6 +17,7 @@ type SearchFilterSidebarProps = {
   region: string;
   sectionKeys: readonly SearchFilterSectionKey[];
   variant: SearchFilterVariant;
+  onSectionOptionSelect?: SearchFilterChangeHandlers['onSectionOptionSelect'];
 };
 
 export default function SearchFilterSidebar({
@@ -23,6 +25,7 @@ export default function SearchFilterSidebar({
   region,
   sectionKeys,
   variant,
+  onSectionOptionSelect,
 }: SearchFilterSidebarProps): ReactNode {
   const baseConfig = SEARCH_FILTER_CONFIGS[variant];
   const config = {
@@ -48,8 +51,16 @@ export default function SearchFilterSidebar({
       applyPriceRange();
     }
   };
+  const handleSectionOptionSelect: SearchFilterChangeHandlers['onSectionOptionSelect'] =
+    (key, optionCode): void => {
+      actions.onSectionOptionSelect(key, optionCode);
+      onSectionOptionSelect?.(key, optionCode);
+    };
   const model: SearchFilterViewModel = {
-    actions,
+    actions: {
+      ...actions,
+      onSectionOptionSelect: handleSectionOptionSelect,
+    },
     config,
     filterState,
     isCurrentLocationLoading: geolocation.isLoading,

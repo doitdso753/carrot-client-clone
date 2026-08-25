@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { FilterIcon } from '@/assets/icons';
 import CommonPopup from '@/components/ui/common-popup.tsx';
 import RegionSettingPopup from '@/components/ui/region-setting-popup.tsx';
@@ -17,6 +17,7 @@ import {
   SEARCH_FILTER_CONFIGS,
   type InitialFilterCodeMap,
   type SearchFilterSectionKey,
+  type SearchFilterState,
   type SearchFilterVariant,
   type SearchFilterViewModel,
   type SearchFilterViewType,
@@ -27,6 +28,7 @@ type SearchFilterProps = {
   region: string;
   initialFilterCodes?: InitialFilterCodeMap;
   variant: SearchFilterVariant;
+  onFilterStateChange?: (filterState: SearchFilterState) => void;
 };
 
 type SearchFilterViewProps = {
@@ -98,6 +100,7 @@ export default function SearchFilter({
   initialFilterCodes,
   region,
   variant,
+  onFilterStateChange,
 }: SearchFilterProps): ReactNode {
   const config = SEARCH_FILTER_CONFIGS[variant];
   const isInstantApply = config.bottomSheetApplyMode === 'instant';
@@ -121,6 +124,10 @@ export default function SearchFilter({
     actions,
     initialFilterCodes,
   });
+
+  useEffect(() => {
+    onFilterStateChange?.(filterState);
+  }, [filterState, onFilterStateChange]);
 
   const temp = useTempSearchFilter({
     config,

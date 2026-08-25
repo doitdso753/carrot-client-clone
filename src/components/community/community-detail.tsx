@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useNavigate } from 'react-router';
 import {
   CommunityCommentSection,
   CommunityPopularSection,
@@ -10,6 +11,7 @@ import {
   COMMUNITY_CATEGORIES,
   COMMUNITY_COMMENTS,
 } from '@/types/community-constants.ts';
+import type { SearchFilterSectionKey } from '@/types/search-filter';
 import type { CommunityDetailData } from '@/types/types.ts';
 
 type CommunityDetailProps = {
@@ -19,9 +21,19 @@ type CommunityDetailProps = {
 export default function CommunityDetail({
   item,
 }: CommunityDetailProps): ReactNode {
+  const navigate = useNavigate();
   const selectedCategoryCode = COMMUNITY_CATEGORIES.find(
     ({ label }) => label === item.category,
   )?.code;
+  const handleFilterSelect = (
+    key: SearchFilterSectionKey,
+    code: string,
+  ): void => {
+    if (key === 'category') {
+      navigate(`/community?category=${code}`);
+    }
+  };
+
   return (
     <main className="detail-page-wrapper">
       <DetailBreadcrumb
@@ -42,6 +54,7 @@ export default function CommunityDetail({
               : undefined
           }
           variant="community"
+          onSectionOptionSelect={handleFilterSelect}
         />
 
         <div className="community-detail-main">
