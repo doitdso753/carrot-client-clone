@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 
+// 검색 필터 툴바 항목 구성 정보
 type SearchFilterToolbarItemProps = {
   children?: ReactNode;
   isOpen: boolean;

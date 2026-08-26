@@ -7,8 +7,8 @@ import {
   type ReactNode,
 } from 'react';
 import { ChevronDownThinIcon, FilterIcon } from '@/assets/icons';
-import SearchFilterToolbarItem from '@/components/ui/search-filter/search-filter-toolbar-item.tsx';
-import SearchFilterToolbarPopover from '@/components/ui/search-filter/search-filter-toolbar-popover.tsx';
+import SearchFilterToolbarItem from './search-filter-toolbar-item.tsx';
+import SearchFilterToolbarPopover from './search-filter-toolbar-popover.tsx';
 import useOutsidePointerDown from '@/hooks/interaction/use-outside-pointer-down.ts';
 import type {
   SearchFilterSectionKey,

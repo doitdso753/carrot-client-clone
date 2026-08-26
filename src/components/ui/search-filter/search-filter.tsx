@@ -6,7 +6,7 @@ import SearchFilterFields from '@/components/ui/search-filter/search-filter-fiel
 import SearchFilterFooter from '@/components/ui/search-filter/search-filter-footer.tsx';
 import SearchFilterHeader from '@/components/ui/search-filter/search-filter-header.tsx';
 import SearchFilterRegion from '@/components/ui/search-filter/search-filter-region.tsx';
-import SearchFilterToolbar from '@/components/ui/search-filter/search-filter-toolbar.tsx';
+import SearchFilterToolbar from '@/components/ui/search-filter/toolbar/search-filter-toolbar.tsx';
 import SelectedFilterSummary from '@/components/ui/search-filter/selected-filter-summary.tsx';
 import useSearchFilterController from '@/hooks/search-filter/use-search-filter-controller.ts';
 import {

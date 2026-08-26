@@ -13,6 +13,7 @@ import type {
   SearchFilterViewModel,
 } from '@/types/search-filter';
 
+// 검색 필터 툴바 팝업 구성 정보
 type SearchFilterToolbarPopoverProps = {
   anchorRect: DOMRect | null;
   hasFooter?: boolean;
