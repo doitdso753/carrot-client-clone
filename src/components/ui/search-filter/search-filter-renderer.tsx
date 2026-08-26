@@ -1,0 +1,190 @@
+import type { ReactNode } from 'react';
+import FindRegion from '@/components/ui/find-region.tsx';
+import CheckboxFilterSection from '@/components/ui/search-filter/sections/checkbox-filter-section.tsx';
+import ChipsFilterSection from '@/components/ui/search-filter/sections/chips-filter-section.tsx';
+import LinkFilterSection from '@/components/ui/search-filter/sections/link-filter-section.tsx';
+import PriceFilterSection from '@/components/ui/search-filter/sections/price-filter-section.tsx';
+import RadioFilterSection from '@/components/ui/search-filter/sections/radio-filter-section.tsx';
+import RangeSliderFilterSection from '@/components/ui/search-filter/sections/range-slider-filter-section.tsx';
+import { getSectionItems } from '@/lib/search-filter-summary-utils.ts';
+import { BUY_SELL_PRICE_OPTIONS } from '@/types/buy-sell-constants.ts';
+import type {
+  SearchFilterSection,
+  SearchFilterSectionType,
+  SearchFilterViewModel,
+} from '@/types/search-filter';
+
+type SearchFilterRendererProps = {
+  model: SearchFilterViewModel;
+  section: SearchFilterSection;
+  variant: 'aside' | 'bottomSheet';
+};
+
+function getRadioName(section: SearchFilterSection): string {
+  return `search-filter-${section.key}`;
+}
+
+function resolveSectionType(
+  section: SearchFilterSection,
+  variant: SearchFilterRendererProps['variant'],
+): SearchFilterSectionType {
+  if (variant === 'bottomSheet' && section.bottomSheetType) {
+    return section.bottomSheetType;
+  }
+
+  return section.type;
+}
+
+export default function SearchFilterRenderer({
+  model,
+  section,
+  variant,
+}: SearchFilterRendererProps): ReactNode {
+  const {
+    actions: {
+      onSectionOptionToggle,
+      onSectionSelectionChange,
+      onSectionInputChange,
+      onSectionOptionSelect,
+    },
+    filterState: { maximumPrice, minimumPrice, selectedPrice },
+    isCurrentLocationLoading,
+    selectedFilterBySectionKey,
+    region,
+    onCurrentLocationRequest,
+    onRegionOpen,
+    onSectionApply,
+  } = model;
+  const items = getSectionItems(section);
+  const sectionType = resolveSectionType(section, variant);
+
+  switch (sectionType) {
+    case 'location':
+      return (
+        <section className="search-filter-section">
+          <h3>{section.label}</h3>
+          <FindRegion
+            isLoading={isCurrentLocationLoading}
+            region={region}
+            onCurrentLocationRequest={onCurrentLocationRequest}
+            onRegionOpen={onRegionOpen}
+          />
+        </section>
+      );
+
+    case 'radio':
+      return (
+        <RadioFilterSection
+          icons={section.icons}
+          isScrollable={section.isScrollable}
+          items={items}
+          name={getRadioName(section)}
+          selectedCode={selectedFilterBySectionKey[section.key]?.value ?? null}
+          title={section.label}
+          onChange={(code) => onSectionOptionSelect(section.key, code)}
+        />
+      );
+
+    case 'link':
+      return (
+        <LinkFilterSection
+          items={items}
+          selectedCode={selectedFilterBySectionKey[section.key]?.value ?? null}
+          title={section.label}
+          onChange={(code) => onSectionOptionSelect(section.key, code)}
+        />
+      );
+
+    case 'checkbox':
+      return (
+        <CheckboxFilterSection
+          items={items}
+          selectedCodes={selectedFilterBySectionKey[section.key]?.codes ?? []}
+          title={section.label}
+          onToggle={(code) => onSectionOptionToggle(section.key, code)}
+        />
+      );
+
+    case 'chip':
+      return (
+        <ChipsFilterSection
+          flexDirection={section.flexDirection}
+          isMultiple={section.isMultiple ?? true}
+          items={items}
+          selectedCodes={selectedFilterBySectionKey[section.key]?.codes ?? []}
+          title={section.label}
+          onChange={(codes) => onSectionSelectionChange(section.key, codes)}
+        />
+      );
+
+    case 'price':
+      return (
+        <PriceFilterSection
+          maximumPrice={maximumPrice}
+          minimumPrice={minimumPrice}
+          options={BUY_SELL_PRICE_OPTIONS}
+          selectedPrice={selectedPrice}
+          title={section.label}
+          onApply={() => onSectionApply(section.key)}
+          onMaximumPriceChange={(value) =>
+            onSectionInputChange(section.key, 'maximumPrice', value)
+          }
+          onMinimumPriceChange={(value) =>
+            onSectionInputChange(section.key, 'minimumPrice', value)
+          }
+          onSelectedPriceChange={(value) =>
+            onSectionInputChange(section.key, 'selectedPrice', value)
+          }
+        />
+      );
+
+    case 'range': {
+      if (!section.range) {
+        return null;
+      }
+
+      const range = section.range;
+      const selectedRange = selectedFilterBySectionKey[section.key]?.codes;
+      const minimumValue = Number(
+        selectedRange?.[0] ?? range.minimum - range.step,
+      );
+      const maximumValue = Number(
+        selectedRange?.[1] ?? range.maximum + range.step,
+      );
+      const handleRangeChange = (
+        nextMinimum: number,
+        nextMaximum: number,
+      ): void => {
+        const isEntireRange =
+          nextMinimum === range.minimum - range.step &&
+          nextMaximum === range.maximum + range.step;
+
+        onSectionSelectionChange(
+          section.key,
+          isEntireRange ? [] : [String(nextMinimum), String(nextMaximum)],
+        );
+      };
+
+      return (
+        <RangeSliderFilterSection
+          isApplyButtonDisabled={variant === 'bottomSheet'}
+          maximum={range.maximum}
+          maximumValue={maximumValue}
+          minimum={range.minimum}
+          minimumValue={minimumValue}
+          step={range.step}
+          suffix={range.suffix}
+          title={section.label}
+          onApply={(nextMinimum, nextMaximum) => {
+            handleRangeChange(nextMinimum, nextMaximum);
+            onSectionApply(section.key);
+          }}
+          onChange={variant === 'bottomSheet' ? handleRangeChange : undefined}
+        />
+      );
+    }
+
+    default:
+      return null;
+  }
+}
