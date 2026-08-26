@@ -1,6 +1,6 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import { Link, useParams } from 'react-router';
-import DetailBreadcrumb from '@/components/ui/detail-breadcrumb.tsx';
+import DetailBreadcrumb from '@/components/ui/navigation/detail-breadcrumb.tsx';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
 import ImageSlider from '@/components/ui/image/image-slider.tsx';
 import HeaderWithSearch from '@/layouts/header-with-search/header-with-search.tsx';

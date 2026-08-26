@@ -3,7 +3,7 @@ import CarDetailInfoTable from '@/components/cars/car-detail-info-table.tsx';
 import CarDetailInfoValue from '@/components/cars/car-detail-info-value.tsx';
 import CustomSelect, {
   type CustomSelectOption,
-} from '@/components/ui/custom-select';
+} from '@/components/ui/form/custom-select.tsx';
 import type { CarDetailInfoRow, CarLeaseInfo } from '@/types/types';
 
 type CarDetailLeaseSectionProps = {

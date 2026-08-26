@@ -9,7 +9,7 @@ import {
   CarDetailSpecSummarySection,
 } from '@/components/cars/sections';
 import CarMap from '@/components/cars/car-map';
-import DetailBreadcrumb from '@/components/ui/detail-breadcrumb';
+import DetailBreadcrumb from '@/components/ui/navigation/detail-breadcrumb.tsx';
 import ImageSlider from '@/components/ui/image/image-slider.tsx';
 import UserProfile from '@/components/ui/user-profile/user-profile.tsx';
 import { getElapsedTimeText } from '@/lib/utils';

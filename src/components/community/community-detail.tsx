@@ -5,7 +5,7 @@ import {
   CommunityPopularSection,
   CommunityPostSection,
 } from '@/components/community/sections';
-import DetailBreadcrumb from '@/components/ui/detail-breadcrumb.tsx';
+import DetailBreadcrumb from '@/components/ui/navigation/detail-breadcrumb.tsx';
 import SearchFilterSidebar from '@/components/ui/search-filter/search-filter-sidebar.tsx';
 import {
   COMMUNITY_CATEGORIES,

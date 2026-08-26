@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { LocationIcon } from '@/assets/icons';
-import KeywordLinkList from '@/components/ui/keyword-link-list';
-import SearchForm from '@/components/ui/search-form.tsx';
+import SearchForm from '@/components/ui/form/search-form.tsx';
+import KeywordLinkList from '@/components/ui/navigation/keyword-link-list.tsx';
 import type { CategoryItem } from '@/types/types.ts';
 
 const HERO_KEYWORD_CHANGE_INTERVAL = 3000;
