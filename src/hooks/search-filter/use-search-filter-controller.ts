@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import useRegionLocator from '@/hooks/location/use-region-locator.ts';
 import useInitialFilterSelection from '@/hooks/search-filter/use-initial-filter-selection.ts';
 import useSearchFilterState from '@/hooks/search-filter/use-search-filter-state.ts';
+import useSearchFilterViewModel from '@/hooks/search-filter/use-search-filter-view-model.ts';
 import useTempSearchFilter from '@/hooks/search-filter/use-temp-search-filter.ts';
 import usePopup from '@/hooks/ui/use-popup.ts';
 import type { GeolocationState } from '@/types/geolocation.ts';
@@ -63,24 +64,6 @@ type UseSearchFilterControllerReturn = {
   };
 };
 
-// 모든 필터 화면에서 함께 사용하는 정보
-type CommonSearchFilterViewModel = Pick<
-  SearchFilterViewModel,
-  | 'config'
-  | 'isCurrentLocationLoading'
-  | 'onCurrentLocationRequest'
-  | 'onRegionOpen'
-  | 'region'
->;
-
-// 필터 화면 정보 생성에 필요한 값
-type CreateSearchFilterViewModelOptions = {
-  actions: SearchFilterViewModel['actions'];
-  filterState: SearchFilterViewModel['filterState'];
-  selectedFilterBySectionKey: SearchFilterViewModel['selectedFilterBySectionKey'];
-  onSectionApply: (key: SearchFilterSectionKey) => void;
-};
-
 // 선택 방식에 따른 필터 적용 규칙
 type SearchFilterApplyPolicy = {
   bottomSheet: {
@@ -124,25 +107,6 @@ type CreateConfirmApplyPolicyOptions = {
 
 // 별도 동작이 필요 없는 경우의 빈 기능
 const NO_OPERATION = (): void => undefined;
-
-// 화면 표시용 필터 정보 조합
-function createSearchFilterViewModel(
-  commonValue: CommonSearchFilterViewModel,
-  {
-    actions,
-    filterState,
-    selectedFilterBySectionKey,
-    onSectionApply,
-  }: CreateSearchFilterViewModelOptions,
-): SearchFilterViewModel {
-  return {
-    ...commonValue,
-    actions,
-    filterState,
-    selectedFilterBySectionKey,
-    onSectionApply,
-  };
-}
 
 // 선택 직후 저장과 팝업 닫기 기능 구성
 function createInstantApplyActions(
@@ -337,30 +301,19 @@ export default function useSearchFilterController({
     openFilterPopup();
   };
 
-  // 모든 필터 화면의 공통 정보
-  const commonViewModel: CommonSearchFilterViewModel = {
+  const { asideModel, bottomSheetModel } = useSearchFilterViewModel({
+    aside: {
+      actions,
+      filterState,
+      selectedFilterBySectionKey,
+      onSectionApply: applyPolicy.onSectionApply,
+    },
+    bottomSheet: applyPolicy.bottomSheet,
     config,
     isCurrentLocationLoading: geolocation.isLoading,
     region,
     onCurrentLocationRequest: geolocation.request,
     onRegionOpen: regionPopup.open,
-  };
-
-  // 화면 옆 필터 영역의 표시 정보
-  const asideModel = createSearchFilterViewModel(commonViewModel, {
-    actions,
-    filterState,
-    selectedFilterBySectionKey,
-    onSectionApply: applyPolicy.onSectionApply,
-  });
-
-  // 화면 아래 필터 팝업의 표시 정보
-  const bottomSheetModel = createSearchFilterViewModel(commonViewModel, {
-    actions: applyPolicy.bottomSheet.actions,
-    filterState: applyPolicy.bottomSheet.filterState,
-    selectedFilterBySectionKey:
-      applyPolicy.bottomSheet.selectedFilterBySectionKey,
-    onSectionApply: applyPolicy.bottomSheet.onSectionApply,
   });
 
   // 화면에서 사용할 최종 상태와 기능 전달
