@@ -21,7 +21,9 @@ type SearchFilterAppliedRangeState = {
 export function getSectionItems(
   section?: SearchFilterSection,
 ): SearchFilterItem[] {
-  return (section?.data ?? []).map((item) =>
+  const data = section && 'data' in section ? section.data : [];
+
+  return data.map((item) =>
     typeof item === 'string' ? { code: item, label: item } : item,
   );
 }
@@ -79,7 +81,7 @@ function getSelectedItemsBySection(
     return [];
   }
 
-  if (section.type === 'range' && section.range && selectedCodes.length >= 2) {
+  if (section.type === 'range' && selectedCodes.length >= 2) {
     const minimumValue = Number(selectedCodes[0]);
     const maximumValue = Number(selectedCodes[1]);
     const controlMinimum = section.range.minimum - section.range.step;

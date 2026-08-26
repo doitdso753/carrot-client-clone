@@ -11,7 +11,6 @@ import { getSectionItems } from '@/lib/search-filter-summary-utils.ts';
 import { BUY_SELL_PRICE_OPTIONS } from '@/types/buy-sell-constants.ts';
 import type {
   SearchFilterSection,
-  SearchFilterSectionType,
   SearchFilterViewModel,
 } from '@/types/search-filter';
 
@@ -23,17 +22,6 @@ type SearchFilterRendererProps = {
 
 function getRadioName(section: SearchFilterSection): string {
   return `search-filter-${section.key}`;
-}
-
-function resolveSectionType(
-  section: SearchFilterSection,
-  variant: SearchFilterRendererProps['variant'],
-): SearchFilterSectionType {
-  if (variant === 'bottomSheet' && section.bottomSheetType) {
-    return section.bottomSheetType;
-  }
-
-  return section.type;
 }
 
 export default function SearchFilterRenderer({
@@ -57,9 +45,24 @@ export default function SearchFilterRenderer({
     onSectionApply,
   } = model;
   const items = getSectionItems(section);
-  const sectionType = resolveSectionType(section, variant);
 
-  switch (sectionType) {
+  if (
+    variant === 'bottomSheet' &&
+    'bottomSheetType' in section &&
+    section.bottomSheetType === 'chip'
+  ) {
+    return (
+      <ChipsFilterSection
+        isMultiple={section.isMultiple ?? true}
+        items={items}
+        selectedCodes={selectedFilterBySectionKey[section.key]?.codes ?? []}
+        title={section.label}
+        onChange={(codes) => onSectionSelectionChange(section.key, codes)}
+      />
+    );
+  }
+
+  switch (section.type) {
     case 'location':
       return (
         <section className="search-filter-section">
@@ -140,10 +143,6 @@ export default function SearchFilterRenderer({
       );
 
     case 'range': {
-      if (!section.range) {
-        return null;
-      }
-
       const range = section.range;
       const selectedRange = getSelectedRange(
         selectedFilterBySectionKey[section.key]?.codes,

@@ -93,19 +93,71 @@ export type SearchFilterRange = {
 
 export type BottomSheetApplyMode = 'confirm' | 'instant';
 
-export type SearchFilterSection = {
-  bottomSheetType?: 'chip';
-  data?: readonly (SearchFilterItem | string)[];
-  defaultCode?: string;
-  flexDirection?: 'column' | 'row';
-  icons?: Readonly<Record<string, string>>;
-  isMultiple?: boolean;
-  isScrollable?: boolean;
+type SearchFilterSectionBase = {
   key: SearchFilterSectionKey;
   label: string;
-  range?: SearchFilterRange;
-  type: SearchFilterSectionType;
 };
+
+type SearchFilterOptionSectionBase = SearchFilterSectionBase & {
+  data: readonly (SearchFilterItem | string)[];
+  defaultCode?: string;
+};
+
+type CheckboxFilterSection = SearchFilterOptionSectionBase & {
+  bottomSheetType?: 'chip';
+  isMultiple?: boolean;
+  type: 'checkbox';
+};
+
+type ChipFilterSection = SearchFilterOptionSectionBase & {
+  flexDirection?: 'column' | 'row';
+  isMultiple?: boolean;
+  type: 'chip';
+};
+
+type LinkFilterSection = SearchFilterOptionSectionBase & {
+  bottomSheetType?: 'chip';
+  isMultiple?: boolean;
+  type: 'link';
+};
+
+type LocationFilterSection = SearchFilterSectionBase & {
+  type: 'location';
+};
+
+type PriceFilterSection = SearchFilterSectionBase & {
+  type: 'price';
+};
+
+type RadioFilterSection = SearchFilterOptionSectionBase & {
+  icons?: Readonly<Record<string, string>>;
+  isScrollable?: boolean;
+  type: 'radio';
+};
+
+type RangeFilterSection = SearchFilterSectionBase & {
+  range: SearchFilterRange;
+  type: 'range';
+};
+
+type TimeFilterSection = SearchFilterSectionBase & {
+  type: 'time';
+};
+
+type WeekdayFilterSection = SearchFilterSectionBase & {
+  type: 'weekday';
+};
+
+export type SearchFilterSection =
+  | CheckboxFilterSection
+  | ChipFilterSection
+  | LinkFilterSection
+  | LocationFilterSection
+  | PriceFilterSection
+  | RadioFilterSection
+  | RangeFilterSection
+  | TimeFilterSection
+  | WeekdayFilterSection;
 
 export type SearchFilterConfig = {
   bottomSheetApplyMode?: BottomSheetApplyMode;
