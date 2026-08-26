@@ -33,9 +33,15 @@ export function HeaderWithSearch({
   const headerRef = useElementHeightCssVariable<HTMLElement>(
     '--header-with-search-height',
   );
-  const activeCategory = CATEGORIES.find(
-    (category) => category.code === activeCategoryCode,
-  );
+  const activeCategory =
+    CATEGORIES.find((category) => category.code === activeCategoryCode) ??
+    CATEGORIES[0];
+
+  const getKeywordPath = (keyword: string): string => {
+    const searchParams = new URLSearchParams({ search: keyword });
+
+    return `${activeCategory.routing}?${searchParams.toString()}`;
+  };
 
   return (
     <header
@@ -87,7 +93,7 @@ export function HeaderWithSearch({
           <KeywordLinkList
             title="추천 검색어"
             keywords={RECOMMEND_KEYWORDS}
-            getKeywordPath={() => '/buy-sell'}
+            getKeywordPath={getKeywordPath}
             variant="header"
           />
         </div>

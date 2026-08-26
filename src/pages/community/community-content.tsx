@@ -4,6 +4,7 @@ import CommunityList from '@/components/community/community-list.tsx';
 import SearchFilter from '@/components/ui/search-filter/search-filter.tsx';
 import ServiceListTitle from '@/components/ui/service-list-title.tsx';
 import useRegion from '@/hooks/location/use-region.ts';
+import { includesSearchKeyword } from '@/lib/search-utils.ts';
 import {
   COMMUNITY_CATEGORIES,
   COMMUNITY_ITEMS,
@@ -17,10 +18,11 @@ export default function CommunityContent(): ReactNode {
   const [initialCategoryCode] = useState(() => searchParams.get('category'));
   const [selectedCategoryCode, setSelectedCategoryCode] =
     useState(initialCategoryCode);
+  const searchKeyword = searchParams.get('search')?.trim() ?? '';
   const selectedCategory = COMMUNITY_CATEGORIES.find(
     ({ code }) => code === selectedCategoryCode,
   );
-  const items = (() => {
+  const categoryItems = (() => {
     if (!selectedCategory || selectedCategory.code === 'all') {
       return COMMUNITY_ITEMS;
     }
@@ -33,6 +35,15 @@ export default function CommunityContent(): ReactNode {
       ({ category }) => category === selectedCategory.label,
     );
   })();
+  const items = categoryItems.filter((item) =>
+    includesSearchKeyword(searchKeyword, [
+      item.title,
+      item.content,
+      item.category,
+      item.tags,
+      item.location,
+    ]),
+  );
 
   useEffect(() => {
     if (!searchParams.has('category')) {
@@ -56,7 +67,11 @@ export default function CommunityContent(): ReactNode {
 
   return (
     <main className="service-list-page min-h-screen pb-20">
-      <ServiceListTitle>{region} 동네생활</ServiceListTitle>
+      <ServiceListTitle>
+        {searchKeyword
+          ? `${region} “${searchKeyword}” 검색 결과`
+          : `${region} 동네생활`}
+      </ServiceListTitle>
       <div className="service-list-layout">
         <SearchFilter
           region={region}

@@ -86,7 +86,7 @@
   line-height: var(--line-height-text-sm);
 }
 
-.header-search-form input[name='searchInput'] {
+.header-search-form input[name='search'] {
   font-size: var(--text-base);
   line-height: var(--line-height-text-base);
 }

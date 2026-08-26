@@ -1,10 +1,12 @@
 import {
+  useEffect,
   useState,
+  type ChangeEvent,
   type FocusEvent,
   type KeyboardEvent,
   type ReactNode,
 } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useSearchParams } from 'react-router';
 import {
   ArrowRightIcon,
   CheckedIcon,
@@ -46,14 +48,21 @@ export default function SearchForm({
   submitIconType = 'arrow',
 }: SearchFormProps): ReactNode {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const keyword = searchParams.get('search') ?? '';
   const [selectedLabel, setSelectedLabel] = useState(
     initialOptionLabel ?? options[0]?.label ?? '',
   );
+  const [searchInputValue, setSearchInputValue] = useState(keyword);
   const [isOpen, setIsOpen] = useState(false);
   const selectedOption =
     options.find((option) => option.label === selectedLabel) ?? null;
   const chevronIcon = CHEVRON_ICONS[chevronIconType];
   const submitIcon = SUBMIT_ICONS[submitIconType];
+
+  useEffect(() => {
+    setSearchInputValue(keyword);
+  }, [keyword]);
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>): void => {
     if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -71,6 +80,12 @@ export default function SearchForm({
     setSelectedLabel(option.label);
     setIsOpen(false);
     navigate(option.routing);
+  };
+
+  const handleSearchInputChange = (
+    event: ChangeEvent<HTMLInputElement>,
+  ): void => {
+    setSearchInputValue(event.target.value);
   };
 
   return (
@@ -133,11 +148,13 @@ export default function SearchForm({
         aria-hidden="true"
       />
       <input
-        name="searchInput"
+        name="search"
         className="min-w-0 flex-1 leading-normal font-medium text-(--color-palette-gray-1000) outline-none placeholder:text-(--color-palette-gray-600)"
         aria-label="검색어"
         placeholder="검색어를 입력해주세요"
         type="search"
+        value={searchInputValue}
+        onChange={handleSearchInputChange}
       />
       <div
         className={`search-form-submit-wrapper search-form-submit-wrapper--${submitIconType}`}

@@ -34,6 +34,12 @@ export default function HeroSearch({
     label: category.label,
     routing: category.routing,
   }));
+  const getKeywordPath = (keyword: string): string => {
+    const searchParams = new URLSearchParams({ search: keyword });
+    const defaultCategoryPath = categories[0]?.routing ?? '/buy-sell';
+
+    return `${defaultCategoryPath}?${searchParams.toString()}`;
+  };
 
   useEffect(() => {
     if (heroKeywords.length < 2) {
@@ -75,7 +81,11 @@ export default function HeroSearch({
       </h1>
       <div className="hero-search-wrapper">
         <SearchForm options={searchOptions} />
-        <KeywordLinkList title="인기 검색어" keywords={popularKeywords} />
+        <KeywordLinkList
+          title="인기 검색어"
+          keywords={popularKeywords}
+          getKeywordPath={getKeywordPath}
+        />
       </div>
     </div>
   );
