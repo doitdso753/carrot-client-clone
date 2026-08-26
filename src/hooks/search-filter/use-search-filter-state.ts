@@ -98,7 +98,7 @@ export default function useSearchFilterState(
       );
 
       if (section?.type === 'range') {
-        dispatch({ type: 'setCodes', key, codes: [] });
+        dispatch({ type: 'clearSection', key });
         return;
       }
 

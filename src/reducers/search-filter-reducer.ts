@@ -18,6 +18,7 @@ export type SearchFilterAction =
   | { type: 'toggleCode'; key: SearchFilterSectionKey; code: string }
   | { type: 'applyPriceRange' }
   | { type: 'removePriceRange' }
+  | { type: 'clearSection'; key: SearchFilterSectionKey }
   | { type: 'removeSelectedCode'; key: SearchFilterSectionKey; code: string }
   | { type: 'replace'; filterState: SearchFilterState }
   | { type: 'reset' };
@@ -118,6 +119,15 @@ export default function searchFilterReducer(
 
     case 'removePriceRange':
       return clearPriceRange(state);
+
+    case 'clearSection':
+      return {
+        ...state,
+        selectedCodesByKey: {
+          ...state.selectedCodesByKey,
+          [action.key]: [],
+        },
+      };
 
     case 'removeSelectedCode':
       return {
