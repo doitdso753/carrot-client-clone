@@ -6,6 +6,7 @@ import LinkFilterSection from '@/components/ui/search-filter/sections/link-filte
 import PriceFilterSection from '@/components/ui/search-filter/sections/price-filter-section.tsx';
 import RadioFilterSection from '@/components/ui/search-filter/sections/radio-filter-section.tsx';
 import RangeSliderFilterSection from '@/components/ui/search-filter/sections/range-slider-filter-section.tsx';
+import { getSelectedRange, serializeSelectedRange } from '@/lib/range-utils.ts';
 import { getSectionItems } from '@/lib/search-filter-summary-utils.ts';
 import { BUY_SELL_PRICE_OPTIONS } from '@/types/buy-sell-constants.ts';
 import type {
@@ -144,24 +145,17 @@ export default function SearchFilterRenderer({
       }
 
       const range = section.range;
-      const selectedRange = selectedFilterBySectionKey[section.key]?.codes;
-      const minimumValue = Number(
-        selectedRange?.[0] ?? range.minimum - range.step,
-      );
-      const maximumValue = Number(
-        selectedRange?.[1] ?? range.maximum + range.step,
+      const selectedRange = getSelectedRange(
+        selectedFilterBySectionKey[section.key]?.codes,
+        range,
       );
       const handleRangeChange = (
         nextMinimum: number,
         nextMaximum: number,
       ): void => {
-        const isEntireRange =
-          nextMinimum === range.minimum - range.step &&
-          nextMaximum === range.maximum + range.step;
-
         onSectionSelectionChange(
           section.key,
-          isEntireRange ? [] : [String(nextMinimum), String(nextMaximum)],
+          serializeSelectedRange(nextMinimum, nextMaximum, range),
         );
       };
 
@@ -169,9 +163,9 @@ export default function SearchFilterRenderer({
         <RangeSliderFilterSection
           isApplyButtonDisabled={variant === 'bottomSheet'}
           maximum={range.maximum}
-          maximumValue={maximumValue}
+          maximumValue={selectedRange.maximum}
           minimum={range.minimum}
-          minimumValue={minimumValue}
+          minimumValue={selectedRange.minimum}
           step={range.step}
           suffix={range.suffix}
           title={section.label}
