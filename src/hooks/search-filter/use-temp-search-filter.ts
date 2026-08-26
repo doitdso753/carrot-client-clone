@@ -6,6 +6,7 @@ import {
   INITIAL_SEARCH_FILTER_STATE,
   type SearchFilterChangeHandlers,
   type SearchFilterConfig,
+  type SearchFilterSectionKey,
   type SearchFilterState,
   type SelectedFilterBySectionKey,
 } from '@/types/search-filter';
@@ -22,7 +23,7 @@ type UseTempSearchFilterReturn = {
   hasSelectedFilter: boolean;
   selectedFilterBySectionKey: SelectedFilterBySectionKey;
   apply: () => void;
-  applyPriceRange: () => void;
+  applySection: (key: SearchFilterSectionKey) => void;
   open: () => void;
   reset: () => void;
 };
@@ -58,10 +59,15 @@ export default function useTempSearchFilter({
     dispatch({ type: 'reset' });
   }, [dispatch]);
 
-  // 임시 가격 범위 확정
-  const applyPriceRange = useCallback((): void => {
-    dispatch({ type: 'applyPriceRange' });
-  }, [dispatch]);
+  // 섹션별 임시 입력값 확정
+  const applySection = useCallback(
+    (key: SearchFilterSectionKey): void => {
+      if (key === 'price') {
+        dispatch({ type: 'applyPriceRange' });
+      }
+    },
+    [dispatch],
+  );
 
   // 임시 필터의 실제 상태 반영
   const apply = useCallback((): void => {
@@ -78,7 +84,7 @@ export default function useTempSearchFilter({
     hasSelectedFilter,
     selectedFilterBySectionKey,
     apply,
-    applyPriceRange,
+    applySection,
     open,
     reset,
   };

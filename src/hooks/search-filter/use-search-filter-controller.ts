@@ -255,13 +255,6 @@ export default function useSearchFilterController({
     }
   };
 
-  // 확인 전 임시 가격 범위 저장
-  const handleTempSectionApply = (key: SearchFilterSectionKey): void => {
-    if (key === 'price') {
-      temp.applyPriceRange();
-    }
-  };
-
   // 임시 필터의 실제 적용
   const handleTempApply = (): void => {
     temp.apply();
@@ -286,7 +279,7 @@ export default function useSearchFilterController({
           onApply: handleTempApply,
           onOpenPopup: temp.open,
           onReset: temp.reset,
-          onSectionApply: handleTempSectionApply,
+          onSectionApply: temp.applySection,
           onAsideSectionApply: handleSectionApply,
         });
 
