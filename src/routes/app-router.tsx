@@ -10,6 +10,7 @@ import CommunityDetailPage from '@/pages/community/community-detail-page.tsx';
 import LocalProfilePage from '@/pages/local-profile';
 import LocalProfileDetailPage from '@/pages/local-profile/local-profile-detail-page.tsx';
 import LocalProfileNewsDetailPage from '@/pages/local-profile/local-profile-news-detail-page.tsx';
+import PreparingServicePage from '@/pages/preparing-service-page.tsx';
 
 function AppRouter(): ReactNode {
   return (
@@ -21,6 +22,9 @@ function AppRouter(): ReactNode {
       <Route path="/cars/:itemId" element={<CarsDetailPage />} />
       <Route path="/community" element={<CommunityPage />} />
       <Route path="/community/:id" element={<CommunityDetailPage />} />
+      <Route path="/jobs/*" element={<PreparingServicePage />} />
+      <Route path="/realty/*" element={<PreparingServicePage />} />
+      <Route path="/cafe/*" element={<PreparingServicePage />} />
       <Route path="/local-profile" element={<LocalProfilePage />} />
       <Route
         path="/local-profile/:itemId"
