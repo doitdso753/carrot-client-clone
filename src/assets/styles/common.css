@@ -17,6 +17,23 @@
   white-space: nowrap;
 }
 
+.search-form-category {
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  padding-right: 1rem;
+  border-radius: 999rem 0 0 999rem;
+}
+
+.search-form-category:hover {
+  background-color: var(--color-element-transparent-pressed);
+}
+
+.search-form-divider {
+  height: 2.4rem;
+  margin-right: 1rem;
+}
+
 .form-select-icon {
   display: flex;
   flex-shrink: 0;

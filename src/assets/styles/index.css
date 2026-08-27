@@ -306,9 +306,16 @@
   margin-top: 4.8rem;
 }
 
-.hero-search-wrapper > form > span[aria-hidden='true'] {
+.hero-search-wrapper .search-form-category {
+  padding-right: 1rem;
+}
+
+.hero-search-wrapper > form > .search-form-category:hover {
+  background-color: transparent;
+}
+
+.hero-search-wrapper .search-form-divider {
   margin-right: 1.2rem;
-  margin-left: 1rem;
 }
 
 .dashboard-wrapper {
