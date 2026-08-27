@@ -129,7 +129,7 @@
 }
 
 .search-filter-chip[aria-pressed='false']:hover {
-  background-color: var(--color-palette-gray-100);
+  background-color: var(--color-element-transparent-pressed);
   cursor: pointer;
 }
 

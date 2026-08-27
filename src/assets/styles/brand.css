@@ -40,6 +40,8 @@
   --color-preview-button-disabled: #666666;
   --color-preview-button-hover: var(--color-palette-static-white);
 
+  --color-element-transparent-pressed: #00000007;
+
   --warmth-background-color: var(--color-warmth-l1);
   --warmth-color: var(--color-warmth-l1);
   --warmth-progress: var(--color-warmth-l1);

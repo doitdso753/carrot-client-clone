@@ -242,6 +242,10 @@
   color: var(--color-palette-gray-800);
 }
 
+.common-select-button:not(:disabled):hover {
+  background-color: var(--color-element-transparent-pressed);
+}
+
 .common-primary-button {
   position: relative;
   display: inline-flex;
@@ -294,7 +298,7 @@
 
 .common-item-trigger:hover,
 .common-item-trigger:focus-visible {
-  background-color: var(--color-palette-gray-100);
+  background-color: var(--color-element-transparent-pressed);
 }
 
 .current-location-button-content {
@@ -451,7 +455,7 @@
 }
 
 .common-checkbox-input:hover {
-  background-color: var(--color-palette-gray-100);
+  background-color: var(--color-element-transparent-pressed);
   cursor: pointer;
 }
 
@@ -503,7 +507,7 @@
 }
 
 .common-radio-option:hover .common-radio-input {
-  background-color: var(--color-palette-gray-100);
+  background-color: var(--color-element-transparent-pressed);
   cursor: pointer;
 }
 
