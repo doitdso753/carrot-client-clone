@@ -17,6 +17,12 @@ type SearchFilterAppliedRangeState = {
   appliedPriceRange: unknown | null;
 };
 
+function isExcludedOption(section: SearchFilterSection, code: string): boolean {
+  return (
+    (section.type === 'link' || section.type === 'radio') && code === 'all'
+  );
+}
+
 // section data를 summary 렌더링용 item 형태로 변환
 export function getSectionItems(
   section?: SearchFilterSection,
@@ -117,7 +123,7 @@ function getSelectedItemsBySection(
     .filter(
       (item) =>
         selectedCodes.includes(item.code) &&
-        !(section.type === 'link' && item.code === 'all'),
+        !isExcludedOption(section, item.code),
     )
     .map((item) => ({
       ...item,
