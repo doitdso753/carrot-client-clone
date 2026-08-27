@@ -35,6 +35,7 @@ export { KeyIcon } from './car-icons/key-icon.tsx';
 export { LogoIcon } from './logo-icon.tsx';
 export { LocationIcon } from './store-icons/location-icon.tsx';
 export { MenuIcon } from './common/menu-icon.tsx';
+export { MemberIcon } from './social-icons/member-icon.tsx';
 export { MapMarkerIcon } from './location-icons/map-marker-icon.tsx';
 export { MileageIcon } from './car-icons/mileage-icon.tsx';
 export { PersonIcon } from './car-icons/person-icon.tsx';
