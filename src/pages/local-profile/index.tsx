@@ -7,7 +7,7 @@ import LocalProfileContent from '@/pages/local-profile/local-profile-content.tsx
 import KakaoMap from '@/components/ui/map/kakao-map.tsx';
 import useMapBoundsFilter from '@/hooks/map/use-map-bounds-filter.ts';
 import useMapRegion from '@/hooks/map/use-map-region.ts';
-import { LOCAL_PROFILE_ITEMS } from '@/types/local-profile-constants.ts';
+import { LOCAL_PROFILE_ITEMS } from '@/types/local-profile';
 
 export default function LocalProfilePage(): ReactNode {
   const { appliedRegion, applyRegion, selectedRegion, updateRegion } =

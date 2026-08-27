@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { LocalProfileItem } from '@/types/types.ts';
+import type { LocalProfileItem } from '@/types/local-profile';
 
 type LocalProfileBenefitSectionProps = {
   benefitDescription: LocalProfileItem['benefitDescription'];

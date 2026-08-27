@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { VerifiedDocumentIcon } from '@/assets/icons';
 import CommonPopup from '@/components/ui/common-popup.tsx';
-import type { LocalProfileDocumentGroup } from '@/types/types.ts';
+import type { LocalProfileDocumentGroup } from '@/types/local-profile';
 
 type LocalProfileDocumentPopupProps = {
   documentGroups?: LocalProfileDocumentGroup[];

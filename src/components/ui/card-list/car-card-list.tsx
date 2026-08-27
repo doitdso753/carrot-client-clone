@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import CarCardItem from '@/components/ui/card-list/car-card-item.tsx';
 import ListEmptyState from '@/components/ui/list-empty-state.tsx';
-import type { CarListItem } from '@/types/types.ts';
+import type { CarListItem } from '@/types/cars';
 
 type CarCardListProps = {
   items: CarListItem[];

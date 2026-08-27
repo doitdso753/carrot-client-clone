@@ -1,4 +1,4 @@
-import type { BuySellItem } from '@/types/types.ts';
+import type { BuySellItem } from './buy-sell.ts';
 
 export const BUY_SELL_ITEM_STATUS = {
   SELLING: 'selling',

@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import type { CategoryItem } from '@/types/types.ts';
+import type { CategoryItem } from '@/types/category.ts';
 
 export type HeaderCategoryNavItemType = 'default' | 'external' | 'popover';
 

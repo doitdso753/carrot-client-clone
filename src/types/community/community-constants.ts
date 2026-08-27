@@ -1,5 +1,5 @@
 import { HotIcon } from '@/assets/icons';
-import type { CommunityComment, CommunityItem } from '@/types/types.ts';
+import type { CommunityComment, CommunityItem } from './community.ts';
 
 export const COMMUNITY_CATEGORIES = [
   { code: 'popular', label: '인기글', icon: HotIcon },

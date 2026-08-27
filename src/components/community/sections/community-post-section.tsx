@@ -4,7 +4,7 @@ import { BookmarkIcon, CommentTextIcon, ThumbUpIcon } from '@/assets/icons';
 import LocationMapCard from '@/components/ui/map/location-map-card.tsx';
 import UserProfileSummary from '@/components/ui/user-profile/user-profile-summary.tsx';
 import { getElapsedTimeText, parseTags } from '@/lib/utils.ts';
-import type { CommunityDetailData } from '@/types/types.ts';
+import type { CommunityDetailData } from '@/types/community';
 
 type CommunityPostSectionProps = {
   categoryCode?: string;

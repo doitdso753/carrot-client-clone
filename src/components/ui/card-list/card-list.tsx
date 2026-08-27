@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import ListEmptyState from '@/components/ui/list-empty-state.tsx';
 import CardItem from './card-item.tsx';
-import type { BuySellItem } from '@/types/types.ts';
+import type { BuySellItem } from '@/types/buy-sell';
 
 type CardListProps = {
   items: BuySellItem[];

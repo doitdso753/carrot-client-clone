@@ -5,7 +5,7 @@ import usePopup from '@/hooks/ui/use-popup.ts';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
 import LocalProfileNewsPopup from '@/components/local-profile/popups/local-profile-news-popup.tsx';
-import type { LocalProfileNews } from '@/types/types.ts';
+import type { LocalProfileNews } from '@/types/local-profile';
 
 type LocalProfileNewsSectionProps = {
   localProfileId: number;

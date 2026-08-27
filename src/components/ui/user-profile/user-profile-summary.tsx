@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import defaultProfileImage from '@/assets/images/default-profile.png';
 import WarmthBadge from '@/components/ui/user-profile/warmth-badge.tsx';
-import type { UserProfile } from '@/types/types.ts';
+import type { UserProfile } from '@/types/user-profile.ts';
 
 type UserProfileSummaryProps = {
   createdAt?: string;

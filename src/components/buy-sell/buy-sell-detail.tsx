@@ -7,12 +7,9 @@ import { formatThousandsBySuffix, getElapsedTimeText } from '@/lib/utils';
 import {
   BUY_SELL_ITEM_STATUS,
   BUY_SELL_ITEM_STATUS_LABEL,
-} from '@/types/buy-sell-constants';
-import type {
-  BuySellItem,
-  BuySellItemStatusCode,
-  UserProfile as UserProfileType,
-} from '@/types/types';
+} from '@/types/buy-sell';
+import type { BuySellItem, BuySellItemStatusCode } from '@/types/buy-sell';
+import type { UserProfile as UserProfileType } from '@/types/user-profile.ts';
 
 type BuySellDetailProps = {
   item: BuySellItem;

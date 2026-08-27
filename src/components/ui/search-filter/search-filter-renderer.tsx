@@ -8,7 +8,7 @@ import RadioFilterSection from '@/components/ui/search-filter/sections/radio-fil
 import RangeSliderFilterSection from '@/components/ui/search-filter/sections/range-slider-filter-section.tsx';
 import { getSelectedRange, serializeSelectedRange } from '@/lib/range-utils.ts';
 import { getSectionItems } from '@/lib/search-filter-summary-utils.ts';
-import { BUY_SELL_PRICE_OPTIONS } from '@/types/buy-sell-constants.ts';
+import { BUY_SELL_PRICE_OPTIONS } from '@/types/buy-sell';
 import type {
   SearchFilterSection,
   SearchFilterViewModel,

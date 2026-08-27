@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import CommunityBoardItem from '@/components/ui/board-list/community-board-item.tsx';
-import type { CommunityItem } from '@/types/types.ts';
+import type { CommunityItem } from '@/types/community';
 
 type CommunityListItemProps = {
   item: CommunityItem;

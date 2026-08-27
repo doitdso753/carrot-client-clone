@@ -12,7 +12,7 @@ import {
   LocalProfileReviewSection,
   LocalProfileStoreInfoSection,
 } from '@/components/local-profile/sections';
-import type { LocalProfileItem } from '@/types/types.ts';
+import type { LocalProfileItem } from '@/types/local-profile';
 
 type LocalProfileDetailProps = {
   item: LocalProfileItem;

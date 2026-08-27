@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import CommunityListItem from '@/components/community/community-list-item.tsx';
 import ListEmptyState from '@/components/ui/list-empty-state.tsx';
-import type { CommunityItem } from '@/types/types.ts';
+import type { CommunityItem } from '@/types/community';
 
 type CommunityListProps = {
   isRanked?: boolean;

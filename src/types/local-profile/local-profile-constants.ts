@@ -4,7 +4,7 @@ import type {
   LocalProfileItem,
   LocalProfileOptionItem,
   LocalProfileStoreInfo,
-} from '@/types/types.ts';
+} from './local-profile.ts';
 
 export const LOCAL_PROFILE_CATEGORIES: LocalProfileCategoryItem[] = [
   { code: 'food', label: '음식' },
@@ -108,7 +108,8 @@ const LOCAL_PROFILE_PRICES = {
       id: 3,
       title: '누전 수리',
       price: '80,000원~',
-      description: '전문 장비로 전기적 모든 문제를 해결 해 드립니다 이상 원인 진단수리',
+      description:
+        '전문 장비로 전기적 모든 문제를 해결 해 드립니다 이상 원인 진단수리',
       isRepresentative: true,
     },
     {

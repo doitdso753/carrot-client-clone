@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { ChevronDownIcon } from '@/assets/icons';
 import useCollapse from '@/hooks/ui/use-collapse.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
-import type { LocalProfilePrice } from '@/types/types.ts';
+import type { LocalProfilePrice } from '@/types/local-profile';
 
 type LocalProfilePriceSectionProps = {
   prices?: LocalProfilePrice[];

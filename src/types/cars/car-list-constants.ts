@@ -1,4 +1,5 @@
-import type { CarListItem, UserProfile } from '@/types/types.ts';
+import type { CarListItem } from './cars.ts';
+import type { UserProfile } from '@/types/user-profile.ts';
 
 export const CAR_LIST_ITEM_STATUS_LABEL = {
   reserved: '예약중',

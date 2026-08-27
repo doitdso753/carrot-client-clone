@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { CommentTextFillIcon, ThumbUpFillIcon } from '@/assets/icons';
 import { getElapsedTimeText } from '@/lib/utils.ts';
-import type { CommunityItem } from '@/types/types.ts';
+import type { CommunityItem } from '@/types/community';
 
 type CommunityBoardItemVariant = 'default' | 'dashboard';
 

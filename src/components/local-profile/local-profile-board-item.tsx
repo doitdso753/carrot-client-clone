@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { CouponIcon, StarIcon } from '@/assets/icons';
 import SimpleImageGridSlider from '@/components/ui/image/simple-image-grid-slider.tsx';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
-import type { LocalProfileItem } from '@/types/types.ts';
+import type { LocalProfileItem } from '@/types/local-profile';
 
 type LocalProfileBoardItemProps = {
   item: LocalProfileItem;

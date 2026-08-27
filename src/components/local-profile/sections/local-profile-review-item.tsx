@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { StarIcon, ThumbUpIcon } from '@/assets/icons';
 import ImagePreview from '@/components/ui/image/image-preview.tsx';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
-import type { LocalProfileReview } from '@/types/types.ts';
+import type { LocalProfileReview } from '@/types/local-profile';
 
 type LocalProfileReviewItemProps = {
   hasReply?: boolean;

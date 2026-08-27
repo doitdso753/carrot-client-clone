@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { formatThousandsBySuffix, getElapsedTimeText } from '@/lib/utils.ts';
-import { BUY_SELL_ITEM_STATUS_LABEL } from '@/types/buy-sell-constants.ts';
-import type { BuySellItem, BuySellItemStatusCode } from '@/types/types.ts';
+import { BUY_SELL_ITEM_STATUS_LABEL } from '@/types/buy-sell';
+import type { BuySellItem, BuySellItemStatusCode } from '@/types/buy-sell';
 
 type CardItemProps = {
   item: BuySellItem;

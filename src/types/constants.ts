@@ -1,4 +1,4 @@
-import type { CategoryItem } from '@/types/types.ts';
+import type { CategoryItem } from '@/types/category.ts';
 
 export const HERO_SEARCH_KEYWORDS = [
   '맛집',

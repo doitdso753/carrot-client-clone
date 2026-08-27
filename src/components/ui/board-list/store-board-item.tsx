@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { StarIcon } from '@/assets/icons';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
-import type { LocalProfileItem } from '@/types/types.ts';
+import type { LocalProfileItem } from '@/types/local-profile';
 
 type StoreBoardItemProps = {
   item: LocalProfileItem;

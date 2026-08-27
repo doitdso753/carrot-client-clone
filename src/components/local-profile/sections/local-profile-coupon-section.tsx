@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { ChevronRightIcon, DownloadIcon } from '@/assets/icons';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
-import type { LocalProfileCoupon } from '@/types/types.ts';
+import type { LocalProfileCoupon } from '@/types/local-profile';
 
 type LocalProfileCouponSectionProps = {
   coupons?: LocalProfileCoupon[];

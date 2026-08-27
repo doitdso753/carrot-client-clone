@@ -5,7 +5,7 @@ import SearchFilter from '@/components/ui/search-filter/search-filter.tsx';
 import ServiceListTitle from '@/components/ui/service-list-title.tsx';
 import useRegion from '@/hooks/location/use-region.ts';
 import { includesSearchKeyword } from '@/lib/search-utils.ts';
-import type { LocalProfileItem } from '@/types/types.ts';
+import type { LocalProfileItem } from '@/types/local-profile';
 
 type LocalProfileContentProps = {
   items: LocalProfileItem[];

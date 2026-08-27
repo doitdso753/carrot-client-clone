@@ -13,8 +13,8 @@ import DetailBreadcrumb from '@/components/ui/navigation/detail-breadcrumb.tsx';
 import ImageSlider from '@/components/ui/image/image-slider.tsx';
 import UserProfile from '@/components/ui/user-profile/user-profile.tsx';
 import { getElapsedTimeText } from '@/lib/utils';
-import { CAR_SELLER } from '@/types/car-list-constants';
-import type { CarListItem } from '@/types/types';
+import { CAR_SELLER } from '@/types/cars';
+import type { CarListItem } from '@/types/cars';
 
 type CarDetailProps = {
   item: CarListItem;

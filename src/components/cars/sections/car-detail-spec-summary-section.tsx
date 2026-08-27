@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { CalendarIcon, MileageIcon, WonSignIcon } from '@/assets/icons';
-import type { CarListItem } from '@/types/types';
+import type { CarListItem } from '@/types/cars';
 
 type CarDetailSpecSummarySectionProps = {
   item: CarListItem;

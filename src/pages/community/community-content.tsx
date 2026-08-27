@@ -9,7 +9,7 @@ import {
   COMMUNITY_CATEGORIES,
   COMMUNITY_ITEMS,
   POPULAR_COMMUNITY_ITEMS,
-} from '@/types/community-constants.ts';
+} from '@/types/community';
 import type { SearchFilterState } from '@/types/search-filter';
 
 export default function CommunityContent(): ReactNode {

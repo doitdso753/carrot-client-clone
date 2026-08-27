@@ -16,7 +16,7 @@ import useCollapse from '@/hooks/ui/use-collapse.ts';
 import useToast from '@/hooks/ui/use-toast.ts';
 import { copyTextToClipboard, getFullAddress } from '@/lib/utils.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
-import type { LocalProfileItem } from '@/types/types.ts';
+import type { LocalProfileItem } from '@/types/local-profile';
 
 type LocalProfileStoreInfoSectionProps = {
   item: LocalProfileItem;

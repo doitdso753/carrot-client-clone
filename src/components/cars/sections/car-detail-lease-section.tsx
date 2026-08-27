@@ -4,7 +4,7 @@ import CarDetailInfoValue from '@/components/cars/car-detail-info-value.tsx';
 import CustomSelect, {
   type CustomSelectOption,
 } from '@/components/ui/form/custom-select.tsx';
-import type { CarDetailInfoRow, CarLeaseInfo } from '@/types/types';
+import type { CarDetailInfoRow, CarLeaseInfo } from '@/types/cars';
 
 type CarDetailLeaseSectionProps = {
   leaseInfo: CarLeaseInfo;

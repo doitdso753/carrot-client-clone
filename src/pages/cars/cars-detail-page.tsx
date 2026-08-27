@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router';
 import CarDetail from '@/components/cars/car-detail';
 import HeaderWithSearch from '@/layouts/header-with-search/header-with-search';
 import RootLayout from '@/layouts/root-layout';
-import { CAR_LIST_ITEMS } from '@/types/car-list-constants';
+import { CAR_LIST_ITEMS } from '@/types/cars';
 
 export default function CarsDetailPage(): ReactNode {
   const { itemId } = useParams();

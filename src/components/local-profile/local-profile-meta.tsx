@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { StarIcon } from '@/assets/icons';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
-import type { LocalProfileItem } from '@/types/types.ts';
+import type { LocalProfileItem } from '@/types/local-profile';
 
 type LocalProfileMetaProps = Pick<
   LocalProfileItem,

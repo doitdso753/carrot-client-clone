@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import { CommentDotsIcon, HeartIcon } from '@/assets/icons/index.ts';
 import { getElapsedTimeText } from '@/lib/utils.ts';
-import { CAR_LIST_ITEM_STATUS_LABEL } from '@/types/car-list-constants.ts';
-import type { CarListItem } from '@/types/types.ts';
+import { CAR_LIST_ITEM_STATUS_LABEL } from '@/types/cars';
+import type { CarListItem } from '@/types/cars';
 
 type CarCardItemProps = {
   item: CarListItem;

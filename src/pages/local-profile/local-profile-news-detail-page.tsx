@@ -6,7 +6,7 @@ import ImageSlider from '@/components/ui/image/image-slider.tsx';
 import HeaderWithSearch from '@/layouts/header-with-search/header-with-search.tsx';
 import RootLayout from '@/layouts/root-layout.tsx';
 import { formatThousandsBySuffix, getElapsedTimeText } from '@/lib/utils.ts';
-import { LOCAL_PROFILE_ITEMS } from '@/types/local-profile-constants.ts';
+import { LOCAL_PROFILE_ITEMS } from '@/types/local-profile';
 
 type LocalProfileCommentSortType = 'registered' | 'latest';
 

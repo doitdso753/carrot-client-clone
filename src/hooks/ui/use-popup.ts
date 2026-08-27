@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import type { UsePopupReturn } from '@/types/types';
+import type { UsePopupReturn } from '@/types/ui.ts';
 
 export default function usePopup(initialIsOpen = false): UsePopupReturn {
   // 팝업이 열려 있는지 한 곳에서 관리합니다.

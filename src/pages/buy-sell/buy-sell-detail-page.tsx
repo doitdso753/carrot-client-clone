@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router';
 import BuySellDetail from '@/components/buy-sell/buy-sell-detail';
 import HeaderWithSearch from '@/layouts/header-with-search/header-with-search';
 import RootLayout from '@/layouts/root-layout';
-import { BUY_SELL_ITEMS } from '@/types/buy-sell-constants';
+import { BUY_SELL_ITEMS } from '@/types/buy-sell';
 
 export default function BuySellDetailPage(): ReactNode {
   const { itemId } = useParams();

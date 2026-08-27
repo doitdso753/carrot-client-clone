@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { CarListItem } from '@/types/types';
+import type { CarListItem } from '@/types/cars';
 
 type CarDetailDescriptionSectionProps = {
   item: CarListItem;

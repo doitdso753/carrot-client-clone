@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { StarIcon } from '@/assets/icons';
 import LocalProfileReviewItem from '@/components/local-profile/sections/local-profile-review-item.tsx';
 import CommonPopup from '@/components/ui/common-popup.tsx';
-import type { LocalProfileReview } from '@/types/types.ts';
+import type { LocalProfileReview } from '@/types/local-profile';
 
 type LocalProfileReviewPopupProps = {
   isOpen: boolean;

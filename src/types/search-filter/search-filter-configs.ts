@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import { BUY_SELL_FILTER_CATEGORIES } from '@/types/buy-sell-constants.ts';
+import { BUY_SELL_FILTER_CATEGORIES } from '@/types/buy-sell';
 import {
   CAR_BRANDS,
   CAR_BRAND_ICONS,
@@ -7,12 +7,12 @@ import {
   CAR_SALE_TYPES,
   CAR_TRANSMISSIONS,
   CAR_TYPES,
-} from '@/types/car-filter-constants.ts';
+} from '@/types/cars';
 import {
   LOCAL_PROFILE_CATEGORIES,
   LOCAL_PROFILE_OPTIONS,
-} from '@/types/local-profile-constants.ts';
-import { COMMUNITY_CATEGORIES } from '@/types/community-constants.ts';
+} from '@/types/local-profile';
+import { COMMUNITY_CATEGORIES } from '@/types/community';
 
 export const SEARCH_FILTER_AVAILABLE_ONLY_CODE = 'availableOnly';
 const CURRENT_YEAR = new Date().getFullYear();

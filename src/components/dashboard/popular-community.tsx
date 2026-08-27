@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { HotIcon } from '@/assets/icons';
 import CommunityBoardItem from '@/components/ui/board-list/community-board-item.tsx';
-import { POPULAR_COMMUNITY_ITEMS } from '@/types/community-constants.ts';
+import { POPULAR_COMMUNITY_ITEMS } from '@/types/community';
 
 export default function PopularCommunity(): ReactNode {
   return (

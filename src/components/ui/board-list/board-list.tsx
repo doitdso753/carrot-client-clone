@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import StoreBoardItem from '@/components/ui/board-list/store-board-item.tsx';
 import ListEmptyState from '@/components/ui/list-empty-state.tsx';
-import type { LocalProfileItem } from '@/types/types.ts';
+import type { LocalProfileItem } from '@/types/local-profile';
 
 type BoardListProps = {
   items: LocalProfileItem[];

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import CommonPopup from '@/components/ui/common-popup.tsx';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
-import type { LocalProfileNews } from '@/types/types.ts';
+import type { LocalProfileNews } from '@/types/local-profile';
 
 type LocalProfileNewsPopupProps = {
   isOpen: boolean;

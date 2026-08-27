@@ -6,8 +6,8 @@ import RootLayout from '@/layouts/root-layout.tsx';
 import {
   COMMUNITY_ITEMS,
   POPULAR_COMMUNITY_ITEMS,
-} from '@/types/community-constants.ts';
-import type { CommunityDetailData } from '@/types/types.ts';
+} from '@/types/community';
+import type { CommunityDetailData } from '@/types/community';
 
 export default function CommunityDetailPage(): ReactNode {
   const { id } = useParams();

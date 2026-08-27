@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router';
 import LocalProfileDetail from '@/components/local-profile/local-profile-detail.tsx';
 import HeaderWithSearch from '@/layouts/header-with-search/header-with-search.tsx';
 import RootLayout from '@/layouts/root-layout.tsx';
-import { LOCAL_PROFILE_ITEMS } from '@/types/local-profile-constants.ts';
+import { LOCAL_PROFILE_ITEMS } from '@/types/local-profile';
 
 export default function LocalProfileDetailPage(): ReactNode {
   const { itemId } = useParams();

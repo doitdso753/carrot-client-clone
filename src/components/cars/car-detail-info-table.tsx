@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { ChevronRightThinIcon } from '@/assets/icons';
-import type { CarDetailInfoRow } from '@/types/types.ts';
+import type { CarDetailInfoRow } from '@/types/cars';
 
 type CarDetailInfoTableProps = {
   title: string;

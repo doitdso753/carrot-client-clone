@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { KeyIcon, PersonIcon } from '@/assets/icons';
-import type { CarDetailOption } from '@/types/types';
+import type { CarDetailOption } from '@/types/cars';
 
 type CarDetailOptionsSectionProps = {
   options: CarDetailOption[];

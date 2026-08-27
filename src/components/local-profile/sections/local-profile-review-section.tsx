@@ -5,7 +5,7 @@ import usePopup from '@/hooks/ui/use-popup.ts';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import LocalProfileDetailSection from './local-profile-detail-section.tsx';
 import LocalProfileReviewItem from './local-profile-review-item.tsx';
-import type { LocalProfileReview } from '@/types/types.ts';
+import type { LocalProfileReview } from '@/types/local-profile';
 
 type LocalProfileReviewSectionProps = {
   reviewCount?: number;

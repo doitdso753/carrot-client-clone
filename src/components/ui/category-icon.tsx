@@ -9,7 +9,7 @@ import {
   ShoppingBagIcon,
   StoreIcon,
 } from '@/assets/icons';
-import type { CategoryItem } from '@/types/types.ts';
+import type { CategoryItem } from '@/types/category.ts';
 
 type CategoryIconProps = {
   iconName: CategoryItem['iconName'];

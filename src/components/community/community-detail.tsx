@@ -10,9 +10,9 @@ import SearchFilterSidebar from '@/components/ui/search-filter/search-filter-sid
 import {
   COMMUNITY_CATEGORIES,
   COMMUNITY_COMMENTS,
-} from '@/types/community-constants.ts';
+} from '@/types/community';
 import type { SearchFilterSectionKey } from '@/types/search-filter';
-import type { CommunityDetailData } from '@/types/types.ts';
+import type { CommunityDetailData } from '@/types/community';
 
 type CommunityDetailProps = {
   item: CommunityDetailData;

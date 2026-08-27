@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import CarDetailInfoTable from '@/components/cars/car-detail-info-table.tsx';
-import type { CarDetailInfoRow, CarInsuranceInfo } from '@/types/types';
+import type { CarDetailInfoRow, CarInsuranceInfo } from '@/types/cars';
 
 type CarDetailInsuranceSectionProps = {
   insuranceInfo: CarInsuranceInfo;
