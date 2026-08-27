@@ -133,8 +133,8 @@
   cursor: pointer;
 }
 
-.search-filter-option-list.is-single .search-filter-chip[aria-pressed='true'] {
-  cursor: default;
+.search-filter-chip[aria-pressed='true']:hover {
+  background-color: var(--color-palette-gray-800);
 }
 
 .search-filter-category-list {
@@ -279,6 +279,10 @@
 
 .search-filter-summary::-webkit-scrollbar {
   display: none;
+}
+
+.search-filter-summary > .search-filter-chip:hover {
+  background-color: var(--color-palette-gray-800);
 }
 
 .search-filter-divider {
@@ -451,7 +455,9 @@
 
 .search-filter-toolbar-item-trigger {
   max-width: 100%;
-  box-shadow: 0 0 0 1px #0000000d, var(--shadow-s1);
+  box-shadow:
+    0 0 0 1px #0000000d,
+    var(--shadow-s1);
 }
 
 .search-filter-toolbar-item-trigger.is-selected {

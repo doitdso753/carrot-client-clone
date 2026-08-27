@@ -263,6 +263,10 @@
   opacity: 0.6;
 }
 
+.common-primary-button:not(:disabled):hover {
+  background-color: var(--color-palette-gray-800);
+}
+
 .common-item-trigger {
   display: inline-flex;
   height: 4rem;
@@ -452,7 +456,11 @@
 }
 
 .common-checkbox-input:checked {
-  border-color: var(--color-palette-gray-800);
+  border-color: var(--color-palette-gray-900);
+  background-color: var(--color-palette-gray-900);
+}
+
+.common-checkbox-input:checked:hover {
   background-color: var(--color-palette-gray-800);
 }
 
@@ -501,6 +509,10 @@
 
 .common-radio-input:checked {
   border: 0.6rem solid var(--color-palette-gray-900);
+}
+
+.common-radio-option:hover .common-radio-input:checked {
+  border-color: var(--color-palette-gray-800);
 }
 
 .common-popup-backdrop {
