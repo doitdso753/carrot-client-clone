@@ -13,6 +13,7 @@ import {
   LOCAL_PROFILE_OPTIONS,
 } from '@/types/local-profile';
 import { COMMUNITY_CATEGORIES } from '@/types/community';
+import { GROUP_CATEGORIES } from '@/types/group';
 
 export const SEARCH_FILTER_AVAILABLE_ONLY_CODE = 'availableOnly';
 const CURRENT_YEAR = new Date().getFullYear();
@@ -28,7 +29,7 @@ export const WEEKDAY_ITEMS = [
 ] as const;
 
 export type SearchFilterVariant =
-  'buySell' | 'cars' | 'community' | 'localProfile';
+  'buySell' | 'cars' | 'community' | 'group' | 'localProfile';
 export type SearchFilterViewType = 'aside' | 'toolbar';
 
 export type SearchFilterItem = {
@@ -130,7 +131,9 @@ type PriceFilterSection = SearchFilterSectionBase & {
 };
 
 type RadioFilterSection = SearchFilterOptionSectionBase & {
+  bottomSheetType?: 'chip';
   icons?: Readonly<Record<string, string>>;
+  isMultiple?: false;
   isScrollable?: boolean;
   type: 'radio';
 };
@@ -285,6 +288,23 @@ export const SEARCH_FILTER_CONFIGS: Record<
         key: 'category',
         label: '카테고리',
         type: 'link',
+      },
+    ],
+  },
+  group: {
+    filterStorageKey: 'search-filter:group',
+    popupTitle: '모임 검색 필터',
+    viewType: 'aside',
+    sections: [
+      { key: 'location', label: '위치', type: 'location' },
+      {
+        bottomSheetType: 'chip',
+        data: GROUP_CATEGORIES,
+        defaultCode: 'all',
+        isMultiple: false,
+        key: 'category',
+        label: '카테고리',
+        type: 'radio',
       },
     ],
   },
