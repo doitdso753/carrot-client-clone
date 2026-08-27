@@ -412,6 +412,10 @@
   opacity: 0.4;
 }
 
+.header-category-more-button:not(.is-disabled):hover {
+  background-color: var(--color-element-transparent-pressed);
+}
+
 .header-category-nav-item-trigger {
   max-width: 100%;
   border: 0.1rem solid #00000010;
