@@ -1,26 +1,21 @@
 import type { ReactNode } from 'react';
-import { useSearchParams } from 'react-router';
 import CarCardList from '@/components/ui/card-list/car-card-list.tsx';
 import SearchFilter from '@/components/ui/search-filter/search-filter.tsx';
 import ServiceListTitle from '@/components/ui/service-list-title.tsx';
-import useRegion from '@/hooks/location/use-region.ts';
-import { includesRegion, includesSearchKeyword } from '@/lib/search-utils.ts';
+import useListFilter from '@/hooks/search-filter/use-list-filter.ts';
 import { CAR_LIST_ITEMS } from '@/types/cars';
 
 export default function CarsContent(): ReactNode {
-  const { region } = useRegion();
-  const [searchParams] = useSearchParams();
-  const searchKeyword = searchParams.get('search')?.trim() ?? '';
-  const filteredItems = CAR_LIST_ITEMS.filter(
-    (item) =>
-      includesRegion(region, [item.location, item.address]) &&
-      includesSearchKeyword(searchKeyword, [
-        item.title,
-        item.description,
-        item.location,
-        item.address,
-      ]),
-  );
+  const { filteredItems, region, searchKeyword } = useListFilter({
+    getRegionValues: (item) => [item.location, item.address],
+    getSearchValues: (item) => [
+      item.title,
+      item.description,
+      item.location,
+      item.address,
+    ],
+    items: CAR_LIST_ITEMS,
+  });
 
   return (
     <main className="service-list-page min-h-screen pb-20">

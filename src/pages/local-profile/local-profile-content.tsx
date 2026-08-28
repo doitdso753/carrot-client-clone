@@ -1,10 +1,8 @@
 import type { ReactNode } from 'react';
-import { useSearchParams } from 'react-router';
 import LocalProfileBoardList from '@/components/local-profile/local-profile-board-list.tsx';
 import SearchFilter from '@/components/ui/search-filter/search-filter.tsx';
 import ServiceListTitle from '@/components/ui/service-list-title.tsx';
-import useRegion from '@/hooks/location/use-region.ts';
-import { includesRegion, includesSearchKeyword } from '@/lib/search-utils.ts';
+import useListFilter from '@/hooks/search-filter/use-list-filter.ts';
 import type { LocalProfileItem } from '@/types/local-profile';
 
 type LocalProfileContentProps = {
@@ -14,20 +12,17 @@ type LocalProfileContentProps = {
 export default function LocalProfileContent({
   items,
 }: LocalProfileContentProps): ReactNode {
-  const { region } = useRegion();
-  const [searchParams] = useSearchParams();
-  const searchKeyword = searchParams.get('search')?.trim() ?? '';
-  const filteredItems = items.filter(
-    (item) =>
-      includesRegion(region, [item.location, item.regionText]) &&
-      includesSearchKeyword(searchKeyword, [
-        item.name,
-        item.category,
-        item.description,
-        item.location,
-        item.regionText,
-      ]),
-  );
+  const { filteredItems, region, searchKeyword } = useListFilter({
+    getRegionValues: (item) => [item.location, item.regionText],
+    getSearchValues: (item) => [
+      item.name,
+      item.category,
+      item.description,
+      item.location,
+      item.regionText,
+    ],
+    items,
+  });
 
   return (
     <main className="service-list-page min-h-screen pb-20">

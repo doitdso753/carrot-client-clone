@@ -1,34 +1,33 @@
 import { useCallback, useState, type ReactNode } from 'react';
-import { useSearchParams } from 'react-router';
 import GroupList from '@/components/group/group-list.tsx';
 import SearchFilter from '@/components/ui/search-filter/search-filter.tsx';
 import ServiceListTitle from '@/components/ui/service-list-title.tsx';
-import useRegion from '@/hooks/location/use-region.ts';
-import { includesRegion, includesSearchKeyword } from '@/lib/search-utils.ts';
+import useListFilter from '@/hooks/search-filter/use-list-filter.ts';
 import { GROUP_ITEMS } from '@/types/group';
 import type { SearchFilterState } from '@/types/search-filter';
 
 export default function GroupContent(): ReactNode {
-  const { region } = useRegion();
-  const [searchParams] = useSearchParams();
   const [selectedCategoryCode, setSelectedCategoryCode] = useState('all');
-  const searchKeyword = searchParams.get('search')?.trim() ?? '';
   const categoryItems =
     selectedCategoryCode === 'all'
       ? GROUP_ITEMS
       : GROUP_ITEMS.filter(
           ({ category }) => category.categoryCode === selectedCategoryCode,
         );
-  const items = categoryItems.filter(
-    (item) =>
-      includesRegion(region, [item.location]) &&
-      includesSearchKeyword(searchKeyword, [
-        item.title,
-        item.description,
-        item.category.categoryName,
-        item.location,
-      ]),
-  );
+  const {
+    filteredItems: items,
+    region,
+    searchKeyword,
+  } = useListFilter({
+    getRegionValues: (item) => [item.location],
+    getSearchValues: (item) => [
+      item.title,
+      item.description,
+      item.category.categoryName,
+      item.location,
+    ],
+    items: categoryItems,
+  });
 
   const handleFilterStateChange = useCallback(
     (filterState: SearchFilterState): void => {

@@ -3,8 +3,7 @@ import { useSearchParams } from 'react-router';
 import CommunityList from '@/components/community/community-list.tsx';
 import SearchFilter from '@/components/ui/search-filter/search-filter.tsx';
 import ServiceListTitle from '@/components/ui/service-list-title.tsx';
-import useRegion from '@/hooks/location/use-region.ts';
-import { includesRegion, includesSearchKeyword } from '@/lib/search-utils.ts';
+import useListFilter from '@/hooks/search-filter/use-list-filter.ts';
 import {
   COMMUNITY_CATEGORIES,
   COMMUNITY_ITEMS,
@@ -13,12 +12,10 @@ import {
 import type { SearchFilterState } from '@/types/search-filter';
 
 export default function CommunityContent(): ReactNode {
-  const { region } = useRegion();
   const [searchParams, setSearchParams] = useSearchParams();
   const [initialCategoryCode] = useState(() => searchParams.get('category'));
   const [selectedCategoryCode, setSelectedCategoryCode] =
     useState(initialCategoryCode);
-  const searchKeyword = searchParams.get('search')?.trim() ?? '';
   const selectedCategory = COMMUNITY_CATEGORIES.find(
     ({ code }) => code === selectedCategoryCode,
   );
@@ -35,17 +32,21 @@ export default function CommunityContent(): ReactNode {
       ({ category }) => category === selectedCategory.label,
     );
   })();
-  const items = categoryItems.filter(
-    (item) =>
-      includesRegion(region, [item.location]) &&
-      includesSearchKeyword(searchKeyword, [
-        item.title,
-        item.content,
-        item.category,
-        item.tags,
-        item.location,
-      ]),
-  );
+  const {
+    filteredItems: items,
+    region,
+    searchKeyword,
+  } = useListFilter({
+    getRegionValues: (item) => [item.location],
+    getSearchValues: (item) => [
+      item.title,
+      item.content,
+      item.category,
+      item.tags,
+      item.location,
+    ],
+    items: categoryItems,
+  });
 
   useEffect(() => {
     if (!searchParams.has('category')) {
