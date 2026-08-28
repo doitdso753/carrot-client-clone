@@ -3,6 +3,7 @@ import {
   useState,
   type ChangeEvent,
   type FocusEvent,
+  type SubmitEvent,
   type KeyboardEvent,
   type ReactNode,
 } from 'react';
@@ -112,9 +113,33 @@ export default function SearchForm({
     setSearchInputValue(event.target.value);
   };
 
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>): void => {
+    if (variant !== 'hero' || !selectedOption) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const searchKeyword = searchInputValue.trim();
+    const searchParams = new URLSearchParams();
+
+    if (searchKeyword) {
+      searchParams.set('search', searchKeyword);
+    }
+
+    const queryString = searchParams.toString();
+
+    navigate(
+      queryString
+        ? `${selectedOption.routing}?${queryString}`
+        : selectedOption.routing,
+    );
+  };
+
   return (
     <form
       className={`search-form search-form--${variant} mt-14 flex w-full items-center rounded-full border border-(--color-palette-gray-400) bg-(--color-palette-gray-00)`}
+      onSubmit={handleSubmit}
     >
       <div className="search-form-category">
         <div
