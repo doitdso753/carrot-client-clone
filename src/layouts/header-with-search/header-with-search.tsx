@@ -6,8 +6,8 @@ import SearchForm from '@/components/ui/form/search-form.tsx';
 import KeywordLinkList from '@/components/ui/navigation/keyword-link-list.tsx';
 import useElementHeightCssVariable from '@/hooks/use-element-height-css-variable.ts';
 import useMobileHeaderBehavior from '@/hooks/use-mobile-header-behavior.ts';
-import { CATEGORIES, RECOMMEND_KEYWORDS } from '@/types/constants.ts';
-import type { CategoryCode } from '@/types/category.ts';
+import { CATEGORIES, type CategoryCode } from '@/types/category';
+import { RECOMMEND_KEYWORDS } from '@/types/header';
 import HeaderCategoryNav from '@/layouts/header-with-search/nav/header-category-nav.tsx';
 
 const SEARCH_OPTIONS = CATEGORIES.map((category) => ({

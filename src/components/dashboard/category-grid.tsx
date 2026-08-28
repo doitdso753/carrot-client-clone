@@ -5,7 +5,7 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import type { CategoryItem } from '@/types/category.ts';
+import type { CategoryItem } from '@/types/category';
 import CategoryIcon from '@/components/ui/category-icon.tsx';
 
 type CategoryGridProps = {

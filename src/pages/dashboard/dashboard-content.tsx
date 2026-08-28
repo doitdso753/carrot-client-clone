@@ -3,11 +3,8 @@ import CategoryGrid from '@/components/dashboard/category-grid.tsx';
 import HeroSearch from '@/components/dashboard/hero-search.tsx';
 import PopularCommunity from '@/components/dashboard/popular-community.tsx';
 import PromotionBanner from '@/components/dashboard/promotion-banner.tsx';
-import {
-  CATEGORIES,
-  HERO_SEARCH_KEYWORDS,
-  POPULAR_KEYWORDS,
-} from '@/types/constants.ts';
+import { CATEGORIES } from '@/types/category';
+import { HERO_SEARCH_KEYWORDS, POPULAR_KEYWORDS } from '@/types/dashboard';
 
 export default function DashboardContent(): ReactNode {
   return (

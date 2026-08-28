@@ -1,6 +1,5 @@
-import { CATEGORIES } from '@/types/constants.ts';
+import { CATEGORIES, type CategoryCode } from '@/types/category';
 import type { HeaderCategoryNavItemData } from './header-category.ts';
-import type { CategoryCode } from '@/types/category.ts';
 
 const HEADER_CATEGORY_CONFIGS: Partial<
   Record<CategoryCode, Pick<HeaderCategoryNavItemData, 'type' | 'options'>>
