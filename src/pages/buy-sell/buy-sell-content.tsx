@@ -4,20 +4,22 @@ import CardList from '@/components/ui/card-list/card-list';
 import SearchFilter from '@/components/ui/search-filter/search-filter.tsx';
 import ServiceListTitle from '@/components/ui/service-list-title.tsx';
 import useRegion from '@/hooks/location/use-region.ts';
-import { includesSearchKeyword } from '@/lib/search-utils.ts';
+import { includesRegion, includesSearchKeyword } from '@/lib/search-utils.ts';
 import { BUY_SELL_ITEMS } from '@/types/buy-sell';
 
 export default function BuySellContent(): ReactNode {
   const { region } = useRegion();
   const [searchParams] = useSearchParams();
   const searchKeyword = searchParams.get('search')?.trim() ?? '';
-  const filteredItems = BUY_SELL_ITEMS.filter((item) =>
-    includesSearchKeyword(searchKeyword, [
-      item.title,
-      item.description,
-      item.categoryText,
-      item.location,
-    ]),
+  const filteredItems = BUY_SELL_ITEMS.filter(
+    (item) =>
+      includesRegion(region, [item.location]) &&
+      includesSearchKeyword(searchKeyword, [
+        item.title,
+        item.description,
+        item.categoryText,
+        item.location,
+      ]),
   );
 
   return (

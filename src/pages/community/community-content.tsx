@@ -4,7 +4,7 @@ import CommunityList from '@/components/community/community-list.tsx';
 import SearchFilter from '@/components/ui/search-filter/search-filter.tsx';
 import ServiceListTitle from '@/components/ui/service-list-title.tsx';
 import useRegion from '@/hooks/location/use-region.ts';
-import { includesSearchKeyword } from '@/lib/search-utils.ts';
+import { includesRegion, includesSearchKeyword } from '@/lib/search-utils.ts';
 import {
   COMMUNITY_CATEGORIES,
   COMMUNITY_ITEMS,
@@ -35,14 +35,16 @@ export default function CommunityContent(): ReactNode {
       ({ category }) => category === selectedCategory.label,
     );
   })();
-  const items = categoryItems.filter((item) =>
-    includesSearchKeyword(searchKeyword, [
-      item.title,
-      item.content,
-      item.category,
-      item.tags,
-      item.location,
-    ]),
+  const items = categoryItems.filter(
+    (item) =>
+      includesRegion(region, [item.location]) &&
+      includesSearchKeyword(searchKeyword, [
+        item.title,
+        item.content,
+        item.category,
+        item.tags,
+        item.location,
+      ]),
   );
 
   useEffect(() => {

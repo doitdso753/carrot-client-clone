@@ -4,7 +4,7 @@ import GroupList from '@/components/group/group-list.tsx';
 import SearchFilter from '@/components/ui/search-filter/search-filter.tsx';
 import ServiceListTitle from '@/components/ui/service-list-title.tsx';
 import useRegion from '@/hooks/location/use-region.ts';
-import { includesSearchKeyword } from '@/lib/search-utils.ts';
+import { includesRegion, includesSearchKeyword } from '@/lib/search-utils.ts';
 import { GROUP_ITEMS } from '@/types/group';
 import type { SearchFilterState } from '@/types/search-filter';
 
@@ -19,13 +19,15 @@ export default function GroupContent(): ReactNode {
       : GROUP_ITEMS.filter(
           ({ category }) => category.categoryCode === selectedCategoryCode,
         );
-  const items = categoryItems.filter((item) =>
-    includesSearchKeyword(searchKeyword, [
-      item.title,
-      item.description,
-      item.category.categoryName,
-      item.location,
-    ]),
+  const items = categoryItems.filter(
+    (item) =>
+      includesRegion(region, [item.location]) &&
+      includesSearchKeyword(searchKeyword, [
+        item.title,
+        item.description,
+        item.category.categoryName,
+        item.location,
+      ]),
   );
 
   const handleFilterStateChange = useCallback(

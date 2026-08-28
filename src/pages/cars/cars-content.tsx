@@ -4,20 +4,22 @@ import CarCardList from '@/components/ui/card-list/car-card-list.tsx';
 import SearchFilter from '@/components/ui/search-filter/search-filter.tsx';
 import ServiceListTitle from '@/components/ui/service-list-title.tsx';
 import useRegion from '@/hooks/location/use-region.ts';
-import { includesSearchKeyword } from '@/lib/search-utils.ts';
+import { includesRegion, includesSearchKeyword } from '@/lib/search-utils.ts';
 import { CAR_LIST_ITEMS } from '@/types/cars';
 
 export default function CarsContent(): ReactNode {
   const { region } = useRegion();
   const [searchParams] = useSearchParams();
   const searchKeyword = searchParams.get('search')?.trim() ?? '';
-  const filteredItems = CAR_LIST_ITEMS.filter((item) =>
-    includesSearchKeyword(searchKeyword, [
-      item.title,
-      item.description,
-      item.location,
-      item.address,
-    ]),
+  const filteredItems = CAR_LIST_ITEMS.filter(
+    (item) =>
+      includesRegion(region, [item.location, item.address]) &&
+      includesSearchKeyword(searchKeyword, [
+        item.title,
+        item.description,
+        item.location,
+        item.address,
+      ]),
   );
 
   return (
