@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useSearchParams } from 'react-router';
 import { FilterIcon } from '@/assets/icons';
 import CommonPopup from '@/components/ui/common-popup.tsx';
 import RegionSettingPopup from '@/components/ui/region-setting-popup.tsx';
@@ -56,12 +57,14 @@ const SEARCH_FILTER_VIEW_RENDERERS: Record<
   ),
 };
 
+// 서비스별 검색 필터 UI 구성
 export default function SearchFilter({
   initialFilterCodes,
   region,
   variant,
   onFilterStateChange,
 }: SearchFilterProps): ReactNode {
+  const [searchParams, setSearchParams] = useSearchParams();
   const {
     asideModel,
     bottomSheetModel,
@@ -82,21 +85,46 @@ export default function SearchFilter({
     variant,
     onFilterStateChange,
   });
+
+  // URL 검색 조건 초기화
+  const resetSearchParams = (): void => {
+    const nextSearchParams = new URLSearchParams(searchParams);
+
+    nextSearchParams.delete('search');
+    nextSearchParams.delete('category');
+    setSearchParams(nextSearchParams, { replace: true });
+  };
+
+  // 적용 필터와 URL 검색 조건 초기화
+  const handleReset = (): void => {
+    onReset();
+    resetSearchParams();
+  };
+
+  // Bottom sheet 임시 필터와 URL 검색 조건 초기화
+  const handleBottomSheetReset = (): void => {
+    filterPopup.footer?.onReset();
+    resetSearchParams();
+  };
+
+  // 화면 유형별 필터 UI 생성
   const filterView = SEARCH_FILTER_VIEW_RENDERERS[config.viewType]({
     model: asideModel,
     selectedServiceItems,
-    onReset,
+    onReset: handleReset,
   });
+  // Bottom sheet 필터 적용 영역 구성
   const bottomSheetFooter = filterPopup.footer ? (
     <SearchFilterFooter
       hasSelectedFilter={filterPopup.footer.hasSelectedFilter}
       onApply={filterPopup.footer.onApply}
-      onReset={filterPopup.footer.onReset}
+      onReset={handleBottomSheetReset}
     />
   ) : undefined;
 
   return (
     <>
+      {/* 모바일 필터 실행 및 선택 요약 영역 */}
       <div
         className={`filter-chip search-filter-toolbar ${
           hasSelectedFilter ? '' : 'is-summary-disabled'
@@ -127,8 +155,10 @@ export default function SearchFilter({
         )}
       </div>
 
+      {/* 데스크톱 필터 영역 */}
       {filterView}
 
+      {/* 모바일 필터 Bottom sheet */}
       <CommonPopup
         footer={bottomSheetFooter}
         isOpen={filterPopup.isOpen}
@@ -141,6 +171,7 @@ export default function SearchFilter({
         </div>
       </CommonPopup>
 
+      {/* 지역 설정 팝업 */}
       <RegionSettingPopup
         initialLocationErrorCode={regionLocator.errorCode}
         isOpen={regionLocator.popup.isOpen}
