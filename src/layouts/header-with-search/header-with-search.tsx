@@ -64,8 +64,7 @@ export function HeaderWithSearch({
             <SearchForm
               initialOptionLabel={activeCategory?.label}
               options={SEARCH_OPTIONS}
-              submitIconType="search"
-              chevronIconType="outline"
+              variant="header"
             />
           </div>
 
@@ -84,9 +83,10 @@ export function HeaderWithSearch({
         >
           <div className="header-search-form md:hidden">
             <SearchForm
+              chevronIconType="fill"
               initialOptionLabel={activeCategory?.label}
               options={SEARCH_OPTIONS}
-              submitIconType="search"
+              variant="header"
             />
           </div>
 

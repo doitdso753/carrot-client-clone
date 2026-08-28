@@ -23,12 +23,19 @@ type SearchFormOption = {
 
 type SearchFormSubmitIconType = 'arrow' | 'search';
 type SearchFormChevronIconType = 'outline' | 'fill';
+type SearchFormVariant = 'header' | 'hero';
 
 type SearchFormProps = {
   options: readonly SearchFormOption[];
   chevronIconType?: SearchFormChevronIconType;
   initialOptionLabel?: string;
-  submitIconType?: SearchFormSubmitIconType;
+  variant: SearchFormVariant;
+};
+
+type SearchFormConfig = {
+  chevronIconType: SearchFormChevronIconType;
+  isOptionNavigationEnabled: boolean;
+  submitIconType: SearchFormSubmitIconType;
 };
 
 const SUBMIT_ICONS: Record<SearchFormSubmitIconType, ReactNode> = {
@@ -41,12 +48,26 @@ const CHEVRON_ICONS: Record<SearchFormChevronIconType, ReactNode> = {
   fill: <ChevronDownFillIcon />,
 };
 
+const SEARCH_FORM_CONFIGS: Record<SearchFormVariant, SearchFormConfig> = {
+  header: {
+    chevronIconType: 'outline',
+    isOptionNavigationEnabled: true,
+    submitIconType: 'search',
+  },
+  hero: {
+    chevronIconType: 'fill',
+    isOptionNavigationEnabled: false,
+    submitIconType: 'arrow',
+  },
+};
+
 export default function SearchForm({
   options,
-  chevronIconType = 'fill',
+  chevronIconType,
   initialOptionLabel,
-  submitIconType = 'arrow',
+  variant,
 }: SearchFormProps): ReactNode {
+  const config = SEARCH_FORM_CONFIGS[variant];
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const keyword = searchParams.get('search') ?? '';
@@ -57,8 +78,8 @@ export default function SearchForm({
   const [isOpen, setIsOpen] = useState(false);
   const selectedOption =
     options.find((option) => option.label === selectedLabel) ?? null;
-  const chevronIcon = CHEVRON_ICONS[chevronIconType];
-  const submitIcon = SUBMIT_ICONS[submitIconType];
+  const chevronIcon = CHEVRON_ICONS[chevronIconType ?? config.chevronIconType];
+  const submitIcon = SUBMIT_ICONS[config.submitIconType];
 
   useEffect(() => {
     setSearchInputValue(keyword);
@@ -79,7 +100,10 @@ export default function SearchForm({
   const handleSelectOption = (option: SearchFormOption): void => {
     setSelectedLabel(option.label);
     setIsOpen(false);
-    navigate(option.routing);
+
+    if (config.isOptionNavigationEnabled) {
+      navigate(option.routing);
+    }
   };
 
   const handleSearchInputChange = (
@@ -89,7 +113,9 @@ export default function SearchForm({
   };
 
   return (
-    <form className="mt-14 flex w-full items-center rounded-full border border-(--color-palette-gray-400) bg-(--color-palette-gray-00)">
+    <form
+      className={`search-form search-form--${variant} mt-14 flex w-full items-center rounded-full border border-(--color-palette-gray-400) bg-(--color-palette-gray-00)`}
+    >
       <div className="search-form-category">
         <div
           className="form-select"
@@ -134,9 +160,11 @@ export default function SearchForm({
                     >
                       {option.icon && option.icon}
                       {option.label}
-                      <span className="form-select-check" aria-hidden="true">
-                        <CheckedIcon />
-                      </span>
+                      {variant !== 'hero' && (
+                        <span className="form-select-check" aria-hidden="true">
+                          <CheckedIcon />
+                        </span>
+                      )}
                     </button>
                   </li>
                 );
@@ -159,7 +187,7 @@ export default function SearchForm({
         onChange={handleSearchInputChange}
       />
       <div
-        className={`search-form-submit-wrapper search-form-submit-wrapper--${submitIconType}`}
+        className={`search-form-submit-wrapper search-form-submit-wrapper--${config.submitIconType}`}
       >
         <button
           className="flex items-center justify-center w-7 h-7"

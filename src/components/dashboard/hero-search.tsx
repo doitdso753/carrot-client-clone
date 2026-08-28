@@ -80,7 +80,7 @@ export default function HeroSearch({
         </span>
       </h1>
       <div className="hero-search-wrapper">
-        <SearchForm options={searchOptions} />
+        <SearchForm options={searchOptions} variant="hero" />
         <KeywordLinkList
           title="인기 검색어"
           keywords={popularKeywords}
