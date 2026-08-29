@@ -32,7 +32,7 @@ export const GROUP_ITEMS: readonly GroupItem[] = [
   {
     category: {
       categoryCode: 'food-drink',
-      categoryName: '음식/음료'
+      categoryName: '음식/음료',
     },
     description: '맛있는 음식을 함께 먹고 새로운 맛집을 찾아다니는 모임입니다.',
     id: 2,
@@ -158,7 +158,7 @@ export const GROUP_ITEMS: readonly GroupItem[] = [
   {
     category: {
       categoryCode: 'exercise',
-      categoryName: '운동'
+      categoryName: '운동',
     },
     description:
       '매일 꾸준히 달리며 서로의 운동 기록과 러닝 정보를 나누는 모임입니다.',
@@ -167,5 +167,59 @@ export const GROUP_ITEMS: readonly GroupItem[] = [
     location: '역삼동',
     memberCount: 473,
     title: '매일 동네런기 인증 챌린지',
+  },
+  {
+    category: { categoryCode: 'exercise', categoryName: '운동' },
+    description:
+      '신당동과 남산 주변을 주 2회 함께 달리는 초보 러닝 모임입니다.',
+    id: 13,
+    imageUrl: 'https://picsum.photos/seed/sindang-group-running/160/160',
+    location: '신당동',
+    memberCount: 38,
+    title: '신당동 퇴근런 크루',
+  },
+  {
+    category: { categoryCode: 'food-drink', categoryName: '음식/음료' },
+    description: '신당동의 숨은 맛집과 카페를 함께 찾아다니는 모임입니다.',
+    id: 14,
+    imageUrl: 'https://picsum.photos/seed/sindang-group-food/160/160',
+    location: '신당동',
+    memberCount: 64,
+    title: '신당 맛집 탐험대',
+  },
+  {
+    category: {
+      categoryCode: 'reading-humanities',
+      categoryName: '독서/인문학',
+    },
+    description: '한 달에 한 권을 읽고 편안하게 생각을 나누는 독서 모임입니다.',
+    id: 15,
+    imageUrl: 'https://picsum.photos/seed/sindang-group-book/160/160',
+    location: '신당동',
+    memberCount: 27,
+    title: '신당동 한달한권 북클럽',
+  },
+  {
+    category: { categoryCode: 'pet', categoryName: '반려동물' },
+    description:
+      '반려견과 함께 안전하게 산책하고 정보를 나누는 이웃 모임입니다.',
+    id: 16,
+    imageUrl: 'https://picsum.photos/seed/sindang-group-dog/160/160',
+    location: '신당동',
+    memberCount: 45,
+    title: '신당 댕댕이 산책친구',
+  },
+  {
+    category: {
+      categoryCode: 'hobby-entertainment',
+      categoryName: '취미/오락',
+    },
+    description:
+      '주말마다 가볍게 보드게임을 즐기며 새로운 이웃을 만나는 모임입니다.',
+    id: 17,
+    imageUrl: 'https://picsum.photos/seed/sindang-group-boardgame/160/160',
+    location: '신당동',
+    memberCount: 31,
+    title: '신당 주말 보드게임 모임',
   },
 ];
