@@ -158,7 +158,11 @@
 
 .detail-breadcrumb {
   display: none;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
   align-items: center;
+  justify-content: start;
+  column-gap: 0.4rem;
   overflow: hidden;
   color: var(--color-palette-gray-700);
   font-size: var(--text-sm);
@@ -168,10 +172,7 @@
 }
 
 .detail-breadcrumb-item {
-  display: inline-flex;
-  min-width: 0;
-  align-items: center;
-  gap: 0.8rem;
+  display: contents;
 }
 
 .detail-breadcrumb-item [aria-current='page'] {
@@ -193,7 +194,7 @@
 
 @media screen and (min-width: 992px) {
   .detail-breadcrumb {
-    display: flex;
+    display: grid;
   }
 }
 
