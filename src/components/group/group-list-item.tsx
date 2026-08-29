@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Link } from 'react-router';
 import { LocationIcon, MemberIcon } from '@/assets/icons';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import type { GroupItem } from '@/types/group';
@@ -10,7 +11,7 @@ type GroupListItemProps = {
 export default function GroupListItem({ item }: GroupListItemProps): ReactNode {
   return (
     <li>
-      <article className="group-list-item">
+      <Link className="group-list-item" to={`/group/${item.id}`}>
         <div className="group-list-item-image">
           <img alt="" src={item.imageUrl} />
         </div>
@@ -31,7 +32,7 @@ export default function GroupListItem({ item }: GroupListItemProps): ReactNode {
             <span>{item.category.categoryName}</span>
           </div>
         </div>
-      </article>
+      </Link>
     </li>
   );
 }
