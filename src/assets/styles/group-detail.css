@@ -15,6 +15,44 @@
   color: var(--color-palette-gray-1000);
 }
 
+.group-detail-profile {
+  display: grid;
+  grid-template-columns: minmax(0, 4.8rem) minmax(0, 1fr);
+  align-items: center;
+  column-gap: 1.6rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.1rem solid var(--color-palette-gray-400);
+}
+
+.group-detail-profile > img {
+  width: 100%;
+  max-width: 4.8rem;
+  border-radius: 0.8rem;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.group-detail-profile-text {
+  min-width: 0;
+}
+
+.group-detail-profile-text h1 {
+  overflow: hidden;
+  padding-bottom: 0.4rem;
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text-xl);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.group-detail-profile-text p {
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-sm);
+}
+
 @media screen and (min-width: 768px) {
   .group-detail-layout {
     column-gap: 3.2rem;
