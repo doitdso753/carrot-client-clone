@@ -1,0 +1,29 @@
+.group-detail-layout {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 3.2rem;
+  margin-top: 2.4rem;
+}
+
+.group-detail-sidebar,
+.group-detail-main {
+  min-width: 0;
+}
+
+.group-detail-sidebar {
+  color: var(--color-palette-gray-1000);
+}
+
+@media screen and (min-width: 768px) {
+  .group-detail-layout {
+    column-gap: 3.2rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .group-detail-layout {
+    grid-template-columns: 32rem minmax(0, 1fr);
+    column-gap: 4rem;
+  }
+}
