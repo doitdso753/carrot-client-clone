@@ -53,9 +53,52 @@
   line-height: var(--line-height-text-sm);
 }
 
+.group-detail-summary {
+  padding-top: 2rem;
+}
+
+.group-detail-summary > p {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-xl);
+  white-space: pre-line;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.group-detail-more-button {
+  margin-top: 0.4rem;
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text-base);
+}
+
+.group-detail-more-button:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.group-detail-summary .car-detail-option-list {
+  margin-top: 2rem;
+}
+
+.group-detail-summary .car-detail-option {
+  color: var(--color-palette-gray-800);
+}
+
+.group-detail-summary .open-app-cta-button {
+  margin-top: 2.4rem;
+}
+
 @media screen and (min-width: 768px) {
   .group-detail-layout {
     column-gap: 3.2rem;
+  }
+
+  .group-detail-summary {
+    padding-bottom: 2rem;
+    border-bottom: 0.1rem solid var(--color-palette-gray-400);
   }
 }
 
