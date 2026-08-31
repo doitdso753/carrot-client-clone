@@ -66,6 +66,11 @@
   word-break: break-word;
 }
 
+.group-detail-summary-description--collapsed {
+  max-height: 12rem;
+  overflow: hidden;
+}
+
 .group-detail-more-button {
   margin-top: 0.4rem;
   color: var(--color-palette-gray-700);
