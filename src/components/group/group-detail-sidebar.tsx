@@ -1,9 +1,8 @@
-import type { ReactNode } from 'react';
-import type { GroupItem } from '@/types/group';
-import { LocationIcon } from '@/assets/icons';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { LocationIcon } from '@/assets/icons';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
+import { GROUP_COMMON_MENU_ITEMS, type GroupItem } from '@/types/group';
 
 type GroupDetailSidebarProps = {
   item: GroupItem;
@@ -94,6 +93,23 @@ export default function GroupDetailSidebar({
         <OpenAppCtaButton />
       </section>
 
+      <nav className="group-detail-common-menu" aria-label="모임 공통 메뉴">
+        <ul>
+          {GROUP_COMMON_MENU_ITEMS.map(({ icon: Icon, label }, index) => (
+            <li key={label}>
+              <button
+                className={index === 0 ? 'is-selected' : undefined}
+                type="button"
+              >
+                <span className="group-detail-common-menu-icon">
+                  <Icon />
+                </span>
+                <span>{label}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </aside>
   );
 }

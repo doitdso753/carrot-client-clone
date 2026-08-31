@@ -1,4 +1,16 @@
+import type { ComponentType } from 'react';
+import {
+  CalendarFillIcon,
+  HomeFillIcon,
+  HotIcon,
+  NoticeFillIcon,
+} from '@/assets/icons';
 import type { GroupItem } from './group.ts';
+
+type GroupMenuItem = {
+  icon: ComponentType;
+  label: string;
+};
 
 export const GROUP_CATEGORIES = [
   { code: 'all', label: '전체' },
@@ -15,6 +27,13 @@ export const GROUP_CATEGORIES = [
   { code: 'music-instrument', label: '음악/악기' },
   { code: 'etc', label: '기타' },
 ] as const;
+
+export const GROUP_COMMON_MENU_ITEMS: readonly GroupMenuItem[] = [
+  { icon: HomeFillIcon, label: '홈' },
+  { icon: NoticeFillIcon, label: '공지사항' },
+  { icon: CalendarFillIcon, label: '모임 일정' },
+  { icon: HotIcon, label: '챌린지' },
+];
 
 export const GROUP_ITEMS = [
   {
@@ -222,7 +241,6 @@ export const GROUP_ITEMS = [
     memberCount: 31,
     title: '신당 주말 보드게임 모임',
   },
-];
 ].map((item) => ({
   ...item,
   postCount: 70,

@@ -96,6 +96,54 @@
   margin-top: 2.4rem;
 }
 
+.group-detail-common-menu {
+  display: none;
+}
+
+.group-detail-common-menu {
+  padding-block: 2.4rem;
+  border-bottom: 0.1rem solid var(--color-palette-gray-400);
+}
+
+.group-detail-common-menu ul {
+  display: grid;
+  row-gap: 2rem;
+}
+
+.group-detail-common-menu button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  column-gap: 1.2rem;
+  color: var(--color-palette-gray-800);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-base);
+  text-align: left;
+}
+
+.group-detail-common-menu button.is-selected {
+  color: var(--color-palette-gray-1000);
+  font-weight: var(--font-weight-semibold);
+}
+
+.group-detail-common-menu-icon {
+  display: flex;
+  width: 2.28rem;
+  height: 2.28rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999rem;
+  background-color: var(--color-palette-gray-300);
+}
+
+.group-detail-common-menu-icon svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  color: var(--color-palette-gray-1000);
+}
+
 @media screen and (min-width: 768px) {
   .group-detail-layout {
     column-gap: 3.2rem;
@@ -104,6 +152,10 @@
   .group-detail-summary {
     padding-bottom: 2rem;
     border-bottom: 0.1rem solid var(--color-palette-gray-400);
+  }
+
+  .group-detail-common-menu {
+    display: grid;
   }
 }
 
