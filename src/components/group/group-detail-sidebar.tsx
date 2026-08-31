@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { LocationIcon, PostIcon } from '@/assets/icons';
+import KakaoMap from '@/components/ui/map/kakao-map.tsx';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import { GROUP_COMMON_MENU_ITEMS, type GroupItem } from '@/types/group';
@@ -124,6 +125,11 @@ export default function GroupDetailSidebar({
           ))}
         </ul>
       </nav>
+
+      <section className="group-detail-place">
+        <h2>자주 모이는 장소</h2>
+        <KakaoMap address={item.location} level={4} />
+      </section>
     </aside>
   );
 }
