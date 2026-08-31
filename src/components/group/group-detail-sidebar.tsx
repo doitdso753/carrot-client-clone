@@ -3,6 +3,7 @@ import type { GroupItem } from '@/types/group';
 import { LocationIcon } from '@/assets/icons';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
+import { formatThousandsBySuffix } from '@/lib/utils.ts';
 
 type GroupDetailSidebarProps = {
   item: GroupItem;
@@ -56,7 +57,8 @@ export default function GroupDetailSidebar({
         <div className="group-detail-profile-text">
           <h1>{item.title}</h1>
           <p>
-            멤버 {item.memberCount} · {item.category.categoryName}
+            멤버 {formatThousandsBySuffix(item.memberCount, '')} · 게시글{' '}
+            {formatThousandsBySuffix(item.postCount, '')}
           </p>
         </div>
       </section>

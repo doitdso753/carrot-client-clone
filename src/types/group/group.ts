@@ -8,5 +8,6 @@ export type GroupItem = {
   imageUrl: string;
   location: string;
   memberCount: number;
+  postCount: number;
   title: string;
 };

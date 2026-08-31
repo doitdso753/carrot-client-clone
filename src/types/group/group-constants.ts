@@ -16,7 +16,7 @@ export const GROUP_CATEGORIES = [
   { code: 'etc', label: '기타' },
 ] as const;
 
-export const GROUP_ITEMS: readonly GroupItem[] = [
+export const GROUP_ITEMS = [
   {
     category: {
       categoryCode: 'neighborhood-friend',
@@ -223,3 +223,7 @@ export const GROUP_ITEMS: readonly GroupItem[] = [
     title: '신당 주말 보드게임 모임',
   },
 ];
+].map((item) => ({
+  ...item,
+  postCount: 70,
+})) satisfies readonly GroupItem[];
