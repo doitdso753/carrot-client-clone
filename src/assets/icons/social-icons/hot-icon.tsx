@@ -1,12 +1,21 @@
-export function HotIcon() {
+import type { SVGProps } from 'react';
+
+export function HotIcon({
+  width = 24,
+  height = 24,
+  color = '#ff3f3f',
+  ...props
+}: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      color="#ff3f3f"
+      width={width}
+      height={height}
+      color={color}
+      aria-hidden="true"
+      {...props}
     >
       <g>
         <path
