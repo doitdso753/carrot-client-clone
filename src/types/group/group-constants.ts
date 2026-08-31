@@ -28,6 +28,15 @@ export const GROUP_CATEGORIES = [
   { code: 'etc', label: '기타' },
 ] as const;
 
+export const GROUP_BOARD_MENU_ITEMS = [
+  '전체',
+  '자유 게시판',
+  '공지사항',
+  '일정후기',
+  '가입인사',
+  '일정 후기',
+] as const;
+
 export const GROUP_COMMON_MENU_ITEMS: readonly GroupMenuItem[] = [
   { icon: HomeFillIcon, label: '홈' },
   { icon: NoticeFillIcon, label: '공지사항' },
@@ -243,5 +252,6 @@ export const GROUP_ITEMS = [
   },
 ].map((item) => ({
   ...item,
+  boardMenuItems: GROUP_BOARD_MENU_ITEMS,
   postCount: 70,
 })) satisfies readonly GroupItem[];

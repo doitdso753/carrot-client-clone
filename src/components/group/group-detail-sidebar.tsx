@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { LocationIcon } from '@/assets/icons';
+import { LocationIcon, PostIcon } from '@/assets/icons';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import { GROUP_COMMON_MENU_ITEMS, type GroupItem } from '@/types/group';
@@ -104,6 +104,20 @@ export default function GroupDetailSidebar({
                 <span className="group-detail-common-menu-icon">
                   <Icon />
                 </span>
+                <span>{label}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <nav className="group-detail-board-menu" aria-label="모임 게시판 메뉴">
+        <h2>게시판</h2>
+        <ul>
+          {item.boardMenuItems.map((label) => (
+            <li key={label}>
+              <button type="button">
+                <PostIcon />
                 <span>{label}</span>
               </button>
             </li>

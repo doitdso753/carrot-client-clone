@@ -1,4 +1,5 @@
 export type GroupItem = {
+  boardMenuItems: readonly string[];
   category: {
     categoryCode: string;
     categoryName: string;
