@@ -9,6 +9,20 @@ export type GroupMember = {
   profileImageUrl: string;
   role: GroupMemberRole;
 };
+
+export type GroupScheduleStatus = 'closed' | 'ended' | 'open';
+
+export type GroupSchedule = {
+  currentMemberCount: number;
+  date: string;
+  id: number;
+  isPublic: boolean;
+  maximumMemberCount: number;
+  status: GroupScheduleStatus;
+  time: string;
+  title: string;
+};
+
 export type GroupItem = {
   albumImageUrls: string[];
   boardMenuItems: readonly string[];
@@ -23,5 +37,6 @@ export type GroupItem = {
   memberCount: number;
   members: readonly GroupMember[];
   postCount: number;
+  schedules: readonly GroupSchedule[];
   title: string;
 };

@@ -6,7 +6,7 @@ import {
   NoticeFillIcon,
 } from '@/assets/icons';
 import type { GroupItem } from './group.ts';
-import type { GroupMember } from './group.ts';
+import type { GroupMember, GroupSchedule } from './group.ts';
 import type { GroupScheduleStatus } from './group.ts';
 
 type GroupMenuItem = {
@@ -45,6 +45,13 @@ export const GROUP_COMMON_MENU_ITEMS: readonly GroupMenuItem[] = [
   { icon: CalendarFillIcon, label: '모임 일정' },
   { icon: HotIcon, label: '챌린지' },
 ];
+
+export const GROUP_SCHEDULE_STATUS_LABELS: Record<GroupScheduleStatus, string> =
+  {
+    closed: '마감',
+    ended: '종료',
+    open: '모집중',
+  };
 
 const GROUP_ALBUM_IMAGE_URLS = [
   'https://picsum.photos/seed/group-album-food/400/400',
@@ -85,6 +92,59 @@ const GROUP_MEMBERS: readonly GroupMember[] = [
     name: '안양/00/남/안양',
     profileImageUrl: 'https://picsum.photos/seed/group-member-anyang/96/96',
     role: 'MEMBER',
+  },
+];
+
+const GROUP_SCHEDULES: readonly GroupSchedule[] = [
+  {
+    currentMemberCount: 2,
+    date: '2026-08-27',
+    id: 1,
+    isPublic: false,
+    maximumMemberCount: 4,
+    status: 'ended',
+    time: '오후 8:00',
+    title: '모임에만 공개된 일정이에요.',
+  },
+  {
+    currentMemberCount: 2,
+    date: '2026-08-25',
+    id: 2,
+    isPublic: true,
+    maximumMemberCount: 4,
+    status: 'ended',
+    time: '오후 9:00',
+    title: '광교호수공원 걷기',
+  },
+  {
+    currentMemberCount: 6,
+    date: '2026-08-24',
+    id: 3,
+    isPublic: true,
+    maximumMemberCount: 10,
+    status: 'ended',
+    time: '오후 8:30',
+    title: '안양역 무엇이든',
+  },
+  {
+    currentMemberCount: 4,
+    date: '2026-08-26',
+    id: 4,
+    isPublic: false,
+    maximumMemberCount: 10,
+    status: 'ended',
+    time: '오후 3:30',
+    title: '모임에만 공개된 일정이에요.',
+  },
+  {
+    currentMemberCount: 5,
+    date: '2026-08-25',
+    id: 5,
+    isPublic: false,
+    maximumMemberCount: 12,
+    status: 'ended',
+    time: '오후 8:00',
+    title: '모임에만 공개된 일정이에요.',
   },
 ];
 
