@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import {
   GroupDetailAlbumSection,
+  GroupDetailMemberSection,
 } from '@/components/group/sections';
 import type { GroupItem } from '@/types/group';
 
@@ -14,6 +15,7 @@ export default function GroupDetailMain({
   return (
     <div className="group-detail-main" aria-label="모임 상세 콘텐츠">
       <GroupDetailAlbumSection item={item} />
+      <GroupDetailMemberSection item={item} />
     </div>
   );
 }

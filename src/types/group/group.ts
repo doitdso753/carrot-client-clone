@@ -1,3 +1,14 @@
+
+export type GroupMemberRole = 'SUPER_HOST' | 'MANAGER' | 'MEMBER';
+
+export type GroupMember = {
+  id: number;
+  introduction?: string;
+  location: string;
+  name: string;
+  profileImageUrl: string;
+  role: GroupMemberRole;
+};
 export type GroupItem = {
   albumImageUrls: string[];
   boardMenuItems: readonly string[];
@@ -10,6 +21,7 @@ export type GroupItem = {
   imageUrl: string;
   location: string;
   memberCount: number;
+  members: readonly GroupMember[];
   postCount: number;
   title: string;
 };

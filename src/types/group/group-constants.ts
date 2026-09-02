@@ -6,6 +6,8 @@ import {
   NoticeFillIcon,
 } from '@/assets/icons';
 import type { GroupItem } from './group.ts';
+import type { GroupMember } from './group.ts';
+import type { GroupScheduleStatus } from './group.ts';
 
 type GroupMenuItem = {
   icon: ComponentType;
@@ -50,6 +52,41 @@ const GROUP_ALBUM_IMAGE_URLS = [
   'https://picsum.photos/seed/group-album-steak/400/400',
   'https://picsum.photos/seed/group-album-meal/400/400',
 ] as const;
+
+const GROUP_MEMBERS: readonly GroupMember[] = [
+  {
+    id: 1,
+    introduction: '',
+    location: '경기 수원시 팔달구 인계동',
+    name: '함씨/99/인계/남',
+    profileImageUrl: 'https://picsum.photos/seed/group-member-ham/96/96',
+    role: 'SUPER_HOST',
+  },
+  {
+    id: 2,
+    introduction: '저는 개예요,,',
+    location: '경기 수원시 권선구 권선2동',
+    name: '유화/00/여/권선',
+    profileImageUrl: 'https://picsum.photos/seed/group-member-yuhwa/96/96',
+    role: 'MANAGER',
+  },
+  {
+    id: 3,
+    introduction: '',
+    location: '경기 수원시 팔달구 인계동',
+    name: '포포/57/남/인계',
+    profileImageUrl: 'https://picsum.photos/seed/group-member-popo/96/96',
+    role: 'MANAGER',
+  },
+  {
+    id: 4,
+    introduction: '',
+    location: '경기 안양시 만안구 안양6동',
+    name: '안양/00/남/안양',
+    profileImageUrl: 'https://picsum.photos/seed/group-member-anyang/96/96',
+    role: 'MEMBER',
+  },
+];
 
 export const GROUP_ITEMS = [
   {
@@ -261,5 +298,6 @@ export const GROUP_ITEMS = [
   ...item,
   albumImageUrls: [...GROUP_ALBUM_IMAGE_URLS],
   boardMenuItems: GROUP_BOARD_MENU_ITEMS,
+  members: GROUP_MEMBERS,
   postCount: 70,
 })) satisfies readonly GroupItem[];
