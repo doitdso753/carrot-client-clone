@@ -1,4 +1,5 @@
 export type GroupItem = {
+  albumImageUrls: string[];
   boardMenuItems: readonly string[];
   category: {
     categoryCode: string;

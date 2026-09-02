@@ -44,6 +44,13 @@ export const GROUP_COMMON_MENU_ITEMS: readonly GroupMenuItem[] = [
   { icon: HotIcon, label: '챌린지' },
 ];
 
+const GROUP_ALBUM_IMAGE_URLS = [
+  'https://picsum.photos/seed/group-album-food/400/400',
+  'https://picsum.photos/seed/group-album-night/400/400',
+  'https://picsum.photos/seed/group-album-steak/400/400',
+  'https://picsum.photos/seed/group-album-meal/400/400',
+] as const;
+
 export const GROUP_ITEMS = [
   {
     category: {
@@ -252,6 +259,7 @@ export const GROUP_ITEMS = [
   },
 ].map((item) => ({
   ...item,
+  albumImageUrls: [...GROUP_ALBUM_IMAGE_URLS],
   boardMenuItems: GROUP_BOARD_MENU_ITEMS,
   postCount: 70,
 })) satisfies readonly GroupItem[];
