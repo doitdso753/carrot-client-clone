@@ -163,6 +163,33 @@
   line-height: var(--line-height-text-base);
 }
 
+.community-board-item--group .community-board-item-title {
+  margin-bottom: 0.4rem;
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-base);
+}
+
+.community-board-item--group.is-private .community-board-item-title {
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
+  color: var(--color-palette-gray-700);
+}
+
+.community-board-item--group.is-private .community-board-item-title span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.community-board-item--group.is-private .community-board-item-title svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  flex-shrink: 0;
+  color: var(--color-palette-gray-500);
+}
+
 .community-board-item--dashboard .community-board-item-content {
   font-size: var(--text-sm);
   line-height: var(--line-height-text-sm);
@@ -178,6 +205,16 @@
 .community-board-item--default .community-board-item-count {
   font-size: var(--text-xs);
   line-height: var(--line-height-text-xs);
+}
+
+.community-board-item--group .community-board-item-metadata {
+  font-size: var(--text-xs);
+  line-height: var(--line-height-text-xs);
+}
+
+.community-board-item--group .community-board-item-count {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-text-sm);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -235,6 +272,13 @@
     line-height: var(--line-height-text-xl);
   }
 
+  .community-board-item--group .community-board-item-title {
+    margin-bottom: 0.4rem;
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-text-base);
+  }
+
   .community-board-item-text {
     gap: 0.4rem;
   }
@@ -246,6 +290,11 @@
 
   .community-board-item--default .community-board-item-metadata,
   .community-board-item--default .community-board-item-count {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-text-sm);
+  }
+
+  .community-board-item--group .community-board-item-metadata {
     font-size: var(--text-sm);
     line-height: var(--line-height-text-sm);
   }

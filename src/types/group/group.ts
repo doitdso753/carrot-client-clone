@@ -1,3 +1,4 @@
+import type { CommunityItem } from '@/types/community';
 
 export type GroupMemberRole = 'SUPER_HOST' | 'MANAGER' | 'MEMBER';
 
@@ -23,6 +24,10 @@ export type GroupSchedule = {
   title: string;
 };
 
+export type GroupPost = CommunityItem & {
+  isPublic: boolean;
+};
+
 export type GroupItem = {
   albumImageUrls: string[];
   boardMenuItems: readonly string[];
@@ -37,6 +42,7 @@ export type GroupItem = {
   memberCount: number;
   members: readonly GroupMember[];
   postCount: number;
+  posts: readonly GroupPost[];
   schedules: readonly GroupSchedule[];
   title: string;
 };

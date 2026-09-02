@@ -5,8 +5,9 @@ import {
   HotIcon,
   NoticeFillIcon,
 } from '@/assets/icons';
+import type { UserProfile } from '@/types/user-profile.ts';
 import type { GroupItem } from './group.ts';
-import type { GroupMember, GroupSchedule } from './group.ts';
+import type { GroupMember, GroupPost, GroupSchedule } from './group.ts';
 import type { GroupScheduleStatus } from './group.ts';
 
 type GroupMenuItem = {
@@ -145,6 +146,63 @@ const GROUP_SCHEDULES: readonly GroupSchedule[] = [
     status: 'ended',
     time: '오후 8:00',
     title: '모임에만 공개된 일정이에요.',
+  },
+];
+
+const GROUP_POST_AUTHOR: UserProfile = {
+  location: '경기 수원시 권선구',
+  nickname: '유화/00/여/권선',
+  profileImageUrl: 'https://picsum.photos/seed/group-member-yuhwa/96/96',
+  warmth: 36.5,
+};
+
+const GROUP_POSTS: readonly GroupPost[] = [
+  {
+    authorProfile: GROUP_POST_AUTHOR,
+    category: '자유 게시판',
+    commentCount: 1,
+    content: '',
+    createdAt: '2026-08-31T12:00:00+09:00',
+    id: 1,
+    imageUrl: 'https://picsum.photos/seed/group-post-wine/216/216',
+    isPublic: true,
+    likeCount: 1,
+    location: GROUP_POST_AUTHOR.nickname,
+    tags: '',
+    title: '와인 부은거 아님 피뚝뚝 크~',
+    viewCount: 12,
+  },
+  {
+    authorProfile: GROUP_POST_AUTHOR,
+    category: '자유 게시판',
+    commentCount: 2,
+    content: '',
+    createdAt: '2026-08-30T12:00:00+09:00',
+    id: 2,
+    imageUrl: 'https://picsum.photos/seed/group-post-meat/216/216',
+    isPublic: true,
+    likeCount: 1,
+    location: GROUP_POST_AUTHOR.nickname,
+    tags: '',
+    title: '정체는 콩불임',
+    viewCount: 18,
+  },
+  {
+    authorProfile: {
+      ...GROUP_POST_AUTHOR,
+      nickname: '추추/00/남/용인',
+    },
+    category: '자유 게시판',
+    commentCount: 4,
+    content: '',
+    createdAt: '2026-08-28T12:00:00+09:00',
+    id: 3,
+    isPublic: false,
+    likeCount: 0,
+    location: '추추/00/남/용인',
+    tags: '',
+    title: '@안양/00/남/안양 @추추/00/남/용인 @연두/02/여/구운',
+    viewCount: 25,
   },
 ];
 
@@ -360,4 +418,6 @@ export const GROUP_ITEMS = [
   boardMenuItems: GROUP_BOARD_MENU_ITEMS,
   members: GROUP_MEMBERS,
   postCount: 70,
+  posts: GROUP_POSTS,
+  schedules: GROUP_SCHEDULES,
 })) satisfies readonly GroupItem[];
