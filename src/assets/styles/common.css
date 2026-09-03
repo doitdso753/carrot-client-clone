@@ -441,14 +441,14 @@
 
 .list-empty-state strong {
   color: var(--color-palette-gray-1000);
-  font-size: 2rem;
+  font-size: var(--text-xl);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-text-xl);
 }
 
 .list-empty-state p {
-  color: #868b94;
-  font-size: 1.6rem;
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-text-base);
 }
