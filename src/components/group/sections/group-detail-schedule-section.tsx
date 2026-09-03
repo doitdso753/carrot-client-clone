@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { ClockFillIcon, LockFillIcon, MemberGroupIcon } from '@/assets/icons';
+import { getDateDayText, getMonthText } from '@/lib/date-utils.ts';
 import { GROUP_SCHEDULE_STATUS_LABELS, type GroupItem } from '@/types/group';
 import type { GroupSchedule } from '@/types/group';
 import GroupDetailSection from '../group-detail-section.tsx';
@@ -14,20 +15,12 @@ type GroupScheduleItemProps = {
 
 const PRIVATE_GROUP_SCHEDULE_TITLE = '모임에만 공개된 일정이에요.';
 
-function getGroupScheduleMonth(date: string): string {
-  return `${new Date(date).getMonth() + 1}월`;
-}
-
-function getGroupScheduleDay(date: string): string {
-  return String(new Date(date).getDate());
-}
-
 function GroupScheduleItem({ schedule }: GroupScheduleItemProps): ReactNode {
   return (
     <li className="group-detail-schedule-item">
       <time className="group-detail-schedule-date" dateTime={schedule.date}>
-        <span>{getGroupScheduleMonth(schedule.date)}</span>
-        <strong>{getGroupScheduleDay(schedule.date)}</strong>
+        <span>{getMonthText(schedule.date)}</span>
+        <strong>{getDateDayText(schedule.date)}</strong>
       </time>
       <div className="group-detail-schedule-text">
         <h3 className={schedule.isPublic ? undefined : 'is-private'}>

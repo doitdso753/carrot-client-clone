@@ -5,7 +5,8 @@ import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
 import ImageSlider from '@/components/ui/image/image-slider.tsx';
 import HeaderWithSearch from '@/layouts/header-with-search/header-with-search.tsx';
 import RootLayout from '@/layouts/root-layout.tsx';
-import { formatThousandsBySuffix, getElapsedTimeText } from '@/lib/utils.ts';
+import { getElapsedTimeText } from '@/lib/date-utils.ts';
+import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import { LOCAL_PROFILE_ITEMS } from '@/types/local-profile';
 
 type LocalProfileCommentSortType = 'registered' | 'latest';

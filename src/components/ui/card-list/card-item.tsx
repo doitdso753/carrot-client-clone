@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
-import { formatThousandsBySuffix, getElapsedTimeText } from '@/lib/utils.ts';
+import { getElapsedTimeText } from '@/lib/date-utils.ts';
+import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import { BUY_SELL_ITEM_STATUS_LABEL } from '@/types/buy-sell';
 import type { BuySellItem, BuySellItemStatusCode } from '@/types/buy-sell';
 

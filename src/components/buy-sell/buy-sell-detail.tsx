@@ -3,7 +3,8 @@ import DetailBreadcrumb from '@/components/ui/navigation/detail-breadcrumb.tsx';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button';
 import ImageSlider from '@/components/ui/image/image-slider.tsx';
 import UserProfile from '@/components/ui/user-profile/user-profile.tsx';
-import { formatThousandsBySuffix, getElapsedTimeText } from '@/lib/utils';
+import { getElapsedTimeText } from '@/lib/date-utils';
+import { formatThousandsBySuffix } from '@/lib/utils';
 import {
   BUY_SELL_ITEM_STATUS,
   BUY_SELL_ITEM_STATUS_LABEL,

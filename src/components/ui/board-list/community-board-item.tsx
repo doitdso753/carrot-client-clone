@@ -4,7 +4,7 @@ import {
   LockFillIcon,
   ThumbUpFillIcon,
 } from '@/assets/icons';
-import { getElapsedTimeText } from '@/lib/utils.ts';
+import { getElapsedTimeText } from '@/lib/date-utils.ts';
 import type { CommunityItem } from '@/types/community';
 
 type CommunityBoardItemVariant = 'default' | 'dashboard' | 'group';
@@ -57,8 +57,7 @@ export default function CommunityBoardItem({
     location,
     getElapsedTimeText(createdAt),
   ];
-  const boardTitle =
-    isPublic === false ? PRIVATE_COMMUNITY_BOARD_TITLE : title;
+  const boardTitle = isPublic === false ? PRIVATE_COMMUNITY_BOARD_TITLE : title;
 
   return (
     <div

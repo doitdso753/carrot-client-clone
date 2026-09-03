@@ -3,7 +3,8 @@ import { Link } from 'react-router';
 import { BookmarkIcon, CommentTextIcon, ThumbUpIcon } from '@/assets/icons';
 import LocationMapCard from '@/components/ui/map/location-map-card.tsx';
 import UserProfileSummary from '@/components/ui/user-profile/user-profile-summary.tsx';
-import { getElapsedTimeText, parseTags } from '@/lib/utils.ts';
+import { getElapsedTimeText } from '@/lib/date-utils.ts';
+import { parseTags } from '@/lib/utils.ts';
 import type { CommunityDetailData } from '@/types/community';
 
 type CommunityPostSectionProps = {

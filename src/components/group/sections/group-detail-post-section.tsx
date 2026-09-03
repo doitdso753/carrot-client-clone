@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import CommunityBoardItem from '@/components/ui/board-list/community-board-item.tsx';
+import { formatNumericDate } from '@/lib/date-utils.ts';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import type { GroupItem } from '@/types/group';
 import GroupDetailSection from '../group-detail-section.tsx';
@@ -7,13 +8,6 @@ import GroupDetailSection from '../group-detail-section.tsx';
 type GroupDetailPostSectionProps = {
   item: GroupItem;
 };
-
-function getGroupPostCreatedDate(createdAt: string): string {
-  return new Intl.DateTimeFormat('ko-KR', {
-    day: 'numeric',
-    month: 'numeric',
-  }).format(new Date(createdAt));
-}
 
 export default function GroupDetailPostSection({
   item,
@@ -46,7 +40,7 @@ export default function GroupDetailPostSection({
               item={post}
               metadataItems={[
                 post.authorProfile.nickname,
-                getGroupPostCreatedDate(post.createdAt),
+                formatNumericDate(post.createdAt),
                 post.category,
               ]}
               variant="group"

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { CommentDotsIcon, HeartIcon } from '@/assets/icons/index.ts';
-import { getElapsedTimeText } from '@/lib/utils.ts';
+import { getElapsedTimeText } from '@/lib/date-utils.ts';
 import { CAR_LIST_ITEM_STATUS_LABEL } from '@/types/cars';
 import type { CarListItem } from '@/types/cars';
 

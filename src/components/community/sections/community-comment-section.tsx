@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { CommentTextIcon, ThumbUpIcon } from '@/assets/icons';
 import defaultProfileImage from '@/assets/images/default-profile.png';
-import { getElapsedTimeText } from '@/lib/utils.ts';
+import { getElapsedTimeText } from '@/lib/date-utils.ts';
 import type { CommunityComment } from '@/types/community';
 
 type CommunityCommentSortType = 'latest' | 'registered';
