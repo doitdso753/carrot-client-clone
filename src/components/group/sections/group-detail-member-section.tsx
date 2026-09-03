@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { GroupHostIcon, GroupManagerIcon } from '@/assets/icons';
+import { CrownIcon } from '@/assets/icons';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import type { GroupItem, GroupMember, GroupMemberRole } from '@/types/group';
 import GroupDetailSection from '../group-detail-section.tsx';
@@ -12,20 +12,19 @@ type GroupMemberItemProps = {
   member: GroupMember;
 };
 
-function getGroupMemberRoleIcon(role: GroupMemberRole): ReactNode {
-  if (role === 'SUPER_HOST') {
-    return <GroupHostIcon />;
-  }
+const GROUP_ROLE_ICON_COLOR: Partial<Record<GroupMemberRole, string>> = {
+  MANAGER: 'var(--color-group-role-manager)',
+  SUPER_HOST: 'var(--color-group-role-super-host)',
+};
 
-  if (role === 'MANAGER') {
-    return <GroupManagerIcon />;
-  }
-
-  return null;
-}
+const GROUP_ROLE_ICON_LABEL: Partial<Record<GroupMemberRole, string>> = {
+  MANAGER: '운영진',
+  SUPER_HOST: '모임장',
+};
 
 function GroupMemberItem({ member }: GroupMemberItemProps): ReactNode {
-  const roleIcon = getGroupMemberRoleIcon(member.role);
+  const roleIconColor = GROUP_ROLE_ICON_COLOR[member.role];
+  const roleIconLabel = GROUP_ROLE_ICON_LABEL[member.role];
 
   return (
     <li className="group-detail-member-item">
@@ -33,7 +32,9 @@ function GroupMemberItem({ member }: GroupMemberItemProps): ReactNode {
       <div className="group-detail-member-text">
         <div className="group-detail-member-name-row">
           <span>{member.name}</span>
-          {roleIcon}
+          {roleIconColor && (
+            <CrownIcon aria-label={roleIconLabel} color={roleIconColor} />
+          )}
         </div>
         <p>
           <span>{member.location}</span>

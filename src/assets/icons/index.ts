@@ -21,6 +21,7 @@ export { CommentDotsIcon } from './social-icons/comment-dots-icon.tsx';
 export { CommentTextFillIcon } from './social-icons/comment-text-fill-icon.tsx';
 export { CommentTextIcon } from './social-icons/comment-text-icon.tsx';
 export { CopyIcon } from './common/copy-icon.tsx';
+export { CrownIcon } from './social-icons/crown-icon.tsx';
 export { CouponIcon } from './store-icons/coupon-icon.tsx';
 export { CurrentLocationIcon } from './location-icons/current-location-icon.tsx';
 export { DocumentIcon } from './category-icons/document-icon.tsx';

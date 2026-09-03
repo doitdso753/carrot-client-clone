@@ -53,6 +53,9 @@
   --color-warmth-l5: #ffa113;
   --color-warmth-l6: #ff6f0f;
 
+  --color-group-role-manager: #30c795;
+  --color-group-role-super-host: #f7be68;
+
   --color-palette-gray-00: #ffffff;
   --color-palette-gray-100: #f7f8f9;
   --color-palette-gray-200: #f3f4f5;
@@ -147,6 +150,9 @@
 }
 
 [data-theme='dark'] {
+  --color-group-role-manager: #30c795;
+  --color-group-role-super-host: #f7be68;
+
   --color-palette-gray-00: #000000;
   --color-palette-gray-100: #16171b;
   --color-palette-gray-200: #1d2025;
