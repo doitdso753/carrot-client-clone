@@ -171,6 +171,10 @@
   white-space: nowrap;
 }
 
+.detail-breadcrumb--mobile-visible {
+  display: grid;
+}
+
 .detail-breadcrumb-item {
   display: contents;
 }

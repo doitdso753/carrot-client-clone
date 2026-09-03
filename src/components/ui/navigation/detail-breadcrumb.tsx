@@ -7,14 +7,23 @@ type DetailBreadcrumbItem = {
 };
 
 type DetailBreadcrumbProps = {
+  isMobileVisible?: boolean;
   items: DetailBreadcrumbItem[];
 };
 
 export default function DetailBreadcrumb({
+  isMobileVisible = false,
   items,
 }: DetailBreadcrumbProps): ReactNode {
   return (
-    <nav className="detail-breadcrumb" aria-label="현재 위치">
+    <nav
+      className={
+        isMobileVisible
+          ? 'detail-breadcrumb detail-breadcrumb--mobile-visible'
+          : 'detail-breadcrumb'
+      }
+      aria-label="현재 위치"
+    >
       {items.map((item, index) => {
         const isCurrentPage = index === items.length - 1;
 
