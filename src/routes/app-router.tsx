@@ -8,6 +8,7 @@ import CarsDetailPage from '@/pages/cars/cars-detail-page';
 import CommunityPage from '@/pages/community';
 import CommunityDetailPage from '@/pages/community/community-detail-page.tsx';
 import GroupPage from '@/pages/group';
+import GroupBoardCategoryPage from '@/pages/group/group-board-category-page.tsx';
 import GroupDetailPage from '@/pages/group/group-detail-page.tsx';
 import LocalProfilePage from '@/pages/local-profile';
 import LocalProfileDetailPage from '@/pages/local-profile/local-profile-detail-page.tsx';
@@ -26,6 +27,10 @@ function AppRouter(): ReactNode {
       <Route path="/community/:id" element={<CommunityDetailPage />} />
       <Route path="/group" element={<GroupPage />} />
       <Route path="/group/:itemId" element={<GroupDetailPage />} />
+      <Route
+        path="/group/:itemId/board/:categoryCode"
+        element={<GroupBoardCategoryPage />}
+      />
       <Route path="/jobs/*" element={<PreparingServicePage />} />
       <Route path="/realty/*" element={<PreparingServicePage />} />
       <Route path="/cafe/*" element={<PreparingServicePage />} />
