@@ -74,7 +74,10 @@ export default function GroupDetailPostSection({
           </button>
         </>
       ) : (
-        <></>
+        <div className="list-empty-state">
+          <strong>아직 게시글이 없어요</strong>
+          <p>가장 먼저 게시글을 남겨보세요.</p>
+        </div>
       )}
     </GroupDetailSection>
   );
