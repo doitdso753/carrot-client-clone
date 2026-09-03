@@ -13,7 +13,7 @@ import {
   LOCAL_PROFILE_OPTIONS,
 } from '@/types/local-profile';
 import { COMMUNITY_CATEGORIES } from '@/types/community';
-import { GROUP_CATEGORIES } from '@/types/group';
+import { GROUP_SEARCH_FILTER_CATEGORIES } from '@/types/group';
 
 export const SEARCH_FILTER_AVAILABLE_ONLY_CODE = 'availableOnly';
 const CURRENT_YEAR = new Date().getFullYear();
@@ -299,7 +299,7 @@ export const SEARCH_FILTER_CONFIGS: Record<
       { key: 'location', label: '위치', type: 'location' },
       {
         bottomSheetType: 'chip',
-        data: GROUP_CATEGORIES,
+        data: GROUP_SEARCH_FILTER_CATEGORIES,
         defaultCode: 'all',
         isMultiple: false,
         key: 'category',

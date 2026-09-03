@@ -6,7 +6,7 @@ import {
   NoticeFillIcon,
 } from '@/assets/icons';
 import type { UserProfile } from '@/types/user-profile.ts';
-import type { GroupItem } from './group.ts';
+import type { GroupCategoryItem, GroupItem } from './group.ts';
 import type { GroupMember, GroupPost, GroupSchedule } from './group.ts';
 import type { GroupScheduleStatus } from './group.ts';
 
@@ -16,28 +16,47 @@ type GroupMenuItem = {
 };
 
 export const GROUP_CATEGORIES = [
-  { code: 'all', label: '전체' },
-  { code: 'exercise', label: '운동' },
-  { code: 'neighborhood-friend', label: '동네친구' },
-  { code: 'outdoor-travel', label: '아웃도어/여행' },
-  { code: 'self-development', label: '자기계발' },
-  { code: 'family-parenting', label: '가족/육아' },
-  { code: 'pet', label: '반려동물' },
-  { code: 'food-drink', label: '음식/음료' },
-  { code: 'hobby-entertainment', label: '취미/오락' },
-  { code: 'reading-humanities', label: '독서/인문학' },
-  { code: 'culture-art', label: '문화/예술' },
-  { code: 'music-instrument', label: '음악/악기' },
-  { code: 'etc', label: '기타' },
+  { categoryCode: 'all', categoryName: '전체', id: 1 },
+  { categoryCode: 'exercise', categoryName: '운동', id: 2 },
+  { categoryCode: 'neighborhood-friend', categoryName: '동네친구', id: 3 },
+  { categoryCode: 'outdoor-travel', categoryName: '아웃도어/여행', id: 4 },
+  { categoryCode: 'self-development', categoryName: '자기계발', id: 5 },
+  { categoryCode: 'family-parenting', categoryName: '가족/육아', id: 6 },
+  { categoryCode: 'pet', categoryName: '반려동물', id: 7 },
+  { categoryCode: 'food-drink', categoryName: '음식/음료', id: 8 },
+  { categoryCode: 'hobby-entertainment', categoryName: '취미/오락', id: 9 },
+  { categoryCode: 'reading-humanities', categoryName: '독서/인문학', id: 10 },
+  { categoryCode: 'culture-art', categoryName: '문화/예술', id: 11 },
+  { categoryCode: 'music-instrument', categoryName: '음악/악기', id: 12 },
+  { categoryCode: 'etc', categoryName: '기타', id: 13 },
 ] as const;
 
+export const GROUP_SEARCH_FILTER_CATEGORIES = GROUP_CATEGORIES.map(
+  ({ categoryCode, categoryName }) => ({
+    code: categoryCode,
+    label: categoryName,
+  }),
+);
+
+function getGroupCategoryItem(categoryCode: string): GroupCategoryItem {
+  const groupCategoryItem = GROUP_CATEGORIES.find(
+    (category) => category.categoryCode === categoryCode,
+  );
+
+  if (!groupCategoryItem) {
+    throw new Error(`존재하지 않는 모임 카테고리입니다: ${categoryCode}`);
+  }
+
+  return groupCategoryItem;
+}
+
 export const GROUP_BOARD_MENU_ITEMS = [
-  '전체',
-  '자유 게시판',
-  '공지사항',
-  '일정후기',
-  '가입인사',
-  '일정 후기',
+  { categoryCode: 'all', categoryName: '전체', id: 1 },
+  { categoryCode: 'free', categoryName: '자유 게시판', id: 2 },
+  { categoryCode: 'notice', categoryName: '공지사항', id: 3 },
+  { categoryCode: 'schedule-review', categoryName: '일정후기', id: 4 },
+  { categoryCode: 'greeting', categoryName: '가입인사', id: 5 },
+  { categoryCode: 'schedule-review', categoryName: '일정 후기', id: 6 },
 ] as const;
 
 export const GROUP_COMMON_MENU_ITEMS: readonly GroupMenuItem[] = [
@@ -159,7 +178,7 @@ const GROUP_POST_AUTHOR: UserProfile = {
 const GROUP_POSTS: readonly GroupPost[] = [
   {
     authorProfile: GROUP_POST_AUTHOR,
-    category: '자유 게시판',
+    category: GROUP_BOARD_MENU_ITEMS[1],
     commentCount: 1,
     content: '',
     createdAt: '2026-08-31T12:00:00+09:00',
@@ -174,7 +193,7 @@ const GROUP_POSTS: readonly GroupPost[] = [
   },
   {
     authorProfile: GROUP_POST_AUTHOR,
-    category: '자유 게시판',
+    category: GROUP_BOARD_MENU_ITEMS[1],
     commentCount: 2,
     content: '',
     createdAt: '2026-08-30T12:00:00+09:00',
@@ -192,7 +211,7 @@ const GROUP_POSTS: readonly GroupPost[] = [
       ...GROUP_POST_AUTHOR,
       nickname: '추추/00/남/용인',
     },
-    category: '자유 게시판',
+    category: GROUP_BOARD_MENU_ITEMS[1],
     commentCount: 4,
     content: '',
     createdAt: '2026-08-28T12:00:00+09:00',
@@ -416,6 +435,7 @@ export const GROUP_ITEMS = [
   ...item,
   albumImageUrls: [...GROUP_ALBUM_IMAGE_URLS],
   boardMenuItems: GROUP_BOARD_MENU_ITEMS,
+  category: getGroupCategoryItem(item.category.categoryCode),
   members: GROUP_MEMBERS,
   postCount: 70,
   posts: GROUP_POSTS,

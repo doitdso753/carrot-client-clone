@@ -9,8 +9,18 @@ import type { CommunityItem } from '@/types/community';
 
 type CommunityBoardItemVariant = 'default' | 'dashboard' | 'group';
 
+type CommunityBoardItemCategory = {
+  categoryName: string;
+};
+
+type CommunityBoardItemData = Omit<CommunityItem, 'category'> & {
+  category?: string | CommunityBoardItemCategory;
+  categoryName?: string;
+  isPublic?: boolean;
+};
+
 type CommunityBoardItemProps = {
-  item: CommunityItem & { isPublic?: boolean };
+  item: CommunityBoardItemData;
   metadataItems?: readonly string[];
   variant: CommunityBoardItemVariant;
 };
@@ -22,6 +32,21 @@ type CommunityBoardItemCountProps = {
 };
 
 const PRIVATE_COMMUNITY_BOARD_TITLE = '모임에만 공개된 게시물이에요.';
+
+function getBoardCategoryName(
+  category?: string | CommunityBoardItemCategory,
+  categoryName?: string,
+): string {
+  if (categoryName) {
+    return categoryName;
+  }
+
+  if (typeof category === 'string') {
+    return category;
+  }
+
+  return category?.categoryName ?? '';
+}
 
 function CommunityBoardItemCount({
   count,
@@ -40,6 +65,7 @@ function CommunityBoardItemCount({
 export default function CommunityBoardItem({
   item: {
     category,
+    categoryName,
     commentCount,
     content,
     createdAt,
@@ -52,8 +78,9 @@ export default function CommunityBoardItem({
   metadataItems,
   variant,
 }: CommunityBoardItemProps): ReactNode {
+  const boardCategoryName = getBoardCategoryName(category, categoryName);
   const boardMetadataItems = metadataItems ?? [
-    category,
+    boardCategoryName,
     location,
     getElapsedTimeText(createdAt),
   ];

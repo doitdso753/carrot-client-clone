@@ -115,11 +115,11 @@ export default function GroupDetailSidebar({
       <nav className="group-detail-board-menu" aria-label="모임 게시판 메뉴">
         <h2>게시판</h2>
         <ul>
-          {item.boardMenuItems.map((label) => (
-            <li key={label}>
+          {item.boardMenuItems.map(({ categoryName, id }) => (
+            <li key={id}>
               <button type="button">
                 <PostIcon />
-                <span>{label}</span>
+                <span>{categoryName}</span>
               </button>
             </li>
           ))}

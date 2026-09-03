@@ -24,17 +24,21 @@ export type GroupSchedule = {
   title: string;
 };
 
-export type GroupPost = CommunityItem & {
+export type GroupPost = Omit<CommunityItem, 'category'> & {
+  category: GroupCategoryItem;
   isPublic: boolean;
+};
+
+export type GroupCategoryItem = {
+  categoryCode: string;
+  categoryName: string;
+  id: number;
 };
 
 export type GroupItem = {
   albumImageUrls: string[];
-  boardMenuItems: readonly string[];
-  category: {
-    categoryCode: string;
-    categoryName: string;
-  };
+  boardMenuItems: readonly GroupCategoryItem[];
+  category: GroupCategoryItem;
   description: string;
   id: number;
   imageUrl: string;
