@@ -10,7 +10,10 @@ import type { GroupCategoryItem, GroupItem } from './group.ts';
 import type { GroupMember, GroupPost, GroupSchedule } from './group.ts';
 import type { GroupScheduleStatus } from './group.ts';
 
-type GroupMenuItem = {
+type GroupCommonMenuCode = 'challenge' | 'home' | 'notice' | 'schedule';
+
+export type GroupMenuItem = {
+  code: GroupCommonMenuCode;
   icon: ComponentType;
   label: string;
 };
@@ -60,10 +63,10 @@ export const GROUP_BOARD_MENU_ITEMS = [
 ] as const;
 
 export const GROUP_COMMON_MENU_ITEMS: readonly GroupMenuItem[] = [
-  { icon: HomeFillIcon, label: '홈' },
-  { icon: NoticeFillIcon, label: '공지사항' },
-  { icon: CalendarFillIcon, label: '모임 일정' },
-  { icon: HotIcon, label: '챌린지' },
+  { code: 'home', icon: HomeFillIcon, label: '홈' },
+  { code: 'notice', icon: NoticeFillIcon, label: '공지사항' },
+  { code: 'schedule', icon: CalendarFillIcon, label: '모임 일정' },
+  { code: 'challenge', icon: HotIcon, label: '챌린지' },
 ];
 
 export const GROUP_SCHEDULE_STATUS_LABELS: Record<GroupScheduleStatus, string> =
