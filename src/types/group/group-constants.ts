@@ -59,7 +59,6 @@ export const GROUP_BOARD_MENU_ITEMS = [
   { categoryCode: 'notice', categoryName: '공지사항', id: 3 },
   { categoryCode: 'schedule-review', categoryName: '일정후기', id: 4 },
   { categoryCode: 'greeting', categoryName: '가입인사', id: 5 },
-  { categoryCode: 'schedule-review', categoryName: '일정 후기', id: 6 },
 ] as const;
 
 export const GROUP_COMMON_MENU_ITEMS: readonly GroupMenuItem[] = [
