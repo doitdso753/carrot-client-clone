@@ -4,16 +4,18 @@ import WarmthBadge from '@/components/ui/user-profile/warmth-badge.tsx';
 import type { UserProfile } from '@/types/user-profile.ts';
 
 type UserProfileSummaryProps = {
-  createdAt?: string;
+  hasWarmthBadge?: boolean;
+  metadata?: string[];
   user: UserProfile;
 };
 
 export default function UserProfileSummary({
-  createdAt,
+  hasWarmthBadge = true,
+  metadata = [],
   user,
 }: UserProfileSummaryProps): ReactNode {
   const profileImageUrl = user.profileImageUrl ?? defaultProfileImage;
-  const description = [user.location, createdAt].filter(Boolean).join(' · ');
+  const metadataText = metadata.filter(Boolean).join(' · ');
 
   return (
     <div className="user-profile-summary">
@@ -26,9 +28,9 @@ export default function UserProfileSummary({
         <div>
           <div className="user-profile-summary-name-row">
             <p className="user-profile-summary-name">{user.nickname}</p>
-            <WarmthBadge value={user.warmth} />
+            {hasWarmthBadge && <WarmthBadge value={user.warmth} />}
           </div>
-          <p className="user-profile-summary-description">{description}</p>
+          <p className="user-profile-summary-metadata">{metadataText}</p>
         </div>
       </div>
     </div>

@@ -82,7 +82,7 @@
   font-weight: var(--font-weight-bold);
 }
 
-.user-profile-summary-description {
+.user-profile-summary-metadata {
   color: var(--color-palette-gray-800);
   font-size: var(--text-sm);
   line-height: var(--line-height-text-sm);

@@ -27,7 +27,10 @@ export default function CommunityPostSection({
         {item.category}
       </Link>
       <UserProfileSummary
-        createdAt={getElapsedTimeText(item.createdAt)}
+        metadata={[
+          item.authorProfile.location,
+          getElapsedTimeText(item.createdAt),
+        ]}
         user={item.authorProfile}
       />
 
