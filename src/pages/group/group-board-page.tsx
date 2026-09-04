@@ -5,7 +5,7 @@ import HeaderWithSearch from '@/layouts/header-with-search/header-with-search.ts
 import RootLayout from '@/layouts/root-layout.tsx';
 import { GROUP_ITEMS } from '@/types/group';
 
-export default function GroupBoardCategoryPage(): ReactNode {
+export default function GroupBoardPage(): ReactNode {
   const { categoryCode = 'all', itemId } = useParams();
   const item = GROUP_ITEMS.find(({ id }) => id === Number(itemId));
 
