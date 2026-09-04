@@ -478,9 +478,77 @@
   background-color: var(--color-palette-gray-300);
 }
 
+.group-board-content-layout {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 2.4rem;
+}
+
+.group-board-content-layout .group-detail-sidebar {
+  display: none;
+}
+
+.group-board-content-main {
+  min-width: 0;
+  color: var(--color-palette-gray-1000);
+}
+
+.group-board-content-tabs {
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  column-gap: 0.8rem;
+  margin-bottom: 1.6rem;
+  scrollbar-width: none;
+}
+
+.group-board-content-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.group-board-content-tabs a {
+  flex-shrink: 0;
+  padding: 0.6rem 1.2rem;
+  border: 0.1rem solid var(--color-palette-gray-400);
+  border-radius: 999rem;
+  color: var(--color-palette-gray-1000);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-sm);
+}
+
+.group-board-content-tabs a.is-selected {
+  border-color: var(--color-palette-gray-900);
+  background-color: var(--color-palette-gray-900);
+  color: var(--color-palette-gray-00);
+}
+
+.group-board-content-heading {
+  display: none;
+  margin-bottom: 2.8rem;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-text-2xl);
+}
+
+.group-board-content-post-list {
+  display: grid;
+  row-gap: 2.4rem;
+}
+
 @media screen and (min-width: 768px) {
   .group-detail-layout {
     column-gap: 3.2rem;
+  }
+
+  .group-board-content-layout {
+    grid-template-columns: 32rem minmax(0, 1fr);
+    column-gap: 3.2rem;
+  }
+
+  .group-board-content-layout .group-detail-sidebar {
+    display: block;
   }
 
   .group-detail-summary {
@@ -499,6 +567,10 @@
     grid-template-columns: 32rem minmax(0, 1fr);
     column-gap: 4rem;
   }
+
+  .group-board-content-layout {
+    column-gap: 4rem;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -507,5 +579,19 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     column-gap: 6.4rem;
     row-gap: 0.4rem;
+  }
+
+  .group-board-content-tabs {
+    display: none;
+  }
+
+  .group-board-content-main {
+    display: grid;
+    row-gap: 2.8rem;
+  }
+
+  .group-board-content-heading {
+    display: block;
+    margin-bottom: 0;
   }
 }
