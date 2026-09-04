@@ -1,6 +1,6 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import CommunityBoardItem from '@/components/ui/board-list/community-board-item.tsx';
-import { formatNumericDate } from '@/lib/date-utils.ts';
+import { getElapsedTimeText } from '@/lib/date-utils.ts';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import type { GroupItem } from '@/types/group';
 import GroupDetailSection from '../group-detail-section.tsx';
@@ -61,7 +61,7 @@ export default function GroupDetailPostSection({
                   item={post}
                   metadataItems={[
                     post.authorProfile.nickname,
-                    formatNumericDate(post.createdAt),
+                    getElapsedTimeText(post.createdAt),
                     post.category.categoryName,
                   ]}
                   variant="group"
