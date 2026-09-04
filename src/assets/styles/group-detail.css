@@ -96,10 +96,6 @@
   color: var(--color-palette-gray-800);
 }
 
-.group-detail-summary .open-app-cta-button {
-  margin-top: 2.4rem;
-}
-
 .group-detail-common-menu,
 .group-detail-board-menu {
   display: none;

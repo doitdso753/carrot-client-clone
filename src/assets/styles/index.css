@@ -434,8 +434,21 @@
   line-height: var(--line-height-text-sm);
 }
 
+.open-app-cta-wrapper {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  display: flex;
+  gap: 0.8rem;
+  padding: 1.6rem;
+  background-color: var(--color-palette-gray-00);
+}
+
 .open-app-cta-button {
   display: flex;
+  flex: 1;
   min-height: 4.8rem;
   align-items: center;
   justify-content: center;
@@ -444,11 +457,20 @@
   color: var(--color-palette-static-white);
   font-size: var(--text-base);
   font-weight: var(--font-weight-bold);
-  margin-top: 2.4rem;
 }
 
 .open-app-cta-button:hover {
   background-color: var(--color-palette-carrot-700);
+}
+
+@media screen and (min-width: 768px) {
+  .open-app-cta-wrapper {
+    position: static;
+    z-index: auto;
+    padding: 0;
+    margin-top: 2.4rem;
+    background-color: transparent;
+  }
 }
 
 @media screen and (min-width: 992px) {
