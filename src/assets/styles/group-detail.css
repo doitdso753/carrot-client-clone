@@ -136,6 +136,15 @@
   font-weight: var(--font-weight-semibold);
 }
 
+.group-detail-board-menu a.is-selected {
+  color: var(--color-palette-gray-1000);
+  font-weight: var(--font-weight-semibold);
+}
+
+.group-detail-board-menu a.is-selected svg {
+  font-weight: var(--font-weight-semibold);
+}
+
 .group-detail-common-menu-icon {
   display: flex;
   width: 2.28rem;

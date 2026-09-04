@@ -1,18 +1,27 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { Link } from 'react-router';
 import { LocationIcon, PostIcon } from '@/assets/icons';
 import KakaoMap from '@/components/ui/map/kakao-map.tsx';
 import OpenAppCtaButton from '@/components/ui/open-app-cta-button.tsx';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
-import { GROUP_COMMON_MENU_ITEMS, type GroupItem } from '@/types/group';
+import {
+  GROUP_COMMON_MENU_ITEMS,
+  type GroupItem,
+  type GroupMenuItem,
+} from '@/types/group';
 
 type GroupDetailSidebarProps = {
   item: GroupItem;
+  selectedBoardCategoryCode?: string;
+  selectedCommonMenuCode?: GroupMenuItem['code'] | null;
 };
 
 const DESCRIPTION_COLLAPSED_HEIGHT = 120;
 
 export default function GroupDetailSidebar({
   item,
+  selectedBoardCategoryCode,
+  selectedCommonMenuCode = 'home',
 }: GroupDetailSidebarProps): ReactNode {
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
@@ -96,10 +105,12 @@ export default function GroupDetailSidebar({
 
       <nav className="group-detail-common-menu" aria-label="모임 공통 메뉴">
         <ul>
-          {GROUP_COMMON_MENU_ITEMS.map(({ icon: Icon, label }, index) => (
+          {GROUP_COMMON_MENU_ITEMS.map(({ code, icon: Icon, label }) => (
             <li key={label}>
               <button
-                className={index === 0 ? 'is-selected' : undefined}
+                className={
+                  code === selectedCommonMenuCode ? 'is-selected' : undefined
+                }
                 type="button"
               >
                 <span className="group-detail-common-menu-icon">
@@ -115,12 +126,19 @@ export default function GroupDetailSidebar({
       <nav className="group-detail-board-menu" aria-label="모임 게시판 메뉴">
         <h2>게시판</h2>
         <ul>
-          {item.boardMenuItems.map(({ categoryName, id }) => (
+          {item.boardMenuItems.map(({ categoryCode, categoryName, id }) => (
             <li key={id}>
-              <button type="button">
+              <Link
+                className={
+                  categoryCode === selectedBoardCategoryCode
+                    ? 'is-selected'
+                    : undefined
+                }
+                to={`/group/${item.id}/board/${categoryCode}`}
+              >
                 <PostIcon />
                 <span>{categoryName}</span>
-              </button>
+              </Link>
             </li>
           ))}
         </ul>
