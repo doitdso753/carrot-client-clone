@@ -112,15 +112,19 @@ export default function GroupBoardContent({
               <ul className="group-board-content-post-list">
                 {visiblePosts.map((post) => (
                   <li key={post.id}>
-                    <CommunityBoardItem
-                      item={post}
-                      metadataItems={[
-                        post.authorProfile.nickname,
-                        getElapsedTimeText(post.createdAt),
-                        post.category.categoryName,
-                      ]}
-                      variant="group"
-                    />
+                    <Link
+                      to={`/group/${item.id}/board/${post.category.categoryCode}/${post.id}`}
+                    >
+                      <CommunityBoardItem
+                        item={post}
+                        metadataItems={[
+                          post.authorProfile.nickname,
+                          getElapsedTimeText(post.createdAt),
+                          post.category.categoryName,
+                        ]}
+                        variant="group"
+                      />
+                    </Link>
                   </li>
                 ))}
               </ul>
