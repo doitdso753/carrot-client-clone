@@ -24,7 +24,7 @@ export type GroupSchedule = {
   title: string;
 };
 
-export type GroupPost = Omit<CommunityItem, 'category'> & {
+export type GroupPost = Omit<CommunityItem, 'category' | 'tags'> & {
   category: GroupCategoryItem;
   isPublic: boolean;
 };

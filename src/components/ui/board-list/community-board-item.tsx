@@ -13,7 +13,7 @@ type CommunityBoardItemCategory = {
   categoryName: string;
 };
 
-type CommunityBoardItemData = Omit<CommunityItem, 'category'> & {
+type CommunityBoardItemData = Omit<CommunityItem, 'category' | 'tags'> & {
   category?: string | CommunityBoardItemCategory;
   categoryName?: string;
   isPublic?: boolean;
