@@ -533,6 +533,23 @@
   row-gap: 2.4rem;
 }
 
+.group-board-detail-layout {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 2.4rem;
+}
+
+.group-board-detail-layout .group-detail-sidebar {
+  display: none;
+}
+
+.group-board-detail-main {
+  display: grid;
+  min-width: 0;
+  color: var(--color-palette-gray-1000);
+}
+
 @media screen and (min-width: 768px) {
   .group-detail-layout {
     column-gap: 3.2rem;
@@ -544,6 +561,15 @@
   }
 
   .group-board-content-layout .group-detail-sidebar {
+    display: block;
+  }
+
+  .group-board-detail-layout {
+    grid-template-columns: 32rem minmax(0, 1fr);
+    column-gap: 3.2rem;
+  }
+
+  .group-board-detail-layout .group-detail-sidebar {
     display: block;
   }
 
@@ -565,6 +591,10 @@
   }
 
   .group-board-content-layout {
+    column-gap: 4rem;
+  }
+
+  .group-board-detail-layout {
     column-gap: 4rem;
   }
 }
