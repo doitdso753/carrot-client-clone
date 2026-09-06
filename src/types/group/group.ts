@@ -24,8 +24,30 @@ export type GroupSchedule = {
   title: string;
 };
 
+export type GroupPostContentItem =
+  | {
+      text: string;
+      type: 'text';
+    }
+  | {
+      imageUrl: string;
+      type: 'picture';
+    }
+  | {
+      schedule: GroupSchedule;
+      type: 'schedule';
+    }
+  | {
+      challenge: {
+        metadata: string;
+        title: string;
+      };
+      type: 'challenge';
+    };
+
 export type GroupPost = Omit<CommunityItem, 'category' | 'tags'> & {
   category: GroupCategoryItem;
+  contentItems?: readonly GroupPostContentItem[];
   isPublic: boolean;
 };
 

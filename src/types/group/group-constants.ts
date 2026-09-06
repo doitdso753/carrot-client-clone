@@ -182,7 +182,28 @@ const GROUP_POSTS: readonly GroupPost[] = [
     authorProfile: GROUP_POST_AUTHOR,
     category: GROUP_BOARD_MENU_ITEMS[1],
     commentCount: 1,
-    content: '',
+    content: '와인 부은거 아님 피뚝뚝 크~',
+    contentItems: [
+      {
+        text: '와인 부은거 아님 피뚝뚝 크~\n오랜만에 다 같이 먹으니까 더 맛있었어요.',
+        type: 'text',
+      },
+      {
+        imageUrl: 'https://picsum.photos/seed/group-post-wine-detail-1/640/640',
+        type: 'picture',
+      },
+      {
+        schedule: GROUP_SCHEDULES[0],
+        type: 'schedule',
+      },
+      {
+        challenge: {
+          metadata: '챌린지 · 8명 참여 중',
+          title: '이번 주 맛집 인증 챌린지',
+        },
+        type: 'challenge',
+      },
+    ],
     createdAt: '2026-08-31T12:00:00+09:00',
     id: 1,
     imageUrl: 'https://picsum.photos/seed/group-post-wine/216/216',
@@ -196,7 +217,17 @@ const GROUP_POSTS: readonly GroupPost[] = [
     authorProfile: GROUP_POST_AUTHOR,
     category: GROUP_BOARD_MENU_ITEMS[1],
     commentCount: 2,
-    content: '',
+    content: '정체는 콩불임',
+    contentItems: [
+      {
+        text: '정체는 콩불임\n다음엔 맵기 한 단계 낮춰도 좋을 것 같아요.',
+        type: 'text',
+      },
+      {
+        imageUrl: 'https://picsum.photos/seed/group-post-meat-detail/640/640',
+        type: 'picture',
+      },
+    ],
     createdAt: '2026-08-30T12:00:00+09:00',
     id: 2,
     imageUrl: 'https://picsum.photos/seed/group-post-meat/216/216',
