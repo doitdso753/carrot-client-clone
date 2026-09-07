@@ -399,10 +399,6 @@
   grid-auto-flow: column;
   justify-content: flex-start;
   column-gap: var(--space-8);
-  color: var(--color-palette-gray-700);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-text-sm);
 }
 
 .group-detail-schedule-meta span {

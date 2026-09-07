@@ -30,7 +30,9 @@ export default function UserProfileSummary({
             <p className="user-profile-summary-name">{user.nickname}</p>
             {hasWarmthBadge && <WarmthBadge value={user.warmth} />}
           </div>
-          <p className="user-profile-summary-metadata">{metadataText}</p>
+          <p className="metadata">
+            {metadataText}
+          </p>
         </div>
       </div>
     </div>

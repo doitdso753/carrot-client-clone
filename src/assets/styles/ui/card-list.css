@@ -81,7 +81,6 @@
 
 .car-card-item-price,
 .car-card-item-spec,
-.car-card-item-meta,
 .car-card-item-meta > span {
   display: flex;
   align-items: center;
@@ -120,14 +119,6 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   margin-top: var(--space-8);
-}
-
-.car-card-item-meta {
-  gap: var(--space-4);
-  color: var(--color-palette-gray-700);
-  font-size: var(--text-xs);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-text-xs);
 }
 
 .car-card-item-meta > span {

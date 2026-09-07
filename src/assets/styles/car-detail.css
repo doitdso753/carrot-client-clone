@@ -184,10 +184,6 @@
 .car-detail-meta {
   margin-top: var(--space-40);
   margin-bottom: var(--space-12);
-  color: var(--color-palette-gray-700);
-  font-size: var(--text-sm);
-  line-height: var(--line-height-text-sm);
-  font-weight: var(--font-weight-normal);
 }
 
 .car-detail-map-section {

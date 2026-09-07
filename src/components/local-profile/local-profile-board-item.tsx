@@ -48,7 +48,7 @@ export default function LocalProfileBoardItem({
               <h2>{item.name}</h2>
               <span>{item.category}</span>
             </div>
-            <p className="local-profile-board-meta">
+            <p className="local-profile-board-meta metadata metadata-row">
               {item.coupon && (
                 <>
                   <strong className="local-profile-board-coupon">

@@ -82,13 +82,6 @@
   font-weight: var(--font-weight-bold);
 }
 
-.user-profile-summary-metadata {
-  color: var(--color-palette-gray-800);
-  font-size: var(--text-sm);
-  line-height: var(--line-height-text-sm);
-  font-weight: var(--font-weight-normal);
-}
-
 .warmth {
   display: flex;
   flex-direction: column;

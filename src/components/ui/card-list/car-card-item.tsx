@@ -43,12 +43,12 @@ export default function CarCardItem({ item }: CarCardItemProps): ReactNode {
             </p>
 
             <div className="car-card-item-meta-group">
-              <p className="car-card-item-meta">
+              <p className="car-card-item-meta metadata metadata--small metadata-row">
                 <span>{item.location}</span>
                 <span aria-hidden="true">·</span>
                 <span>{getElapsedTimeText(item.createdAt)}</span>
               </p>
-              <p className="car-card-item-meta">
+              <p className="car-card-item-meta metadata metadata--small metadata-row">
                 <span>
                   <CommentDotsIcon />
                   <span className="sr-only">댓글</span>

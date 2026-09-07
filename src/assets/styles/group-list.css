@@ -60,16 +60,9 @@
 }
 
 .group-list-item-metadata {
-  display: flex;
   min-width: 0;
-  align-items: center;
-  gap: var(--space-4);
   overflow: hidden;
   margin-top: var(--space-6);
-  color: var(--color-palette-gray-700);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-text-sm);
   white-space: nowrap;
 }
 

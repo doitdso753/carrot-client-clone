@@ -34,7 +34,7 @@ function GroupScheduleItem({ schedule }: GroupScheduleItemProps): ReactNode {
         >
           {GROUP_SCHEDULE_STATUS_LABELS[schedule.status]}
         </p>
-        <div className="group-detail-schedule-meta">
+        <div className="group-detail-schedule-meta metadata">
           <span>
             <ClockFillIcon />
             {schedule.time}

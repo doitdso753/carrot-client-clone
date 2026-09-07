@@ -18,7 +18,7 @@ export default function GroupListItem({ item }: GroupListItemProps): ReactNode {
         <div className="group-list-item-text">
           <h2>{item.title}</h2>
           <p className="group-list-item-description">{item.description}</p>
-          <div className="group-list-item-metadata">
+          <div className="group-list-item-metadata metadata metadata-row">
             <span className="group-list-item-metadata-item">
               <LocationIcon />
               {item.location}

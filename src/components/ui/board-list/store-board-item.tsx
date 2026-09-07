@@ -21,7 +21,7 @@ export default function StoreBoardItem({
               <span>{item.category}</span>
             </div>
             <p className="board-item-description">{item.description}</p>
-            <div className="board-item-meta">
+            <div className="board-item-meta metadata metadata--small metadata-row">
               <span className="board-item-rating">
                 <StarIcon />
                 {item.rating.toFixed(1)}

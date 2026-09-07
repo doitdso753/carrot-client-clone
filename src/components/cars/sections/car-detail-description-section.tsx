@@ -12,7 +12,7 @@ export default function CarDetailDescriptionSection({
     <section className="car-detail-section car-detail-description">
       <h2>상세 내용</h2>
       <p>{item.description}</p>
-      <p className="car-detail-meta">
+      <p className="car-detail-meta metadata">
         채팅 {item.commentCount} · 관심 {item.favoriteCount} · 조회{' '}
         {item.viewCount}
       </p>

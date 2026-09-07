@@ -40,10 +40,6 @@
 .local-profile-meta {
   display: grid;
   row-gap: var(--space-2);
-  color: var(--color-palette-gray-800);
-  font-size: var(--text-sm);
-  line-height: var(--line-height-text-sm);
-  font-weight: var(--font-weight-normal);
 }
 
 .local-profile-meta-row {

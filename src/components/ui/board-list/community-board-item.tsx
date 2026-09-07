@@ -103,7 +103,7 @@ export default function CommunityBoardItem({
               {content}
             </p>
           )}
-          <div className="community-board-item-metadata flex flex-wrap items-center gap-(--space-4) font-normal text-(--color-palette-gray-700)">
+          <div className="community-board-item-metadata metadata metadata-row flex-wrap">
             {boardMetadataItems.map((metadataItem, index) => (
               <span key={`${metadataItem}-${index}`}>
                 {index > 0 && <span aria-hidden="true">· </span>}

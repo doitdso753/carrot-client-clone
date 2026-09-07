@@ -1,3 +1,23 @@
+@layer components {
+  .metadata {
+    color: var(--color-palette-gray-700);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-text-sm);
+  }
+
+  .metadata--small {
+    font-size: var(--text-xs);
+    line-height: var(--line-height-text-xs);
+  }
+
+  .metadata-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+}
+
 .form-select {
   position: relative;
   display: flex;

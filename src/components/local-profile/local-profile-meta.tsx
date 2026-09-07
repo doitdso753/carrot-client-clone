@@ -19,7 +19,9 @@ export default function LocalProfileMeta({
   variant,
 }: LocalProfileMetaProps): ReactNode {
   return (
-    <div className={`local-profile-meta local-profile-meta--${variant}`}>
+    <div
+      className={`local-profile-meta local-profile-meta--${variant} metadata text-(--color-palette-gray-800)`}
+    >
       <div className="local-profile-meta-row">
         <strong className="local-profile-meta-item local-profile-meta-item--divider local-profile-rating">
           <StarIcon />
