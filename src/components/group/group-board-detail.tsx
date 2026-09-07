@@ -1,6 +1,9 @@
 import type { ReactNode } from 'react';
 import { useParams } from 'react-router';
 import GroupDetailSidebar from '@/components/group/group-detail-sidebar.tsx';
+import {
+  GroupBoardPostSection,
+} from '@/components/group/sections';
 import DetailBreadcrumb from '@/components/ui/navigation/detail-breadcrumb.tsx';
 import { type GroupItem } from '@/types/group';
 
@@ -46,6 +49,7 @@ export default function GroupBoardDetail({
         />
 
         <div className="group-board-detail-main">
+          <GroupBoardPostSection post={post} />
         </div>
       </div>
     </main>

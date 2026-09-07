@@ -550,6 +550,84 @@
   color: var(--color-palette-gray-1000);
 }
 
+.group-board-detail-main .community-post-status {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.group-board-post-image-wrapper {
+  display: grid;
+  row-gap: 0.8rem;
+}
+
+.group-board-post-image-wrapper button {
+  width: 100%;
+  max-width: 60rem;
+  cursor: pointer;
+}
+
+.group-board-post-image-wrapper img {
+  width: 100%;
+  border-radius: 0.8rem;
+  object-fit: cover;
+}
+
+.group-board-post-content-card-wrapper {
+  width: 100%;
+  max-width: 60rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.group-board-post-content-card {
+  display: flex;
+  align-items: center;
+  column-gap: 1.6rem;
+  padding-right: 1.6rem;
+  border: 0.1rem solid #0000000c;
+  border-radius: 0.8rem;
+}
+
+.group-board-post-content-card-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 2.4rem;
+  background-color: var(--color-palette-gray-300);
+}
+
+.group-board-post-content-card-icon svg {
+  width: 3rem;
+  height: 3rem;
+  color: var(--color-palette-carrot-600);
+}
+
+.group-board-post-content-card-information {
+  display: grid;
+  min-width: 0;
+  row-gap: 0.4rem;
+}
+
+.group-board-post-content-card-information strong {
+  color: var(--color-palette-gray-1000);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-base);
+}
+
+.group-board-post-content-card-information span {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  color: var(--color-palette-gray-700);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-text-sm);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 @media screen and (min-width: 768px) {
   .group-detail-layout {
     column-gap: 3.2rem;
