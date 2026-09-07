@@ -98,7 +98,7 @@ export default function CommunityBoardItem({
             {isPublic === false && <LockFillIcon />}
             <span>{boardTitle}</span>
           </h3>
-          {content && (
+          {variant !== 'dashboard' && content && (
             <p className="community-board-item-content line-clamp-2 font-normal text-(--color-palette-gray-700)">
               {content}
             </p>
