@@ -2,10 +2,11 @@ import type { ReactNode } from 'react';
 import { useParams } from 'react-router';
 import GroupDetailSidebar from '@/components/group/group-detail-sidebar.tsx';
 import {
+  GroupBoardCommentSection,
   GroupBoardPostSection,
 } from '@/components/group/sections';
 import DetailBreadcrumb from '@/components/ui/navigation/detail-breadcrumb.tsx';
-import { type GroupItem } from '@/types/group';
+import { GROUP_POST_COMMENTS, type GroupItem } from '@/types/group';
 
 type GroupBoardDetailProps = {
   item: GroupItem;
@@ -20,6 +21,12 @@ export default function GroupBoardDetail({
   const post = item.posts.find(
     ({ id: groupPostId }) => groupPostId === Number(postId),
   );
+
+  // 댓글 조회
+  const comments =
+    GROUP_POST_COMMENTS.find(({ postId: commentPostId }) => {
+      return commentPostId === post?.id;
+    })?.comments ?? [];
 
   if (!post) {
     return null;
@@ -50,6 +57,7 @@ export default function GroupBoardDetail({
 
         <div className="group-board-detail-main">
           <GroupBoardPostSection post={post} />
+          <GroupBoardCommentSection comments={comments} />
         </div>
       </div>
     </main>
