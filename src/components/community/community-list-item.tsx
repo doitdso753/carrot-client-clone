@@ -14,7 +14,7 @@ export default function CommunityListItem({
 }: CommunityListItemProps): ReactNode {
   return (
     <li>
-      <article className="flex min-w-0 justify-between gap-[1.6rem]">
+      <article className="flex min-w-0 justify-between gap-(--space-16)">
         <Link
           className={`community-list-item-link min-w-0 flex-1 cursor-pointer ${rank ? 'has-rank' : ''}`}
           to={`/community/${item.id}`}

@@ -17,7 +17,7 @@ export default function CommunityList({
   return (
     <section className="list-content min-w-0 flex-1">
       {items.length > 0 ? (
-        <ul className="flex flex-col gap-[2.8rem]">
+        <ul className="flex flex-col gap-(--space-28)">
           {items.map((item, index) => (
             <CommunityListItem
               item={item}

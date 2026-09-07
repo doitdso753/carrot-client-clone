@@ -90,9 +90,9 @@ export default function CommunityBoardItem({
     <div
       className={`community-board-item community-board-item--${variant} ${
         isPublic === false ? 'is-private' : ''
-      } flex min-w-0 flex-1 justify-between gap-[0.8rem]`}
+      } flex min-w-0 flex-1 justify-between gap-(--space-8)`}
     >
-      <div className="flex min-w-0 flex-1 flex-col gap-[0.8rem]">
+      <div className="flex min-w-0 flex-1 flex-col gap-(--space-8)">
         <div className="community-board-item-text flex min-w-0 flex-col">
           <h3 className="community-board-item-title truncate font-bold text-(--color-palette-gray-1000)">
             {isPublic === false && <LockFillIcon />}
@@ -103,7 +103,7 @@ export default function CommunityBoardItem({
               {content}
             </p>
           )}
-          <div className="community-board-item-metadata flex flex-wrap items-center gap-[0.4rem] font-normal text-(--color-palette-gray-700)">
+          <div className="community-board-item-metadata flex flex-wrap items-center gap-(--space-4) font-normal text-(--color-palette-gray-700)">
             {boardMetadataItems.map((metadataItem, index) => (
               <span key={`${metadataItem}-${index}`}>
                 {index > 0 && <span aria-hidden="true">· </span>}
@@ -113,7 +113,7 @@ export default function CommunityBoardItem({
           </div>
         </div>
 
-        <div className="flex items-center gap-[0.8rem]">
+        <div className="flex items-center gap-(--space-8)">
           <CommunityBoardItemCount
             count={likeCount}
             icon={<ThumbUpFillIcon />}

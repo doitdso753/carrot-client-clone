@@ -12,8 +12,8 @@
 
 .location-map-card-address {
   display: grid;
-  row-gap: 0.8rem;
-  padding: 1.6rem;
+  row-gap: var(--space-8);
+  padding: var(--space-16);
 }
 
 .location-map-card-address strong {
@@ -97,9 +97,9 @@
 
   .map-region-refresh-button {
     left: calc(var(--map-panel-width) + ((100vw - var(--map-panel-width)) / 2));
-    gap: 0.8rem;
+    gap: var(--space-8);
     max-width: calc(100vw - var(--map-panel-width) - 12rem);
-    padding-inline: 1.6rem;
+    padding-inline: var(--space-16);
     border-radius: 999rem;
     font-size: var(--text-sm);
     font-weight: var(--font-weight-bold);
@@ -174,7 +174,7 @@
     .common-popup--bottom-sheet
     .common-popup-body {
     max-height: none;
-    padding: 0 2rem 1.6rem;
+    padding: 0 var(--space-20) var(--space-16);
   }
 
   body:has(.map-page)
@@ -188,11 +188,11 @@
     > .common-popup-backdrop
     .common-popup--bottom-sheet
     .search-filter-section {
-    padding-block: 1.6rem;
+    padding-block: var(--space-16);
   }
 
   body:has(.map-page) > .common-popup-backdrop .common-popup-footer {
     grid-template-columns: 12.4rem minmax(0, 1fr);
-    gap: 1.6rem;
+    gap: var(--space-16);
   }
 }

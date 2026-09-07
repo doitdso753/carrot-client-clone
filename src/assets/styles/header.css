@@ -5,8 +5,8 @@
   left: 0;
   z-index: 30;
   width: 100%;
-  padding-block: 1.2rem;
-  padding-inline: 1.6rem;
+  padding-block: var(--space-12);
+  padding-inline: var(--space-16);
   background-color: var(--color-palette-gray-00);
 }
 
@@ -42,7 +42,7 @@
   top: calc(100% + 1.2rem);
   right: 0;
   left: 0;
-  padding-bottom: 1.2rem;
+  padding-bottom: var(--space-12);
   background-color: var(--color-palette-gray-00);
   visibility: hidden;
   pointer-events: none;
@@ -77,7 +77,7 @@
 
 .header-search-form .form-select {
   height: 4rem;
-  padding-left: 1.4rem;
+  padding-left: var(--space-14);
 }
 
 .header-search-form .form-select-trigger {
@@ -110,7 +110,7 @@
   position: relative;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.8rem;
+  gap: var(--space-8);
 }
 
 .header-category-nav {
@@ -137,7 +137,8 @@
   inset: 0;
   z-index: 50;
   overflow-y: auto;
-  padding: var(--mobile-nav-popover-header-height, 6.4rem) 1.6rem 4.8rem;
+  padding: var(--mobile-nav-popover-header-height, 6.4rem) var(--space-16)
+    var(--space-48);
   background-color: var(--color-palette-gray-00);
   transform-origin: top;
   will-change: clip-path, transform, opacity;
@@ -176,8 +177,8 @@
 .header-category-mobile-nav-popover-items {
   display: flex;
   flex-direction: column;
-  gap: 2.8rem;
-  padding-top: 1.2rem;
+  gap: var(--space-28);
+  padding-top: var(--space-12);
 }
 
 .header-category-mobile-nav-popover.is-opening
@@ -244,7 +245,7 @@
 .header-category-mobile-nav-item-popover {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: var(--space-16);
 }
 
 .header-category-mobile-nav-item {
@@ -281,8 +282,8 @@
 .header-category-mobile-nav-item-popover-items {
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
-  padding-top: 1.2rem;
+  gap: var(--space-24);
+  padding-top: var(--space-12);
 }
 
 .header-category-mobile-nav-item-popover-item {
@@ -301,7 +302,7 @@
   right: 0;
   z-index: 40;
   width: 18rem;
-  padding: 0.8rem 0.6rem;
+  padding: var(--space-8) var(--space-6);
   border: 0.1rem solid var(--color-palette-gray-300);
   border-radius: 1.6rem;
   background-color: var(--color-palette-gray-00);
@@ -325,8 +326,8 @@
 
 .header-category-popover-item-wrapper.has-separator,
 .header-category-popover-item-separator {
-  padding-bottom: 0.8rem;
-  margin-bottom: 0.8rem;
+  padding-bottom: var(--space-8);
+  margin-bottom: var(--space-8);
   border-bottom: 0.1rem solid var(--color-palette-gray-200);
 }
 
@@ -346,7 +347,7 @@
   right: calc(100% + 0.8rem);
   z-index: 50;
   width: 18rem;
-  padding: 0.8rem 0.6rem;
+  padding: var(--space-8) var(--space-6);
   border: 0.1rem solid var(--color-palette-gray-300);
   border-radius: 1.6rem;
   background-color: var(--color-palette-gray-00);
@@ -356,8 +357,8 @@
 .header-category-popover-item {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  padding: 0.6rem 0.8rem;
+  gap: var(--space-8);
+  padding: var(--space-6) var(--space-8);
   border-radius: 0.8rem;
   color: var(--color-palette-gray-700);
   font-size: var(--text-sm);
@@ -380,7 +381,7 @@
 
 .header-category-popover-nested-item {
   display: block;
-  padding: 0.8rem 0.6rem;
+  padding: var(--space-8) var(--space-6);
   border-radius: 0.8rem;
   color: var(--color-palette-gray-700);
   font-size: var(--text-sm);
@@ -422,17 +423,17 @@
 }
 
 .header-category-nav-item-label {
-  padding-inline: 0.6rem;
+  padding-inline: var(--space-6);
 }
 
 .header-category-nav-item-trigger > .header-category-icon {
   width: 2rem;
-  padding-left: 0.4rem;
+  padding-left: var(--space-4);
 }
 
 .header-category-nav-item-trigger > .header-category-action-icon {
   width: 1.8rem;
-  padding-right: 0.4rem;
+  padding-right: var(--space-4);
 }
 
 .header-category-nav-item-popover-wrapper {
@@ -446,10 +447,10 @@
   z-index: 40;
   display: flex;
   flex-direction: column;
-  row-gap: 0.4rem;
+  row-gap: var(--space-4);
   min-width: 14rem;
   overflow-y: auto;
-  padding: 0.8rem;
+  padding: var(--space-8);
   border: 0.1rem solid var(--color-palette-gray-300);
   border-radius: 1.2rem;
   background-color: var(--color-palette-gray-00);
@@ -458,7 +459,7 @@
 
 .header-category-nav-item-popover-item {
   display: block;
-  padding: 0.4rem;
+  padding: var(--space-4);
   border-radius: 0.8rem;
   color: var(--color-palette-gray-700);
   font-size: var(--text-sm);
@@ -565,9 +566,9 @@
 
   .header-category-nav {
     display: flex;
-    gap: 0.6rem;
-    padding-block: 0.4rem;
-    margin-block: -0.4rem;
+    gap: var(--space-6);
+    padding-block: var(--space-4);
+    margin-block: calc(var(--space-4) * -1);
   }
 
   .header-category-more-button {

@@ -50,19 +50,19 @@ export default function CategoryGrid({
   }, [categories.length, updateScrollState]);
 
   return (
-    <div className="relative mt-[3.2rem] w-full">
+    <div className="relative mt-(--space-32) w-full">
       <ul
-        className="scrollbar-hidden m-0 flex w-full list-none items-center justify-evenly gap-[1.6rem] overflow-x-auto p-0"
+        className="scrollbar-hidden m-0 flex w-full list-none items-center justify-evenly gap-(--space-16) overflow-x-auto p-0"
         ref={listRef}
         onScroll={updateScrollState}
       >
         {categories.map((category) => (
           <li className="w-[6.4rem] shrink-0" key={category.label}>
             <a
-              className="group flex flex-col items-center gap-[0.8rem]"
+              className="group flex flex-col items-center gap-(--space-8)"
               href={category.routing}
             >
-              <span className="rounded-[1.6rem] bg-(--color-palette-gray-200) p-[1.2rem] transition group-hover:bg-(--color-palette-gray-300) [&>svg]:size-[2.4rem]">
+              <span className="rounded-[1.6rem] bg-(--color-palette-gray-200) p-(--space-12) transition group-hover:bg-(--color-palette-gray-300) [&>svg]:size-[2.4rem]">
                 <CategoryIcon iconName={category.iconName} />
               </span>
               <span className="text-[1.4rem] font-normal whitespace-nowrap text-(--color-palette-gray-1000)">

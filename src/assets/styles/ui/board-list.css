@@ -1,14 +1,14 @@
 .board-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--space-20);
 }
 
 .board-item {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1.6rem;
+  gap: var(--space-16);
   color: var(--color-palette-gray-1000);
 }
 
@@ -18,7 +18,7 @@
   min-width: 0;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: var(--space-4);
 }
 
 .board-item-heading {
@@ -39,7 +39,7 @@
 .board-item-heading span {
   overflow: hidden;
   flex-shrink: 0;
-  margin-left: 0.6rem;
+  margin-left: var(--space-6);
   color: var(--color-palette-gray-700);
   font-size: var(--text-sm);
   font-weight: var(--font-weight-normal);
@@ -62,7 +62,7 @@
   display: flex;
   min-width: 0;
   align-items: center;
-  gap: 0.4rem;
+  gap: var(--space-4);
   overflow: hidden;
   color: var(--color-palette-gray-700);
   font-size: var(--text-xs);
@@ -75,7 +75,7 @@
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
-  gap: 0.2rem;
+  gap: var(--space-2);
   color: var(--color-palette-gray-1000);
   font-size: var(--text-xs);
   font-weight: var(--font-weight-semibold);
@@ -91,11 +91,11 @@
 .board-item-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: var(--space-4);
 }
 
 .board-item-options span {
-  padding-inline: 0.6rem;
+  padding-inline: var(--space-6);
   background-color: var(--color-palette-gray-200);
   color: var(--color-palette-gray-800);
   font-size: var(--text-xs);
@@ -136,7 +136,7 @@
 
 .community-list-item-link.has-rank {
   grid-template-columns: 2.6rem minmax(0, 1fr);
-  column-gap: 0.6rem;
+  column-gap: var(--space-6);
 }
 
 .community-list-item-rank {
@@ -147,7 +147,7 @@
 }
 
 .community-board-item-text {
-  gap: 0.2rem;
+  gap: var(--space-2);
 }
 
 .community-board-item--default .community-board-item-content {
@@ -164,7 +164,7 @@
 }
 
 .community-board-item--group .community-board-item-title {
-  margin-bottom: 0.4rem;
+  margin-bottom: var(--space-4);
   font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-text-base);
@@ -173,7 +173,7 @@
 .community-board-item--group.is-private .community-board-item-title {
   display: flex;
   align-items: center;
-  column-gap: 0.4rem;
+  column-gap: var(--space-4);
   color: var(--color-palette-gray-700);
 }
 
@@ -229,7 +229,7 @@
 
 @media screen and (min-width: 768px) {
   .board-list {
-    gap: 2.8rem;
+    gap: var(--space-28);
   }
 
   .board-item-heading h2 {
@@ -248,7 +248,7 @@
   }
 
   .board-item-options span {
-    padding-inline: 0.8rem;
+    padding-inline: var(--space-8);
   }
 
   .board-item-image {
@@ -259,7 +259,7 @@
 
 @media screen and (min-width: 992px) {
   .community-list-item-link.has-rank {
-    column-gap: 1.6rem;
+    column-gap: var(--space-16);
   }
 
   .community-list-item-rank {
@@ -273,14 +273,14 @@
   }
 
   .community-board-item--group .community-board-item-title {
-    margin-bottom: 0.4rem;
+    margin-bottom: var(--space-4);
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: var(--line-height-text-base);
   }
 
   .community-board-item-text {
-    gap: 0.4rem;
+    gap: var(--space-4);
   }
 
   .community-board-item--default .community-board-item-content {

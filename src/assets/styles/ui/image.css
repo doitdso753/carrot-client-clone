@@ -72,7 +72,7 @@
   bottom: 2.4rem;
   left: 50%;
   display: flex;
-  gap: 0.8rem;
+  gap: var(--space-8);
   transform: translateX(-50%);
 }
 
@@ -93,8 +93,8 @@
   bottom: 0.8rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 0.8rem;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--space-8);
   border-radius: 0.4rem;
   background-color: rgb(0 0 0 / 50%);
   color: var(--color-palette-static-white);
@@ -131,13 +131,13 @@
   display: flex;
   height: 6rem;
   align-items: center;
-  padding-inline: 1.6rem;
+  padding-inline: var(--space-16);
   background-color: var(--color-palette-static-white);
 }
 
 .gallery-image-preview-close-button {
   display: inline-flex;
-  padding: 0.8rem;
+  padding: var(--space-8);
   align-items: center;
   justify-content: center;
 }
@@ -151,13 +151,13 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  padding: 7.2rem 1.6rem 4rem;
+  padding: 7.2rem var(--space-16) var(--space-40);
 }
 
 .gallery-image-preview-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 0.8rem;
+  gap: var(--space-8);
   width: 100%;
   max-width: 100rem;
   margin-inline: auto;
@@ -179,12 +179,12 @@
 
 @media screen and (min-width: 768px) {
   .gallery-image-preview-scroll-area {
-    padding: 8.8rem 4rem 6.4rem;
+    padding: 8.8rem var(--space-40) 6.4rem;
   }
 
   .gallery-image-preview-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.2rem;
+    gap: var(--space-12);
   }
 
   .gallery-image-preview-item:first-child {
@@ -207,7 +207,7 @@
   display: grid;
   grid-auto-columns: 16.6rem;
   grid-auto-flow: column;
-  gap: 1.2rem;
+  gap: var(--space-12);
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
@@ -236,7 +236,7 @@
 .image-grid-slider {
   display: grid;
   grid-template-columns: repeat(var(--image-grid-slider-count), 16.6rem);
-  gap: 1.2rem;
+  gap: var(--space-12);
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
@@ -333,7 +333,7 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  padding: 0.8rem;
+  padding: var(--space-8);
 }
 
 .image-preview-button {
@@ -341,7 +341,7 @@
   align-items: center;
   justify-content: center;
   color: var(--color-preview-button);
-  padding: 0.8rem;
+  padding: var(--space-8);
 }
 
 .image-preview-button:hover:not(:disabled) {
