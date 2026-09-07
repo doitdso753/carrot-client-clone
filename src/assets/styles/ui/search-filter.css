@@ -323,7 +323,7 @@
 }
 
 .range-slider-filter-value {
-  color: #868b94;
+  color: var(--color-palette-gray-700);
   font-size: var(--text-base);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-text-base);
@@ -501,7 +501,7 @@
 }
 
 .search-filter-toolbar-item-trailing-icon svg {
-  color: #868b94;
+  color: var(--color-palette-gray-700);
 }
 
 @media screen and (min-width: 768px) {
