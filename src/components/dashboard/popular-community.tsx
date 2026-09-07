@@ -7,7 +7,7 @@ import { POPULAR_COMMUNITY_ITEMS } from '@/types/community';
 export default function PopularCommunity(): ReactNode {
   return (
     <section className="mt-[8.4rem] flex w-full flex-col gap-(--space-32) pb-[12rem]">
-      <h2 className="flex items-center gap-(--space-8) text-[2.4rem] font-bold text-(--color-palette-gray-1000) [&>svg]:size-[2.4rem] [&>svg]:text-[#ff3f3f]">
+      <h2 className="flex items-center gap-(--space-8) text-[2.4rem] font-bold text-(--color-palette-gray-1000) [&>svg]:size-(--icon-size-24) [&>svg]:text-[#ff3f3f]">
         <HotIcon />
         지금 뜨는 동네 이야기
       </h2>

@@ -153,8 +153,8 @@
 }
 
 .group-detail-common-menu-icon svg {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: var(--icon-size-14);
+  height: var(--icon-size-14);
   color: var(--color-palette-gray-1000);
 }
 
@@ -170,8 +170,8 @@
 }
 
 .group-detail-board-menu svg {
-  width: 2rem;
-  height: 2rem;
+  width: var(--icon-size-20);
+  height: var(--icon-size-20);
   flex-shrink: 0;
 }
 
@@ -238,8 +238,8 @@
 }
 
 .group-detail-section-more-button svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
   font-weight: var(--font-weight-bold);
 }
 
@@ -287,8 +287,8 @@
 }
 
 .group-detail-member-name-row svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
 }
 
 .group-detail-member-text p {
@@ -369,8 +369,8 @@
 }
 
 .group-detail-schedule-text h3 svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
   flex-shrink: 0;
   color: var(--color-palette-gray-500);
 }
@@ -408,8 +408,8 @@
 }
 
 .group-detail-schedule-meta svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
   color: var(--color-palette-gray-500);
 }
 

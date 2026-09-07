@@ -298,7 +298,7 @@
 }
 
 .hero-search-wrapper {
-  --form-select-chevron-size: 1.4rem;
+  --form-select-chevron-size: var(--icon-size-14);
 
   width: 100%;
 }

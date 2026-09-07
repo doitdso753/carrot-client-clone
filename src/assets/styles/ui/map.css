@@ -74,8 +74,8 @@
   }
 
   .map-menu .header-category-more-button svg {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: var(--icon-size-16);
+    height: var(--icon-size-16);
   }
 
   .map-menu .header-category-popover {
@@ -121,8 +121,8 @@
 
   .map-region-refresh-button svg,
   .map-current-location-button svg {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: var(--icon-size-16);
+    height: var(--icon-size-16);
     flex-shrink: 0;
   }
 

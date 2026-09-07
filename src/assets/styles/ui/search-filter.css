@@ -23,8 +23,8 @@
 }
 
 .search-filter-open-button svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
   flex-shrink: 0;
 }
 
@@ -81,8 +81,8 @@
 }
 
 .search-filter-link svg {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: var(--icon-size-18);
+  height: var(--icon-size-18);
   flex-shrink: 0;
 }
 
@@ -160,7 +160,7 @@
 }
 
 .search-filter-radio-icon {
-  width: 3.2rem;
+  width: var(--icon-size-32);
   flex-shrink: 0;
   object-fit: contain;
 }
@@ -298,8 +298,8 @@
 }
 
 .search-filter-chip svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
 }
 
 .search-filter-aside {
@@ -495,8 +495,8 @@
 
 .search-filter-toolbar-item-leading-icon svg,
 .search-filter-toolbar-item-trailing-icon svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
   flex-shrink: 0;
 }
 

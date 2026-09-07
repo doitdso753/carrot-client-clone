@@ -118,8 +118,8 @@
 }
 
 .car-detail-info-value .bubble-tooltip-trigger svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
 }
 
 .car-detail-saving {
@@ -140,8 +140,8 @@
 }
 
 .car-detail-text-link svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
   flex-shrink: 0;
 }
 
@@ -164,8 +164,8 @@
 }
 
 .car-detail-option svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
   flex-shrink: 0;
 }
 
@@ -218,8 +218,8 @@
 }
 
 .car-detail-map-address svg {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: var(--icon-size-18);
+  height: var(--icon-size-18);
 }
 
 @media screen and (min-width: 992px) {

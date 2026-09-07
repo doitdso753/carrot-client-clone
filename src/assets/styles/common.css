@@ -62,8 +62,8 @@
 }
 
 .form-select-icon svg {
-  width: 1.8rem;
-  height: 2.4rem;
+  width: var(--icon-size-18);
+  height: var(--icon-size-24);
 }
 
 .form-select-chevron {
@@ -108,8 +108,8 @@
 }
 
 .form-select-option svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
 }
 
 .form-select-option:hover,
@@ -138,8 +138,8 @@
 }
 
 .form-select-option.is-selected .form-select-check svg {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: var(--icon-size-14);
+  height: var(--icon-size-14);
 }
 
 .search-form-submit-wrapper {
@@ -279,8 +279,8 @@
 }
 
 .common-select-button svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
   flex-shrink: 0;
   color: var(--color-palette-gray-800);
 }
@@ -363,8 +363,8 @@
 }
 
 .current-location-button-spinner .spinner-icon {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: var(--icon-size-18);
+  height: var(--icon-size-18);
   animation: spinner-icon-rotate 800ms linear infinite;
 }
 
@@ -408,8 +408,8 @@
 
 .common-toast-content svg,
 .common-toast-close svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
 }
 
 .common-toast-close {
@@ -518,8 +518,8 @@
 }
 
 .common-checkbox-icon svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
 }
 
 .common-checkbox-input:checked + .common-checkbox-icon {
@@ -932,8 +932,8 @@
 }
 
 .region-setting-popup-search-button svg {
-  width: 2rem;
-  height: 2rem;
+  width: var(--icon-size-20);
+  height: var(--icon-size-20);
 }
 
 .region-setting-popup-current-button {
@@ -972,8 +972,8 @@
 }
 
 .region-setting-popup-current-icon {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: var(--icon-size-18);
+  height: var(--icon-size-18);
 }
 
 .region-setting-popup-location-status {
@@ -1181,8 +1181,8 @@
 }
 
 .common-select-trigger svg {
-  width: 2rem;
-  height: 2rem;
+  width: var(--icon-size-20);
+  height: var(--icon-size-20);
   flex-shrink: 0;
   transition: transform 0.15s cubic-bezier(0.35, 0, 0.35, 1);
 }

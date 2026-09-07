@@ -62,7 +62,7 @@ export default function CategoryGrid({
               className="group flex flex-col items-center gap-(--space-8)"
               href={category.routing}
             >
-              <span className="rounded-[1.6rem] bg-(--color-palette-gray-200) p-(--space-12) transition group-hover:bg-(--color-palette-gray-300) [&>svg]:size-[2.4rem]">
+              <span className="rounded-[1.6rem] bg-(--color-palette-gray-200) p-(--space-12) transition group-hover:bg-(--color-palette-gray-300) [&>svg]:size-(--icon-size-24)">
                 <CategoryIcon iconName={category.iconName} />
               </span>
               <span className="text-[1.4rem] font-normal whitespace-nowrap text-(--color-palette-gray-1000)">

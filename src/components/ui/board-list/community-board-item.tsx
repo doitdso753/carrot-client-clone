@@ -54,7 +54,7 @@ function CommunityBoardItemCount({
   label,
 }: CommunityBoardItemCountProps): ReactNode {
   return (
-    <span className="community-board-item-count flex items-center gap-1 font-normal text-(--color-palette-gray-700) [&>svg]:size-[1.8rem] [&>svg]:text-(--color-palette-gray-500)">
+    <span className="community-board-item-count flex items-center gap-1 font-normal text-(--color-palette-gray-700) [&>svg]:size-(--icon-size-18) [&>svg]:text-(--color-palette-gray-500)">
       {icon}
       <span className="sr-only">{label}</span>
       {count}

@@ -76,8 +76,8 @@
 }
 
 .board-item-rating svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--icon-size-15);
+  height: var(--icon-size-15);
   color: var(--color-palette-carrot-600);
 }
 
@@ -177,8 +177,8 @@
 }
 
 .community-board-item--group.is-private .community-board-item-title svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
   flex-shrink: 0;
   color: var(--color-palette-gray-500);
 }

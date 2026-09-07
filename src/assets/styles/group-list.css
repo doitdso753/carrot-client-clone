@@ -67,8 +67,8 @@
 }
 
 .group-list-item-metadata svg {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: var(--icon-size-14);
+  height: var(--icon-size-14);
   flex-shrink: 0;
   color: var(--color-palette-gray-500);
 }

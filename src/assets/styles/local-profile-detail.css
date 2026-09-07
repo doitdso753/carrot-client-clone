@@ -75,8 +75,8 @@
 }
 
 .local-profile-meta svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--icon-size-15);
+  height: var(--icon-size-15);
   color: var(--color-palette-carrot-600);
 }
 
@@ -193,8 +193,8 @@
 }
 
 .local-profile-detail-document svg {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: var(--icon-size-24);
+  height: var(--icon-size-24);
   flex-shrink: 0;
 }
 
@@ -222,8 +222,8 @@
 }
 
 .local-profile-document-popup-group svg {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: var(--icon-size-18);
+  height: var(--icon-size-18);
 }
 
 .local-profile-document-popup-list {
@@ -337,8 +337,8 @@
 }
 
 .local-profile-price-more svg {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: var(--icon-size-14);
+  height: var(--icon-size-14);
   transition: transform 0.2s ease;
 }
 
@@ -358,8 +358,8 @@
 }
 
 .local-profile-more svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
 }
 
 .local-profile-review-list {
@@ -389,8 +389,8 @@
 }
 
 .local-profile-review-popup-summary svg {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: var(--icon-size-24);
+  height: var(--icon-size-24);
 }
 
 .local-profile-review-popup-summary p {
@@ -476,8 +476,8 @@
 }
 
 .local-profile-review-rating svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--icon-size-15);
+  height: var(--icon-size-15);
 }
 
 .local-profile-review-content p {
@@ -499,8 +499,8 @@
 }
 
 .local-profile-review-helpful svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: var(--icon-size-16);
+  height: var(--icon-size-16);
 }
 
 .local-profile-review-reply {
@@ -1051,8 +1051,8 @@
 }
 
 .local-profile-coupon-download svg {
-  width: 2rem;
-  height: 2rem;
+  width: var(--icon-size-20);
+  height: var(--icon-size-20);
 }
 
 .local-profile-store-info {
@@ -1086,8 +1086,8 @@
 }
 
 .local-profile-store-info-row > svg {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: var(--icon-size-24);
+  height: var(--icon-size-24);
   color: var(--color-palette-gray-1000);
 }
 
@@ -1107,8 +1107,8 @@
 }
 
 .local-profile-store-info-main svg {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: var(--icon-size-14);
+  height: var(--icon-size-14);
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
@@ -1149,8 +1149,8 @@
 
 .local-profile-store-info-copy-row button svg,
 .local-profile-store-info-address button svg {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: var(--icon-size-18);
+  height: var(--icon-size-18);
 }
 
 .local-profile-store-info-website {

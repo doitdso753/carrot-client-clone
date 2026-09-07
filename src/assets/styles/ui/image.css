@@ -55,8 +55,8 @@
 }
 
 .image-slider-nav-button svg {
-  width: 3.2rem;
-  height: 3.2rem;
+  width: var(--icon-size-32);
+  height: var(--icon-size-32);
 }
 
 .image-slider-nav-button--previous {
@@ -143,8 +143,8 @@
 }
 
 .gallery-image-preview-close-button svg {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: var(--icon-size-24);
+  height: var(--icon-size-24);
 }
 
 .gallery-image-preview-scroll-area {
@@ -295,8 +295,8 @@
 }
 
 .image-grid-slider-nav-button svg {
-  width: 2.2rem;
-  height: 2.2rem;
+  width: var(--icon-size-22);
+  height: var(--icon-size-22);
 }
 
 .image-grid-slider-nav-button--previous {
@@ -362,15 +362,15 @@
 }
 
 .image-preview-button--zoom svg {
-  width: 3.2rem;
-  height: 3.2rem;
+  width: var(--icon-size-32);
+  height: var(--icon-size-32);
 }
 
 .image-preview-button--close svg,
 .image-preview-button--previous svg,
 .image-preview-button--next svg {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: var(--icon-size-24);
+  height: var(--icon-size-24);
 }
 
 .image-preview-button--previous,
