@@ -2,6 +2,11 @@
   display: none;
 }
 
+.search-toolbar .common-item-trigger:hover,
+.search-toolbar .common-item-trigger:focus-visible {
+  background-color: var(--color-palette-gray-100);
+}
+
 .search-filter-open-button {
   display: inline-flex;
   width: fit-content;
