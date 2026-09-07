@@ -8,6 +8,7 @@ import {
 import type { UserProfile } from '@/types/user-profile.ts';
 import type { GroupCategoryItem, GroupItem } from './group.ts';
 import type { GroupMember, GroupPost, GroupSchedule } from './group.ts';
+import type { GroupPostComment } from './group.ts';
 import type { GroupScheduleStatus } from './group.ts';
 
 type GroupCommonMenuCode = 'challenge' | 'home' | 'notice' | 'schedule';
@@ -560,6 +561,99 @@ const GROUP_POSTS: readonly GroupPost[] = [
     location: '단비/00/여/화서',
     title: '가입 인사 남깁니다',
     viewCount: 92,
+  },
+];
+
+export const GROUP_POST_COMMENTS: readonly GroupPostComment[] = [
+  {
+    postId: 1,
+    comments: [
+    {
+      content: '사진만 봐도 맛있어 보여요. 다음에 같이 가고 싶네요.',
+      createdAt: '2026-08-31T13:00:00+09:00',
+      id: 1,
+      likeCount: 2,
+      location: '경기 수원시 권선구',
+      nickname: '연두/02/여/구운',
+      profileImageUrl: 'https://picsum.photos/seed/group-comment-1/72/72',
+      replyCount: 1,
+      replies: [
+        {
+          content: '다음 일정 잡히면 같이 가요.',
+          createdAt: '2026-08-31T13:30:00+09:00',
+          id: 11,
+          likeCount: 1,
+          location: '경기 수원시 팔달구',
+          nickname: '유화/00/여/권선',
+          replyCount: 0,
+        },
+      ],
+    },
+    {
+      content: '여기 어디인지 공유 가능할까요?',
+      createdAt: '2026-08-31T14:00:00+09:00',
+      id: 2,
+      likeCount: 0,
+      location: '경기 수원시 팔달구',
+      nickname: '밤비/94/남/화서',
+      profileImageUrl: 'https://picsum.photos/seed/group-comment-2/72/72',
+      replyCount: 0,
+    },
+  ],
+  },
+  {
+    postId: 2,
+    comments: [
+    {
+      content: '콩불이면 인정입니다. 양도 좋아 보여요.',
+      createdAt: '2026-08-30T15:00:00+09:00',
+      id: 3,
+      likeCount: 1,
+      location: '경기 안양시 만안구',
+      nickname: '안양/00/남/안양',
+      profileImageUrl: 'https://picsum.photos/seed/group-comment-3/72/72',
+      replyCount: 0,
+    },
+  ],
+  },
+  {
+    postId: 5,
+    comments: [
+    {
+      content: '걷기 코스 좋았어요. 다음에도 참여하겠습니다.',
+      createdAt: '2026-08-26T18:00:00+09:00',
+      id: 4,
+      likeCount: 3,
+      location: '경기 수원시 팔달구',
+      nickname: '포포/57/남/인계',
+      profileImageUrl: 'https://picsum.photos/seed/group-comment-4/72/72',
+      replyCount: 0,
+    },
+    {
+      content: '사진 분위기가 좋네요.',
+      createdAt: '2026-08-26T19:00:00+09:00',
+      id: 5,
+      likeCount: 1,
+      location: '경기 수원시 권선구',
+      nickname: '하늘/95/남/권선',
+      replyCount: 0,
+    },
+  ],
+  },
+  {
+    postId: 6,
+    comments: [
+    {
+      content: '반갑습니다. 모임에서 자주 뵈어요.',
+      createdAt: '2026-08-25T13:00:00+09:00',
+      id: 6,
+      likeCount: 2,
+      location: '경기 수원시 팔달구',
+      nickname: '유화/00/여/권선',
+      profileImageUrl: 'https://picsum.photos/seed/group-comment-6/72/72',
+      replyCount: 0,
+    },
+  ],
   },
 ];
 

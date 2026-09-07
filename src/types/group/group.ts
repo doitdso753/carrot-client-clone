@@ -1,4 +1,4 @@
-import type { CommunityItem } from '@/types/community';
+import type { CommunityComment, CommunityItem } from '@/types/community';
 
 export type GroupMemberRole = 'SUPER_HOST' | 'MANAGER' | 'MEMBER';
 
@@ -49,6 +49,13 @@ export type GroupPost = Omit<CommunityItem, 'category' | 'tags'> & {
   category: GroupCategoryItem;
   contentItems?: readonly GroupPostContentItem[];
   isPublic: boolean;
+};
+
+export type GroupPostCommentItem = CommunityComment;
+
+export type GroupPostComment = {
+  comments: readonly GroupPostCommentItem[];
+  postId: number;
 };
 
 export type GroupCategoryItem = {
