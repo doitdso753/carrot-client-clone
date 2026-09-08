@@ -1,9 +1,10 @@
 import { useMemo, useState, type ReactNode } from 'react';
+import { Link } from 'react-router';
+import GroupDetailSection from '@/components/group/group-detail-section.tsx';
 import CommunityBoardItem from '@/components/ui/board-list/community-board-item.tsx';
 import { getElapsedTimeText } from '@/lib/date-utils.ts';
 import { formatThousandsBySuffix } from '@/lib/utils.ts';
 import type { GroupItem } from '@/types/group';
-import GroupDetailSection from '../group-detail-section.tsx';
 
 type GroupDetailPostSectionProps = {
   item: GroupItem;
@@ -57,15 +58,20 @@ export default function GroupDetailPostSection({
           <ul className="group-detail-post-list">
             {filteredPosts.map((post) => (
               <li key={post.id}>
-                <CommunityBoardItem
-                  item={post}
-                  metadataItems={[
-                    post.authorProfile.nickname,
-                    getElapsedTimeText(post.createdAt),
-                    post.category.categoryName,
-                  ]}
-                  variant="group"
-                />
+                <Link
+                  className="block cursor-pointer"
+                  to={`/group/${item.id}/board/${post.category.categoryCode}/${post.id}`}
+                >
+                  <CommunityBoardItem
+                    item={post}
+                    metadataItems={[
+                      post.authorProfile.nickname,
+                      getElapsedTimeText(post.createdAt),
+                      post.category.categoryName,
+                    ]}
+                    variant="group"
+                  />
+                </Link>
               </li>
             ))}
           </ul>
