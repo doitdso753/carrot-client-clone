@@ -39,7 +39,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   padding-block: var(--space-16);
   border: 0.1rem solid var(--color-palette-gray-400);
-  border-radius: 0.8rem;
+  border-radius: var(--rounded-8);
   margin-top: var(--space-24);
 }
 
@@ -157,7 +157,7 @@
   align-items: center;
   column-gap: var(--space-6);
   padding: var(--space-6) var(--space-12);
-  border-radius: 0.8rem;
+  border-radius: var(--rounded-8);
   background-color: var(--color-palette-gray-200);
   font-size: var(--text-sm);
   line-height: var(--line-height-text-sm);

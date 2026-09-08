@@ -128,7 +128,7 @@ export default function CommunityBoardItem({
       </div>
 
       {imageUrl && (
-        <div className="size-[9.6rem] shrink-0 overflow-hidden rounded-[0.6rem] bg-(--color-palette-gray-200) sm:size-[10.8rem]">
+        <div className="size-[9.6rem] shrink-0 overflow-hidden rounded-(--rounded-6) bg-(--color-palette-gray-200) sm:size-[10.8rem]">
           <img
             alt=""
             className="aspect-square h-full w-full shrink-0 object-cover"

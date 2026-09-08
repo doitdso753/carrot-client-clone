@@ -20,7 +20,7 @@
   left: 0.8rem;
   height: 2.4rem;
   padding: var(--space-4) var(--space-8);
-  border-radius: 0.4rem;
+  border-radius: var(--rounded-4);
   background-color: var(--color-palette-green-500);
   color: var(--color-palette-static-white);
   font-size: var(--text-xs);

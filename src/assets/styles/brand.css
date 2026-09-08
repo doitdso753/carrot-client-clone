@@ -23,6 +23,17 @@
 }
 
 :root {
+  /* 공통 모서리 반경 */
+  --rounded-4: 0.4rem;
+  --rounded-6: 0.6rem;
+  --rounded-8: 0.8rem;
+  --rounded-12: 1.2rem;
+  --rounded-16: 1.6rem;
+  --rounded-24: 2.4rem;
+
+  /* 원형과 알약 형태에 사용하는 모서리 반경 */
+  --rounded-full: 999rem;
+
   /* 아이콘의 너비와 높이에 사용하는 공통 크기 */
   --icon-size-14: 1.4rem;
   --icon-size-15: 1.5rem;

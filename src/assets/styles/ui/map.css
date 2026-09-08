@@ -3,7 +3,7 @@
   width: 100%;
   max-width: 60rem;
   border: 0.1rem solid var(--color-palette-gray-400);
-  border-radius: 0.8rem;
+  border-radius: var(--rounded-8);
 }
 
 .location-map-card .kakao-map-wrapper {
@@ -100,7 +100,7 @@
     gap: var(--space-8);
     max-width: calc(100vw - var(--map-panel-width) - 12rem);
     padding-inline: var(--space-16);
-    border-radius: 999rem;
+    border-radius: var(--rounded-full);
     font-size: var(--text-sm);
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-text-sm);
@@ -152,7 +152,7 @@
     min-height: 0;
     max-height: min(52rem, 43.3rem);
     border: 0.1rem solid var(--color-palette-gray-300);
-    border-radius: 2.4rem;
+    border-radius: var(--rounded-24);
     box-shadow: 0 0.8rem 2.4rem rgb(0 0 0 / 14%);
     animation: none;
   }

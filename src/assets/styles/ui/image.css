@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 1 / 1;
-  border-radius: 0.8rem;
+  border-radius: var(--rounded-8);
   background-color: var(--color-palette-gray-200);
 }
 
@@ -79,7 +79,7 @@
 .image-slider-dots span {
   width: 0.8rem;
   height: 0.8rem;
-  border-radius: 999rem;
+  border-radius: var(--rounded-full);
   background-color: rgb(255 255 255 / 45%);
 }
 
@@ -95,7 +95,7 @@
   align-items: center;
   gap: var(--space-6);
   padding: var(--space-6) var(--space-8);
-  border-radius: 0.4rem;
+  border-radius: var(--rounded-4);
   background-color: rgb(0 0 0 / 50%);
   color: var(--color-palette-static-white);
   font-size: var(--text-sm);
@@ -222,7 +222,7 @@
   overflow: hidden;
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 0.8rem;
+  border-radius: var(--rounded-8);
   background-color: var(--color-palette-gray-200);
   scroll-snap-align: start;
 }
@@ -252,7 +252,7 @@
   overflow: hidden;
   aspect-ratio: 1 / 1;
   width: 100%;
-  border-radius: 0.8rem;
+  border-radius: var(--rounded-8);
   background-color: var(--color-palette-gray-200);
   scroll-snap-align: start;
 }
@@ -276,7 +276,7 @@
   height: 4.4rem;
   align-items: center;
   justify-content: center;
-  border-radius: 999rem;
+  border-radius: var(--rounded-full);
   background-color: var(--color-palette-static-white);
   color: var(--color-palette-gray-1000);
   opacity: 0;

@@ -31,7 +31,7 @@
 .group-detail-profile > img {
   width: 100%;
   max-width: 4.8rem;
-  border-radius: 0.8rem;
+  border-radius: var(--rounded-8);
   object-fit: cover;
   aspect-ratio: 1 / 1;
 }
@@ -148,7 +148,7 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  border-radius: 999rem;
+  border-radius: var(--rounded-full);
   background-color: var(--color-palette-gray-300);
 }
 
@@ -189,7 +189,7 @@
   height: 12rem;
   min-height: 12rem;
   overflow: hidden;
-  border-radius: 0.6rem;
+  border-radius: var(--rounded-6);
   font:
     1.2rem/2rem 'Helvetica Neue',
     Arial,
@@ -266,7 +266,7 @@
   width: 4.8rem;
   height: 4.8rem;
   flex-shrink: 0;
-  border-radius: 999rem;
+  border-radius: var(--rounded-full);
   object-fit: cover;
 }
 
@@ -322,7 +322,7 @@
   min-width: 4.2rem;
   align-self: flex-start;
   justify-items: center;
-  border-radius: 0.6rem;
+  border-radius: var(--rounded-6);
   background-color: var(--color-palette-gray-200);
 }
 
@@ -424,7 +424,7 @@
 .group-detail-board-tabs button {
   padding: var(--space-6) var(--space-12);
   border: 0.1rem solid var(--color-palette-gray-400);
-  border-radius: 999rem;
+  border-radius: var(--rounded-full);
   color: var(--color-palette-gray-1000);
   font-size: var(--text-sm);
   font-weight: var(--font-weight-normal);
@@ -453,7 +453,7 @@
   margin-top: var(--space-16);
   padding-inline: var(--space-16);
   border: none;
-  border-radius: 0.6rem;
+  border-radius: var(--rounded-6);
   background-color: var(--color-palette-gray-200);
   color: var(--color-palette-gray-1000);
   cursor: pointer;
@@ -503,7 +503,7 @@
   flex-shrink: 0;
   padding: var(--space-6) var(--space-12);
   border: 0.1rem solid var(--color-palette-gray-400);
-  border-radius: 999rem;
+  border-radius: var(--rounded-full);
   color: var(--color-palette-gray-1000);
   font-size: var(--text-sm);
   font-weight: var(--font-weight-normal);
@@ -564,7 +564,7 @@
 
 .group-board-post-image-wrapper img {
   width: 100%;
-  border-radius: 0.8rem;
+  border-radius: var(--rounded-8);
   object-fit: cover;
 }
 
@@ -581,7 +581,7 @@
   column-gap: var(--space-16);
   padding-right: var(--space-16);
   border: 0.1rem solid #0000000c;
-  border-radius: 0.8rem;
+  border-radius: var(--rounded-8);
 }
 
 .group-board-post-content-card-icon {
@@ -635,7 +635,7 @@
   width: 3.6rem;
   height: 3.6rem;
   flex-shrink: 0;
-  border-radius: 999rem;
+  border-radius: var(--rounded-full);
   background-color: var(--color-palette-gray-500);
   box-shadow: inset 0 0 0 0.1rem #0000000c;
   object-fit: cover;
@@ -645,7 +645,7 @@
   min-width: 0;
   flex: 1;
   padding: var(--space-6) var(--space-16);
-  border-radius: 999rem;
+  border-radius: var(--rounded-full);
   border: 1px solid #0000000c;
   background-color: var(--color-palette-gray-00);
   color: var(--color-palette-gray-1000);

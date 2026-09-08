@@ -20,7 +20,7 @@
   height: 2.4rem;
   align-items: center;
   padding-inline: var(--space-8);
-  border-radius: 0.4rem;
+  border-radius: var(--rounded-4);
   background-color: var(--color-palette-gray-200);
   color: var(--color-palette-gray-800);
   font-size: var(--text-xs);
@@ -142,7 +142,7 @@
 .community-comment-profile > img {
   width: 3.6rem;
   height: 3.6rem;
-  border-radius: 999rem;
+  border-radius: var(--rounded-full);
   object-fit: cover;
 }
 
@@ -230,7 +230,7 @@
 
 .community-comments-empty button {
   padding-inline: var(--space-16);
-  border-radius: 0.6rem;
+  border-radius: var(--rounded-6);
   background-color: var(--color-palette-gray-200);
   color: var(--color-palette-gray-1000);
   font-size: var(--text-base);
