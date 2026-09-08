@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import 'brand.css';
 @import 'common.css';
+@import 'buy-sell-detail.css';
 @import 'car-detail.css';
 @import 'community-detail.css';
 @import 'header.css';
