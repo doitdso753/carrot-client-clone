@@ -182,7 +182,7 @@ const GROUP_POSTS: readonly GroupPost[] = [
   {
     authorProfile: GROUP_POST_AUTHOR,
     category: GROUP_BOARD_MENU_ITEMS[1],
-    commentCount: 1,
+    commentCount: 3,
     content: '와인 부은거 아님 피뚝뚝 크~',
     contentItems: [
       {
@@ -217,7 +217,7 @@ const GROUP_POSTS: readonly GroupPost[] = [
   {
     authorProfile: GROUP_POST_AUTHOR,
     category: GROUP_BOARD_MENU_ITEMS[1],
-    commentCount: 2,
+    commentCount: 1,
     content: '정체는 콩불임',
     contentItems: [
       {
@@ -244,8 +244,15 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '추추/00/남/용인',
     },
     category: GROUP_BOARD_MENU_ITEMS[1],
-    commentCount: 4,
-    content: '',
+    commentCount: 1,
+    content:
+      '참석 가능한 시간을 댓글로 알려 주세요. 함께 저녁 먹을 날짜를 정해 봐요.',
+    contentItems: [
+      {
+        text: '참석 가능한 시간을 댓글로 알려 주세요. 함께 저녁 먹을 날짜를 정해 봐요.',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-28T12:00:00+09:00',
     id: 3,
     isPublic: false,
@@ -257,8 +264,15 @@ const GROUP_POSTS: readonly GroupPost[] = [
   {
     authorProfile: GROUP_POST_AUTHOR,
     category: GROUP_BOARD_MENU_ITEMS[2],
-    commentCount: 3,
-    content: '',
+    commentCount: 1,
+    content:
+      '참석 신청 후 일정이 바뀌면 미리 알려 주세요. 서로 배려하며 즐거운 모임을 만들어요.',
+    contentItems: [
+      {
+        text: '참석 신청 후 일정이 바뀌면 미리 알려 주세요. 서로 배려하며 즐거운 모임을 만들어요.',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-27T12:00:00+09:00',
     id: 4,
     isPublic: false,
@@ -273,8 +287,20 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '안양/00/남/안양',
     },
     category: GROUP_BOARD_MENU_ITEMS[3],
-    commentCount: 6,
-    content: '',
+    commentCount: 2,
+    content:
+      '광교호수공원을 한 바퀴 걸으며 이야기 나눴어요. 중간에 쉬어 가며 처음 오신 분들과도 편하게 걸었습니다.',
+    contentItems: [
+      {
+        text: '광교호수공원을 한 바퀴 걸으며 이야기 나눴어요. 중간에 쉬어 가며 처음 오신 분들과도 편하게 걸었습니다.',
+        type: 'text',
+      },
+      {
+        imageUrl: 'https://picsum.photos/seed/group-post-review-walk/640/640',
+        type: 'picture',
+      },
+      { schedule: GROUP_SCHEDULES[1], type: 'schedule' },
+    ],
     createdAt: '2026-08-26T12:00:00+09:00',
     id: 5,
     imageUrl: 'https://picsum.photos/seed/group-post-review-walk/216/216',
@@ -290,8 +316,15 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '포포/57/남/인계',
     },
     category: GROUP_BOARD_MENU_ITEMS[4],
-    commentCount: 8,
-    content: '',
+    commentCount: 1,
+    content:
+      '안녕하세요, 인계동에 사는 포포입니다. 산책과 맛집 탐방을 좋아해요. 다음 모임에서 인사드리겠습니다!',
+    contentItems: [
+      {
+        text: '안녕하세요, 인계동에 사는 포포입니다. 산책과 맛집 탐방을 좋아해요. 다음 모임에서 인사드리겠습니다!',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-25T12:00:00+09:00',
     id: 6,
     isPublic: true,
@@ -303,8 +336,19 @@ const GROUP_POSTS: readonly GroupPost[] = [
   {
     authorProfile: GROUP_POST_AUTHOR,
     category: GROUP_BOARD_MENU_ITEMS[1],
-    commentCount: 2,
-    content: '',
+    commentCount: 1,
+    content:
+      '이번 주말 오후에 커피 한 잔 하실 분 계신가요? 인계동 근처 조용한 카페를 생각하고 있어요.',
+    contentItems: [
+      {
+        text: '이번 주말 오후에 커피 한 잔 하실 분 계신가요? 인계동 근처 조용한 카페를 생각하고 있어요.',
+        type: 'text',
+      },
+      {
+        imageUrl: 'https://picsum.photos/seed/group-post-coffee/640/640',
+        type: 'picture',
+      },
+    ],
     createdAt: '2026-08-24T12:00:00+09:00',
     id: 7,
     imageUrl: 'https://picsum.photos/seed/group-post-coffee/216/216',
@@ -320,8 +364,15 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '연두/02/여/구운',
     },
     category: GROUP_BOARD_MENU_ITEMS[1],
-    commentCount: 5,
-    content: '',
+    commentCount: 1,
+    content:
+      '인계동에서 네 명 정도 함께 갈 만한 맛집을 찾고 있어요. 한식이나 일식으로 추천 부탁드립니다.',
+    contentItems: [
+      {
+        text: '인계동에서 네 명 정도 함께 갈 만한 맛집을 찾고 있어요. 한식이나 일식으로 추천 부탁드립니다.',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-23T12:00:00+09:00',
     id: 8,
     isPublic: true,
@@ -337,7 +388,14 @@ const GROUP_POSTS: readonly GroupPost[] = [
     },
     category: GROUP_BOARD_MENU_ITEMS[2],
     commentCount: 1,
-    content: '',
+    content:
+      '이번 달 정기 모임은 8월 29일 오후 6시에 진행합니다. 참석하실 분은 댓글을 남겨 주세요.',
+    contentItems: [
+      {
+        text: '이번 달 정기 모임은 8월 29일 오후 6시에 진행합니다. 참석하실 분은 댓글을 남겨 주세요.',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-22T12:00:00+09:00',
     id: 9,
     isPublic: true,
@@ -349,8 +407,19 @@ const GROUP_POSTS: readonly GroupPost[] = [
   {
     authorProfile: GROUP_POST_AUTHOR,
     category: GROUP_BOARD_MENU_ITEMS[3],
-    commentCount: 7,
-    content: '',
+    commentCount: 1,
+    content:
+      '함께 먹었던 저녁 모임 사진 올려요. 음식도 맛있고 이야기도 즐거웠습니다. 다음에도 함께해요!',
+    contentItems: [
+      {
+        text: '함께 먹었던 저녁 모임 사진 올려요. 음식도 맛있고 이야기도 즐거웠습니다. 다음에도 함께해요!',
+        type: 'text',
+      },
+      {
+        imageUrl: 'https://picsum.photos/seed/group-post-dinner/640/640',
+        type: 'picture',
+      },
+    ],
     createdAt: '2026-08-21T12:00:00+09:00',
     id: 10,
     imageUrl: 'https://picsum.photos/seed/group-post-dinner/216/216',
@@ -366,8 +435,15 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '구운/02/여/수원',
     },
     category: GROUP_BOARD_MENU_ITEMS[4],
-    commentCount: 4,
-    content: '',
+    commentCount: 1,
+    content:
+      '안녕하세요! 구운동에 살고 있어요. 주말에 산책하고 카페 가는 걸 좋아합니다. 잘 부탁드려요.',
+    contentItems: [
+      {
+        text: '안녕하세요! 구운동에 살고 있어요. 주말에 산책하고 카페 가는 걸 좋아합니다. 잘 부탁드려요.',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-20T12:00:00+09:00',
     id: 11,
     isPublic: true,
@@ -382,8 +458,19 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '민트/98/여/매탄',
     },
     category: GROUP_BOARD_MENU_ITEMS[1],
-    commentCount: 9,
-    content: '',
+    commentCount: 1,
+    content:
+      '케이크와 구움과자 좋아하시는 분 계신가요? 영통 쪽 디저트 카페에 같이 가고 싶어요.',
+    contentItems: [
+      {
+        text: '케이크와 구움과자 좋아하시는 분 계신가요? 영통 쪽 디저트 카페에 같이 가고 싶어요.',
+        type: 'text',
+      },
+      {
+        imageUrl: 'https://picsum.photos/seed/group-post-dessert/640/640',
+        type: 'picture',
+      },
+    ],
     createdAt: '2026-08-19T12:00:00+09:00',
     id: 12,
     imageUrl: 'https://picsum.photos/seed/group-post-dessert/216/216',
@@ -397,7 +484,14 @@ const GROUP_POSTS: readonly GroupPost[] = [
     authorProfile: GROUP_POST_AUTHOR,
     category: GROUP_BOARD_MENU_ITEMS[2],
     commentCount: 0,
-    content: '',
+    content:
+      '다음 달 모임 운영에 관한 의견을 받고 있습니다. 건의하고 싶은 내용은 운영진에게 전달해 주세요.',
+    contentItems: [
+      {
+        text: '다음 달 모임 운영에 관한 의견을 받고 있습니다. 건의하고 싶은 내용은 운영진에게 전달해 주세요.',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-18T12:00:00+09:00',
     id: 13,
     isPublic: false,
@@ -412,8 +506,19 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '하늘/95/남/권선',
     },
     category: GROUP_BOARD_MENU_ITEMS[3],
-    commentCount: 3,
-    content: '',
+    commentCount: 1,
+    content:
+      '공원에서 천천히 걸으니 기분이 좋았습니다. 처음 참여했는데 편하게 맞아 주셔서 감사해요.',
+    contentItems: [
+      {
+        text: '공원에서 천천히 걸으니 기분이 좋았습니다. 처음 참여했는데 편하게 맞아 주셔서 감사해요.',
+        type: 'text',
+      },
+      {
+        imageUrl: 'https://picsum.photos/seed/group-post-park/640/640',
+        type: 'picture',
+      },
+    ],
     createdAt: '2026-08-17T12:00:00+09:00',
     id: 14,
     imageUrl: 'https://picsum.photos/seed/group-post-park/216/216',
@@ -429,8 +534,15 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '도도/97/여/망포',
     },
     category: GROUP_BOARD_MENU_ITEMS[4],
-    commentCount: 6,
-    content: '',
+    commentCount: 1,
+    content:
+      '망포에 사는 도도입니다. 퇴근 후 산책하거나 주말에 맛집 가는 걸 좋아해요. 반갑습니다!',
+    contentItems: [
+      {
+        text: '망포에 사는 도도입니다. 퇴근 후 산책하거나 주말에 맛집 가는 걸 좋아해요. 반갑습니다!',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-16T12:00:00+09:00',
     id: 15,
     isPublic: true,
@@ -442,8 +554,19 @@ const GROUP_POSTS: readonly GroupPost[] = [
   {
     authorProfile: GROUP_POST_AUTHOR,
     category: GROUP_BOARD_MENU_ITEMS[1],
-    commentCount: 11,
-    content: '',
+    commentCount: 1,
+    content:
+      '함께 먹기 좋은 점심 메뉴를 모아 봤어요.\n칼국수, 비빔밥, 돈가스 중 어떤 메뉴가 좋으세요?',
+    contentItems: [
+      {
+        text: '함께 먹기 좋은 점심 메뉴를 모아 봤어요.\n칼국수, 비빔밥, 돈가스 중 어떤 메뉴가 좋으세요?',
+        type: 'text',
+      },
+      {
+        imageUrl: 'https://picsum.photos/seed/group-post-noodle/640/640',
+        type: 'picture',
+      },
+    ],
     createdAt: '2026-08-15T12:00:00+09:00',
     id: 16,
     imageUrl: 'https://picsum.photos/seed/group-post-noodle/216/216',
@@ -459,8 +582,15 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '라라/96/여/영통',
     },
     category: GROUP_BOARD_MENU_ITEMS[2],
-    commentCount: 2,
-    content: '',
+    commentCount: 1,
+    content:
+      '서로 존중하는 말투를 사용해 주세요. 모임 사진을 외부에 공유하기 전에는 사진에 나온 분들의 동의를 받아 주세요.',
+    contentItems: [
+      {
+        text: '서로 존중하는 말투를 사용해 주세요. 모임 사진을 외부에 공유하기 전에는 사진에 나온 분들의 동의를 받아 주세요.',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-14T12:00:00+09:00',
     id: 17,
     isPublic: true,
@@ -475,8 +605,19 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '봄봄/99/여/인계',
     },
     category: GROUP_BOARD_MENU_ITEMS[3],
-    commentCount: 5,
-    content: '',
+    commentCount: 1,
+    content:
+      '저녁에 야경을 보면서 산책하고 왔어요. 바람이 시원해서 걷기 좋았습니다. 풍경 사진도 공유해요.',
+    contentItems: [
+      {
+        text: '저녁에 야경을 보면서 산책하고 왔어요. 바람이 시원해서 걷기 좋았습니다. 풍경 사진도 공유해요.',
+        type: 'text',
+      },
+      {
+        imageUrl: 'https://picsum.photos/seed/group-post-night-view/640/640',
+        type: 'picture',
+      },
+    ],
     createdAt: '2026-08-13T12:00:00+09:00',
     id: 18,
     imageUrl: 'https://picsum.photos/seed/group-post-night-view/216/216',
@@ -489,8 +630,15 @@ const GROUP_POSTS: readonly GroupPost[] = [
   {
     authorProfile: GROUP_POST_AUTHOR,
     category: GROUP_BOARD_MENU_ITEMS[4],
-    commentCount: 3,
-    content: '',
+    commentCount: 1,
+    content:
+      '안녕하세요, 새로 가입했습니다. 동네에서 함께 취미를 즐길 이웃을 만나고 싶어요. 잘 부탁드립니다.',
+    contentItems: [
+      {
+        text: '안녕하세요, 새로 가입했습니다. 동네에서 함께 취미를 즐길 이웃을 만나고 싶어요. 잘 부탁드립니다.',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-12T12:00:00+09:00',
     id: 19,
     isPublic: false,
@@ -505,8 +653,19 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '초코/93/남/팔달',
     },
     category: GROUP_BOARD_MENU_ITEMS[1],
-    commentCount: 7,
-    content: '',
+    commentCount: 1,
+    content:
+      '고기 모임 정말 즐거웠습니다. 다음에는 더 많은 분들과 함께 가요. 선호하는 요일을 알려 주세요.',
+    contentItems: [
+      {
+        text: '고기 모임 정말 즐거웠습니다. 다음에는 더 많은 분들과 함께 가요. 선호하는 요일을 알려 주세요.',
+        type: 'text',
+      },
+      {
+        imageUrl: 'https://picsum.photos/seed/group-post-bbq/640/640',
+        type: 'picture',
+      },
+    ],
     createdAt: '2026-08-11T12:00:00+09:00',
     id: 20,
     imageUrl: 'https://picsum.photos/seed/group-post-bbq/216/216',
@@ -523,7 +682,14 @@ const GROUP_POSTS: readonly GroupPost[] = [
     },
     category: GROUP_BOARD_MENU_ITEMS[2],
     commentCount: 1,
-    content: '',
+    content:
+      '새로 오신 분들 환영합니다! 가입인사 게시판에 소개를 남겨 주세요. 일정별 장소와 준비물은 신청 전에 확인해 주세요.',
+    contentItems: [
+      {
+        text: '새로 오신 분들 환영합니다! 가입인사 게시판에 소개를 남겨 주세요. 일정별 장소와 준비물은 신청 전에 확인해 주세요.',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-10T12:00:00+09:00',
     id: 21,
     isPublic: true,
@@ -535,8 +701,19 @@ const GROUP_POSTS: readonly GroupPost[] = [
   {
     authorProfile: GROUP_POST_AUTHOR,
     category: GROUP_BOARD_MENU_ITEMS[3],
-    commentCount: 4,
-    content: '',
+    commentCount: 1,
+    content:
+      '한강에서 산책하고 돗자리를 펴고 쉬다 왔어요. 물과 간식을 나누며 즐겁게 보냈습니다. 다음에는 노을도 보고 와요.',
+    contentItems: [
+      {
+        text: '한강에서 산책하고 돗자리를 펴고 쉬다 왔어요. 물과 간식을 나누며 즐겁게 보냈습니다. 다음에는 노을도 보고 와요.',
+        type: 'text',
+      },
+      {
+        imageUrl: 'https://picsum.photos/seed/group-post-river/640/640',
+        type: 'picture',
+      },
+    ],
     createdAt: '2026-08-09T12:00:00+09:00',
     id: 22,
     imageUrl: 'https://picsum.photos/seed/group-post-river/216/216',
@@ -552,8 +729,15 @@ const GROUP_POSTS: readonly GroupPost[] = [
       nickname: '단비/00/여/화서',
     },
     category: GROUP_BOARD_MENU_ITEMS[4],
-    commentCount: 10,
-    content: '',
+    commentCount: 1,
+    content:
+      '화서동에 사는 단비입니다. 주말 나들이와 사진 찍는 것을 좋아해요. 가까운 일정부터 참여해 보겠습니다!',
+    contentItems: [
+      {
+        text: '화서동에 사는 단비입니다. 주말 나들이와 사진 찍는 것을 좋아해요. 가까운 일정부터 참여해 보겠습니다!',
+        type: 'text',
+      },
+    ],
     createdAt: '2026-08-08T12:00:00+09:00',
     id: 23,
     isPublic: true,
@@ -568,92 +752,363 @@ export const GROUP_POST_COMMENTS: readonly GroupPostComment[] = [
   {
     postId: 1,
     comments: [
-    {
-      content: '사진만 봐도 맛있어 보여요. 다음에 같이 가고 싶네요.',
-      createdAt: '2026-08-31T13:00:00+09:00',
-      id: 1,
-      likeCount: 2,
-      location: '경기 수원시 권선구',
-      nickname: '연두/02/여/구운',
-      profileImageUrl: 'https://picsum.photos/seed/group-comment-1/72/72',
-      replyCount: 1,
-      replies: [
-        {
-          content: '다음 일정 잡히면 같이 가요.',
-          createdAt: '2026-08-31T13:30:00+09:00',
-          id: 11,
-          likeCount: 1,
-          location: '경기 수원시 팔달구',
-          nickname: '유화/00/여/권선',
-          replyCount: 0,
-        },
-      ],
-    },
-    {
-      content: '여기 어디인지 공유 가능할까요?',
-      createdAt: '2026-08-31T14:00:00+09:00',
-      id: 2,
-      likeCount: 0,
-      location: '경기 수원시 팔달구',
-      nickname: '밤비/94/남/화서',
-      profileImageUrl: 'https://picsum.photos/seed/group-comment-2/72/72',
-      replyCount: 0,
-    },
-  ],
+      {
+        content: '사진만 봐도 맛있어 보여요. 다음에 같이 가고 싶네요.',
+        createdAt: '2026-08-31T13:00:00+09:00',
+        id: 1,
+        likeCount: 2,
+        location: '경기 수원시 권선구',
+        nickname: '연두/02/여/구운',
+        profileImageUrl: 'https://picsum.photos/seed/group-comment-1/72/72',
+        replyCount: 1,
+        replies: [
+          {
+            content: '다음 일정 잡히면 같이 가요.',
+            createdAt: '2026-08-31T13:30:00+09:00',
+            id: 11,
+            likeCount: 1,
+            location: '경기 수원시 팔달구',
+            nickname: '유화/00/여/권선',
+            replyCount: 0,
+          },
+        ],
+      },
+      {
+        content: '여기 어디인지 공유 가능할까요?',
+        createdAt: '2026-08-31T14:00:00+09:00',
+        id: 2,
+        likeCount: 0,
+        location: '경기 수원시 팔달구',
+        nickname: '밤비/94/남/화서',
+        profileImageUrl: 'https://picsum.photos/seed/group-comment-2/72/72',
+        replyCount: 0,
+      },
+    ],
   },
   {
     postId: 2,
     comments: [
-    {
-      content: '콩불이면 인정입니다. 양도 좋아 보여요.',
-      createdAt: '2026-08-30T15:00:00+09:00',
-      id: 3,
-      likeCount: 1,
-      location: '경기 안양시 만안구',
-      nickname: '안양/00/남/안양',
-      profileImageUrl: 'https://picsum.photos/seed/group-comment-3/72/72',
-      replyCount: 0,
-    },
-  ],
+      {
+        content: '콩불이면 인정입니다. 양도 좋아 보여요.',
+        createdAt: '2026-08-30T15:00:00+09:00',
+        id: 3,
+        likeCount: 1,
+        location: '경기 안양시 만안구',
+        nickname: '안양/00/남/안양',
+        profileImageUrl: 'https://picsum.photos/seed/group-comment-3/72/72',
+        replyCount: 0,
+      },
+    ],
   },
   {
     postId: 5,
     comments: [
-    {
-      content: '걷기 코스 좋았어요. 다음에도 참여하겠습니다.',
-      createdAt: '2026-08-26T18:00:00+09:00',
-      id: 4,
-      likeCount: 3,
-      location: '경기 수원시 팔달구',
-      nickname: '포포/57/남/인계',
-      profileImageUrl: 'https://picsum.photos/seed/group-comment-4/72/72',
-      replyCount: 0,
-    },
-    {
-      content: '사진 분위기가 좋네요.',
-      createdAt: '2026-08-26T19:00:00+09:00',
-      id: 5,
-      likeCount: 1,
-      location: '경기 수원시 권선구',
-      nickname: '하늘/95/남/권선',
-      replyCount: 0,
-    },
-  ],
+      {
+        content: '걷기 코스 좋았어요. 다음에도 참여하겠습니다.',
+        createdAt: '2026-08-26T18:00:00+09:00',
+        id: 4,
+        likeCount: 3,
+        location: '경기 수원시 팔달구',
+        nickname: '포포/57/남/인계',
+        profileImageUrl: 'https://picsum.photos/seed/group-comment-4/72/72',
+        replyCount: 0,
+      },
+      {
+        content: '사진 분위기가 좋네요.',
+        createdAt: '2026-08-26T19:00:00+09:00',
+        id: 5,
+        likeCount: 1,
+        location: '경기 수원시 권선구',
+        nickname: '하늘/95/남/권선',
+        replyCount: 0,
+      },
+    ],
   },
   {
     postId: 6,
     comments: [
-    {
-      content: '반갑습니다. 모임에서 자주 뵈어요.',
-      createdAt: '2026-08-25T13:00:00+09:00',
-      id: 6,
-      likeCount: 2,
-      location: '경기 수원시 팔달구',
-      nickname: '유화/00/여/권선',
-      profileImageUrl: 'https://picsum.photos/seed/group-comment-6/72/72',
-      replyCount: 0,
-    },
-  ],
+      {
+        content: '반갑습니다. 모임에서 자주 뵈어요.',
+        createdAt: '2026-08-25T13:00:00+09:00',
+        id: 6,
+        likeCount: 2,
+        location: '경기 수원시 팔달구',
+        nickname: '유화/00/여/권선',
+        profileImageUrl: 'https://picsum.photos/seed/group-comment-6/72/72',
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 3,
+    comments: [
+      {
+        content: '저는 토요일 저녁에 참석할 수 있어요.',
+        createdAt: '2026-08-29T13:00:00+09:00',
+        id: 300,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 4,
+    comments: [
+      {
+        content: '확인했습니다. 변경되면 미리 말씀드릴게요.',
+        createdAt: '2026-08-28T13:00:00+09:00',
+        id: 400,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 7,
+    comments: [
+      {
+        content: '토요일 오후 2시 좋아요.',
+        createdAt: '2026-08-25T13:00:00+09:00',
+        id: 700,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 8,
+    comments: [
+      {
+        content: '한식 좋네요. 저도 같이 찾아볼게요.',
+        createdAt: '2026-08-24T13:00:00+09:00',
+        id: 800,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 9,
+    comments: [
+      {
+        content: '참석하겠습니다. 장소 정해지면 알려 주세요.',
+        createdAt: '2026-08-23T13:00:00+09:00',
+        id: 900,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 10,
+    comments: [
+      {
+        content: '함께해서 즐거웠어요. 사진 감사합니다!',
+        createdAt: '2026-08-22T13:00:00+09:00',
+        id: 1000,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 11,
+    comments: [
+      {
+        content: '환영합니다! 다음 산책에서 뵈어요.',
+        createdAt: '2026-08-21T13:00:00+09:00',
+        id: 1100,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 12,
+    comments: [
+      {
+        content: '저는 휘낭시에 좋아해요.',
+        createdAt: '2026-08-20T13:00:00+09:00',
+        id: 1200,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  { postId: 13, comments: [] },
+  {
+    postId: 14,
+    comments: [
+      {
+        content: '다음에도 편하게 참여해 주세요.',
+        createdAt: '2026-08-18T13:00:00+09:00',
+        id: 1400,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 15,
+    comments: [
+      {
+        content: '환영합니다! 저도 퇴근 후 산책 좋아해요.',
+        createdAt: '2026-08-17T13:00:00+09:00',
+        id: 1500,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 16,
+    comments: [
+      {
+        content: '저는 칼국수에 한 표요.',
+        createdAt: '2026-08-16T13:00:00+09:00',
+        id: 1600,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 17,
+    comments: [
+      {
+        content: '안내 확인했습니다. 사진 공유 전에 꼭 물어볼게요.',
+        createdAt: '2026-08-15T13:00:00+09:00',
+        id: 1700,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 18,
+    comments: [
+      {
+        content: '야경이 멋지네요. 다음에는 저도 가고 싶어요.',
+        createdAt: '2026-08-14T13:00:00+09:00',
+        id: 1800,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 19,
+    comments: [
+      {
+        content: '반갑습니다. 모임에서 뵐게요!',
+        createdAt: '2026-08-13T13:00:00+09:00',
+        id: 1900,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 20,
+    comments: [
+      {
+        content: '저는 금요일 저녁이 편해요.',
+        createdAt: '2026-08-12T13:00:00+09:00',
+        id: 2000,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 21,
+    comments: [
+      {
+        content: '안내 감사합니다. 가입인사 남겼어요.',
+        createdAt: '2026-08-11T13:00:00+09:00',
+        id: 2100,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 22,
+    comments: [
+      {
+        content: '노을 보는 일정도 좋겠어요.',
+        createdAt: '2026-08-10T13:00:00+09:00',
+        id: 2200,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
+  },
+  {
+    postId: 23,
+    comments: [
+      {
+        content: '환영해요! 다음 나들이에서 만나요.',
+        createdAt: '2026-08-09T13:00:00+09:00',
+        id: 2300,
+        likeCount: 0,
+        location: GROUP_MEMBERS[0].location,
+        nickname: GROUP_MEMBERS[0].name,
+        profileImageUrl: GROUP_MEMBERS[0].profileImageUrl,
+        replyCount: 0,
+      },
+    ],
   },
 ];
 
