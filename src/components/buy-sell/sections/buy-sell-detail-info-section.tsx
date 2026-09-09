@@ -1,0 +1,70 @@
+import type { ReactNode } from 'react';
+import type { BuySellItem } from '@/types/buy-sell';
+import type { BuySellItemStatusCode } from '@/types/buy-sell';
+import {
+  BUY_SELL_ITEM_STATUS,
+  BUY_SELL_ITEM_STATUS_LABEL,
+} from '@/types/buy-sell';
+import OpenAppCtaButton from '@/components/ui/open-app-cta-button';
+import { getElapsedTimeText } from '@/lib/date-utils';
+import { formatThousandsBySuffix } from '@/lib/utils';
+
+type BuySellDetailInfoSectionProps = { item: BuySellItem };
+
+const DEFAULT_STATS = {
+  chatCount: 0,
+  favoriteCount: 0,
+  viewCount: 0,
+};
+
+const DETAIL_HEADING_STATUS_LABEL: Partial<
+  Record<BuySellItemStatusCode, string>
+> = {
+  [BUY_SELL_ITEM_STATUS.RESERVED]:
+    BUY_SELL_ITEM_STATUS_LABEL[BUY_SELL_ITEM_STATUS.RESERVED],
+  [BUY_SELL_ITEM_STATUS.SOLD]:
+    BUY_SELL_ITEM_STATUS_LABEL[BUY_SELL_ITEM_STATUS.SOLD],
+};
+
+export default function BuySellDetailInfoSection({
+  item,
+}: BuySellDetailInfoSectionProps): ReactNode {
+  const stats = item.stats ?? DEFAULT_STATS;
+  const headingStatusText = item.status
+    ? DETAIL_HEADING_STATUS_LABEL[item.status]
+    : '';
+  return (
+    <section className="detail-page-content">
+      <header className="detail-page-heading">
+        <h1>
+          {headingStatusText && (
+            <span
+              className={`detail-page-heading-status detail-page-heading-status--${item.status}`}
+            >
+              {headingStatusText}
+            </span>
+          )}
+          {item.title}
+        </h1>
+        <p>
+          {item.categoryText ?? '기타 중고물품'} ·{' '}
+          {getElapsedTimeText(item.createdAt)}
+        </p>
+        <strong>{formatThousandsBySuffix(item.price, '원')}원</strong>
+      </header>
+
+      <section className="detail-page-description" aria-label="상품 설명">
+        <p className="whitespace-pre-line">
+          {item.description ??
+            '상품에 관심이 있으시면 당근 앱에서 판매자에게 문의해 주세요.'}
+        </p>
+        <p className="detail-page-status">
+          채팅 {stats.chatCount} · 관심 {stats.favoriteCount} · 조회{' '}
+          {stats.viewCount}
+        </p>
+      </section>
+
+      <OpenAppCtaButton />
+    </section>
+  );
+}
