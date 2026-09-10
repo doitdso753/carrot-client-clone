@@ -1,4 +1,5 @@
 import {
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -57,6 +58,19 @@ export default function ImagePreview({
   const canZoomOut = zoomScale > MIN_ZOOM_SCALE;
   const canDragImage = zoomScale > MIN_ZOOM_SCALE;
 
+  // 이미지 전환 및 확대 상태 초기화
+  const handleImageNavigate = useCallback(
+    (direction: ImagePreviewDirection): void => {
+      setPreviewDirection(direction);
+      setCurrentImageIndex((imageIndex) =>
+        direction === 'previous' ? imageIndex - 1 : imageIndex + 1,
+      );
+      setZoomScale(MIN_ZOOM_SCALE);
+      setImageOffset({ x: 0, y: 0 });
+    },
+    [],
+  );
+
   useEffect(() => {
     const originalBodyOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -77,17 +91,11 @@ export default function ImagePreview({
       }
 
       if (event.key === 'ArrowLeft' && hasPreviousImage) {
-        setPreviewDirection('previous');
-        setCurrentImageIndex((imageIndex) => imageIndex - 1);
-        setZoomScale(MIN_ZOOM_SCALE);
-        setImageOffset({ x: 0, y: 0 });
+        handleImageNavigate('previous');
       }
 
       if (event.key === 'ArrowRight' && hasNextImage) {
-        setPreviewDirection('next');
-        setCurrentImageIndex((imageIndex) => imageIndex + 1);
-        setZoomScale(MIN_ZOOM_SCALE);
-        setImageOffset({ x: 0, y: 0 });
+        handleImageNavigate('next');
       }
     };
 
@@ -96,7 +104,7 @@ export default function ImagePreview({
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [hasNextImage, hasPreviousImage, onClose]);
+  }, [handleImageNavigate, hasNextImage, hasPreviousImage, onClose]);
 
   const handleZoomIn = (): void => {
     setZoomScale((currentScale) =>
@@ -117,20 +125,6 @@ export default function ImagePreview({
 
       return nextScale;
     });
-  };
-
-  const handlePreviousImage = (): void => {
-    setPreviewDirection('previous');
-    setCurrentImageIndex((imageIndex) => imageIndex - 1);
-    setZoomScale(MIN_ZOOM_SCALE);
-    setImageOffset({ x: 0, y: 0 });
-  };
-
-  const handleNextImage = (): void => {
-    setPreviewDirection('next');
-    setCurrentImageIndex((imageIndex) => imageIndex + 1);
-    setZoomScale(MIN_ZOOM_SCALE);
-    setImageOffset({ x: 0, y: 0 });
   };
 
   const handleImagePointerDown = (
@@ -239,7 +233,7 @@ export default function ImagePreview({
           className="image-preview-button image-preview-button--previous"
           type="button"
           aria-label="이전 이미지"
-          onClick={handlePreviousImage}
+          onClick={() => handleImageNavigate('previous')}
         >
           <ChevronLeftIcon />
         </button>
@@ -249,7 +243,7 @@ export default function ImagePreview({
           className="image-preview-button image-preview-button--next"
           type="button"
           aria-label="다음 이미지"
-          onClick={handleNextImage}
+          onClick={() => handleImageNavigate('next')}
         >
           <ChevronRightIcon />
         </button>
