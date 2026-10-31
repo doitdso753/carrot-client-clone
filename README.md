@@ -86,6 +86,9 @@ flowchart TB
     Panel --> Header["검색창, 카테고리 메뉴<br/>HeaderWithSearch"]
     Panel --> Content["제목, 검색 필터, 업체 목록<br/>LocalProfileContent"]
     Root --> Controls["지도 조작 영역<br/>현재 지도 범위 재검색, 지도 메뉴"]
+
+    classDef shared fill:#fff0e6,stroke:#f97316,color:#222
+    class Root,Header shared
 ```
 
 지도 조작 영역에는 `MapBottomToolbar`와 `MapMenu`를 사용합니다.
