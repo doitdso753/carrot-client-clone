@@ -51,51 +51,28 @@ npm run preview
 ## 공통 레이아웃 구조
 
 목록과 상세 페이지는 각 Page에서 `RootLayout`과 `HeaderWithSearch`를 직접 조합합니다.
-아래 그림은 공통 레이아웃과 배치 영역을 나타냅니다. ‘영역’은 배치를 설명하는 이름이며, 별도의 레이아웃 컴포넌트가 아닙니다.
+`RootLayout`은 전체 화면의 배경색을 지정하고, 페이지가 화면 높이 이상을 차지하도록 최소 높이를 설정합니다.
+
+주황색은 목록과 상세 페이지가 공유하는 컴포넌트입니다.
+
+### 목록 페이지
 
 ```mermaid
-flowchart TB
-    subgraph List["목록 페이지"]
-        direction TB
-        LRoot["RootLayout"]
-        LHeader["HeaderWithSearch"]
-        LMain["본문 영역"]
-        LTitle["제목 영역"]
-        LBody["목록 배치 영역"]
-        LFilter["검색 필터 영역"]
-        LItems["서비스별 목록 영역"]
-
-        LRoot --> LHeader
-        LRoot --> LMain
-        LMain --> LTitle
-        LMain --> LBody
-        LBody --> LFilter
-        LBody --> LItems
-    end
-
-    subgraph Detail["상세 페이지"]
-        direction TB
-        DRoot["RootLayout"]
-        DHeader["HeaderWithSearch"]
-        DMain["서비스별 상세 본문 영역"]
-
-        DRoot --> DHeader
-        DRoot --> DMain
-    end
+flowchart LR
+    Root["RootLayout"] --> Header["검색창 · 카테고리 메뉴<br/>HeaderWithSearch"]
+    Root --> Main["목록 페이지 본문 영역"]
+    Main --> Title["지역, 서비스명, 검색 결과 제목<br/>ServiceListTitle"]
+    Main --> Body["검색 필터와 목록을 배치하는 영역"]
+    Body --> Filter["지역, 서비스별 검색 조건<br/>SearchFilter"]
+    Body --> Items["서비스별 목록 영역"]
 
     classDef shared fill:#fff0e6,stroke:#f97316,color:#222
-    class LRoot,LHeader,DRoot,DHeader shared
+    class Root,Header shared
 ```
-
-주황색은 목록과 상세 페이지가 공유하는 컴포넌트입니다. 각 영역에 들어가는 컴포넌트는 다음과 같습니다.
 
 | 영역 | 사용하는 컴포넌트 |
 | --- | --- |
-| 제목 | `ServiceListTitle` |
-| 검색 필터 | `SearchFilter` |
 | 서비스별 목록 | `CardList`, `CarCardList`, `CommunityList`, `GroupList`, `LocalProfileBoardList` |
-| 서비스별 상세 본문 | `BuySellDetail`, `CarDetail`, `CommunityDetail`, `GroupDetail`, `LocalProfileDetail` |
-| 모임 게시판 | `GroupBoardContent`, `GroupBoardDetail` |
 
 ### 동네업체 목록 레이아웃
 
@@ -104,14 +81,30 @@ flowchart TB
 ```mermaid
 flowchart TB
     Root["RootLayout"]
-    Root --> Map["배경 지도 영역"]
-    Root --> Panel["목록 패널"]
-    Panel --> Header["HeaderWithSearch"]
-    Panel --> Content["제목 · 검색 필터 · 업체 목록 영역"]
-    Root --> Controls["지도 조작 영역"]
+    Root --> Map["업체 탐색용 배경 지도<br/>KakaoMap"]
+    Root --> Panel["지도 위에 표시하는 업체 목록 패널"]
+    Panel --> Header["검색창, 카테고리 메뉴<br/>HeaderWithSearch"]
+    Panel --> Content["제목, 검색 필터, 업체 목록<br/>LocalProfileContent"]
+    Root --> Controls["지도 조작 영역<br/>현재 지도 범위 재검색, 지도 메뉴"]
 ```
 
-배경 지도에는 `KakaoMap`, 지도 조작 영역에는 `MapBottomToolbar`와 `MapMenu`를 사용합니다.
+지도 조작 영역에는 `MapBottomToolbar`와 `MapMenu`를 사용합니다.
+
+### 상세 페이지
+
+```mermaid
+flowchart LR
+    Root["RootLayout"] --> Header["검색창, 카테고리 메뉴<br/>HeaderWithSearch"]
+    Root --> Main["서비스별 상세 본문 영역"]
+
+    classDef shared fill:#fff0e6,stroke:#f97316,color:#222
+    class Root,Header shared
+```
+
+| 영역 | 사용하는 컴포넌트 |
+| --- | --- |
+| 서비스별 상세 본문 | `BuySellDetail`, `CarDetail`, `CommunityDetail`, `GroupDetail`, `LocalProfileDetail` |
+| 모임 게시판 | `GroupBoardContent`, `GroupBoardDetail` |
 
 ## 커밋 메시지 컨벤션
 
