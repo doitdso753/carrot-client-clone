@@ -91,8 +91,6 @@ flowchart TB
     class Root,Header shared
 ```
 
-지도 조작 영역에는 `MapBottomToolbar`와 `MapMenu`를 사용합니다.
-
 ### 상세 페이지
 
 ```mermaid
