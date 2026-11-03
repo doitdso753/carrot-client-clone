@@ -48,7 +48,7 @@ npm run build
 npm run preview
 ```
 
-## 공통 레이아웃 구조
+## 레이아웃 구조
 
 목록과 상세 페이지는 각 Page에서 `RootLayout`과 `HeaderWithSearch`를 직접 조합합니다.
 `RootLayout`은 전체 화면의 배경색을 지정하고, 페이지가 화면 높이 이상을 차지하도록 최소 높이를 설정합니다.
