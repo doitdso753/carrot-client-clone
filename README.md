@@ -107,6 +107,38 @@ flowchart LR
 | 서비스별 상세 본문 | `BuySellDetail`, `CarDetail`, `CommunityDetail`, `GroupDetail`, `LocalProfileDetail` |
 | 모임 게시판 | `GroupBoardContent`, `GroupBoardDetail` |
 
+## 목록 페이지 데이터 흐름
+
+목록 페이지는 **조회 조건 구성 → 데이터 조회 → 결과 표시** 순서로 동작합니다.
+현재는 샘플 데이터를 클라이언트에서 필터링하며, 향후 서버 API를 통해 조회하도록 확장할 수 있습니다.
+
+```mermaid
+flowchart TB
+    Input["사용자 입력<br/>지역, 검색어, 필터, 정렬"]
+    Params["적용된 조회 조건 구성"]
+    Fetch["조건에 맞는 목록 조회"]
+    State["화면 상태 처리"]
+    View["목록 결과 표시"]
+    Next["추가 목록 요청<br/>페이지 이동, 더 보기"]
+
+    Input --> Params
+    Params --> Fetch
+    Fetch --> State
+    State --> View
+    View --> Next
+    Next --> Params
+```
+
+| 단계 | 현재 구현 | 서버 연동 시 처리 방식         |
+| --- | --- |--------------------|
+| 사용자 입력 | 검색창, 지역 선택, 검색 필터 |                    |
+| 조회 조건 구성 | Context, URL, 페이지별 상태 활용 | API 조회 파라미터로 구성    |
+| 목록 조회 | 샘플 데이터 필터링 | 조회 Hook에서 API 요청   |
+| 상태 처리 | 필터링 결과와 빈 결과 처리 | 로딩, 오류, 성공, 빈 결과 처리 |
+| 목록 표시 | 서비스별 목록 컴포넌트 |        |
+| 추가 조회 | 서비스별 구현에 따름 | 페이지 또는 커서 기반 조회    |
+
+
 ## 커밋 메시지 컨벤션
 
 커밋 메시지는 아래 형식을 사용합니다.
