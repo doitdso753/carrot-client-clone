@@ -96,6 +96,8 @@ flowchart TB
 
 ### 상세 페이지
 
+경로 파라미터로 대상을 식별하고, 서비스별 상세 컴포넌트에 데이터를 전달합니다.
+
 ```mermaid
 flowchart LR
     Root["RootLayout"] --> Header["검색창, 카테고리 메뉴<br/>HeaderWithSearch"]
