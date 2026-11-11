@@ -58,6 +58,8 @@ npm run preview
 
 ### 목록 페이지
 
+ServiceListTitle, SearchFilter, 서비스별 목록 컴포넌트를 배치합니다.
+
 ```mermaid
 flowchart LR
     Root["RootLayout"] --> Header["검색창 · 카테고리 메뉴<br/>HeaderWithSearch"]
