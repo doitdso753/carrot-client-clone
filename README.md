@@ -129,10 +129,10 @@ flowchart LR
     class Root,Header shared
 ```
 
-| 영역 | 사용하는 컴포넌트 |
-| --- | --- |
+| 영역 | 사용 컴포넌트                                                                           |
+| --- |-----------------------------------------------------------------------------------|
 | 서비스별 상세 본문 | `BuySellDetail`, `CarDetail`, `CommunityDetail`, `GroupDetail`, `LocalProfileDetail` |
-| 모임 게시판 | `GroupBoardContent`, `GroupBoardDetail` |
+| 모임 게시판 | `GroupBoardContent`, `GroupBoardDetail`                                           |
 
 ## 목록 페이지 데이터 흐름
 
