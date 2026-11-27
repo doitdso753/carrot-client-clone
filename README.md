@@ -58,38 +58,38 @@ npm run preview
 | 모임 | `/group` | 모임 목록 및 상세, 모임 게시판 목록 및 게시글 상세 |
 | 동네업체 | `/local-profile` | 지도 기반 업체 목록, 업체 상세 및 소식 상세 |
 
-알바(`/jobs`), 부동산(`/realty`), 카페(`/cafe`)는 현재 서비스 준비 안내 화면을 표시합니다.
+알바(`/jobs`), 부동산(`/realty`), 카페(`/cafe`)는 현재 '준비 중' 안내 화면을 표시합니다.
 
 ## 디렉토리 구성
 
 | 경로                       | 내용                      |
 |--------------------------|-------------------------|
-| `src/components/{서비스명}/` | 해당 서비스에서 사용하는 UI 컴포넌트   |
+| `src/components/{카테고리명}/` | 해당 카테고리에서 사용하는 UI 컴포넌트   |
 | `src/components/ui/`     | 페이지에서 공통으로 사용하는 UI 컴포넌트 |
 | `src/hooks/`             | 지역 조회, 검색 필터 상태 관리, 목록 필터링, 무한 스크롤, 팝업 제어 등을 처리하는 재사용 가능한 커스텀 훅 |
-| `src/pages/{서비스명}/`      | URL에 연결되는 페이지와 화면 구성    |
-| `src/types/{서비스명}/`      | 서비스 데이터 타입과 관련 상수       |
+| `src/pages/{카테고리명}/`      | URL에 연결되는 페이지와 화면 구성    |
+| `src/types/{카테고리명}/`      | 카테고리별 데이터 타입과 관련 상수       |
 
 ## 레이아웃 구조
 
 목록과 상세 페이지는 RootLayout과 HeaderWithSearch를 조합합니다.
 - RootLayout: 전체 화면의 배경과 최소 높이를 설정합니다.
-- HeaderWithSearch: 검색창과 카테고리 메뉴를 제공합니다. activeCategoryCode에 해당 서비스의 카테고리 코드를 전달합니다.
+- HeaderWithSearch: 검색창과 카테고리 메뉴를 제공합니다. activeCategoryCode에 해당 카테고리의 코드를 전달합니다.
 
 주황 배경색은 목록과 상세 페이지가 공유하는 컴포넌트입니다.
 
 ### 목록 페이지
 
-ServiceListTitle, SearchFilter, 서비스별 목록 컴포넌트를 배치합니다.
+ServiceListTitle, SearchFilter, 카테고리별 목록 컴포넌트를 배치합니다.
 
 ```mermaid
 flowchart LR
     Root["RootLayout"] --> Header["검색창 · 카테고리 메뉴<br/>HeaderWithSearch"]
     Root --> Main["목록 페이지 본문 영역"]
-    Main --> Title["지역, 서비스명, 검색 결과 제목<br/>ServiceListTitle"]
+    Main --> Title["지역, 카테고리명, 검색 결과 제목<br/>ServiceListTitle"]
     Main --> Body["검색 필터와 목록을 배치하는 영역"]
-    Body --> Filter["지역, 서비스별 검색 조건<br/>SearchFilter"]
-    Body --> Items["서비스별 목록 영역"]
+    Body --> Filter["지역, 카테고리별 검색 조건<br/>SearchFilter"]
+    Body --> Items["카테고리별 목록 영역"]
 
     classDef shared fill:#fff0e6,stroke:#f97316,color:#222
     class Root,Header shared
@@ -97,7 +97,7 @@ flowchart LR
 
 | 영역 | 사용하는 컴포넌트 |
 | --- | --- |
-| 서비스별 목록 | `CardList`, `CarCardList`, `CommunityList`, `GroupList`, `LocalProfileBoardList` |
+| 카테고리별 목록 | `CardList`, `CarCardList`, `CommunityList`, `GroupList`, `LocalProfileBoardList` |
 
 ### 동네업체 목록 레이아웃
 
@@ -118,12 +118,12 @@ flowchart TB
 
 ### 상세 페이지
 
-경로 파라미터로 대상을 식별하고, 서비스별 상세 컴포넌트에 데이터를 전달합니다.
+경로 파라미터로 대상을 식별하고, 카테고리별 상세 컴포넌트에 데이터를 전달합니다.
 
 ```mermaid
 flowchart LR
     Root["RootLayout"] --> Header["검색창, 카테고리 메뉴<br/>HeaderWithSearch"]
-    Root --> Main["서비스별 상세 본문 영역"]
+    Root --> Main["카테고리별 상세 본문 영역"]
 
     classDef shared fill:#fff0e6,stroke:#f97316,color:#222
     class Root,Header shared
@@ -131,7 +131,7 @@ flowchart LR
 
 | 영역 | 사용 컴포넌트                                                                           |
 | --- |-----------------------------------------------------------------------------------|
-| 서비스별 상세 본문 | `BuySellDetail`, `CarDetail`, `CommunityDetail`, `GroupDetail`, `LocalProfileDetail` |
+| 카테고리별 상세 본문 | `BuySellDetail`, `CarDetail`, `CommunityDetail`, `GroupDetail`, `LocalProfileDetail` |
 | 모임 게시판 | `GroupBoardContent`, `GroupBoardDetail`                                           |
 
 ## 목록 페이지 데이터 흐름
@@ -162,8 +162,8 @@ flowchart TB
 | 조회 조건 구성 | Context, URL, 페이지별 상태 활용 | API 조회 파라미터로 구성    |
 | 목록 조회 | 조회 조건에 맞는 샘플 데이터 필터링     | 조회 Hook에서 API 요청   |
 | 상태 처리 | 필터링 결과와 빈 결과 처리          | 로딩, 오류, 성공, 빈 결과 처리 |
-| 목록 표시 | 서비스별 목록 컴포넌트             |        |
-| 추가 조회 | 서비스별 구현에 따름              | 페이지 또는 커서 기반 조회    |
+| 목록 표시 | 카테고리별 목록 컴포넌트             |        |
+| 추가 조회 | 각 기능의 구현 방식에 따름              | 페이지 또는 커서 기반 조회    |
 
 ## 커밋 메시지 컨벤션
 
